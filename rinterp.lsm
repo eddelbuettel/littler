@@ -1,0 +1,21 @@
+Begin3
+Title:		rinterp
+Version:	0.1.0
+Entered-date:	2006-09-05
+Description:	Provides shebang capability for R (www.r-project.org)
+		rinterp.lsm.  Generated from rinterp.lsm.in by configure.
+		Please edit rinterp.lsm.in to fix the Keywords and
+		Primary-site entries, add several more lines of
+		description here if appropriate, and to delete these
+		instructions.
+Keywords:	[substitute your keywords here]
+Author: 	jeff.horner@vanderbilt.edu (Jeffrey Horner)
+Maintained-by:	jeff.horner@vanderbilt.edu (Jeffrey Horner)
+Primary-site:	metlab.unc.edu pub/Linux/apps/some/directory
+		31k rinterp-0.1.0.tar.gz
+		500  rinterp.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy:	GNU copyleft
+End

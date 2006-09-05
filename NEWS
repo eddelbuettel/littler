@@ -1,0 +1,20 @@
+Changes in 0.0.4
+
+    *) Bug fix: forgot to reset membuf_t.buf after a call to resize_membuf()
+
+    *) After R init, we delete R_SESSION_TMPDIR and point it to
+       one of TMPDIR, TMP, TEMP, or "/tmp". We also turn off R's
+       signal handlers.
+
+Changes in 0.0.3
+
+    *) Added Dirk's patch to configure.in to automatically find R in search
+       path and to use --rpath linker option.
+
+    *) Read commands from stdin when no file is given on command
+       line. (feature request from Dirk Eddelbuettel <edd@debian.org>)
+
+Changes in 0.0.2
+
+    *) Added argv support. (feature request from 
+       Juha Vierine <jvierine@gmail.com>)

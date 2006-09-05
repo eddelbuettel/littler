@@ -1,0 +1,193 @@
+\input texinfo @c -*-texinfo-*-
+@c This file uses the @command command introduced in Texinfo 4.0.
+@c %**start of header
+@setfilename rinterp.info
+@settitle Provides shebang capability for R (www.r-project.org)
+@finalout
+@setchapternewpage odd
+@c %**end of header
+
+@set VERSION 0.1.0
+
+@ifinfo
+This file documents the @command{rinterp} command which Provides shebang capability for R (www.r-project.org)
+
+Copyright (C) 2006 Jeffrey Horner
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+@ignore
+Permission is granted to process this file through TeX and print the
+results, provided the printed document carries copying permission
+notice identical to this one except for the removal of this paragraph
+(this paragraph not being relevant to the printed manual).
+
+@end ignore
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end ifinfo
+
+@titlepage
+@title rinterp
+@subtitle Provides shebang capability for R (www.r-project.org)
+@subtitle for rinterp Version @value{VERSION}
+@author by Jeffrey Horner
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 2006 Jeffrey Horner
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end titlepage
+
+@c All the nodes can be updated using the EMACS command
+@c texinfo-every-node-update, which is normally bound to C-c C-u C-e.
+@node Top, Instructions, (dir), (dir)
+
+@ifinfo
+This file documents the @command{rinterp} command to Provides shebang capability for R (www.r-project.org).
+@end ifinfo
+
+@c All the menus can be updated with the EMACS command
+@c texinfo-all-menus-update, which is normally bound to C-c C-u C-a.
+@menu
+* Instructions::                How to read this manual. 
+* Copying::                     How you can copy and share @command{rinterp}.
+* Overview::                    Preliminary information.
+* Sample::                      Sample output from @command{rinterp}.
+* Invoking rinterp::             How to run @command{rinterp}.
+* Problems::                    Reporting bugs.
+* Concept Index::               Index of concepts.
+@end menu
+
+@node Instructions, Copying, Top, Top
+@chapter How to Read This Manual
+
+@cindex reading
+@cindex manual, how to read
+@cindex how to read
+To read this manual, begin at the beginning, reading from left to right
+and top to bottom, until you get to the end.  Then stop.  You may pause
+for a beer anywhere in the middle as well, if you wish.  (Please note,
+however, that The King strongly advises against heavy use of
+prescription pharmaceuticals, based on his extensive personal and
+professional experience.)
+
+@node Copying, Overview, Instructions, Top
+@include gpl.texinfo
+
+@node Overview, Sample, Copying, Top
+@chapter Overview
+@cindex greetings
+@cindex overview
+
+The GNU @command{rinterp} program produces a familiar, friendly greeting.
+It allows nonprogrammers to use a classic computer science tool which
+would otherwise be unavailable to them.  Because it is protected by the
+GNU General Public License, users are free to share and change it.
+
+GNU @command{rinterp} was written by Jeffrey Horner.
+
+@node Sample, Invoking rinterp, Overview, Top
+@chapter Sample Output
+@cindex sample
+
+Here are some realistic examples of running @command{rinterp}.
+
+This is the output of the command @samp{rinterp}:
+
+@example
+hello, world!
+@end example
+
+This is the output of the command @samp{rinterp --help}:
+
+@example
+Usage: rinterp [OPTION...] [FILE...]
+Provides shebang capability for R (www.r-project.org)
+
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Report bugs to <jeff.horner@@vanderbilt.edu>.
+@end example
+
+@node Invoking rinterp, Problems, Sample, Top
+@chapter Invoking @command{rinterp}
+@cindex invoking
+@cindex version
+@cindex options
+@cindex usage
+@cindex help
+@cindex getting help
+
+The format for running the @command{rinterp} program is:
+
+@example
+rinterp @var{option} @dots{}
+@end example
+
+@code{rinterp} supports the following options:
+
+@c Formatting copied from the Texinfo 4.0 manual.
+@table @code
+@item --help
+@itemx -?
+Print an informative help message describing the options and then exit
+successfully.
+
+@item --usage
+Briefly list the options.
+
+@item --version
+@itemx -V
+Print the version number of @command{rinterp} on the standard output
+and then exit successfully.
+@end table
+
+@node Problems, Concept Index, Invoking rinterp, Top
+@chapter Reporting Bugs
+@cindex bugs
+@cindex problems
+
+If you find a bug in @command{rinterp}, please send electronic mail to
+@email{jeff.horner@@vanderbilt.edu}.  Include the version number, which you can find by
+running @w{@samp{rinterp --version}}.  Also include in your message the
+output that the program produced and the output you expected.@refill
+
+If you have other questions, comments or suggestions about
+@command{rinterp}, contact the author via electronic mail to
+@email{jeff.horner@@vanderbilt.edu}.  The author will try to help you out, although he
+may not have time to fix your problems.
+
+@node Concept Index,  , Problems, Top
+@unnumbered Concept Index
+
+@cindex tail recursion
+@printindex cp
+
+@shortcontents
+@contents
+@bye

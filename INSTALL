@@ -1,0 +1,9 @@
+Minimal fuss for installation:
+
+$ ./configure
+
+This will find the first path to R in your environment variable PATH. If
+there's another path to R you want to use, then you'll have to readjust
+PATH.
+
+$ make install
