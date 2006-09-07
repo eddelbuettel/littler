@@ -1,4 +1,4 @@
-	rinterp - Provides shebang capability for R (www.r-project.org)
+	rinterp - Provides hash-bang (#!) capability for R (www.r-project.org)
 
   Copyright (C) 2006 Jeffrey Horner
 

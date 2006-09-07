@@ -15,6 +15,7 @@
  */
 #include "config.h"
 #include "rinterp.h"
+#include "autoloads.h"
 
 #include <stdio.h>
 #include <string.h>

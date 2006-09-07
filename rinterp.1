@@ -27,24 +27,13 @@
 .\" .sp <n>    insert n+1 empty lines
 .\" for manpage-specific macros, see man(7)
 .SH NAME
-rinterp \- Provides shebang capability for R (www.r-project.org)
+rinterp \- Provides hash-bang (#!) capability for R (www.r-project.org)
 .SH SYNOPSIS
 .B rinterp
-.RI [ options ]
+.RI [ filename ]
 .SH DESCRIPTION
-\fBrinterp\fP washes your windows, mends your fences, mows your lawn...
-.PP
-It also...
+\fBrinterp\fP  executes the R code in filename. Otherwise it reads R commands from stdin and executes them.
 .SH OPTIONS
-\fBrinterp\fP accepts the following options:
-.TP
-.B \-h, \-\-help
-Show summary of options.
-.TP
-.B \-V, \-\-version
-Show version of program.
-.\" .SH "SEE ALSO"
-.\" .BR foo (1), 
-.\" .BR bar (1).
+\fBrinterp\fP accepts no arguments at this time.
 .SH AUTHOR
 Jeffrey Horner <jeff.horner@vanderbilt.edu>.
