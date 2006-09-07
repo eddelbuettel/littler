@@ -102,7 +102,7 @@ LDFLAGS = @LDFLAGS@ `${RPROG} CMD config --ldflags` -Wl,-rpath,@RHOME@/lib
 LIBS = @LIBS@
 rinterp_OBJECTS =  rinterp.o 
 rinterp_LDADD = $(LDADD)
-rinterp_DEPENDENCIES = 
+rinterp_DEPENDENCIES = autoloads.h
 rinterp_LDFLAGS = 
 CFLAGS = @CFLAGS@ `${RPROG} CMD config --cppflags`
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -209,7 +209,7 @@ uninstall-binPROGRAMS:
 	$(COMPILE) -c $<
 
 mostlyclean-compile:
-	-rm -f *.o core *.core
+	-rm -f *.o core *.core autoloads.h
 
 clean-compile:
 
@@ -217,6 +217,10 @@ distclean-compile:
 	-rm -f *.tab.c
 
 maintainer-clean-compile:
+
+autoloads.h:
+	@rm -f autoloads.h
+	R_DEFAULT_PACKAGES= R_HOME= $(RPROG) --vanilla --quiet --slave < autoloads.R > autoloads.h
 
 rinterp: $(rinterp_OBJECTS) $(rinterp_DEPENDENCIES)
 	@rm -f rinterp

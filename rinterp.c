@@ -26,6 +26,7 @@
 
 #include <R.h>
 #include <Rdefines.h>
+#define R_INTERFACE_PTRS
 #include <Rinterface.h>
 #include <R_ext/Parse.h>
 
@@ -74,7 +75,93 @@ int call_fun1str( char *funstr, char *argstr){
 	return (errorOccurred)? 0:1;
 }
 
-/* Line reading stuff */
+/* Autoload default packages and names from autoloads.h
+ *
+ * This function behaves in almost every way like
+ * R's autoload:
+ * function (name, package, reset = FALSE, ...)
+ * {
+ *     if (!reset && exists(name, envir = .GlobalEnv, inherits = FALSE))
+ *        stop("an object with that name already exists")
+ *     m <- match.call()
+ *     m[[1]] <- as.name("list")
+ *     newcall <- eval(m, parent.frame())
+ *     newcall <- as.call(c(as.name("autoloader"), newcall))
+ *     newcall$reset <- NULL
+ *     if (is.na(match(package, .Autoloaded)))
+ *        assign(".Autoloaded", c(package, .Autoloaded), env = .AutoloadEnv)
+ *     do.call("delayedAssign", list(name, newcall, .GlobalEnv,
+ *                                                         .AutoloadEnv))
+ *     invisible()
+ * }
+ *
+ * What's missing is the updating of the string vector .Autoloaded with the list
+ * of packages, which by my code analysis is useless; meaning it's for informational
+ * purposes only.
+ *
+ */
+void autoloads(void){
+	SEXP da, dacall, al, alcall, AutoloadEnv, name, package;
+	int i,j, idx=0, errorOccurred, ptct;
+
+	/* delayedAssign call*/
+	PROTECT(da = Rf_findFun(Rf_install("delayedAssign"), R_GlobalEnv));
+	PROTECT(AutoloadEnv = Rf_findVar(Rf_install(".AutoloadEnv"), R_GlobalEnv));
+	if (AutoloadEnv == R_NilValue){
+		fprintf(stderr,"rinterp: Cannot find .AutoloadEnv!\n");
+		exit(1);
+	}
+	PROTECT(dacall = allocVector(LANGSXP,5));
+	SETCAR(dacall,da);
+	/* SETCAR(CDR(dacall),name); */          /* arg1: assigned in loop */
+	/* SETCAR(CDR(CDR(dacall)),alcall); */  /* arg2: assigned in loop */
+	SETCAR(CDR(CDR(CDR(dacall))),R_GlobalEnv); /* arg3 */
+	SETCAR(CDR(CDR(CDR(CDR(dacall)))),AutoloadEnv); /* arg3 */
+
+
+	/* autoloader call */
+	PROTECT(al = Rf_findFun(Rf_install("autoloader"), R_GlobalEnv));
+	PROTECT(alcall = allocVector(LANGSXP,3));
+	SET_TAG(alcall, R_NilValue); /* just like do_ascall() does */
+	SETCAR(alcall,al);
+	/* SETCAR(CDR(alcall),name); */          /* arg1: assigned in loop */
+	/* SETCAR(CDR(CDR(alcall)),package); */  /* arg2: assigned in loop */
+
+	ptct = 5;
+	for(i = 0; i < packc; i++){
+		 idx += (i != 0)? packobjc[i-1] : 0;
+		for (j = 0; j < packobjc[i]; j++){
+			/*printf("autload(%s,%s)\n",packobj[idx+j],pack[i]);*/
+
+			PROTECT(name = NEW_CHARACTER(1));
+			PROTECT(package = NEW_CHARACTER(1));
+			SET_STRING_ELT(name, 0, COPY_TO_USER_STRING(packobj[idx+j]));
+			SET_STRING_ELT(package, 0, COPY_TO_USER_STRING(pack[i]));
+
+			/* Set up autoloader call */
+			PROTECT(alcall = allocVector(LANGSXP,3));
+			SET_TAG(alcall, R_NilValue); /* just like do_ascall() does */
+			SETCAR(alcall,al);
+			SETCAR(CDR(alcall),name);
+			SETCAR(CDR(CDR(alcall)),package);
+
+			/* Setup delayedAssign call */
+			SETCAR(CDR(dacall),name);
+			SETCAR(CDR(CDR(dacall)),alcall);
+
+			R_tryEval(dacall,R_GlobalEnv,&errorOccurred);
+			if (errorOccurred){
+				fprintf(stderr,"rinterp: Error calling delayedAssign!\n");
+				exit(1);
+			}
+
+			ptct += 3;
+		}
+	}
+	UNPROTECT(ptct);
+}
+
+/* Line reading code */
 typedef struct membuf_st {
 	    int size;
 		int count;
@@ -179,8 +266,9 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 	switch (status){
 		case PARSE_OK:
 			/* Loop is needed here as EXPSEXP will be of length > 1 */
-			for(i = 0; i < length(cmdexpr); i++)
+			for(i = 0; i < length(cmdexpr); i++){
 				ans = eval(VECTOR_ELT(cmdexpr, i), R_GlobalEnv);
+			}
 			mb = *pmb = rewind_membuf(pmb);
 		break;
 		case PARSE_INCOMPLETE:
@@ -238,6 +326,13 @@ void rinterp_InitTempDir()
 	}
 }
 
+/* For stdin processing: if an error condition occurs and getOption("error") == NULL,
+ * we go here. 
+ */
+void rinterp_CleanUp(SA_TYPE s, int a, int b){
+	exit(1);
+}
+
 int main(int argc, char **argv){
 
 	/* R embedded arguments */
@@ -248,11 +343,20 @@ int main(int argc, char **argv){
 
 	struct stat sbuf;
 
+
 	/* Setenv R_HOME: insert or replace into environment.
 	 * The RHOME macro is defined during configure
 	 */
 	if (setenv("R_HOME",RHOME,1) != 0){
 		perror("ERROR: couldn't set/replace R_HOME");
+		exit(1);
+	}
+
+	/* We don't require() default packages upon startup; rather, we
+	 * set up delayedAssign's instead. see autoloads().
+	 */
+	if (setenv("R_DEFAULT_PACKAGES","NULL",1) != 0){
+		perror("ERROR: couldn't set/replace R_DEFAULT_PACKAGES");
 		exit(1);
 	}
 
@@ -269,8 +373,6 @@ int main(int argc, char **argv){
 
 	/* otherwise we'll read commands from stdin */
 
-	/* Initialize R interpreter */
-
 	/* Don't let R set up its own signal handlers */
 	R_SignalHandlers = 0;
 
@@ -281,6 +383,11 @@ int main(int argc, char **argv){
 	Rf_initEmbeddedR(R_argc, R_argv);
 
 	rinterp_InitTempDir();
+
+	ptr_R_CleanUp = rinterp_CleanUp;
+
+	/* Force all default package to be dynamically required */
+	autoloads();
 
 	/* Place any argv arguments into argv vector in Global Environment */
 	if ((argc - 2) > 0){
