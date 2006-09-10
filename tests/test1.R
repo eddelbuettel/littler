@@ -1,4 +1,4 @@
-#!./rinterp
+#!./littler
 cat("hello world!\n"); 
 for (i in 1:10){
 	cat("i is",i,"\n");
