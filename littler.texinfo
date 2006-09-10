@@ -12,7 +12,7 @@
 @ifinfo
 This file documents the @command{littler} command which Provides shebang capability for R (www.r-project.org)
 
-Copyright (C) 2006 Jeffrey Horner
+Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -40,11 +40,11 @@ by the Foundation.
 @title littler
 @subtitle Provides shebang capability for R (www.r-project.org)
 @subtitle for littler Version @value{VERSION}
-@author by Jeffrey Horner
+@author by Jeffrey Horner and Dirk Eddelbuettel
 
 @page
 @vskip 0pt plus 1filll
-Copyright @copyright{} 2006 Jeffrey Horner
+Copyright @copyright{} 2006 Jeffrey Horner and Dirk Eddelbuettel
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -73,11 +73,11 @@ This file documents the @command{littler} command to Provides shebang capability
 @c texinfo-all-menus-update, which is normally bound to C-c C-u C-a.
 @menu
 * Instructions::                How to read this manual. 
-* Copying::                     How you can copy and share @command{littler}.
 * Overview::                    Preliminary information.
 * Sample::                      Sample output from @command{littler}.
-* Invoking littler::             How to run @command{littler}.
+* Invoking littler::            How to run @command{littler}.
 * Problems::                    Reporting bugs.
+* Copying::                     How you can copy and share @command{littler}.
 * Concept Index::               Index of concepts.
 @end menu
 
@@ -93,9 +93,6 @@ for a beer anywhere in the middle as well, if you wish.  (Please note,
 however, that The King strongly advises against heavy use of
 prescription pharmaceuticals, based on his extensive personal and
 professional experience.)
-
-@node Copying, Overview, Instructions, Top
-@include gpl.texinfo
 
 @node Overview, Sample, Copying, Top
 @chapter Overview
@@ -124,14 +121,23 @@ hello, world!
 This is the output of the command @samp{littler --help}:
 
 @example
-Usage: littler [OPTION...] [FILE...]
-Provides shebang capability for R (www.r-project.org)
 
-  -?, --help                 Give this help list
+Usage: littler [options...] FILE [...]
+   or: or: littler [options]
+
+Launches GNU R to execute the specified file containing R commands,
+or takes commands from stdin using the specified options. This makes
+it suitable to create  R scripts via the so-called shebang '#!/' line.
+
+  -h, --help                 Give this help list
       --usage                Give a short usage message
   -V, --version              Print program version
+      --vanilla              Pass the '--vanilla' option to R
+      --slave                Pass the '--slave' option to R  
+      --silent               Pass the '--silent' option to R  
 
-Report bugs to <jeff.horner@@vanderbilt.edu>.
+Report bugs to <jeff.horner@@vanderbilt.edu> and
+<dirk.eddelbuettel@@debian.org>.
 @end example
 
 @node Invoking littler, Problems, Sample, Top
@@ -182,6 +188,9 @@ If you have other questions, comments or suggestions about
 @email{jeff.horner@@vanderbilt.edu} or @email{edd@@debian.org}.  
 The authors will try to help you out, although they
 may not have time to fix your problems.
+
+@node Copying, Overview, Instructions, Top
+@include gpl.texinfo
 
 @node Concept Index,  , Problems, Top
 @unnumbered Concept Index

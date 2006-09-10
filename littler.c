@@ -22,7 +22,8 @@
  *                Debian testing (my preference, autoconf 2.60 among other things)
  *                or is it Debian stable ?   I have a stable box left with some tools. [DE]
  *           iii) Should we create a throwaway gmail address littler_authors@gmail.com ?
- *                Do you know if we set up a double forward to you and me from gmail ?
+ *                Do you know if we set up a double forward to you and me from gmail ? [DE]
+ *           iv)  Need to do the actual change to have the binary called 'r'. [DE]
  *
  */
 
@@ -358,11 +359,13 @@ void showHelpAndExit() {
 	       "   or: %s [options]\n"
 	       "\n"
 	       "Launches GNU R to execute the specified file containing R commands,\n"
-	       "or takes commands from stdin using the specified options..  \n"
+	       "or takes commands from stdin using the specified options. This makes\n"
+	       "it suitable to create  R scripts via the so-called shebang '#!/' line.\n"
 	       "\n"
 	       "Options:\n"
-	       "  -h, --help           Print this help screen\n"
-	       "  --version 	       Show the version number\n"
+	       "  -h, --help           Give this help list\n"
+	       "      --usage          Give a short usage message\n"
+	       "  -V, --version        Show the version number\n"
 	       "  --vanilla            Pass the '--vanilla' option to R\n"  
 	       "  --slave              Pass the '--slave' option to R\n"  
 	       "  --silent             Pass the '--silent' option to R\n"  
@@ -384,6 +387,22 @@ void showVersionAndExit() {
 	exit(-1);       
 }
 
+void showUsageAndExit() {
+  	printf("\n" 						
+	       "%s can be used in two main modes.\n\n"
+	       "The first is via the so-called 'shebang' support it provides for GNU R.\n"
+	       "Suppose %s is installed in /usr/local/bin/%s. Then a first line\n"
+	       "in the script can be written as \"#!/usr/local/bin/%s\" and the rest\n"
+	       "of the file can contain standard R commands.  By adding executable\n"
+	       "permissions on the file, one can now create little R scripts.\n\n" 
+	       "The second use is in standard compound command-line expressions common\n" 
+	       "under Unix as %s can also take arguments from stdin.\n\n"
+	       "More documentation is provided in the %s manual, man page and via\n"
+	       "the tests directory in the sources.\n\n",
+	       programName, programName, programName, programName,  programName, programName);
+	exit(-1);       
+}
+
 int main(int argc, char **argv){
 
 	/* R embedded arguments, and optional arguments to be picked via cmdline switches */
@@ -396,28 +415,30 @@ int main(int argc, char **argv){
 
 	static struct option optargs[] = {
 		{"help", 0, NULL, 'h'}, 		/* --help also has short option -h */
-		{"version", 0, NULL, 0},
-		{"vanilla", 0, NULL, 0},
-		{"silent", 0, NULL, 0},
-		{"slave", 0, NULL, 0},
+		{"usage", 0, 0, 0},
+		{"version", 0, NULL, 'V'},
+		{"vanilla", 0, 0, 0},
+		{"silent", 0, 0, 0},
+		{"slave", 0, 0, 0},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, "h", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, ":h", optargs, &optpos)) != -1) {
 		switch (c) {	
 		case 0:					/* numeric 0 is code for a long option */
-			printf ("Got option %s %d", optargs[optpos].name, optpos);
+		  	/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
 			switch (optpos) {		/* so switch on the position in the optargs struct */
-			/* case 0 can't happen as this case is covered by `--help' and '-h' equivalence, c=='h' instead */
-	      		case 1:
-	    			showVersionAndExit();
-	    			break;  /* never reached */
-			case 2:	
+			/* cases 0 and 2 can't happen as these cases are covered by the `--help' and '-h' */ 
+			/* and '--version' and '-V' equivalences, so c will have values 'h' or 'V' instead */
+			case 1:
+			  	showUsageAndExit();
+	    			break;			/* never reached */
+			case 3:	
 				vanilla=1;
 	    			break;
-			case 3:	
+			case 4:	
 				silent=1;
 				break;
-			case 4:
+			case 5:
 				slave=1;
 	    			break;
 			default:
@@ -428,6 +449,9 @@ int main(int argc, char **argv){
 			break;
 		case 'h':				/* -h is the sole short option, cf getopt_long() call */
 		  	showHelpAndExit();
+	    		break;  			/* never reached */
+      		case 'V':
+	    		showVersionAndExit();
 	    		break;  			/* never reached */
 	  	default:
 	    		printf("Unknown option. Try `%s --help' for help\n", programName);
