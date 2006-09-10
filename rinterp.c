@@ -1,13 +1,14 @@
-/* rinterp: scripting support for R
+/* 
+ * littler: scripting support for R
  *
  * Usage:
  *
  * From the command line:
- * $ rinterp filename
+ * $ littler filename
  *
  * In a file:
  * --------------------
- * #!/path/to/rinterp
+ * #!/path/to/littler
  * cat("hello world\n");
  * --------------------
  *
@@ -20,11 +21,13 @@
  *           ii)  toolchain -- you used autoconf 2.59 so is our reference platform
  *                Debian testing (my preference, autoconf 2.60 among other things)
  *                or is it Debian stable ?   I have a stable box left with some tools. [DE]
+ *           iii) Should we create a throwaway gmail address littler_authors@gmail.com ?
+ *                Do you know if we set up a double forward to you and me from gmail ?
  *
  */
 
 #include "config.h"
-#include "rinterp.h"
+#include "littler.h"
 #include "autoloads.h"
 #include "getopt.h"
 
@@ -124,7 +127,7 @@ void autoloads(void){
 	PROTECT(da = Rf_findFun(Rf_install("delayedAssign"), R_GlobalEnv));
 	PROTECT(AutoloadEnv = Rf_findVar(Rf_install(".AutoloadEnv"), R_GlobalEnv));
 	if (AutoloadEnv == R_NilValue){
-		fprintf(stderr,"rinterp: Cannot find .AutoloadEnv!\n");
+		fprintf(stderr,"%s: Cannot find .AutoloadEnv!\n", programName);
 		exit(1);
 	}
 	PROTECT(dacall = allocVector(LANGSXP,5));
@@ -167,7 +170,7 @@ void autoloads(void){
 
 			R_tryEval(dacall,R_GlobalEnv,&errorOccurred);
 			if (errorOccurred){
-				fprintf(stderr,"rinterp: Error calling delayedAssign!\n");
+				fprintf(stderr,"%s: Error calling delayedAssign!\n", programName);
 				exit(1);
 			}
 
@@ -188,7 +191,7 @@ membuf_t init_membuf(int sizebytes){
 	membuf_t lb = malloc(sizebytes+sizeof(struct membuf_st));
 
 	if (lb == NULL) {
-		fprintf(stderr,"rinterp: init_membuf() failed! Exiting!!!\n\n");
+		fprintf(stderr,"%s: init_membuf() failed! Exiting!!!\n\n", programName);
 		exit(1);
 		return NULL; /* unreached */
 	}
@@ -209,7 +212,7 @@ membuf_t resize_membuf(membuf_t *plb){
 	membuf_t lb = *plb;
 	lb = *plb = realloc(lb,lb->size*2+sizeof(struct membuf_st));
 	if (lb == NULL) {
-		fprintf(stderr,"rinterp: init_membuf() failed! Exiting!!!\n\n");
+		fprintf(stderr,"%s: init_membuf() failed! Exiting!!!\n\n", programName);
 		exit(1);
 		return NULL; /* unreached */
 	}
@@ -291,7 +294,7 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 			/* need to read another line */
 		break;
 		case PARSE_NULL:
-			fprintf(stderr,"rinterp: ParseStatus is null (%d)\n",status);
+			fprintf(stderr, "%s: ParseStatus is null (%d)\n", programName, status);
 			exit(1);
 		break;
 		case PARSE_ERROR:
@@ -299,10 +302,10 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 			exit(1);
 		break;
 		case PARSE_EOF:
-			fprintf(stderr,"rinterp: ParseStatus is eof (%d)\n",status);
+			fprintf(stderr, "%s: ParseStatus is eof (%d)\n", programName, status);
 		break;
 		default:
-			fprintf(stderr,"rinterp: ParseStatus is not documented %d\n",status);
+			fprintf(stderr, "%s: ParseStatus is not documented %d\n", programName, status);
 			exit(1);
 		break;
     }
@@ -313,7 +316,7 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 
 extern char *R_TempDir;
 
-void rinterp_InitTempDir()
+void littler_InitTempDir()
 {
 	char *tmp;
 
@@ -345,7 +348,7 @@ void rinterp_InitTempDir()
 /* For stdin processing: if an error condition occurs and getOption("error") == NULL,
  * we go here. 
  */
-void rinterp_CleanUp(SA_TYPE s, int a, int b){
+void littler_CleanUp(SA_TYPE s, int a, int b){
 	exit(1);
 }
 
@@ -384,7 +387,7 @@ void showVersionAndExit() {
 int main(int argc, char **argv){
 
 	/* R embedded arguments, and optional arguments to be picked via cmdline switches */
-        char *R_argv[] = {"RINTERP", "--gui=none", "--no-save", "--no-readline", "", "", ""};
+        char *R_argv[] = {"LITTLER", "--gui=none", "--no-save", "--no-readline", "", "", ""};
         char *R_argv_opt[] = {"--vanilla", "--silent", "--slave"};
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
 	int i, nargv;
@@ -478,9 +481,9 @@ int main(int argc, char **argv){
 	#endif
 	Rf_initEmbeddedR(R_argc, R_argv);
 
-	rinterp_InitTempDir();
+	littler_InitTempDir();
 
-	ptr_R_CleanUp = rinterp_CleanUp;
+	ptr_R_CleanUp = littler_CleanUp;
 
 	/* Force all default package to be dynamically required */
 	autoloads();

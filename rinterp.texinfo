@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c This file uses the @command command introduced in Texinfo 4.0.
 @c %**start of header
-@setfilename rinterp.info
+@setfilename littler.info
 @settitle Provides shebang capability for R (www.r-project.org)
 @finalout
 @setchapternewpage odd
@@ -10,7 +10,7 @@
 @set VERSION 0.1.0
 
 @ifinfo
-This file documents the @command{rinterp} command which Provides shebang capability for R (www.r-project.org)
+This file documents the @command{littler} command which Provides shebang capability for R (www.r-project.org)
 
 Copyright (C) 2006 Jeffrey Horner
 
@@ -37,9 +37,9 @@ by the Foundation.
 @end ifinfo
 
 @titlepage
-@title rinterp
+@title littler
 @subtitle Provides shebang capability for R (www.r-project.org)
-@subtitle for rinterp Version @value{VERSION}
+@subtitle for littler Version @value{VERSION}
 @author by Jeffrey Horner
 
 @page
@@ -66,17 +66,17 @@ by the Foundation.
 @node Top, Instructions, (dir), (dir)
 
 @ifinfo
-This file documents the @command{rinterp} command to Provides shebang capability for R (www.r-project.org).
+This file documents the @command{littler} command to Provides shebang capability for R (www.r-project.org).
 @end ifinfo
 
 @c All the menus can be updated with the EMACS command
 @c texinfo-all-menus-update, which is normally bound to C-c C-u C-a.
 @menu
 * Instructions::                How to read this manual. 
-* Copying::                     How you can copy and share @command{rinterp}.
+* Copying::                     How you can copy and share @command{littler}.
 * Overview::                    Preliminary information.
-* Sample::                      Sample output from @command{rinterp}.
-* Invoking rinterp::             How to run @command{rinterp}.
+* Sample::                      Sample output from @command{littler}.
+* Invoking littler::             How to run @command{littler}.
 * Problems::                    Reporting bugs.
 * Concept Index::               Index of concepts.
 @end menu
@@ -102,29 +102,29 @@ professional experience.)
 @cindex greetings
 @cindex overview
 
-The GNU @command{rinterp} program produces a familiar, friendly greeting.
+The GNU @command{littler} program produces a familiar, friendly greeting.
 It allows nonprogrammers to use a classic computer science tool which
 would otherwise be unavailable to them.  Because it is protected by the
 GNU General Public License, users are free to share and change it.
 
-GNU @command{rinterp} was written by Jeffrey Horner.
+GNU @command{littler} was written by Jeffrey Horner and Dirk Eddelbuettel.
 
-@node Sample, Invoking rinterp, Overview, Top
+@node Sample, Invoking littler, Overview, Top
 @chapter Sample Output
 @cindex sample
 
-Here are some realistic examples of running @command{rinterp}.
+Here are some realistic examples of running @command{littler}.
 
-This is the output of the command @samp{rinterp}:
+This is the output of the command @samp{littler}:
 
 @example
 hello, world!
 @end example
 
-This is the output of the command @samp{rinterp --help}:
+This is the output of the command @samp{littler --help}:
 
 @example
-Usage: rinterp [OPTION...] [FILE...]
+Usage: littler [OPTION...] [FILE...]
 Provides shebang capability for R (www.r-project.org)
 
   -?, --help                 Give this help list
@@ -134,8 +134,8 @@ Provides shebang capability for R (www.r-project.org)
 Report bugs to <jeff.horner@@vanderbilt.edu>.
 @end example
 
-@node Invoking rinterp, Problems, Sample, Top
-@chapter Invoking @command{rinterp}
+@node Invoking littler, Problems, Sample, Top
+@chapter Invoking @command{littler}
 @cindex invoking
 @cindex version
 @cindex options
@@ -143,13 +143,13 @@ Report bugs to <jeff.horner@@vanderbilt.edu>.
 @cindex help
 @cindex getting help
 
-The format for running the @command{rinterp} program is:
+The format for running the @command{littler} program is:
 
 @example
-rinterp @var{option} @dots{}
+littler @var{option} @dots{}
 @end example
 
-@code{rinterp} supports the following options:
+@code{littler} supports the following options:
 
 @c Formatting copied from the Texinfo 4.0 manual.
 @table @code
@@ -163,23 +163,24 @@ Briefly list the options.
 
 @item --version
 @itemx -V
-Print the version number of @command{rinterp} on the standard output
+Print the version number of @command{littler} on the standard output
 and then exit successfully.
 @end table
 
-@node Problems, Concept Index, Invoking rinterp, Top
+@node Problems, Concept Index, Invoking littler, Top
 @chapter Reporting Bugs
 @cindex bugs
 @cindex problems
 
-If you find a bug in @command{rinterp}, please send electronic mail to
+If you find a bug in @command{littler}, please send electronic mail to
 @email{jeff.horner@@vanderbilt.edu}.  Include the version number, which you can find by
-running @w{@samp{rinterp --version}}.  Also include in your message the
+running @w{@samp{littler --version}}.  Also include in your message the
 output that the program produced and the output you expected.@refill
 
 If you have other questions, comments or suggestions about
-@command{rinterp}, contact the author via electronic mail to
-@email{jeff.horner@@vanderbilt.edu}.  The author will try to help you out, although he
+@command{littler}, contact the authors via electronic mail to
+@email{jeff.horner@@vanderbilt.edu} or @email{edd@@debian.org}.  
+The authors will try to help you out, although they
 may not have time to fix your problems.
 
 @node Concept Index,  , Problems, Top

@@ -1,4 +1,4 @@
-/* system-dependent definitions for rinterp
+/* system-dependent definitions for littler
 
    Written for GNU fileutils.
    Adapted for autoproject by James R. Van Zandt.

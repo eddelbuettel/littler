@@ -71,28 +71,29 @@ MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
 
-bin_PROGRAMS = rinterp
-rinterp_SOURCES = rinterp.c
+bin_PROGRAMS = littler
+littler_SOURCES = littler.c
 
-#  uncomment the following if rinterp requires the math library
-#rinterp_LDADD=-lm
+#  uncomment the following if littler requires the math library
+#littler_LDADD=-lm
 
-EXTRA_DIST = rinterp.lsm.in rinterp.spec.in rinterp.texinfo
+#EXTRA_DIST = littler.lsm.in littler.spec.in littler.texinfo
+EXTRA_DIST = littler.texinfo
 
 #  if you write a self-test script named `chk', uncomment the
 #  following and add `chk' to the EXTRA_DIST list
 #TESTS=chk
 
 #  build and install the .info pages
-info_TEXINFOS = rinterp.texinfo
-rinterp_TEXINFOS = gpl.texinfo
+info_TEXINFOS = littler.texinfo
+littler_TEXINFOS = gpl.texinfo
 
 #  install the man pages
-man_MANS = rinterp.1
+man_MANS = littler.1
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
-CONFIG_CLEAN_FILES =  rinterp.lsm rinterp.spec rinterp.h 
+CONFIG_CLEAN_FILES =  littler.lsm littler.spec littler.h 
 PROGRAMS =  $(bin_PROGRAMS)
 
 
@@ -100,36 +101,37 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I.
 CPPFLAGS = @CPPFLAGS@ -Wall
 LDFLAGS = @LDFLAGS@ `${RPROG} CMD config --ldflags` -Wl,-rpath,@RHOME@/lib
 LIBS = @LIBS@
-rinterp_OBJECTS =  rinterp.o 
-rinterp_LDADD = $(LDADD)
-rinterp_DEPENDENCIES = autoloads.h
-rinterp_LDFLAGS = 
+littler_OBJECTS =  littler.o 
+littler_LDADD = $(LDADD)
+littler_DEPENDENCIES = autoloads.h
+littler_LDFLAGS = 
 CFLAGS = @CFLAGS@ `${RPROG} CMD config --cppflags`
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 TEXI2DVI = texi2dvi
-INFO_DEPS = rinterp.info
-DVIS = rinterp.dvi
-TEXINFOS = rinterp.texinfo
+INFO_DEPS = littler.info
+DVIS = littler.dvi
+TEXINFOS = littler.texinfo
 man1dir = $(mandir)/man1
 MANS = $(man_MANS)
 
 NROFF = nroff
-DIST_COMMON =  README $(rinterp_TEXINFOS) ./stamp-h.in AUTHORS COPYING \
+DIST_COMMON =  README $(littler_TEXINFOS) ./stamp-h.in AUTHORS COPYING \
 ChangeLog INSTALL Makefile.am Makefile.in NEWS acinclude.m4 aclocal.m4 \
 config.guess config.h.in config.sub configure configure.in install-sh \
-missing mkinstalldirs rinterp.lsm.in rinterp.spec.in texinfo.tex
+missing mkinstalldirs texinfo.tex
+#missing mkinstalldirs littler.lsm.in littler.spec.in texinfo.tex
 
 
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP_ENV = --best
-DEP_FILES =  .deps/getopt.P .deps/getopt1.P .deps/rinterp.P \
+DEP_FILES =  .deps/getopt.P .deps/getopt1.P .deps/littler.P \
 .deps/xmalloc.P
-SOURCES = $(rinterp_SOURCES)
-OBJECTS = $(rinterp_OBJECTS)
+SOURCES = $(littler_SOURCES)
+OBJECTS = $(littler_OBJECTS)
 
 all: all-redirect
 .SUFFIXES:
@@ -172,9 +174,9 @@ distclean-hdr:
 	-rm -f config.h
 
 maintainer-clean-hdr:
-rinterp.lsm: $(top_builddir)/config.status rinterp.lsm.in
+littler.lsm: $(top_builddir)/config.status littler.lsm.in
 	cd $(top_builddir) && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
-rinterp.spec: $(top_builddir)/config.status rinterp.spec.in
+littler.spec: $(top_builddir)/config.status littler.spec.in
 	cd $(top_builddir) && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 mostlyclean-binPROGRAMS:
@@ -222,12 +224,12 @@ autoloads.h:
 	@rm -f autoloads.h
 	R_DEFAULT_PACKAGES= R_HOME= $(RPROG) --vanilla --quiet --slave < autoloads.R > autoloads.h
 
-rinterp: $(rinterp_OBJECTS) $(rinterp_DEPENDENCIES)
-	@rm -f rinterp
-	$(LINK) $(rinterp_LDFLAGS) $(rinterp_OBJECTS) $(rinterp_LDADD) $(LIBS)
+littler: $(littler_OBJECTS) $(littler_DEPENDENCIES)
+	@rm -f littler
+	$(LINK) $(littler_LDFLAGS) $(littler_OBJECTS) $(littler_LDADD) $(LIBS)
 
-rinterp.info: rinterp.texinfo $(rinterp_TEXINFOS)
-rinterp.dvi: rinterp.texinfo $(rinterp_TEXINFOS)
+littler.info: littler.texinfo $(littler_TEXINFOS)
+littler.dvi: littler.texinfo $(littler_TEXINFOS)
 
 
 DVIPS = dvips
@@ -326,10 +328,10 @@ dist-info: $(INFO_DEPS)
 	done
 
 mostlyclean-aminfo:
-	-rm -f rinterp.aux rinterp.cp rinterp.cps rinterp.dvi rinterp.fn \
-	  rinterp.fns rinterp.ky rinterp.kys rinterp.ps rinterp.log \
-	  rinterp.pg rinterp.toc rinterp.tp rinterp.tps rinterp.vr \
-	  rinterp.vrs rinterp.op rinterp.tr rinterp.cv rinterp.cn
+	-rm -f littler.aux littler.cp littler.cps littler.dvi littler.fn \
+	  littler.fns littler.ky littler.kys littler.ps littler.log \
+	  littler.pg littler.toc littler.tp littler.tps littler.vr \
+	  littler.vrs littler.op littler.tr littler.cv littler.cn
 
 clean-aminfo:
 
