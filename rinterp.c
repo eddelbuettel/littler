@@ -11,11 +11,19 @@
  * cat("hello world\n");
  * --------------------
  *
- *  $Id: rinterp.c 11 2006-09-01 19:14:54Z jeffrey.horner $
+ *  $Id$
  */
+
+/*
+ * TODOs:    i) indent cleanup -- my Emacs default is the standard, so it'll be 
+ *              two chars from here unless I manually fix it [DE]
+ *
+ */
+
 #include "config.h"
 #include "rinterp.h"
 #include "autoloads.h"
+#include "getopt.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -30,6 +38,10 @@
 #define R_INTERFACE_PTRS
 #include <Rinterface.h>
 #include <R_ext/Parse.h>
+
+/* these two are being filled by autoconf and friends via config.h */
+const char* versionNumber = VERSION;
+const char* programName = PACKAGE;
 
 /* 
  * Exported by libR
@@ -256,7 +268,7 @@ int readline_stdin(membuf_t *plb){
 void parse_eval(membuf_t *pmb, char *line, int lineno){
 	membuf_t mb = *pmb;
 	ParseStatus status;
-    SEXP cmdSexp, cmdexpr, ans = R_NilValue;
+	SEXP cmdSexp, cmdexpr, ans = R_NilValue;
 	int i;
 
 	mb = *pmb = add_to_membuf(pmb,line);
@@ -334,13 +346,94 @@ void rinterp_CleanUp(SA_TYPE s, int a, int b){
 	exit(1);
 }
 
+void showHelpAndExit() {
+	printf("\n" 						
+	       "Usage: %s [options] file [...]\n"
+	       "   or: %s [options]\n"
+	       "\n"
+	       "Launches GNU R to execute the specified file containing R commands,\n"
+	       "or takes commands from stdin using the specified options..  \n"
+	       "\n"
+	       "Options:\n"
+	       "  -h, --help           Print this help screen\n"
+	       "  --version 	       Show the version number\n"
+	       "  --vanilla            Pass the '--vanilla' option to R\n"  
+	       "  --slave              Pass the '--slave' option to R\n"  
+	       "  --silent             Pass the '--silent' option to R\n"  
+	       "\n\n",
+	       programName, programName);
+	exit(-1);
+}
+
+void showVersionAndExit() {
+  	printf("\n" 						
+	       "%s version %s\n"
+	       "Copyright (C) 2006 Jeffey Horner and Dirk Eddelbuettel\n"
+	       "\n"
+	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
+	       "You are welcome to redistribute it under the terms of the\n"
+	       "GNU General Public License.  For more information about\n"
+	       "these matters, see http://www.gnu.org/copyleft/gpl.html.\n\n",
+	       programName, versionNumber, programName);
+	exit(-1);       
+}
+
 int main(int argc, char **argv){
 
-	/* R embedded arguments */
-	char *R_argv[] = {"RINTERP", "--gui=none", "--slave", "--silent", "--vanilla","--no-readline"};
-	int R_argc = sizeof(R_argv)/sizeof(R_argv[0]);
+	/* R embedded arguments, and optional arguments to be picked via cmdline switches */
+        char *R_argv[] = {"RINTERP", "--gui=none", "--no-save", "--no-readline", "", "", ""};
+        char *R_argv_opt[] = {"--vanilla", "--silent", "--slave"};
+	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
 	int i, nargv;
 	SEXP s_argv;
+	int c, optpos=0, vanilla=0, slave=0, silent=0;
+
+	static struct option optargs[] = {
+		{"help", 0, NULL, 'h'}, 		/* --help also has short option -h */
+		{"version", 0, NULL, 0},
+		{"vanilla", 0, NULL, 0},
+		{"silent", 0, NULL, 0},
+		{"slave", 0, NULL, 0},
+		{0, 0, 0, 0}
+	};
+	while ((c = getopt_long(argc, argv, "h", optargs, &optpos)) != -1) {
+		switch (c) {	
+		case 0:					/* numeric 0 is code for a long option */
+			printf ("Got option %s %d", optargs[optpos].name, optpos);
+			switch (optpos) {		/* so switch on the position in the optargs struct */
+			/* case 0 can't happen as this case is covered by `--help' and '-h' equivalence, c=='h' instead */
+	      		case 1:
+	    			showVersionAndExit();
+	    			break;  /* never reached */
+			case 2:	
+				vanilla=1;
+	    			break;
+			case 3:	
+				silent=1;
+				break;
+			case 4:
+				slave=1;
+	    			break;
+			default:
+	    			printf("Uncovered option position '%d'. Try `%s --help' for help\n", 
+				       optpos, programName);
+	    			exit(-1);
+			}
+			break;
+		case 'h':				/* -h is the sole short option, cf getopt_long() call */
+		  	showHelpAndExit();
+	    		break;  			/* never reached */
+	  	default:
+	    		printf("Unknown option. Try `%s --help' for help\n", programName);
+	    		exit(-1);
+		}
+	}
+ 	if (vanilla) R_argv[3+vanilla] = R_argv_opt[0]; 		/* copy pointer address */
+ 	if (silent)  R_argv[3+vanilla+silent] = R_argv_opt[1]; 		/* copy pointer address */
+ 	if (slave)   R_argv[3+vanilla+silent+slave] = R_argv_opt[2]; 	/* copy pointer address */
+	R_argc += vanilla + slave + silent;
+	/*printf("%d %d %d '%s' '%s'\n", R_argc, sizeof(R_argv), sizeof(R_argv[0]), R_argv[3], R_argv[4]);*/
+	/*printf("Now optind %d, argc %d\n", optind, argc);*/
 
 	struct stat sbuf;
 
@@ -361,13 +454,12 @@ int main(int argc, char **argv){
 		exit(1);
 	}
 
-	/* Assume argv[1] is the file we want to source.
-	 * This will have to change if rinterp ever consumes
-	 * its own arguments.
+	/* Assume argv[argc - optind] is the file we want to source.
+	 * (optind is an extern in getopt.h)
 	 */
-	if (argc > 1) {
-		if (stat(argv[1],&sbuf) != 0){
-			perror(argv[argc-1]);
+	if (argc - optind >= 1) { 
+		if (stat(argv[argc - optind],&sbuf) != 0){
+			perror(argv[argc - optind]);
 			exit(1);
 		}
 	}
@@ -391,12 +483,12 @@ int main(int argc, char **argv){
 	autoloads();
 
 	/* Place any argv arguments into argv vector in Global Environment */
-	if ((argc - 2) > 0){
+	if ((argc - optind - 2) > 0){
 		/* Build string vector */
-		nargv = argc - 2;
+		nargv = argc - optind - 2;
 		PROTECT(s_argv = allocVector(STRSXP,nargv));
 		for (i = 0; i <nargv; i++){
-			STRING_PTR(s_argv)[i] = mkChar(argv[i+2]);
+			STRING_PTR(s_argv)[i] = mkChar(argv[i+2+optind]);
 		}
 		UNPROTECT(1);
 
@@ -407,8 +499,8 @@ int main(int argc, char **argv){
 
 
 	/* Now call R function source(filename) */
-	if (argc > 1){
-		call_fun1str("source",argv[1]);
+	if (argc - optind >= 1){
+		call_fun1str("source",argv[optind]);
 	} else {
 		/* Or read from stdin */
 		membuf_t lb = init_membuf(1024);
