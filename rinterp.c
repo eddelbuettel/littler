@@ -15,8 +15,11 @@
  */
 
 /*
- * TODOs:    i) indent cleanup -- my Emacs default is the standard, so it'll be 
- *              two chars from here unless I manually fix it [DE]
+ * TODOs:    i)   indent cleanup -- my Emacs default is the standard, so it'll be 
+ *                two chars from here unless I manually fix it [DE]
+ *           ii)  toolchain -- you used autoconf 2.59 so is our reference platform
+ *                Debian testing (my preference, autoconf 2.60 among other things)
+ *                or is it Debian stable ?   I have a stable box left with some tools. [DE]
  *
  */
 
