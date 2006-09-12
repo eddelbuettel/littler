@@ -377,7 +377,7 @@ void showHelpAndExit() {
 void showVersionAndExit() {
   	printf("\n" 						
 	       "%s version %s\n"
-	       "Copyright (C) 2006 Jeffey Horner and Dirk Eddelbuettel\n"
+	       "Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
@@ -422,40 +422,40 @@ int main(int argc, char **argv){
 		{"slave", 0, 0, 0},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, ":h", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, "+hV", optargs, &optpos)) != -1) {
 		switch (c) {	
-		case 0:					/* numeric 0 is code for a long option */
-		  	/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
-			switch (optpos) {		/* so switch on the position in the optargs struct */
-			/* cases 0 and 2 can't happen as these cases are covered by the `--help' and '-h' */ 
-			/* and '--version' and '-V' equivalences, so c will have values 'h' or 'V' instead */
-			case 1:
-			  	showUsageAndExit();
-	    			break;			/* never reached */
-			case 3:	
-				vanilla=1;
-	    			break;
-			case 4:	
-				silent=1;
+			case 0:					/* numeric 0 is code for a long option */
+				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
+				switch (optpos) {		/* so switch on the position in the optargs struct */
+					/* cases 0 and 2 can't happen as these cases are covered by the `--help' and '-h' */ 
+					/* and '--version' and '-V' equivalences, so c will have values 'h' or 'V' instead */
+					case 1:
+						showUsageAndExit();
+						break;			/* never reached */
+					case 3:	
+						vanilla=1;
+						break;
+					case 4:	
+						silent=1;
+						break;
+					case 5:
+						slave=1;
+						break;
+					default:
+						printf("Uncovered option position '%d'. Try `%s --help' for help\n", 
+								optpos, programName);
+						exit(-1);
+				}
 				break;
-			case 5:
-				slave=1;
-	    			break;
+			case 'h':				/* -h is the sole short option, cf getopt_long() call */
+				showHelpAndExit();
+				break;  			/* never reached */
+			case 'V':
+				showVersionAndExit();
+				break;  			/* never reached */
 			default:
-	    			printf("Uncovered option position '%d'. Try `%s --help' for help\n", 
-				       optpos, programName);
-	    			exit(-1);
-			}
-			break;
-		case 'h':				/* -h is the sole short option, cf getopt_long() call */
-		  	showHelpAndExit();
-	    		break;  			/* never reached */
-      		case 'V':
-	    		showVersionAndExit();
-	    		break;  			/* never reached */
-	  	default:
-	    		printf("Unknown option. Try `%s --help' for help\n", programName);
-	    		exit(-1);
+				printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
+				exit(-1);
 		}
 	}
  	if (vanilla) R_argv[3+vanilla] = R_argv_opt[0]; 		/* copy pointer address */
@@ -464,9 +464,6 @@ int main(int argc, char **argv){
 	R_argc += vanilla + slave + silent;
 	/*printf("%d %d %d '%s' '%s'\n", R_argc, sizeof(R_argv), sizeof(R_argv[0]), R_argv[3], R_argv[4]);*/
 	/*printf("Now optind %d, argc %d\n", optind, argc);*/
-
-	struct stat sbuf;
-
 
 	/* Setenv R_HOME: insert or replace into environment.
 	 * The RHOME macro is defined during configure
@@ -484,12 +481,13 @@ int main(int argc, char **argv){
 		exit(1);
 	}
 
-	/* Assume argv[argc - optind] is the file we want to source.
+	/* Assume argv[optind] is the file we want to source.
 	 * (optind is an extern in getopt.h)
 	 */
-	if (argc - optind >= 1) { 
-		if (stat(argv[argc - optind],&sbuf) != 0){
-			perror(argv[argc - optind]);
+	struct stat sbuf;
+	if (optind < argc) { 
+		if (stat(argv[optind],&sbuf) != 0){
+			perror(argv[optind]);
 			exit(1);
 		}
 	}
@@ -513,12 +511,12 @@ int main(int argc, char **argv){
 	autoloads();
 
 	/* Place any argv arguments into argv vector in Global Environment */
-	if ((argc - optind - 2) > 0){
+	if ((argc - optind) > 1){
 		/* Build string vector */
-		nargv = argc - optind - 2;
+		nargv = argc - optind - 1;
 		PROTECT(s_argv = allocVector(STRSXP,nargv));
 		for (i = 0; i <nargv; i++){
-			STRING_PTR(s_argv)[i] = mkChar(argv[i+2+optind]);
+			STRING_PTR(s_argv)[i] = mkChar(argv[i+1+optind]);
 		}
 		UNPROTECT(1);
 
@@ -527,9 +525,8 @@ int main(int argc, char **argv){
 		setVar(install("argv"),R_NilValue,R_GlobalEnv);
 	}
 
-
 	/* Now call R function source(filename) */
-	if (argc - optind >= 1){
+	if (optind < argc){
 		call_fun1str("source",argv[optind]);
 	} else {
 		/* Or read from stdin */
