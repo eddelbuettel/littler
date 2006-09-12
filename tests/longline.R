@@ -1,4 +1,4 @@
-#!./little
+#!./littler
 longline <- function(len){
 	n <- floor(len/10)
 	m = len %% 10
