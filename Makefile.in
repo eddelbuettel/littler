@@ -52,7 +52,8 @@ INSTALL = @INSTALL@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
-transform = @program_transform_name@
+##transform = @program_transform_name@
+transform = s/littler/r/
 
 NORMAL_INSTALL = :
 PRE_INSTALL = :
@@ -527,7 +528,7 @@ install-data-am: install-info-am install-man
 install-data: install-data-am
 
 install-am: all-am
-	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am ## install-data-am
 install: install-am
 uninstall-am: uninstall-binPROGRAMS uninstall-info uninstall-man
 uninstall: uninstall-am
