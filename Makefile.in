@@ -44,8 +44,7 @@ DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	install-sh missing mkinstalldirs texinfo.tex
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -190,7 +189,12 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-r_SOURCES = littler.c littler.1 autoloads.R system.h aclocal.m4
+
+# List of files to include in distribution (e.g. make dist)
+r_SOURCES = littler.c littler.1 autoloads.R system.h aclocal.m4 tests/*
+
+# These two together will tell make to create autoloads.h before
+# any target.
 nodist_r_SOURCES = autoloads.h
 BUILT_SOURCES = autoloads.h
 

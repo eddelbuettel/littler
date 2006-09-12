@@ -1,5 +1,11 @@
+# Installed program name
 bin_PROGRAMS=r
-r_SOURCES=littler.c littler.1 autoloads.R system.h aclocal.m4
+
+# List of files to include in distribution (e.g. make dist)
+r_SOURCES=littler.c littler.1 autoloads.R system.h aclocal.m4 tests/*
+
+# These two together will tell make to create autoloads.h before
+# any target.
 nodist_r_SOURCES=autoloads.h
 BUILT_SOURCES=autoloads.h
 
