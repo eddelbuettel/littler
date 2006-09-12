@@ -37,8 +37,6 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 
 dnl Checks for library functions.
 
-dnl stuff I added
-
 dnl Let configure find R using the AC_PATH_PROG macro
 AC_PATH_PROG(RPROG,R)
 
@@ -49,6 +47,8 @@ AC_DEFUN([R_PROG],[
     # and the libR.so
     if ${RPROG} CMD config --ldflags 2>/dev/null | grep -v 'R was not built as a shared library' >/dev/null; then
         RHOME=`$RPROG RHOME`
+		AM_CFLAGS=`${RPROG} CMD config --cppflags`
+		AM_LDFLAGS="`${RPROG} CMD config --ldflags` -Wl,-rpath,${RHOME}/lib"
         AC_MSG_RESULT(shared library version of R found)
     else
         echo
@@ -63,6 +63,7 @@ AC_DEFUN([R_PROG],[
 R_PROG
 AC_SUBST(RPROG)
 AC_SUBST(RHOME)
+AC_SUBST(AM_CFLAGS)
+AC_SUBST(AM_LDFLAGS)
 
-dnl AC_OUTPUT(Makefile littler.h littler.lsm littler.spec)
 AC_OUTPUT(Makefile littler.h)

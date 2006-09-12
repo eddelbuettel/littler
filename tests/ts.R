@@ -1,4 +1,4 @@
-#!./littler
+#!./r
 
 # This should dynamically load stats
 cat("Is stats loaded?\n");
