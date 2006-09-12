@@ -232,6 +232,15 @@ littler: $(littler_OBJECTS) $(littler_DEPENDENCIES)
 littler.info: littler.texinfo $(littler_TEXINFOS)
 littler.dvi: littler.texinfo $(littler_TEXINFOS)
 
+check:	$(bin_PROGRAMS)
+	@for file in tests/*; do \
+		echo "-- Running test $$file" \
+		&& ./littler --silent $$file; \
+	done
+        ## argument counting 
+	@echo "-- Running shebang and expecting '<foo>'"
+	./littler --silent tests/shebang foo
+        ## more to add ..
 
 DVIPS = dvips
 
