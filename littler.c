@@ -360,7 +360,7 @@ void showHelpAndExit() {
 	       "\n"
 	       "Launches GNU R to execute the specified file containing R commands,\n"
 	       "or takes commands from stdin using the specified options. This makes\n"
-	       "it suitable to create  R scripts via the so-called shebang '#!/' line.\n"
+	       "it suitable to create R scripts via the so-called shebang '#!/' line.\n"
 	       "\n"
 	       "Options:\n"
 	       "  -h, --help           Give this help list\n"
@@ -443,7 +443,7 @@ int main(int argc, char **argv){
 						break;
 					default:
 						printf("Uncovered option position '%d'. Try `%s --help' for help\n", 
-								optpos, programName);
+                                                       optpos, programName);
 						exit(-1);
 				}
 				break;
@@ -542,3 +542,10 @@ int main(int argc, char **argv){
 
 	exit(0);
 }
+
+// Local Variables: 
+// mode: C
+// indent-tabs-mode: nil
+// c-indent-level: 8
+// c-basic-offset: 8
+// End: 
