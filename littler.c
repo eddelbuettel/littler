@@ -16,14 +16,20 @@
  */
 
 /*
- * TODOs:    i)   indent cleanup -- my Emacs default is the standard, so it'll be 
+ * TODOs:
+ *           iii) Should we create a throwaway gmail address littler_authors@gmail.com ?
+ *                Do you know if we set up a double forward to you and me from gmail ? [DE]
+ *
+ * DONEs:
+ *           i)   indent cleanup -- my Emacs default is the standard, so it'll be 
  *                two chars from here unless I manually fix it [DE]
+ *                ---> should be done now [DE]
  *           ii)  toolchain -- you used autoconf 2.59 so is our reference platform
  *                Debian testing (my preference, autoconf 2.60 among other things)
  *                or is it Debian stable ?   I have a stable box left with some tools. [DE]
- *           iii) Should we create a throwaway gmail address littler_authors@gmail.com ?
- *                Do you know if we set up a double forward to you and me from gmail ? [DE]
+ *                ---> we chatted about that in email, status not entirely clear [DE]
  *           iv)  Need to do the actual change to have the binary called 'r'. [DE]
+ *                ---> Done
  *
  */
 
@@ -543,9 +549,9 @@ int main(int argc, char **argv){
 	exit(0);
 }
 
-// Local Variables: 
-// mode: C
-// indent-tabs-mode: nil
-// c-indent-level: 8
-// c-basic-offset: 8
-// End: 
+/* Local Variables: 
+ *   mode: C
+ *   indent-tabs-mode: nil
+ *   c-indent-level: 8
+ *   c-basic-offset: 8
+ * End: 
