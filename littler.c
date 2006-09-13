@@ -549,9 +549,11 @@ int main(int argc, char **argv){
 	exit(0);
 }
 
-/* Local Variables: 
+/* 
+ * Local Variables: 
  *   mode: C
  *   indent-tabs-mode: nil
  *   c-indent-level: 8
  *   c-basic-offset: 8
  * End: 
+ */
