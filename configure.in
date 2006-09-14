@@ -9,8 +9,8 @@ AM_CONFIG_HEADER(config.h)
 
 AC_SUBST(VERSION)
 
-ISODATE=`date +%Y-%m-%d`
-AC_SUBST(ISODATE)
+dnl ISODATE=`date +%Y-%m-%d`
+dnl AC_SUBST(ISODATE)
 
 AC_CANONICAL_HOST
 
