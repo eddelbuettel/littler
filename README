@@ -1,9 +1,9 @@
 
-   littler - Provides hash-bang (#!) capability for R (www.r-project.org)
+  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
 
   Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel
 
-  rinterp is free software; you can redistribute it and/or modify
+  littler is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
@@ -17,7 +17,11 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-Comments are welcome.
+
+  Please see the file 'INSTALL' for installation tips.
+
+
+  Comments are welcome.
 
 	- Jeffrey Horner <jeff.horner@vanderbilt.edu>
 	- Dirk Eddelbuettel <edd@debian.org> 
