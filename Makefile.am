@@ -28,5 +28,5 @@ EXTRA_DIST=littler.texinfo
 info_TEXINFOS = littler.texinfo
 r_TEXINFOS = gpl.texinfo
 
-#  install the man pages
-man_MANS=littler.1
+#  install the man page
+man_MANS=r.1
