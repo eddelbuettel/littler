@@ -44,7 +44,8 @@ DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	install-sh missing mkinstalldirs texinfo.tex
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
+	$(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -52,8 +53,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = littler.h
-am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(infodir)" \
-	"$(DESTDIR)$(man1dir)"
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_r_OBJECTS = littler.$(OBJEXT)
@@ -69,18 +69,6 @@ CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(r_SOURCES) $(nodist_r_SOURCES)
 DIST_SOURCES = $(r_SOURCES)
-INFO_DEPS = $(srcdir)/littler.info
-am__TEXINFO_TEX_DIR = $(srcdir)
-DVIS = littler.dvi
-PDFS = littler.pdf
-PSS = littler.ps
-HTMLS = littler.html
-TEXINFOS = littler.texinfo
-TEXI2DVI = texi2dvi
-TEXI2PDF = $(TEXI2DVI) --pdf --batch
-MAKEINFOHTML = $(MAKEINFO) --html
-AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS)
-DVIPS = dvips
 man1dir = $(mandir)/man1
 NROFF = nroff
 MANS = $(man_MANS)
@@ -98,7 +86,6 @@ GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
 ACLOCAL = @ACLOCAL@
-ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -126,7 +113,6 @@ INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
-ISODATE = @ISODATE@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
@@ -191,7 +177,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
 # List of files to include in distribution (e.g. make dist)
-r_SOURCES = littler.c littler.1 autoloads.R system.h aclocal.m4 tests/*
+r_SOURCES = littler.c r.1 autoloads.R tests/*
 
 # These two together will tell make to create autoloads.h before
 # any target.
@@ -203,23 +189,24 @@ MOSTLYCLEANFILES = autoloads.h
 
 #  uncomment the following if littler requires the math library
 #littler_LDADD=-lm
-EXTRA_DIST = littler.texinfo
+
+#EXTRA_DIST=littler.texinfo
 
 #  if you write a self-test script named `chk', uncomment the
 #  following and add `chk' to the EXTRA_DIST list
 #TESTS=chk
 
 #  build and install the .info pages
-info_TEXINFOS = littler.texinfo
-r_TEXINFOS = gpl.texinfo
+#info_TEXINFOS = littler.texinfo
+#r_TEXINFOS = gpl.texinfo
 
-#  install the man pages
-man_MANS = littler.1
+#  install the man page
+man_MANS = r.1
 all: $(BUILT_SOURCES) config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .dvi .html .info .o .obj .pdf .ps .texinfo
+.SUFFIXES: .c .o .obj
 am--refresh:
 	@:
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
@@ -320,112 +307,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `$(CYGPATH_W) '$<'`
-
-.texinfo.info:
-	restore=: && backupdir="$(am__leading_dot)am$$$$" && \
-	am__cwd=`pwd` && cd $(srcdir) && \
-	rm -rf $$backupdir && mkdir $$backupdir && \
-	if ($(MAKEINFO) --version) >/dev/null 2>&1; then \
-	  for f in $@ $@-[0-9] $@-[0-9][0-9] $(@:.info=).i[0-9] $(@:.info=).i[0-9][0-9]; do \
-	    if test -f $$f; then mv $$f $$backupdir; restore=mv; else :; fi; \
-	  done; \
-	else :; fi && \
-	cd "$$am__cwd"; \
-	if $(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir) \
-	 -o $@ $<; \
-	then \
-	  rc=0; \
-	  cd $(srcdir); \
-	else \
-	  rc=$$?; \
-	  cd $(srcdir) && \
-	  $$restore $$backupdir/* `echo "./$@" | sed 's|[^/]*$$||'`; \
-	fi; \
-	rm -rf $$backupdir; exit $$rc
-
-.texinfo.dvi:
-	TEXINPUTS="$(am__TEXINFO_TEX_DIR)$(PATH_SEPARATOR)$$TEXINPUTS" \
-	MAKEINFO='$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir)' \
-	$(TEXI2DVI) $<
-
-.texinfo.pdf:
-	TEXINPUTS="$(am__TEXINFO_TEX_DIR)$(PATH_SEPARATOR)$$TEXINPUTS" \
-	MAKEINFO='$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir)' \
-	$(TEXI2PDF) $<
-
-.texinfo.html:
-	rm -rf $(@:.html=.htp)
-	if $(MAKEINFOHTML) $(AM_MAKEINFOHTMLFLAGS) $(MAKEINFOFLAGS) -I $(srcdir) \
-	 -o $(@:.html=.htp) $<; \
-	then \
-	  rm -rf $@; \
-	  if test ! -d $(@:.html=.htp) && test -d $(@:.html=); then \
-	    mv $(@:.html=) $@; else mv $(@:.html=.htp) $@; fi; \
-	else \
-	  if test ! -d $(@:.html=.htp) && test -d $(@:.html=); then \
-	    rm -rf $(@:.html=); else rm -Rf $(@:.html=.htp) $@; fi; \
-	  exit 1; \
-	fi
-$(srcdir)/littler.info: littler.texinfo 
-littler.dvi: littler.texinfo 
-littler.pdf: littler.texinfo 
-littler.html: littler.texinfo 
-.dvi.ps:
-	TEXINPUTS="$(am__TEXINFO_TEX_DIR)$(PATH_SEPARATOR)$$TEXINPUTS" \
-	$(DVIPS) -o $@ $<
-
 uninstall-info-am:
-	@$(PRE_UNINSTALL)
-	@if (install-info --version && \
-	     install-info --version 2>&1 | sed 1q | grep -i -v debian) >/dev/null 2>&1; then \
-	  list='$(INFO_DEPS)'; \
-	  for file in $$list; do \
-	    relfile=`echo "$$file" | sed 's|^.*/||'`; \
-	    echo " install-info --info-dir='$(DESTDIR)$(infodir)' --remove '$(DESTDIR)$(infodir)/$$relfile'"; \
-	    install-info --info-dir="$(DESTDIR)$(infodir)" --remove "$(DESTDIR)$(infodir)/$$relfile"; \
-	  done; \
-	else :; fi
-	@$(NORMAL_UNINSTALL)
-	@list='$(INFO_DEPS)'; \
-	for file in $$list; do \
-	  relfile=`echo "$$file" | sed 's|^.*/||'`; \
-	  relfile_i=`echo "$$relfile" | sed 's|\.info$$||;s|$$|.i|'`; \
-	  (if cd "$(DESTDIR)$(infodir)"; then \
-	     echo " cd '$(DESTDIR)$(infodir)' && rm -f $$relfile $$relfile-[0-9] $$relfile-[0-9][0-9] $$relfile_i[0-9] $$relfile_i[0-9][0-9]"; \
-	     rm -f $$relfile $$relfile-[0-9] $$relfile-[0-9][0-9] $$relfile_i[0-9] $$relfile_i[0-9][0-9]; \
-	   else :; fi); \
-	done
-
-dist-info: $(INFO_DEPS)
-	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	list='$(INFO_DEPS)'; \
-	for base in $$list; do \
-	  case $$base in \
-	    $(srcdir)/*) base=`echo "$$base" | sed "s|^$$srcdirstrip/||"`;; \
-	  esac; \
-	  if test -f $$base; then d=.; else d=$(srcdir); fi; \
-	  base_i=`echo "$$base" | sed 's|\.info$$||;s|$$|.i|'`; \
-	  for file in $$d/$$base $$d/$$base-[0-9] $$d/$$base-[0-9][0-9] $$d/$$base_i[0-9] $$d/$$base_i[0-9][0-9]; do \
-	    if test -f $$file; then \
-	      relfile=`expr "$$file" : "$$d/\(.*\)"`; \
-	      test -f $(distdir)/$$relfile || \
-		cp -p $$file $(distdir)/$$relfile; \
-	    else :; fi; \
-	  done; \
-	done
-
-mostlyclean-aminfo:
-	-rm -rf littler.aux littler.cp littler.cps littler.fn littler.fns littler.ky \
-	  littler.kys littler.log littler.pg littler.pgs littler.tmp \
-	  littler.toc littler.tp littler.tps littler.vr littler.vrs \
-	  littler.dvi littler.pdf littler.ps littler.html
-
-maintainer-clean-aminfo:
-	@list='$(INFO_DEPS)'; for i in $$list; do \
-	  i_i=`echo "$$i" | sed 's|\.info$$||;s|$$|.i|'`; \
-	  echo " rm -f $$i $$i-[0-9] $$i-[0-9][0-9] $$i_i[0-9] $$i_i[0-9][0-9]"; \
-	  rm -f $$i $$i-[0-9] $$i-[0-9][0-9] $$i_i[0-9] $$i_i[0-9][0-9]; \
-	done
 install-man1: $(man1_MANS) $(man_MANS)
 	@$(NORMAL_INSTALL)
 	test -z "$(man1dir)" || $(mkdir_p) "$(DESTDIR)$(man1dir)"
@@ -550,9 +432,6 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
-	$(MAKE) $(AM_MAKEFLAGS) \
-	  top_distdir="$(top_distdir)" distdir="$(distdir)" \
-	  dist-info
 	-find $(distdir) -type d ! -perm -777 -exec chmod a+rwx {} \; -o \
 	  ! -type d ! -perm -444 -links 1 -exec chmod a+r {} \; -o \
 	  ! -type d ! -perm -400 -exec chmod a+r {} \; -o \
@@ -653,9 +532,9 @@ distcleancheck: distclean
 check-am: all-am
 check: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) check-am
-all-am: Makefile $(INFO_DEPS) $(PROGRAMS) $(MANS) config.h
+all-am: Makefile $(PROGRAMS) $(MANS) config.h
 installdirs:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(infodir)" "$(DESTDIR)$(man1dir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: $(BUILT_SOURCES)
@@ -698,52 +577,20 @@ distclean-am: clean-am distclean-compile distclean-generic \
 
 dvi: dvi-am
 
-dvi-am: $(DVIS)
+dvi-am:
 
 html: html-am
 
-html-am: $(HTMLS)
-
 info: info-am
 
-info-am: $(INFO_DEPS)
+info-am:
 
-install-data-am: install-info-am install-man
+install-data-am: install-man
 
 install-exec-am: install-binPROGRAMS
 
 install-info: install-info-am
 
-install-info-am: $(INFO_DEPS)
-	@$(NORMAL_INSTALL)
-	test -z "$(infodir)" || $(mkdir_p) "$(DESTDIR)$(infodir)"
-	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	list='$(INFO_DEPS)'; \
-	for file in $$list; do \
-	  case $$file in \
-	    $(srcdir)/*) file=`echo "$$file" | sed "s|^$$srcdirstrip/||"`;; \
-	  esac; \
-	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
-	  file_i=`echo "$$file" | sed 's|\.info$$||;s|$$|.i|'`; \
-	  for ifile in $$d/$$file $$d/$$file-[0-9] $$d/$$file-[0-9][0-9] \
-                       $$d/$$file_i[0-9] $$d/$$file_i[0-9][0-9] ; do \
-	    if test -f $$ifile; then \
-	      relfile=`echo "$$ifile" | sed 's|^.*/||'`; \
-	      echo " $(INSTALL_DATA) '$$ifile' '$(DESTDIR)$(infodir)/$$relfile'"; \
-	      $(INSTALL_DATA) "$$ifile" "$(DESTDIR)$(infodir)/$$relfile"; \
-	    else : ; fi; \
-	  done; \
-	done
-	@$(POST_INSTALL)
-	@if (install-info --version && \
-	     install-info --version 2>&1 | sed 1q | grep -i -v debian) >/dev/null 2>&1; then \
-	  list='$(INFO_DEPS)'; \
-	  for file in $$list; do \
-	    relfile=`echo "$$file" | sed 's|^.*/||'`; \
-	    echo " install-info --info-dir='$(DESTDIR)$(infodir)' '$(DESTDIR)$(infodir)/$$relfile'";\
-	    install-info --info-dir="$(DESTDIR)$(infodir)" "$(DESTDIR)$(infodir)/$$relfile" || :;\
-	  done; \
-	else : ; fi
 install-man: install-man1
 
 installcheck-am:
@@ -753,21 +600,19 @@ maintainer-clean: maintainer-clean-am
 	-rm -rf $(top_srcdir)/autom4te.cache
 	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
-maintainer-clean-am: distclean-am maintainer-clean-aminfo \
-	maintainer-clean-generic
+maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-aminfo mostlyclean-compile \
-	mostlyclean-generic
+mostlyclean-am: mostlyclean-compile mostlyclean-generic
 
 pdf: pdf-am
 
-pdf-am: $(PDFS)
+pdf-am:
 
 ps: ps-am
 
-ps-am: $(PSS)
+ps-am:
 
 uninstall-am: uninstall-binPROGRAMS uninstall-info-am uninstall-man
 
@@ -775,17 +620,16 @@ uninstall-man: uninstall-man1
 
 .PHONY: CTAGS GTAGS all all-am am--refresh check check-am clean \
 	clean-binPROGRAMS clean-generic ctags dist dist-all dist-bzip2 \
-	dist-gzip dist-info dist-shar dist-tarZ dist-zip distcheck \
-	distclean distclean-compile distclean-generic distclean-hdr \
+	dist-gzip dist-shar dist-tarZ dist-zip distcheck distclean \
+	distclean-compile distclean-generic distclean-hdr \
 	distclean-tags distcleancheck distdir distuninstallcheck dvi \
 	dvi-am html html-am info info-am install install-am \
 	install-binPROGRAMS install-data install-data-am install-exec \
 	install-exec-am install-info install-info-am install-man \
 	install-man1 install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-aminfo \
-	maintainer-clean-generic mostlyclean mostlyclean-aminfo \
-	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am uninstall-binPROGRAMS \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic pdf pdf-am \
+	ps ps-am tags uninstall uninstall-am uninstall-binPROGRAMS \
 	uninstall-info-am uninstall-man uninstall-man1
 
 

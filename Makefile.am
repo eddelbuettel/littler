@@ -2,7 +2,7 @@
 bin_PROGRAMS=r
 
 # List of files to include in distribution (e.g. make dist)
-r_SOURCES=littler.c littler.1 autoloads.R tests/*
+r_SOURCES=littler.c r.1 autoloads.R tests/*
 
 # These two together will tell make to create autoloads.h before
 # any target.
