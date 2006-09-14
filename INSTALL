@@ -1,16 +1,96 @@
 
-Minimal recipes for installation:
+1. Installation from distributed sources
+========================================
 
-$ ./configure
+1.1 Requirements
+----------------
 
-This will find the first path to R in your environment variable PATH. If
-there's another path to R you want to use, then you'll have to readjust
-PATH.
+    GNU R has to be installed in a shared-library configuration. This is the
+    default. If in doubt, look for a file 'libR.so' which should be in the 
+    lib/ directory of your R installtions, i.e. in
+	/usr/local/lib/R/libR.so
+    or
+	/usr/lib/R/libR.so
 
-$ make
-$ make install
+    If R is not compiled with a shared library, you need to rebuild and 
+    reinstall R.  
 
-This will build and install the 'r' binary, its manual page and the info
-documentation. 
+    This requirement also precludes installation of littler on Windoze.
+
+
+1.2 Basic Steps
+---------------
+
+   The minimal recipe for installation should apply, i.e. start by
+
+ 	$ ./configure
+
+   which will find the first path to R in your environment variable PATH. If
+   there's another path to R you want to use, then you'll have to readjust
+   PATH.
+
+   Then
+
+	$ make
+
+   should build the 'r' binary, and 
+
+	$ sudo make install
+
+   should install it, as well as the manual page.
+
+
+
+
+2. Installation from SVN
+========================
+
+
+2.1 Requirements
+----------------
+
+    As above, but you will also need autoconf, aclocal, and of course svn itself.
+
+
+2.2 SVN checkout
+----------------
+
+    Anonymous checkout is available via 
+
+	$ svn checkout http://littler.googlecode.com/svn/trunk/ littler
+
+
+2.3 Build preparation
+---------------------
+
+    You typically need to rebuild configure via
+
+	$ aclocal && autconf 
+
+    after which Step 1.2 applies: './configure && make && make install'.
+
+
+
+3. Binary Installation
+======================
+
+3.1 Debian
+----------
+
+    Real Soon Now, we expect to be able to do
+
+	$ sudo apt-get install littler
+
+    but we're not quite there yet.
+
+
+4. Feedback
+===========
+
+   Is encouraged ;-)
+
+    
+	- Jeffrey Horner <jeff.horner@vanderbilt.edu>
+	- Dirk Eddelbuettel <edd@debian.org> 
 
  
