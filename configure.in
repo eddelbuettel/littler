@@ -22,13 +22,13 @@ dnl Checks for libraries.
 
 dnl Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS(unistd.h sys/param.h sys/time.h time.h sys/mkdev.h sys/sysmacros.h string.h memory.h fcntl.h dirent.h sys/ndir.h ndir.h alloca.h locale.h )
+AC_CHECK_HEADERS(stdio.h string.h errno.h stdlib.h sys/types.h sys/stat.h unistd.h)
 
 AC_HEADER_MAJOR
-AC_FUNC_ALLOCA
-AC_STRUCT_TM
-AC_STRUCT_ST_BLOCKS
-AC_FUNC_CLOSEDIR_VOID
+dnl AC_FUNC_ALLOCA
+dnl AC_STRUCT_TM
+dnl AC_STRUCT_ST_BLOCKS
+dnl AC_FUNC_CLOSEDIR_VOID
 AC_CHECK_FUNC(setenv,AC_DEFINE(HAVE_SETENV,1, [Define if you have the setenv function.]))
 
 dnl Checks for typedefs, structures, and compiler characteristics.
