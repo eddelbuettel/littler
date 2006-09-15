@@ -1,15 +1,16 @@
 2006-09-14  Dirk Eddelbuettel  <edd@debian.org>
 
-	Release 0.0.5: [ still pending]
+	* Release 0.0.5: [ still pending]
 
 	* rinterp.c, rinterp.1: renamed to littler.c, littler.1
 	* Makefile.am, configure.in: Many changes to accomodate that
+
 	* autoloads.R: code generator to aid in autoload()ing functions
 	from default packages.
 
 2006-09-05  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
 
-	Release 0.0.4:
+	* Release 0.0.4:
 
 	* rinterp.c: Bug fix: forgot to reset membuf_t.buf after a call to
 	resize_membuf() 
@@ -20,7 +21,7 @@
 
 2006-08-15  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
 
-	Release 0.0.3:
+	* Release 0.0.3:
 
 	* configure.in: Added Dirk's patch to configure.in to
 	automatically find R in search path and to use --rpath linker option.
@@ -30,14 +31,14 @@
 
 2006-08-09  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
 
-	Release 0.0.2:
+	* Release 0.0.2:
 
 	* rinterp.c: Added argv support. (feature request from Juha
 	Vierine <jvierine@gmail.com>)
 	
 2006-07-14  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
 
-	Release 0.0.0:
+	* Release 0.0.1:
 
 	* Initial release of Rinterp: hashbang support for R
 
