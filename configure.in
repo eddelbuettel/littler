@@ -13,7 +13,7 @@ dnl                  in the dist.
 dnl foreign - treats our package as non-gnu, essentially excudluding strict
 dnl           checks for certain files like ChangeLog, NEWS, README, etc
 dnl
-AM_INIT_AUTOMAKE( no-texinfo.tex )
+AM_INIT_AUTOMAKE( no-texinfo.tex foreign )
 
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)

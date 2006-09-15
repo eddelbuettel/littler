@@ -4,8 +4,10 @@
 
 	* rinterp.c, rinterp.1: renamed to littler.c, littler.1
 	* Makefile.am, configure.in: Many changes to accomodate that
+	* autoloads.R: code generator to aid in autoload()ing functions
+	from default packages.
 
-2006-xx-xx  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
+2006-09-05  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
 
 	Release 0.0.4:
 
@@ -16,19 +18,26 @@
 	to one of TMPDIR, TMP, TEMP, or "/tmp". We also turn off R's
 	signal handlers.
 
-2006-yy-yy  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
+2006-08-15  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
 
 	Release 0.0.3:
 
 	* configure.in: Added Dirk's patch to configure.in to
 	automatically find R in search path and to use --rpath linker option.
 
-	* rinterp.in: Read commands from stdin when no file is given on 
+	* rinterp.c: Read commands from stdin when no file is given on 
 	cmdline. (feature request from Dirk Eddelbuettel <edd@debian.org>)
 
-2006-zz-zz  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
+2006-08-09  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
+
+	Release 0.0.2:
 
 	* rinterp.c: Added argv support. (feature request from Juha
 	Vierine <jvierine@gmail.com>)
 	
+2006-07-14  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
+
+	Release 0.0.0:
+
+	* Initial release of Rinterp: hashbang support for R
 
