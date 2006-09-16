@@ -33,7 +33,7 @@ dnl Checks for libraries.
 
 dnl Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS(stdio.h string.h errno.h stdlib.h sys/types.h sys/stat.h unistd.h)
+AC_CHECK_HEADERS( getopt.h stdio.h string.h errno.h stdlib.h sys/types.h sys/stat.h unistd.h)
 
 AC_HEADER_MAJOR
 dnl AC_FUNC_ALLOCA
