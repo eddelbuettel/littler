@@ -13,7 +13,7 @@ autoloads.h:
 	R_HOME= ${RPROG} --silent --vanilla --slave < autoloads.R > autoloads.h
 
 #  Clean target to delete stuff make generates
-MOSTLYCLEANFILES=autoloads.h littler.o autoloads.h
+MOSTLYCLEANFILES=autoloads.h littler.o
 
 #  uncomment the following if littler requires the math library
 #littler_LDADD=-lm
