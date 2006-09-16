@@ -40,8 +40,6 @@
 #include <Rinterface.h>
 #include <R_ext/Parse.h>
 
-const int debug = 1; /* turn off for silent mode, or make a compile define, or cmdline switch, or ... */
-
 /* these two are being filled by autoconf and friends via config.h */
 const char* versionNumber = VERSION;
 const char* programName = PACKAGE;
@@ -351,21 +349,23 @@ void littler_CleanUp(SA_TYPE s, int a, int b){
 
 void showHelpAndExit() {
 	printf("\n" 						
-	       "Usage: %s [options] [...]\n"
+	       "Usage: %s [options] [-|file]"
 	       "\n"
-	       "Launches GNU R to execute the R commands received from stdin, on the command-\n"
-	       "line or from a specified file. Suitable for so-called shebang '#!/' line.\n"
+	       "Launches GNU R to execute the R commands supplied in the specified file, or\n"
+	       "from stdin if '-' is used. Suitable for so-called shebang '#!/'-line scripts.\n"
 	       "\n"
 	       "Options:\n"
 	       "  -h, --help           Give this help list\n"
 	       "      --usage          Give a short usage message\n"
 	       "  -V, --version        Show the version number\n"
-	       "  --vanilla            Pass the '--vanilla' option to R\n"  
-	       "  --slave              Pass the '--slave' option to R\n"  
-	       "  --silent             Pass the '--silent' option to R\n"  
-	       "  -f, --file filename  Evaluate R code in 'filename'\n"
+	       "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
+	       "  --verbose            Do not pass the '--slave' option to R\n"  
+	       "  -e, --eval  expr     Let R evaluate 'expr'\n"
+
+	       "  -n, --nodebug	       Suppress debugging output"         /* delete me for release ? */
+
 	       "\n\n",
-	       programName, programName);
+	       programName);
 	exit(-1);
 }
 
@@ -386,14 +386,15 @@ void showUsageAndExit() {
   	printf("\n" 						
 	       "%s can be used in three main modes.\n\n"
 	       "The first is via the so-called 'shebang' support it provides for GNU R.\n"
-	       "Suppose %s is installed in /usr/local/bin/%s. Then a first line\n"
-	       "in the script can be written as \"#!/usr/local/bin/%s\" and the rest\n"
+	       "Suppose %s is installed in /usr/local/bin/%s. Then the first line of a\n"
+	       "script can be written as \"#!/usr/local/bin/%s\" and the rest\n"
 	       "of the file can contain standard R commands.  By adding executable\n"
-	       "permissions on the file, one can now create little R scripts.\n\n" 
-	       "The second use is in standard compound command-line expressions common\n" 
-	       "under Unix as %s can also take arguments from stdin.\n\n"
-	       "The third is to supply a filename with commands that are to be\n"
-	       "evalued by using the '--file filename' or '-f filename' options.\n\n"
+	       "permissions on the file, one can now create executable  R scripts.\n\n" 
+	       "The second is to supply a filename with commands that are to be\n"
+	       "evalued by supplying the filename as an argument.\n\n"
+	       "The third use is in standard compound command-line expressions common\n" 
+	       "under Unix (so called 'command pipes') as %s can also take arguments from\n"
+	       "stdin by using the special filename '-'.\n\n"
 	       "More documentation is provided in the %s manual, man page and via\n"
 	       "the tests directory in the sources.\n\n",
 	       programName, programName, programName, programName,  programName, programName);
@@ -403,41 +404,37 @@ void showUsageAndExit() {
 int main(int argc, char **argv){
 
 	/* R embedded arguments, and optional arguments to be picked via cmdline switches */
-        char *R_argv[] = {"LITTLER", "--gui=none", "--no-save", "--no-readline", "", "", ""};
-        char *R_argv_opt[] = {"--vanilla", "--silent", "--slave"};
+        char *R_argv[] = {"LITTLER", "--gui=none", "--no-save", "--no-readline", "--silent", "--slave", ""};
+        char *R_argv_opt[] = {"--vanilla", ""};
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
-	int i, nargv, c, optpos=0, vanilla=0, slave=0, silent=0;
-	char *filename = NULL;
+	int i, nargv, c, optpos=0, vanilla=0, verbose=0;
+	char *evalstr = NULL;
 	SEXP s_argv;
+	int debug = 1; 	/* turn off for silent mode, or make a compile define, or cmdline switch, or ... */
 
 	static struct option optargs[] = {
 		{"help",    no_argument,       NULL, 'h'}, 		/* --help also has short option -h */
 		{"usage",   no_argument,       0,    0},
 		{"version", no_argument,       NULL, 'V'},
-		{"vanilla", no_argument,       0,    0},
-		{"silent",  no_argument,       0,    0},
-		{"slave",   no_argument,       0,    0},
-		{"file",    required_argument, NULL, 'f'},
+		{"vanilla", no_argument,       NULL, 'v'},
+		{"eval",    required_argument, NULL, 'e'},
+		{"verbose", no_argument,       0,    0},
+		{"nodebug", no_argument,       NULL, 'n'},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, "+hf:V", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, "+hVve:n", optargs, &optpos)) != -1) {
 		switch (c) {	
 			case 0:					/* numeric 0 is code for a long option */
 				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
 				switch (optpos) {		/* so switch on the position in the optargs struct */
-					/* cases 0 and 2 can't happen as these cases are covered by the `--help' and '-h' */ 
-					/* and '--version' and '-V' equivalences, so c will have values 'h' or 'V' instead */
+					/* cases 0, 2 and 3 can't happen as these cases are covered by the `-h|--help', */ 
+					/* '-V|--version' and '-v|--verbose' equivalences, so c will have one of 'h|V|v' */
 					case 1:
 						showUsageAndExit();
-						break;			/* never reached */
-					case 3:	
-						vanilla=1;
-						break;
-					case 4:	
-						silent=1;
-						break;
+						break;				/* never reached */
 					case 5:
-						slave=1;
+						R_argv[5] = R_argv_opt[1];	/* verbose means undo --slave option */
+						verbose = 1;
 						break;
 					default:
 						printf("Uncovered option position '%d'. Try `%s --help' for help\n", 
@@ -448,31 +445,34 @@ int main(int argc, char **argv){
 			case 'h':				/* -h is the sole short option, cf getopt_long() call */
 				showHelpAndExit();
 				break;  			/* never reached */
-			case 'f':
-				filename = optarg;
+			case 'e':
+				evalstr = optarg;
+				break;
+			case 'v':	
+				vanilla=1;
 				break;
 			case 'V':
 				showVersionAndExit();
 				break;  			/* never reached */
+			case 'n':
+				debug = 0;
+				break;
 			default:
 				printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
 				exit(-1);
 		}
 	}
  	if (vanilla) {
-		R_argv[3+vanilla] = R_argv_opt[0]; 		/* copy pointer address */
+		R_argv[6 - verbose] = R_argv_opt[0]; 		/* copy pointer address */
 	}
- 	if (silent) {
-		R_argv[3+vanilla+silent] = R_argv_opt[1]; 	/* copy pointer address */
-	}
- 	if (slave) {
-		R_argv[3+vanilla+silent+slave] = R_argv_opt[2]; /* copy pointer address */
-	}
-	R_argc += vanilla + slave + silent;
+	R_argc += vanilla; 
+
 	if (debug) {
-		printf("R_argc %d sizeof(R_argv) %d sizeof(R_argv[0]) %d R_argv[3] '%s' R_argv[4] '%s'\n", 
-		       R_argc, sizeof(R_argv), sizeof(R_argv[0]), R_argv[3], R_argv[4]);
-		printf("Now optind %d, argc %d\n", optind, argc);
+		printf("R_argc %d sizeof(R_argv) \n", R_argc, sizeof(R_argv));
+		for (i=0; i<7; i++) {
+			printf("R_argv[%d] = %s\n", i, R_argv[i]);
+		}
+		printf("optind %d, argc %d\n", optind, argc);
 		for (i=0; i<argc; i++) {
 			printf("argv[%d] = %s\n", i, argv[i]);
 		}
@@ -500,11 +500,9 @@ int main(int argc, char **argv){
 	 */
 	struct stat sbuf;
 	if (optind < argc) { 
-		if (debug) {
-			printf("Testing %s for file\n", argv[optind]);
-		}
-		if (stat(argv[optind], &sbuf) == 0) {
-			filename = argv[optind];
+		if ((strcmp(argv[optind],"-") != 0) && (stat(argv[optind],&sbuf) != 0)) {
+			perror(argv[optind]);
+			exit(1);
 		}
 	}
 
@@ -524,7 +522,6 @@ int main(int argc, char **argv){
 	/* Force all default package to be dynamically required */
 	autoloads();
 
-#if 0
 	/* Place any argv arguments into argv vector in Global Environment */
 	if ((argc - optind) > 1){
 		/* Build string vector */
@@ -532,6 +529,9 @@ int main(int argc, char **argv){
 		PROTECT(s_argv = allocVector(STRSXP,nargv));
 		for (i = 0; i <nargv; i++){
 			STRING_PTR(s_argv)[i] = mkChar(argv[i+1+optind]);
+			if (debug) {
+				printf("Passing %s to R\n", argv[i+1+optind]);
+			}
 		}
 		UNPROTECT(1);
 
@@ -539,28 +539,18 @@ int main(int argc, char **argv){
 	} else {
 		setVar(install("argv"),R_NilValue,R_GlobalEnv);
 	}
-#endif
-	if (filename != NULL) {				/* if filename argument given, call R function source(filename) */
-		/* filename is the file we want to source. */
-		struct stat sbuf;
-		if (stat(filename, &sbuf) != 0){
-			perror(filename);
-			exit(1);
-		}
-		if (debug) {
-			printf("Sourcing %s\n", filename);
-		}
-		call_fun1str("source", filename);
-	} else if (argc > optind) {			/* if we have a commands to evaluate */
-		membuf_t lb = init_membuf(1024);
+
+	if (evalstr != NULL) {				/* we have an expression to evaluate */
 		membuf_t pb = init_membuf(1024);
-		int lineno = 1;
-		while (argc > optind) {
-			parse_eval(&pb, (char*)argv[optind++], lineno++);
-		}
-		destroy_membuf(lb);
+		parse_eval(&pb, evalstr, 1);
 		destroy_membuf(pb);
-	} else { 					/* else always read from stdin */
+	}
+
+	/* Now call R function source(filename) */
+	if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
+		call_fun1str("source",argv[optind]);
+	} else {
+		/* Or read from stdin */
 		membuf_t lb = init_membuf(1024);
 		membuf_t pb = init_membuf(1024);
 		int lineno = 1;
