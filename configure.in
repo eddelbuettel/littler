@@ -33,7 +33,11 @@ dnl Checks for libraries.
 
 dnl Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS( getopt.h stdio.h string.h errno.h stdlib.h sys/types.h sys/stat.h unistd.h)
+AC_CHECK_HEADERS( stdio.h string.h errno.h stdlib.h sys/types.h sys/stat.h unistd.h)
+AC_CHECK_HEADER([getopt.h],
+	[AC_DEFINE([HAVE_GETOPT_H], 1,
+		 [Define to 1 if you have <getopt.h>.])],
+	[AC_MSG_ERROR([littler needs getopt support to run. Please find and install it.])])
 
 AC_HEADER_MAJOR
 dnl AC_FUNC_ALLOCA
