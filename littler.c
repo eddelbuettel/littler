@@ -24,8 +24,8 @@
 #include "config.h"
 #include "littler.h"
 #include "autoloads.h"
-#include "getopt.h"
 
+#include <getopt.h>
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -35,15 +35,16 @@
 #include <unistd.h>
 
 #include <R.h>
+#include <Rversion.h>
 #include <Rdefines.h>
 #define R_INTERFACE_PTRS
 #include <Rinterface.h>
 #include <R_ext/Parse.h>
 
 /* these two are being filled by autoconf and friends via config.h */
-const char* versionNumber = VERSION;
-const char* programName = PACKAGE;
-const char* binaryName = "r";
+/* VERSION */
+const char *programName = PACKAGE;
+const char *binaryName = "r";
 
 /* 
  * Exported by libR
@@ -280,7 +281,7 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 	cmdexpr = PROTECT(R_ParseVector(cmdSexp, -1, &status));
 	switch (status){
 		case PARSE_OK:
-			/* Loop is needed here as EXPSEXP will be of length > 1 */
+			/* Loop is needed here as EXPSEXP might be of length > 1 */
 			for(i = 0; i < length(cmdexpr); i++){
 				ans = eval(VECTOR_ELT(cmdexpr, i), R_GlobalEnv);
 			}
@@ -308,7 +309,7 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 	UNPROTECT(2);
 }
 
-/* Undo R's InitTempdir() and do something sane */
+#define R_240 132096 /* This is set in Rversion.h */
 
 extern char *R_TempDir;
 
@@ -316,12 +317,15 @@ void littler_InitTempDir()
 {
 	char *tmp;
 
+	#if (R_VERSION < R_240) /* we can delete this code after R 2.4.0 release */
 	if (R_TempDir){
+		/* Undo R's InitTempdir() and do something sane */
 		if (rmdir(R_TempDir) != 0){
 			perror("Fatal Error: could not remove R's TempDir!");
 			exit(1);
 		}
 	}
+	#endif
 
 	tmp = getenv("TMPDIR");
 	if (tmp == NULL) {
@@ -362,9 +366,6 @@ void showHelpAndExit() {
 	       "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
 	       "  --verbose            Do not pass the '--slave' option to R\n"  
 	       "  -e, --eval  expr     Let R evaluate 'expr'\n"
-
-	       "  -n, --nodebug	       Suppress debugging output"         /* delete me for release ? */
-
 	       "\n\n",
 	       binaryName);
 	exit(-1);
@@ -379,7 +380,7 @@ void showVersionAndExit() {
 	       "You are welcome to redistribute it under the terms of the\n"
 	       "GNU General Public License.  For more information about\n"
 	       "these matters, see http://www.gnu.org/copyleft/gpl.html.\n\n",
-	       binaryName, programName, versionNumber, programName);
+	       binaryName, programName, VERSION, programName);
 	exit(-1);       
 }
 
@@ -405,13 +406,12 @@ void showUsageAndExit() {
 int main(int argc, char **argv){
 
 	/* R embedded arguments, and optional arguments to be picked via cmdline switches */
-        char *R_argv[] = {"LITTLER", "--gui=none", "--no-save", "--no-readline", "--silent", "--slave", ""};
-        char *R_argv_opt[] = {"--vanilla", ""};
+	char *R_argv[] = {(char*)programName, "--gui=none", "--no-save", "--no-readline", "--silent", "", ""};
+	char *R_argv_opt[] = {"--vanilla", "--slave"};
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
 	int i, nargv, c, optpos=0, vanilla=0, verbose=0;
 	char *evalstr = NULL;
 	SEXP s_argv;
-	int debug = 1; 	/* turn off for silent mode, or make a compile define, or cmdline switch, or ... */
 
 	static struct option optargs[] = {
 		{"help",    no_argument,       NULL, 'h'}, 		/* --help also has short option -h */
@@ -420,7 +420,6 @@ int main(int argc, char **argv){
 		{"vanilla", no_argument,       NULL, 'v'},
 		{"eval",    required_argument, NULL, 'e'},
 		{"verbose", no_argument,       0,    0},
-		{"nodebug", no_argument,       NULL, 'n'},
 		{0, 0, 0, 0}
 	};
 	while ((c = getopt_long(argc, argv, "+hVve:n", optargs, &optpos)) != -1) {
@@ -428,13 +427,12 @@ int main(int argc, char **argv){
 			case 0:					/* numeric 0 is code for a long option */
 				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
 				switch (optpos) {		/* so switch on the position in the optargs struct */
-					/* cases 0, 2 and 3 can't happen as these cases are covered by the `-h|--help', */ 
-					/* '-V|--version' and '-v|--verbose' equivalences, so c will have one of 'h|V|v' */
+					/* cases 0, 2, and 3 can't happen as they are covered by the '-h', */ 
+					/* '-V', and '-v' equivalences */
 					case 1:
 						showUsageAndExit();
 						break;				/* never reached */
 					case 5:
-						R_argv[5] = R_argv_opt[1];	/* verbose means undo --slave option */
 						verbose = 1;
 						break;
 					default:
@@ -455,20 +453,19 @@ int main(int argc, char **argv){
 			case 'V':
 				showVersionAndExit();
 				break;  			/* never reached */
-			case 'n':
-				debug = 0;
-				break;
 			default:
 				printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
 				exit(-1);
 		}
 	}
  	if (vanilla) {
-		R_argv[6 - verbose] = R_argv_opt[0]; 		/* copy pointer address */
+		R_argv[R_argc++] = R_argv_opt[0];
 	}
-	R_argc += vanilla; 
+	if (!verbose) {
+		R_argv[R_argc++] = R_argv_opt[1];
+	}
 
-	if (debug) {
+	#ifdef DEBUG
 		printf("R_argc %d sizeof(R_argv) \n", R_argc, sizeof(R_argv));
 		for (i=0; i<7; i++) {
 			printf("R_argv[%d] = %s\n", i, R_argv[i]);
@@ -477,7 +474,7 @@ int main(int argc, char **argv){
 		for (i=0; i<argc; i++) {
 			printf("argv[%d] = %s\n", i, argv[i]);
 		}
-	}
+	#endif
 
 	/* Setenv R_HOME: insert or replace into environment.
 	 * The RHOME macro is defined during configure
@@ -496,7 +493,7 @@ int main(int argc, char **argv){
 	}
 
 	/* Now, argv[optind] could be a file we want to source -- if we're
-         * in the 'shebang' case -- or it could be an expression from stdin.
+	 * in the 'shebang' case -- or it could be an expression from stdin.
 	 * So call stat(1) on it, and if its a file we will treat it as such.
 	 */
 	struct stat sbuf;
@@ -514,9 +511,16 @@ int main(int argc, char **argv){
 	/* Don't do any stack checking */
 	R_CStackLimit = -1;
 	#endif
+
+	#if (R_VERSION >= R_240) /* we'll take out the ifdef after R 2.4.0 release */
+	littler_InitTempDir();
+	#endif
+
 	Rf_initEmbeddedR(R_argc, R_argv);
 
+	#if (R_VERSION < R_240) /* we can delete this code after R 2.4.0 release */
 	littler_InitTempDir();
+	#endif
 
 	ptr_R_CleanUp = littler_CleanUp;
 
@@ -530,9 +534,9 @@ int main(int argc, char **argv){
 		PROTECT(s_argv = allocVector(STRSXP,nargv));
 		for (i = 0; i <nargv; i++){
 			STRING_PTR(s_argv)[i] = mkChar(argv[i+1+optind]);
-			if (debug) {
+			#ifdef DEBUG
 				printf("Passing %s to R\n", argv[i+1+optind]);
-			}
+			#endif
 		}
 		UNPROTECT(1);
 
@@ -541,14 +545,15 @@ int main(int argc, char **argv){
 		setVar(install("argv"),R_NilValue,R_GlobalEnv);
 	}
 
-	if (evalstr != NULL) {				/* we have an expression to evaluate */
+	/* Now determine which R code to evaluate */
+
+	if (evalstr != NULL) {				
+		/* we have a command line expression to evaluate */
 		membuf_t pb = init_membuf(1024);
 		parse_eval(&pb, evalstr, 1);
 		destroy_membuf(pb);
-	}
-
-	/* Now call R function source(filename) */
-	if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
+	} else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
+		/* call R function source(filename) */
 		call_fun1str("source",argv[optind]);
 	} else {
 		/* Or read from stdin */
