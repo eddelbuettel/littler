@@ -38,41 +38,51 @@
 r \- Provides hash-bang (#!) capability for R (www.r-project.org)
 .SH SYNOPSIS
 .B r
-[\fIoptions\fR] \fIfile \fR[...]
+[\fIoptions\fR] \fIfile
 .br
 .B r
-[\fIoptions\fR]
+[\fIoptions\fR] \fI-
 .SH DESCRIPTION
-Launches GNU R to execute the specified file containing R commands,
-or takes commands from stdin using the specified options. This makes
-it suitable to create R scripts via the so\-called shebang '#!/' line.
+Launches GNU R to execute the specified file containing R commands, or takes
+commands from stdin if '-' is used to denote stdin, using the specified
+options. This makes it suitable to create R scripts via the so\-called
+shebang '#!/' line.
 .SH OPTIONS
 .TP
 \fB\-h\fR, \fB\-\-help\fR
-Give this help list
+Display a short help list.
 .TP
 \fB\-\-usage\fR
-Give a short usage message
+Give a short usage message.
 .TP
 \fB\-V\fR, \fB\-\-version\fR
-Show the version number
+Show the version number.
 .TP
-\fB\-\-vanilla\fR
-Pass the '\-\-vanilla' option to R
+\fB\-v\fR, \fB\-\-vanilla\fR
+Pass the '\-\-vanilla' option to R.
 .TP
-\fB\-\-slave\fR
-Pass the '\-\-slave' option to R
+\fB\-\-verbose\fR
+Do not pass the '\-\-slave' option to R.
 .TP
-\fB\-\-silent\fR
-Pass the '\-\-silent' option to R
+\fB\-e\fR, \fB\-\-eval expr\fR
+Evaluate 'expr' in R.
 .PP
+.SH USAGE
+\fBr\fR can be used in command-line 'pipes' as well as in 'shebang'-style
+scripts. 
 .SH NOTE
 The executable program is called 
 \fBr\fR,
-the project is called
+but the project is called
 \fBlittler\fR
 to avoid confusion with the real
 \fBGNU R\fR.
+.SH SEE ALSO
+The 
+\fBGNU R\fR
+language is documented extensively at the R website
+(http://www.r-project.org) and in several
+manuals available in html, info and pdf.
 .SH AUTHORS
 Jeffrey Horner <jeff.horner@vanderbilt.edu>.
 Dirk Eddelbuettel <edd@debian.org>.

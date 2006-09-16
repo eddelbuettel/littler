@@ -43,6 +43,7 @@
 /* these two are being filled by autoconf and friends via config.h */
 const char* versionNumber = VERSION;
 const char* programName = PACKAGE;
+const char* binaryName = "r";
 
 /* 
  * Exported by libR
@@ -365,39 +366,39 @@ void showHelpAndExit() {
 	       "  -n, --nodebug	       Suppress debugging output"         /* delete me for release ? */
 
 	       "\n\n",
-	       programName);
+	       binaryName);
 	exit(-1);
 }
 
 void showVersionAndExit() {
   	printf("\n" 						
-	       "%s version %s\n"
+	       "%s ('%s') version %s\n"
 	       "Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
 	       "GNU General Public License.  For more information about\n"
 	       "these matters, see http://www.gnu.org/copyleft/gpl.html.\n\n",
-	       programName, versionNumber, programName);
+	       binaryName, programName, versionNumber, programName);
 	exit(-1);       
 }
 
 void showUsageAndExit() {
   	printf("\n" 						
-	       "%s can be used in three main modes.\n\n"
+	       "%s (aka '%s') can be used in three main modes.\n\n"
 	       "The first is via the so-called 'shebang' support it provides for GNU R.\n"
-	       "Suppose %s is installed in /usr/local/bin/%s. Then the first line of a\n"
-	       "script can be written as \"#!/usr/local/bin/%s\" and the rest\n"
-	       "of the file can contain standard R commands.  By adding executable\n"
-	       "permissions on the file, one can now create executable  R scripts.\n\n" 
+	       "Suppose '%s' is installed in /usr/local/bin/%s. Then the first line of a\n"
+	       "script can be written as \"#!/usr/local/bin/%s\" and the rest of the file\n"
+	       "can contain standard R commands.  By setting executable permissions\n"
+	       "on the file, one can now create executable  R scripts.\n\n" 
 	       "The second is to supply a filename with commands that are to be\n"
-	       "evalued by supplying the filename as an argument.\n\n"
+	       "evaluated.\n\n"
 	       "The third use is in standard compound command-line expressions common\n" 
-	       "under Unix (so called 'command pipes') as %s can also take arguments from\n"
-	       "stdin by using the special filename '-'.\n\n"
-	       "More documentation is provided in the %s manual, man page and via\n"
+	       "under Unix (so called 'command pipes') as '%s' can take arguments\n"
+	       "from stdin if the special filename '-' is used to select stdin.\n\n"
+	       "More documentation is provided in the '%s' manual page and via\n"
 	       "the tests directory in the sources.\n\n",
-	       programName, programName, programName, programName,  programName, programName);
+	       binaryName, programName, binaryName, binaryName, binaryName,  programName, binaryName);
 	exit(-1);       
 }
 
