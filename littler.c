@@ -355,8 +355,8 @@ void littler_CleanUp(SA_TYPE s, int a, int b){
 void showHelpAndExit() {
 	printf("\n" 						
 	       "Usage: %s [options] [-|file]"
-	       "\n"
-	       "Launches GNU R to execute the R commands supplied in the specified file, or\n"
+	       "\n\n"
+	       "Launch GNU R to execute the R commands supplied in the specified file, or\n"
 	       "from stdin if '-' is used. Suitable for so-called shebang '#!/'-line scripts.\n"
 	       "\n"
 	       "Options:\n"
@@ -372,15 +372,14 @@ void showHelpAndExit() {
 }
 
 void showVersionAndExit() {
-  	printf("\n" 						
-	       "%s ('%s') version %s\n"
+  	printf("%s ('%s') version %s\n"
 	       "Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
 	       "GNU General Public License.  For more information about\n"
 	       "these matters, see http://www.gnu.org/copyleft/gpl.html.\n\n",
-	       binaryName, programName, VERSION, programName);
+	       binaryName, programName, VERSION, binaryName);
 	exit(-1);       
 }
 
