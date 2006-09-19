@@ -43,8 +43,11 @@
   II.2  I run a script trough littler but nothing shows. What's up? 
   -----------------------------------------------------------------
 
-  You probably need to wrap a print() or cat() around what you wanted
-  to show.
+  Add the --verbose flag. This will print out many relevant expressions,
+  similar to GNU R. However, it won't print the value of expressions
+  like for loops, if/else, or expressions within function calls. In
+  that case you probably need to wrap a print() or cat() around what
+  you want to show.
 
 
   II.3  Data sets are lost!
