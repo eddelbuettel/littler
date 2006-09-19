@@ -1,4 +1,5 @@
 
+
   littler - Provides hash-bang (#!) capability for R (www.r-project.org)
 
   Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel
@@ -18,10 +19,48 @@
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
+
+  I     Installation 
+  ================
+
   Please see the file 'INSTALL' for installation tips.
 
 
-  Comments are welcome.
+ 
+  II.   (In-) Frequently asked questions
+  ================================
+
+  II.1  Why the name 'littler' ?
+  ---------------------------
+
+  We think it's cute. We wanted something short, sweet and with sufficient
+  references to R without trampling over R.  
+
+  We also like 'r' in /usr/local/bin/r, /usr/bin/r or on the command-line
+  as it saves keystrokes, and does not harm the Shift key as much.
+
+
+  II.2  I run a script trough littler but nothing shows. What's up? 
+  -----------------------------------------------------------------
+
+  You probably need to wrap a print() around what you wanted to show.
+
+
+  II.3  Data sets are lost!
+  -------------------------
+
+  Actually, they aren't. But because littler optimises the startup,
+  the 'promise' to load them may have gotten lost. Try adding
+      library(datasets)
+  to your script.
+
+
+
+  III   Feedback
+  ==============
+
+  Comments are welcome, as are are suggestions, bug fixes, or patches.
+
 
 	- Jeffrey Horner <jeff.horner@vanderbilt.edu>
 	- Dirk Eddelbuettel <edd@debian.org> 
