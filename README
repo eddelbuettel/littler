@@ -43,7 +43,8 @@
   II.2  I run a script trough littler but nothing shows. What's up? 
   -----------------------------------------------------------------
 
-  You probably need to wrap a print() around what you wanted to show.
+  You probably need to wrap a print() or cat() around what you wanted
+  to show.
 
 
   II.3  Data sets are lost!
@@ -53,7 +54,6 @@
   the 'promise' to load them may have gotten lost. Try adding
       library(datasets)
   to your script.
-
 
 
   III   Feedback

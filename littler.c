@@ -41,17 +41,29 @@
 #include <Rinterface.h>
 #include <R_ext/Parse.h>
 
+#define R_240 132096 /* This is set in Rversion.h */
+
+int verbose=0;
+extern int R_Visible; /* We're cheating here, as this undocumented and not in the
+                       * R embedded interface.
+					   * 
+					   * This variable controls when an expression is printed
+					   * via PrintValue()
+					   */
+
 /* these two are being filled by autoconf and friends via config.h */
 /* VERSION */
 const char *programName = PACKAGE;
 const char *binaryName = "r";
 
+#if (R_VERSION < R_240) /* we can delete this code after R 2.4.0 release */
 /* 
  * Exported by libR
  * Shouldn't this prototype exist in a header?
  * It will in R-2.4.x.
  */
 extern int Rf_initEmbeddedR(int argc, char *argv[]);
+#endif
 
 #ifndef HAVE_SETENV
 int  setenv(char *name, char *value, int clobber){
@@ -67,26 +79,32 @@ int  setenv(char *name, char *value, int clobber){
 
 #endif 
 
-int call_fun1str( char *funstr, char *argstr){
-	SEXP val, expr, fun, arg;
+int source(char *file){
+	SEXP val, expr, s, f, p;
 	int errorOccurred;
 
-	/* Call funstr */
-	fun = Rf_findFun(Rf_install(funstr), R_GlobalEnv);
-	PROTECT(fun);
+	/* Find source function */
+	s = Rf_findFun(Rf_install("source"), R_GlobalEnv);
+	PROTECT(s);
 
-	/* argument */
-	PROTECT(arg = NEW_CHARACTER(1));
-	SET_STRING_ELT(arg, 0, COPY_TO_USER_STRING(argstr));
+	/* Make file argument */
+	PROTECT(f = NEW_CHARACTER(1));
+	SET_STRING_ELT(f, 0, COPY_TO_USER_STRING(file));
 
-	/* expression */
-	PROTECT(expr = allocVector(LANGSXP,2));
-	SETCAR(expr,fun);
-	SETCAR(CDR(expr),arg);
+	/* Make print.eval argument */
+    PROTECT(p = NEW_LOGICAL(1));
+	LOGICAL_DATA(p)[0] = (verbose)? TRUE : FALSE;
+
+	/* expression source(f,print.eval=p) */
+	PROTECT(expr = allocVector(LANGSXP,3));
+	SETCAR(expr,s); 
+	SETCAR(CDR(expr),f);
+	SETCAR(CDR(CDR(expr)), p);
+	SET_TAG(CDR(CDR(expr)),Rf_install("print.eval"));
 
 	errorOccurred=1;
 	val = R_tryEval(expr,NULL,&errorOccurred);
-	UNPROTECT(3);
+	UNPROTECT(4);
 
 	return (errorOccurred)? 0:1;
 }
@@ -284,6 +302,9 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 			/* Loop is needed here as EXPSEXP might be of length > 1 */
 			for(i = 0; i < length(cmdexpr); i++){
 				ans = eval(VECTOR_ELT(cmdexpr, i), R_GlobalEnv);
+				if (verbose && R_Visible){
+					PrintValue(ans);
+				}
 			}
 			mb = *pmb = rewind_membuf(pmb);
 		break;
@@ -308,8 +329,6 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
     }
 	UNPROTECT(2);
 }
-
-#define R_240 132096 /* This is set in Rversion.h */
 
 extern char *R_TempDir;
 
@@ -364,7 +383,7 @@ void showHelpAndExit() {
 	       "      --usage          Give a short usage message\n"
 	       "  -V, --version        Show the version number\n"
 	       "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
-	       "  --verbose            Do not pass the '--slave' option to R\n"  
+	       "  -p, --verbose        Print the value of expressions to the console\n"  
 	       "  -e, --eval  expr     Let R evaluate 'expr'\n"
 	       "\n\n",
 	       binaryName);
@@ -408,7 +427,7 @@ int main(int argc, char **argv){
 	char *R_argv[] = {(char*)programName, "--gui=none", "--no-save", "--no-readline", "--silent", "", ""};
 	char *R_argv_opt[] = {"--vanilla", "--slave"};
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
-	int i, nargv, c, optpos=0, vanilla=0, verbose=0;
+	int i, nargv, c, optpos=0, vanilla=0;
 	char *evalstr = NULL;
 	SEXP s_argv;
 
@@ -418,10 +437,10 @@ int main(int argc, char **argv){
 		{"version", no_argument,       NULL, 'V'},
 		{"vanilla", no_argument,       NULL, 'v'},
 		{"eval",    required_argument, NULL, 'e'},
-		{"verbose", no_argument,       0,    0},
+		{"verbose", no_argument,       NULL, 'p'},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, "+hVve:n", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, "+hVve:np", optargs, &optpos)) != -1) {
 		switch (c) {	
 			case 0:					/* numeric 0 is code for a long option */
 				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
@@ -448,6 +467,9 @@ int main(int argc, char **argv){
 				break;
 			case 'v':	
 				vanilla=1;
+				break;
+			case 'p':	
+				verbose=1;
 				break;
 			case 'V':
 				showVersionAndExit();
@@ -553,7 +575,7 @@ int main(int argc, char **argv){
 		destroy_membuf(pb);
 	} else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
 		/* call R function source(filename) */
-		call_fun1str("source",argv[optind]);
+		source(argv[optind]);
 	} else {
 		/* Or read from stdin */
 		membuf_t lb = init_membuf(1024);
