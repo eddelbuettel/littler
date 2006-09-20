@@ -15,7 +15,8 @@
     If R is not compiled with a shared library, you need to rebuild and 
     reinstall R.  
 
-    This requirement also precludes installation of littler on Windoze.
+    In all likelihood, this requirement also precludes installation of
+    littler on Windoze. 
 
 
 1.2 Basic Steps
@@ -49,7 +50,8 @@
 2.1 Requirements
 ----------------
 
-    As above, but you will also need autoconf, aclocal, and of course svn itself.
+    As above, but you will also need autoconf, aclocal, and of course svn
+    itself. 
 
 
 2.2 SVN checkout
@@ -65,9 +67,9 @@
 
     You typically need to rebuild configure via
 
-	$ aclocal && autconf 
+	$ aclocal && automake && autconf 
 
-    after which Step 1.2 applies: './configure && make && make install'.
+    after which Step 1.2 applies: './configure && make && sudo make install'.
 
 
 

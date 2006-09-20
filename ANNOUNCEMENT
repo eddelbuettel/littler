@@ -1,0 +1,109 @@
+
+What ?
+======
+
+  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
+
+
+Why ?
+=====
+
+  GNU R, a language and environment for statistical computing and graphics,
+  provides a wonderful system for 'programming with data' as well as 
+  interactive exploratory analysis, often involving graphs.
+
+  Sometimes, however, simple scripts are desired. While GNU R can be used
+  in batch mode, and while so-called 'here' documents can be crafted, a
+  long-standing need for a scripting front-end has often been expressed 
+  by the R Community.
+
+  Littler (pronounce 'little R' and written 'r') aims to fill this need.  
+
+  It can be used directly on the command-line just like, say, bc(1):
+
+
+		$ echo 'cat(pi^2,"\n")' | r -p
+		9.869604
+
+  Equivalently, commands that are to be evaluated can be given on the
+  command-line
+
+		$ r -e 'cat(pi^2, "\n")'
+		9.869604
+
+  But unlike bc(1), GNU R has a vast number of statistical function. For
+  example, we can quickly compute a summary() and a Tukey fivenum() for
+  the file size in a given directory via
+
+		$ ls -l /bin | awk '!/^total/ {print $5}' | 	\
+		     r -e 'fsizes <- as.integer(readLines()); 	\
+				  print(summary(fsizes)); 	\
+				  cat("Fivenum\n"); 		\
+				  print(fivenum(fsizes))'
+
+		   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+		      2    2926   13900   36140   35650  676400
+		Fivenum
+		[1]      2.0   2652.5  13896.0  35944.0 676384.0
+
+  And, last but not least, this (somewhat unwieldy) expression can stored
+  in a helper script:
+
+		$ ls -l /bin | awk '!/^total/ {print $5}' | examples/fsizes.r
+		   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+		      2    2926   13900   36140   35650  676400
+		Fivenum
+		[1]      2.0   2652.5  13896.0  35944.0 676384.0
+		$ cat examples/fsizes.r
+		#!/usr/bin/env r
+
+		fsizes <- as.integer(readLines())
+		print(summary(fsizes))
+		cat("Fivenum\n")
+		print(fivenum(fsizes))
+
+  (where calling /usr/bin/env is a trick from Python which allows one to
+  forget whether r is installed in /usr/bin/r, /usr/local/bin/r, ~/bin/r, ...)
+ 
+
+Where ?
+=======
+
+  Littler can either be downloaded from 
+
+	  http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/LittleR
+
+  accessed via SVN from
+
+	  http://littler.googlecode.com/svn/trunk/ littler
+
+  or (soon !) be gotten from Debian mirrors via 
+
+	  $ agt-get install littler
+
+
+Who ?
+=====
+
+  Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel
+
+  littler is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+
+  Comments are welcome, as are are suggestions, bug fixes, or patches.
+
+
+	- Jeffrey Horner <jeff.horner@vanderbilt.edu>
+	- Dirk Eddelbuettel <edd@debian.org> 
