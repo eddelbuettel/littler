@@ -316,7 +316,7 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 			exit(1);
 		break;
 		case PARSE_ERROR:
-			fprintf(stderr,"Parse Error line %d: \"%s\"", lineno, line);
+			fprintf(stderr,"Parse Error line %d: \"%s\"\n", lineno, line);
 			exit(1);
 		break;
 		case PARSE_EOF:
