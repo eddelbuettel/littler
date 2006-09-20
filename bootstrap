@@ -1,0 +1,2 @@
+#!/bin/sh -e
+aclocal && automake && autoconf && ./configure && make
