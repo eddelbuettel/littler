@@ -1,2 +1,2 @@
 #!/bin/sh -e
-aclocal && automake && autoconf && ./configure && make
+aclocal && autoheader && automake && autoconf && ./configure && make
