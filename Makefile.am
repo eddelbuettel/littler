@@ -2,7 +2,7 @@
 bin_PROGRAMS=r
 
 # List of files to include in distribution (e.g. make dist)
-r_SOURCES=littler.c r.1 autoloads.R tests/*
+r_SOURCES=littler.c r.1 autoloads.R tests/* examples/*
 
 # These two together will tell make to create autoloads.h before
 # any target.
@@ -14,9 +14,6 @@ autoloads.h:
 
 #  Clean target to delete stuff make generates
 MOSTLYCLEANFILES=autoloads.h littler.o
-
-#  uncomment the following if littler requires the math library
-#littler_LDADD=-lm
 
 #EXTRA_DIST=littler.texinfo
 

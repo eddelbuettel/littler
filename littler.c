@@ -326,7 +326,7 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 			fprintf(stderr, "%s: ParseStatus is not documented %d\n", programName, status);
 			exit(1);
 		break;
-    }
+	}
 	UNPROTECT(2);
 }
 
