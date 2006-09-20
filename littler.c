@@ -316,7 +316,7 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 			exit(1);
 		break;
 		case PARSE_ERROR:
-			fprintf(stderr,"Line %d: \"%s\"", lineno, line);
+			fprintf(stderr,"Parse Error line %d: \"%s\"", lineno, line);
 			exit(1);
 		break;
 		case PARSE_EOF:
@@ -391,14 +391,29 @@ void showHelpAndExit() {
 }
 
 void showVersionAndExit() {
-  	printf("%s ('%s') version %s\n"
+	printf("%s ('%s') version %s\n\nR ",binaryName, programName, VERSION);
+	if(strcmp(R_SVN_REVISION, "unknown")==0) {
+		printf("Version %s.%s %s (%s-%s-%s)",
+				R_MAJOR, R_MINOR, R_STATUS, R_YEAR, R_MONTH, R_DAY);
+	} else {
+		if(strlen(R_STATUS)==0){
+			printf("Version %s.%s (%s-%s-%s)",
+					R_MAJOR, R_MINOR, R_YEAR, R_MONTH, R_DAY);
+		}
+		else{
+			printf("Version %s.%s %s (%s-%s-%s r%s)",
+					R_MAJOR, R_MINOR, R_STATUS, R_YEAR, R_MONTH, R_DAY,
+					R_SVN_REVISION);
+		}
+	}
+  	printf("\n\n"
 	       "Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
 	       "GNU General Public License.  For more information about\n"
 	       "these matters, see http://www.gnu.org/copyleft/gpl.html.\n\n",
-	       binaryName, programName, VERSION, binaryName);
+	       binaryName);
 	exit(-1);       
 }
 

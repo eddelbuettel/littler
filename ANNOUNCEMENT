@@ -17,12 +17,12 @@ Why ?
   long-standing need for a scripting front-end has often been expressed 
   by the R Community.
 
-  Littler (pronounce 'little R' and written 'r') aims to fill this need.  
+  littler (pronounce 'little R' and written 'r') aims to fill this need.  
 
   It can be used directly on the command-line just like, say, bc(1):
 
 
-		$ echo 'cat(pi^2,"\n")' | r -p
+		$ echo 'cat(pi^2,"\n")' | r
 		9.869604
 
   Equivalently, commands that are to be evaluated can be given on the
@@ -31,14 +31,14 @@ Why ?
 		$ r -e 'cat(pi^2, "\n")'
 		9.869604
 
-  But unlike bc(1), GNU R has a vast number of statistical function. For
+  But unlike bc(1), GNU R has a vast number of statistical functions. For
   example, we can quickly compute a summary() and a Tukey fivenum() for
-  the file size in a given directory via
+  file sizes in a given directory via
 
 		$ ls -l /bin | awk '!/^total/ {print $5}' | 	\
-		     r -e 'fsizes <- as.integer(readLines()); 	\
-				  print(summary(fsizes)); 	\
-				  cat("Fivenum\n"); 		\
+		     r -e 'fsizes <- as.integer(readLines());
+				  print(summary(fsizes));
+				  cat("Fivenum\n");
 				  print(fivenum(fsizes))'
 
 		   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
@@ -46,7 +46,7 @@ Why ?
 		Fivenum
 		[1]      2.0   2652.5  13896.0  35944.0 676384.0
 
-  And, last but not least, this (somewhat unwieldy) expression can stored
+  And, last but not least, this (somewhat unwieldy) expression can be stored
   in a helper script:
 
 		$ ls -l /bin | awk '!/^total/ {print $5}' | examples/fsizes.r
