@@ -17,7 +17,7 @@ Why ?
   long-standing need for a scripting front-end has often been expressed 
   by the R Community.
 
-  littler (pronounce 'little R' and written 'r') aims to fill this need.  
+  littler (pronounced 'little R' and written 'r') aims to fill this need.  
 
   It can be used directly on the command-line just like, say, bc(1):
 
@@ -32,39 +32,45 @@ Why ?
 		9.869604
 
   But unlike bc(1), GNU R has a vast number of statistical functions. For
-  example, we can quickly compute a summary() and a Tukey fivenum() for
-  file sizes in a given directory via
+  example, we can quickly compute a summary() show a stem-and-leaf plot
+  in a given directory via
 
-		$ ls -l /bin | awk '!/^total/ {print $5}' | 	\
-		     r -e 'fsizes <- as.integer(readLines());
-				  print(summary(fsizes));
-				  cat("Fivenum\n");
-				  print(fivenum(fsizes))'
-
+		$ ls -l /boot | awk '!/^total/ {print $5}' | 	    \
+			 r -e 'fsizes <- as.integer(readLines());   \
+				print(summary(fsizes)); stem(fsizes)'
 		   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-		      2    2926   13900   36140   35650  676400
-		Fivenum
-		[1]      2.0   2652.5  13896.0  35944.0 676384.0
+		     13     512  110100  486900  768400 4735000
+		Loading required package: grDevices
+
+		  The decimal point is 6 digit(s) to the right of the |
+
+		  0 | 00000000000000000011112223
+		  0 | 5557778899
+		  1 | 112233
+		  1 | 5
+		  2 |
+		  2 |
+		  3 |
+		  3 |
+		  4 |
+		  4 | 7		
+
 
   And, last but not least, this (somewhat unwieldy) expression can be stored
   in a helper script:
 
-		$ ls -l /bin | awk '!/^total/ {print $5}' | examples/fsizes.r
-		   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-		      2    2926   13900   36140   35650  676400
-		Fivenum
-		[1]      2.0   2652.5  13896.0  35944.0 676384.0
 		$ cat examples/fsizes.r
 		#!/usr/bin/env r
 
 		fsizes <- as.integer(readLines())
 		print(summary(fsizes))
-		cat("Fivenum\n")
-		print(fivenum(fsizes))
+		stem(fsizes)
 
   (where calling /usr/bin/env is a trick from Python which allows one to
   forget whether r is installed in /usr/bin/r, /usr/local/bin/r, ~/bin/r, ...)
  
+  A few examples are provided in the source directories examples/ and tests/.
+
 
 Where ?
 =======
@@ -87,8 +93,8 @@ Who ?
 
   Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel
 
-  littler is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
+  er is free software; you can redistribute it and/or modify it
+  under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 

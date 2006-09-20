@@ -391,7 +391,8 @@ void showHelpAndExit() {
 }
 
 void showVersionAndExit() {
-	printf("%s ('%s') version %s\n\nR ",binaryName, programName, VERSION);
+	printf("%s ('%s') version %s\n",binaryName, programName, VERSION);
+	printf("\tusing GNU R ");
 	if(strcmp(R_SVN_REVISION, "unknown")==0) {
 		printf("Version %s.%s %s (%s-%s-%s)",
 				R_MAJOR, R_MINOR, R_STATUS, R_YEAR, R_MONTH, R_DAY);
@@ -406,8 +407,7 @@ void showVersionAndExit() {
 					R_SVN_REVISION);
 		}
 	}
-  	printf("\n\n"
-	       "Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel\n"
+  	printf("\n\nCopyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"

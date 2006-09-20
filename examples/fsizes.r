@@ -2,5 +2,4 @@
 
 fsizes <- as.integer(readLines())
 print(summary(fsizes))
-cat("Fivenum\n")
-print(fivenum(fsizes))
+stem(fsizes)
