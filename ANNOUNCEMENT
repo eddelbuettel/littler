@@ -35,8 +35,8 @@ Why ?
   example, we can quickly compute a summary() show a stem-and-leaf plot
   in a given directory via
 
-		$ ls -l /boot | awk '!/^total/ {print $5}' | 	    \
-			 r -e 'fsizes <- as.integer(readLines());
+		$ ls -l /boot | awk '!/^total/ {print $5}' | 	    	\
+			 r -e 'fsizes <- as.integer(readLines());	\
 				print(summary(fsizes)); stem(fsizes)'
 		   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 		     13     512  110100  486900  768400 4735000
