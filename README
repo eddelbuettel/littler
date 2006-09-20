@@ -26,7 +26,6 @@
   Please see the file 'INSTALL' for installation tips.
 
 
- 
   II.   (In-) Frequently asked questions
   ======================================
 
@@ -54,7 +53,7 @@
   -------------------------
 
   Actually, they aren't. But because littler optimises the startup,
-  the 'promise' to load them may have gotten lost. Try adding
+  they are never loaded. Just add
       library(datasets)
   to your script.
 
