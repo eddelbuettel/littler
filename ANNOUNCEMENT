@@ -36,7 +36,7 @@ Why ?
   in a given directory via
 
 		$ ls -l /boot | awk '!/^total/ {print $5}' | 	    \
-			 r -e 'fsizes <- as.integer(readLines());   \
+			 r -e 'fsizes <- as.integer(readLines());
 				print(summary(fsizes)); stem(fsizes)'
 		   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 		     13     512  110100  486900  768400 4735000
@@ -75,7 +75,7 @@ Why ?
 Where ?
 =======
 
-  Littler can either be downloaded from 
+  littler can either be downloaded from 
 
 	  http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/LittleR
 
@@ -93,7 +93,7 @@ Who ?
 
   Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel
 
-  er is free software; you can redistribute it and/or modify it
+  littler is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
