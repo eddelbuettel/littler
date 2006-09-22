@@ -20,9 +20,6 @@ AC_CONFIG_HEADERS(config.h)
 
 AC_SUBST(VERSION)
 
-dnl ISODATE=`date +%Y-%m-%d`
-dnl AC_SUBST(ISODATE)
-
 AC_CANONICAL_HOST
 
 dnl Checks for programs.
@@ -40,10 +37,7 @@ AC_CHECK_HEADER([getopt.h],
 	[AC_MSG_ERROR([littler needs getopt support to run. Please find and install it.])])
 
 AC_HEADER_MAJOR
-dnl AC_FUNC_ALLOCA
-dnl AC_STRUCT_TM
-dnl AC_STRUCT_ST_BLOCKS
-dnl AC_FUNC_CLOSEDIR_VOID
+
 AC_CHECK_FUNC(setenv,AC_DEFINE(HAVE_SETENV,1, [Define if you have the setenv function.]))
 
 dnl Checks for typedefs, structures, and compiler characteristics.
@@ -99,7 +93,6 @@ AC_DEFUN([NAMETOOL_FUN],[
 ])
 
 NAMETOOL_FUN
-
 
 AC_SUBST(RPROG)
 AC_SUBST(RHOME)
