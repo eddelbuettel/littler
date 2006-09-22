@@ -15,8 +15,10 @@
     If R is not compiled with a shared library, you need to rebuild and 
     reinstall R.  
 
-    In all likelihood, this requirement also precludes installation of
-    littler on Windoze. 
+    Linux and OS X are known to be supported at this point.
+    
+    In all likelihood, the requirement of shared libary precludes installation
+    of littler on Windoze. 
 
 
 1.2 Basic Steps

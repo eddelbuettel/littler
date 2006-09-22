@@ -87,6 +87,8 @@ Where ?
 
 	  $ agt-get install littler
 
+  littler is known to build and run on Linux and OS X.
+
 
 Who ?
 =====
