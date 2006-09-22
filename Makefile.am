@@ -12,6 +12,11 @@ BUILT_SOURCES=autoloads.h
 autoloads.h:
 	R_HOME= ${RPROG} --silent --vanilla --slave < autoloads.R > autoloads.h
 
+r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
+	@rm -f r$(EXEEXT)
+	$(LINK) $(r_LDFLAGS) $(r_OBJECTS) $(r_LDADD) $(LIBS)
+	$(RUN_NAMETOOL)
+
 #  Clean target to delete stuff make generates
 MOSTLYCLEANFILES=autoloads.h littler.o
 

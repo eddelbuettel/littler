@@ -16,7 +16,7 @@ dnl
 AM_INIT_AUTOMAKE( no-texinfo.tex foreign )
 
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS(config.h)
 
 AC_SUBST(VERSION)
 
@@ -55,14 +55,28 @@ AC_PATH_PROG(RPROG,R)
 
 dnl Test the R version for shared library
 AC_DEFUN([R_PROG],[
-    AC_MSG_CHECKING(for R Program)
-    # make sure that a well known include file exists
+    AC_MSG_CHECKING([if R was built as a shared library])
+
+	# First test if R was found
+	if test "${RPROG}" = ""; then
+		echo
+		echo "R not found. Please update your PATH variable to include the R bin directory"
+		echo
+		AC_MSG_ERROR( aborting! )
+	fi
+
+    # Now make sure that a well known include file exists
     # and the libR.so
     if ${RPROG} CMD config --ldflags 2>/dev/null | grep -v 'R was not built as a shared library' >/dev/null; then
         RHOME=`$RPROG RHOME`
 		AM_CFLAGS=`${RPROG} CMD config --cppflags`
-		AM_LDFLAGS="`${RPROG} CMD config --ldflags` -Wl,-rpath,${RHOME}/lib"
-        AC_MSG_RESULT(shared library version of R found)
+		if test "$build_vendor" != "apple"; then
+			AM_LDFLAGS="`${RPROG} CMD config --ldflags` -Wl,-rpath,${RHOME}/lib"
+			RUN_NAMETOOL=""
+		else
+			AM_LDFLAGS="`${RPROG} CMD config --ldflags`"
+		fi
+        AC_MSG_RESULT([yes])
     else
         echo
         echo "R was not built as a shared library"
@@ -74,8 +88,22 @@ AC_DEFUN([R_PROG],[
 ])
 
 R_PROG
+
+dnl Are we building for Mac OS X? this program will exist if so.
+AC_PATH_PROG(NAMETOOL,install_name_tool)
+
+AC_DEFUN([NAMETOOL_FUN],[
+	if test "${NAMETOOL}" != ""; then
+			RUN_NAMETOOL="${NAMETOOL} -change libR.dylib ${RHOME}/lib/libR.dylib r"
+	fi
+])
+
+NAMETOOL_FUN
+
+
 AC_SUBST(RPROG)
 AC_SUBST(RHOME)
+AC_SUBST(RUN_NAMETOOL)
 AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
 
