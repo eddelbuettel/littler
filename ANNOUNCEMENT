@@ -32,8 +32,8 @@ Why ?
 		9.869604
 
   But unlike bc(1), GNU R has a vast number of statistical functions. For
-  example, we can quickly compute a summary() show a stem-and-leaf plot
-  in a given directory via
+  example, we can quickly compute a summary() and show a stem-and-leaf plot
+  for file sizes in a given directory via
 
 		$ ls -l /boot | awk '!/^total/ {print $5}' | \
 			 r -e 'fsizes <- as.integer(readLines());
