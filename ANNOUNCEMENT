@@ -8,16 +8,17 @@ What ?
 Why ?
 =====
 
-  GNU R, a language and environment for statistical computing and graphics,
-  provides a wonderful system for 'programming with data' as well as 
-  interactive exploratory analysis, often involving graphs.
+  GNU R, a language and environment for statistical computing and
+  graphics, provides a wonderful system for 'programming with data'
+  as well as interactive exploratory analysis, often involving graphs.
 
-  Sometimes, however, simple scripts are desired. While GNU R can be used
-  in batch mode, and while so-called 'here' documents can be crafted, a
-  long-standing need for a scripting front-end has often been expressed 
-  by the R Community.
+  Sometimes, however, simple scripts are desired. While GNU R can
+  be used in batch mode, and while so-called 'here' documents can be
+  crafted, a long-standing need for a scripting front-end has often
+  been expressed by the R Community.
 
-  littler (pronounced 'little R' and written 'r') aims to fill this need.  
+  littler (pronounced 'little R' and written 'r') aims to fill
+  this need.
 
   It can be used directly on the command-line just like, say, bc(1):
 
@@ -25,15 +26,15 @@ Why ?
 		$ echo 'cat(pi^2,"\n")' | r
 		9.869604
 
-  Equivalently, commands that are to be evaluated can be given on the
-  command-line
+  Equivalently, commands that are to be evaluated can be given on
+  the command-line
 
 		$ r -e 'cat(pi^2, "\n")'
 		9.869604
 
-  But unlike bc(1), GNU R has a vast number of statistical functions. For
-  example, we can quickly compute a summary() and show a stem-and-leaf plot
-  for file sizes in a given directory via
+  But unlike bc(1), GNU R has a vast number of statistical
+  functions. For example, we can quickly compute a summary() and show
+  a stem-and-leaf plot for file sizes in a given directory via
 
 		$ ls -l /boot | awk '!/^total/ {print $5}' | \
 			 r -e 'fsizes <- as.integer(readLines());
@@ -56,8 +57,8 @@ Why ?
 		  4 | 7		
 
 
-  And, last but not least, this (somewhat unwieldy) expression can be stored
-  in a helper script:
+  And, last but not least, this (somewhat unwieldy) expression can
+  be stored in a helper script:
 
 		$ cat examples/fsizes.r
 		#!/usr/bin/env r
@@ -66,10 +67,12 @@ Why ?
 		print(summary(fsizes))
 		stem(fsizes)
 
-  (where calling /usr/bin/env is a trick from Python which allows one to
-  forget whether r is installed in /usr/bin/r, /usr/local/bin/r, ~/bin/r, ...)
- 
-  A few examples are provided in the source directories examples/ and tests/.
+  (where calling /usr/bin/env is a trick from Python which allows one
+  to forget whether r is installed in /usr/bin/r, /usr/local/bin/r,
+  ~/bin/r, ...)
+
+  A few examples are provided in the source directories examples/
+  and tests/.
 
 
 Where ?
@@ -102,13 +105,13 @@ Who ?
 
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
+  You should have received a copy of the GNU General Public
+  License along with this program; if not, write to the Free
+  Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+  MA  02111-1307  USA
 
   Comments are welcome, as are are suggestions, bug fixes, or patches.
 

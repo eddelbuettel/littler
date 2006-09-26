@@ -36,7 +36,7 @@
   We wanted something short, sweet and with sufficient reference to R
   without trampling over R. The 'little' part implies two things: 1)
   that the program name is the lower case 'r', and 2) that 'r' provides
-  something less that GNU R, mainly the langauge interpreter without the
+  something less that GNU R, mainly the language interpreter without the
   R environment. 'littler' is meant to run in an automated, i.e scripted,
   fashion with little interaction from the user.
 
