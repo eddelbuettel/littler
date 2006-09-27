@@ -1,6 +1,6 @@
-2006-09-14  Dirk Eddelbuettel  <edd@debian.org>
+2006-09-26  Dirk Eddelbuettel  <edd@debian.org>
 
-	* Release 0.0.5: [ still pending]
+	* Release 0.0.5 made and announced aby Jeff earlier today
 
 	* rinterp.c, rinterp.1: renamed to littler.c, littler.1
 	* Makefile.am, configure.in: Many changes to accomodate that
