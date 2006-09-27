@@ -43,8 +43,16 @@
   We also like 'r' in /usr/local/bin/r, /usr/bin/r or on the command-line
   as it saves keystrokes, and does not harm the Shift key as much.
 
+  Lastly, you will find a little r in both Jeffrey and Dirk.
 
-  II.2  I run a script trough 'littler' but nothing shows. What's up? 
+
+  II.2. Wasn't there once a 'rinterp' as well ?
+  ---------------------------------------------
+ 
+  There was, but we think littler is cuter. See the previous questions.
+
+
+  II.3  I run a script trough 'littler' but nothing shows. What's up? 
   -----------------------------------------------------------------
 
   Add the --verbose flag. This will print out many relevant expressions,
@@ -54,13 +62,29 @@
   you want to show.
 
 
-  II.3  Data sets are lost!
+  II.4  Data sets are lost!
   -------------------------
 
   Actually, they aren't. But because 'littler' optimises the startup,
   they are never loaded. Just add
       library(datasets)
   to your script.
+
+
+  II.5  It doesn't build and complains about 'R_SignalHandlers undeclared'
+  ------------------------------------------------------------------------
+
+  You need to upgrade to R 2.3.1 or newer. 
+
+  Our configure ought to check for a minimal R versions and currentlyu does
+  not.
+
+
+  II.6  The r binary clashed with my R binary.
+  --------------------------------------------
+
+  Yes, we didn't do enough testing on OS X. That is an oversight we intend 
+  to fix somewhow.  OS X will probably have to get a distinct binary name.
 
 
   III   Feedback
