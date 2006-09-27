@@ -78,17 +78,19 @@ Why ?
 Where ?
 =======
 
-  littler can either be downloaded from 
+  littler can either be downloaded from either of 
 
 	  http://biostat.mc.vanderbilt.edu/LittleR
 
-  accessed via SVN from
+          http://dirk.eddelbuettel.com/code/littler.html
 
-	  http://littler.googlecode.com/svn/trunk/ littler
+  accessed via SVN using
+
+	  svn checkout http://littler.googlecode.com/svn/trunk/ littler
 
   or (soon !) be gotten from Debian mirrors via 
 
-	  $ agt-get install littler
+	  $ apt-get install littler
 
   littler is known to build and run on Linux and OS X.
 
