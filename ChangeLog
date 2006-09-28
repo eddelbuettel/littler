@@ -1,8 +1,19 @@
+2006-09-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* Release 0.0.6 RSN.
+
+	* littler.c: parse_eval(), the REP loop for stdin and '-e', now use
+	R_tryEval() instead of eval().
+
+	* configure.in, Makefile.am, ldflags.R: For linux, we add all paths set by
+	RHOME/etc/ldpaths to r's RPATH.
+
 2006-09-26  Dirk Eddelbuettel  <edd@debian.org>
 
-	* Release 0.0.5 made and announced aby Jeff earlier today
+	* Release 0.0.5 made and announced by Jeff
 
 	* rinterp.c, rinterp.1: renamed to littler.c, littler.1
+
 	* Makefile.am, configure.in: Many changes to accomodate that
 
 	* autoloads.R: code generator to aid in autoload()ing functions
