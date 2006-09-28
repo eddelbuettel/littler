@@ -102,11 +102,11 @@ int source(char *file){
 	SETCAR(CDR(CDR(expr)), p);
 	SET_TAG(CDR(CDR(expr)),Rf_install("print.eval"));
 
-	errorOccurred=1;
+	errorOccurred=0;
 	val = R_tryEval(expr,NULL,&errorOccurred);
 	UNPROTECT(4);
 
-	return (errorOccurred)? 0:1;
+	return errorOccurred;
 }
 
 /* Autoload default packages and names from autoloads.h
@@ -286,11 +286,11 @@ int readline_stdin(membuf_t *plb){
 	} while(1);	
 }
 
-void parse_eval(membuf_t *pmb, char *line, int lineno){
+int parse_eval(membuf_t *pmb, char *line, int lineno){
 	membuf_t mb = *pmb;
 	ParseStatus status;
 	SEXP cmdSexp, cmdexpr, ans = R_NilValue;
-	int i;
+	int i, errorOccurred;
 
 	mb = *pmb = add_to_membuf(pmb,line);
 
@@ -301,7 +301,8 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 		case PARSE_OK:
 			/* Loop is needed here as EXPSEXP might be of length > 1 */
 			for(i = 0; i < length(cmdexpr); i++){
-				ans = eval(VECTOR_ELT(cmdexpr, i), R_GlobalEnv);
+				ans = R_tryEval(VECTOR_ELT(cmdexpr, i),NULL,&errorOccurred);
+				if (errorOccurred) return 1;
 				if (verbose && R_Visible){
 					PrintValue(ans);
 				}
@@ -313,21 +314,22 @@ void parse_eval(membuf_t *pmb, char *line, int lineno){
 		break;
 		case PARSE_NULL:
 			fprintf(stderr, "%s: ParseStatus is null (%d)\n", programName, status);
-			exit(1);
+			return 1;
 		break;
 		case PARSE_ERROR:
 			fprintf(stderr,"Parse Error line %d: \"%s\"\n", lineno, line);
-			exit(1);
+			return 1;
 		break;
 		case PARSE_EOF:
 			fprintf(stderr, "%s: ParseStatus is eof (%d)\n", programName, status);
 		break;
 		default:
 			fprintf(stderr, "%s: ParseStatus is not documented %d\n", programName, status);
-			exit(1);
+			return 1;
 		break;
 	}
 	UNPROTECT(2);
+	return 0;
 }
 
 extern char *R_TempDir;
@@ -512,6 +514,18 @@ int main(int argc, char **argv){
 		}
 	#endif
 
+	/* Now, argv[optind] could be a file we want to source -- if we're
+	 * in the 'shebang' case -- or it could be an expression from stdin.
+	 * So call stat(1) on it, and if its a file we will treat it as such.
+	 */
+	struct stat sbuf;
+	if (optind < argc) { 
+		if ((strcmp(argv[optind],"-") != 0) && (stat(argv[optind],&sbuf) != 0)) {
+			perror(argv[optind]);
+			exit(1);
+		}
+	}
+
 	/* Setenv R_HOME: insert or replace into environment.
 	 * The RHOME macro is defined during configure
 	 */
@@ -528,17 +542,14 @@ int main(int argc, char **argv){
 		exit(1);
 	}
 
-	/* Now, argv[optind] could be a file we want to source -- if we're
-	 * in the 'shebang' case -- or it could be an expression from stdin.
-	 * So call stat(1) on it, and if its a file we will treat it as such.
+	/* Setenv LD_LIBRARY_PATH: insert or replace into environment.
+	 * This should get everything defined by ${R_HOME}/etc/ldpaths
 	 */
-	struct stat sbuf;
-	if (optind < argc) { 
-		if ((strcmp(argv[optind],"-") != 0) && (stat(argv[optind],&sbuf) != 0)) {
-			perror(argv[optind]);
-			exit(1);
-		}
+	if (setenv("LD_RUN_PATH",R_LD_LIBRARY_PATH,1) != 0){
+		perror("ERROR: couldn't set/replace LD_LIBRARY_PATH");
+		exit(1);
 	}
+
 
 	/* Don't let R set up its own signal handlers */
 	R_SignalHandlers = 0;
@@ -583,24 +594,26 @@ int main(int argc, char **argv){
 
 	/* Now determine which R code to evaluate */
 
+	int exit_val;
 	if (evalstr != NULL) {				
 		/* we have a command line expression to evaluate */
-		membuf_t pb = init_membuf(1024);
-		parse_eval(&pb, evalstr, 1);
+		membuf_t pb = init_membuf(512);
+		exit_val = parse_eval(&pb, evalstr, 1);
 		destroy_membuf(pb);
 	} else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
 		/* call R function source(filename) */
-		source(argv[optind]);
+		exit_val = source(argv[optind]);
 	} else {
 		/* Or read from stdin */
 		membuf_t lb = init_membuf(1024);
 		membuf_t pb = init_membuf(1024);
 		int lineno = 1;
 		while(readline_stdin(&lb)){
-			parse_eval(&pb,(char*)lb->buf,lineno++);
+			exit_val = parse_eval(&pb,(char*)lb->buf,lineno++);
+			if (exit_val) break;
 		}
 		destroy_membuf(lb);
 		destroy_membuf(pb);
 	}
-	exit(0);
+	exit(exit_val);
 }

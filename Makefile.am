@@ -6,19 +6,22 @@ r_SOURCES=littler.c r.1 autoloads.R ANNOUNCEMENT tests/* examples/*
 
 # These two together will tell make to create autoloads.h before
 # any target.
-nodist_r_SOURCES=autoloads.h
-BUILT_SOURCES=autoloads.h
+nodist_r_SOURCES=autoloads.h ldflags.txt
+BUILT_SOURCES=autoloads.h ldflags.txt
 
 autoloads.h:
 	R_HOME= ${RPROG} --silent --vanilla --slave < autoloads.R > autoloads.h
 
+ldflags.txt:
+	R_HOME= ${RPROG} --silent --vanilla --slave < ldflags.R > ldflags.txt
+
 r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
 	@rm -f r$(EXEEXT)
-	$(LINK) $(r_LDFLAGS) $(r_OBJECTS) $(r_LDADD) $(LIBS)
+	$(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) `cat ldflags.txt` $(LDFLAGS) -o $@ $(r_LDFLAGS) $(r_OBJECTS) $(r_LDADD) $(LIBS)
 	$(RUN_NAMETOOL)
 
 #  Clean target to delete stuff make generates
-MOSTLYCLEANFILES=autoloads.h littler.o
+MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o
 
 #EXTRA_DIST=littler.texinfo
 

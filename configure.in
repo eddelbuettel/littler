@@ -64,11 +64,9 @@ AC_DEFUN([R_PROG],[
     if ${RPROG} CMD config --ldflags 2>/dev/null | grep -v 'R was not built as a shared library' >/dev/null; then
         RHOME=`$RPROG RHOME`
 		AM_CFLAGS=`${RPROG} CMD config --cppflags`
+		AM_LDFLAGS="`${RPROG} CMD config --ldflags`"
 		if test "$build_vendor" != "apple"; then
-			AM_LDFLAGS="`${RPROG} CMD config --ldflags` -Wl,-rpath,${RHOME}/lib"
 			RUN_NAMETOOL=""
-		else
-			AM_LDFLAGS="`${RPROG} CMD config --ldflags`"
 		fi
         AC_MSG_RESULT([yes])
     else
@@ -88,7 +86,7 @@ AC_PATH_PROG(NAMETOOL,install_name_tool)
 
 AC_DEFUN([NAMETOOL_FUN],[
 	if test "${NAMETOOL}" != ""; then
-			RUN_NAMETOOL="${NAMETOOL} -change libR.dylib ${RHOME}/lib/libR.dylib r"
+			RUN_NAMETOOL="${NAMETOOL} -change libR.dylib ${RHOME}/lib/libR.dylib `cat ldflags.txt` r"
 	fi
 ])
 
