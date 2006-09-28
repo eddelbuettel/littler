@@ -20,7 +20,3 @@ cat("int packobjc[] = {\n",paste(packobjc,sep='',collapse=",\n"),"\n};\n")
 
 # List of object names
 cat("char *packobj[] = {\n",paste('"',packobj,'"',sep='',collapse=",\n"),"\n};\n")
-
-# ALSO: fix LD_LIBRARY_PATH as this will get everything in ${R_HOME}/etc/ldpaths
-
-cat('char *R_LD_LIBRARY_PATH = "',Sys.getenv("LD_LIBRARY_PATH"),'";\n',sep='')

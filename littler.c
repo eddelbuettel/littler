@@ -542,15 +542,6 @@ int main(int argc, char **argv){
 		exit(1);
 	}
 
-	/* Setenv LD_LIBRARY_PATH: insert or replace into environment.
-	 * This should get everything defined by ${R_HOME}/etc/ldpaths
-	 */
-	if (setenv("LD_RUN_PATH",R_LD_LIBRARY_PATH,1) != 0){
-		perror("ERROR: couldn't set/replace LD_LIBRARY_PATH");
-		exit(1);
-	}
-
-
 	/* Don't let R set up its own signal handlers */
 	R_SignalHandlers = 0;
 
