@@ -26,17 +26,58 @@
   Linux and OS X builds are supported.  Please see the file 'INSTALL'
   for installation tips.
 
+  II.   Implementation
+  ====================
 
-  II.   (In-) Frequently asked questions
+  littler is a c program named r that embeds GNU R (see "Embedding
+  R under Unix-alikes" in the "Writing R Extensions" manual from
+  http://www.r-project.org/) to provide the UNIX hashbang mechanism and
+  simpler command-line support. This allows users to creat R scripts and
+  popular "one-liners" using the command line flag --eval.  To do this,
+  littler hard-codes certain bits of R's installation and environment.
+  The first R program in the user's path, found during configuration,
+  is used the glean those bits.
+
+  Bit one
+
+  The R_HOME environment variable is written to the header file littler.h
+  so that it can be hard-coded into the r binary. Note that it overrides
+  the user's own R_HOME envrionment variable when r is executed.
+
+  Bit two
+
+  To decrease r's startup time, it autoloads all methods found in R's default
+  packages. This is done by inspecting the R user option 'defaultPackages' and
+  emitting c code via the following command:
+
+  R --vanilla --slave --silent < autoloads.R > autoloads.h
+
+  Bit three
+
+  To eliminate the dependency on the LD_LIBRARY_PATH environment
+  variable, at least on linux, r looks to the file R_HOME/etc/ldpaths
+  to set its rpath via the -rpath linker option  (see ldpaths.R for more
+  information). Unfortunately this linker flag is not supported on Mac OS
+  X, so on that platform r still depends on DYLD_LIBRARY_PATH.
+
+  One caveat of Bit three is that if one runs R CMD javareconf to update
+  R_HOME/etc/ldpaths, this will not be reflected in r. Thus, a re-compilation
+  of r is necessary.
+
+  Also, .Last() is never run by r. While r could certainly run it, if
+  users demand this featulre , but we currently see no need for it in
+  a scripting/command-line environment.
+
+  III.  (In-) Frequently asked questions
   ======================================
 
-  II.1  Why the name 'littler' ?
+  III.1  Why the name 'littler' ?
   ------------------------------
 
   We wanted something short, sweet and with sufficient reference to R
   without trampling over R. The 'little' part implies two things: 1)
   that the program name is the lower case 'r', and 2) that 'r' provides
-  something less that GNU R, mainly the language interpreter without the
+  something less than GNU R, mainly the language interpreter without the
   R environment. 'littler' is meant to run in an automated, i.e scripted,
   fashion with little interaction from the user.
 
@@ -46,13 +87,13 @@
   Lastly, you will find a little r in both Jeffrey and Dirk.
 
 
-  II.2. Wasn't there once a 'rinterp' as well ?
+  III.2. Wasn't there once a 'rinterp' as well ?
   ---------------------------------------------
  
   There was, but we think littler is cuter. See the previous questions.
 
 
-  II.3  I run a script trough 'littler' but nothing shows. What's up? 
+  III.3  I run a script trough 'littler' but nothing shows. What's up? 
   -----------------------------------------------------------------
 
   Add the --verbose flag. This will print out many relevant expressions,
@@ -62,7 +103,7 @@
   you want to show.
 
 
-  II.4  Data sets are lost!
+  III.4  Data sets are lost!
   -------------------------
 
   Actually, they aren't. But because 'littler' optimises the startup,
@@ -71,23 +112,23 @@
   to your script.
 
 
-  II.5  It doesn't build and complains about 'R_SignalHandlers undeclared'
+  III.5  It doesn't build and complains about 'R_SignalHandlers undeclared'
   ------------------------------------------------------------------------
 
   You need to upgrade to R 2.3.1 or newer. 
 
-  Our configure ought to check for a minimal R versions and currentlyu does
+  Our configure ought to check for a minimal R versions and currently does
   not.
 
 
-  II.6  The r binary clashed with my R binary.
+  III.6  The r binary clashed with my R binary.
   --------------------------------------------
 
   Yes, we didn't do enough testing on OS X. That is an oversight we intend 
   to fix somewhow.  OS X will probably have to get a distinct binary name.
 
 
-  III   Feedback
+  IV    Feedback
   ==============
 
   Comments are welcome, as are are suggestions, bug fixes, or patches.
