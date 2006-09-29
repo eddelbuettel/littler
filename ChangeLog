@@ -1,6 +1,13 @@
-2006-09-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+2006-09-29  Dirk Eddelbuettel  <edd@debian.org>
 
 	* Release 0.0.6 RSN.
+
+	* littler.c: support svnrevision/date in --version
+	* bootstrap, svnversion.h: call svn and do some awk'ing borrowed from
+	  R's Makefiles to auto-create svnversion.h
+	* configure.in, Makefile.am: updated accordingly
+
+2006-09-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* littler.c: parse_eval(), the REP loop for stdin and '-e', now use
 	R_tryEval() instead of eval().

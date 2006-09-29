@@ -23,6 +23,7 @@
 
 #include "config.h"
 #include "littler.h"
+#include "svnversion.h"
 #include "autoloads.h"
 
 #include <getopt.h>
@@ -393,7 +394,9 @@ void showHelpAndExit() {
 }
 
 void showVersionAndExit() {
-	printf("%s ('%s') version %s\n",binaryName, programName, VERSION);
+	printf("%s ('%s') version %s\n\tsvn revision %s as of %s\n\tbuilt at %s on %s\n", 
+	       binaryName, programName, VERSION, 
+	       svnrevision, svndate, compiletime, compiledate);
 	printf("\tusing GNU R ");
 	if(strcmp(R_SVN_REVISION, "unknown")==0) {
 		printf("Version %s.%s %s (%s-%s-%s)",
