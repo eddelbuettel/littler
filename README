@@ -31,7 +31,7 @@
   littler is a c program named r that embeds GNU R (see "Embedding
   R under Unix-alikes" in the "Writing R Extensions" manual from
   http://www.r-project.org/) to provide the UNIX hashbang mechanism and
-  simpler command-line support, allowiing users to creat R scripts and
+  simpler command-line support, allowing users to create R scripts and
   popular "one-liners" using the command line flag --eval.  To do this,
   littler hard-codes certain bits of R's installation and environment.
   The first R program in the user's path, found during configuration,
@@ -41,7 +41,7 @@
 
   The R_HOME environment variable is written to the header file littler.h
   so that it can be hard-coded into the r binary. Note that it overrides
-  the user's own R_HOME envrionment variable when r is executed.
+  the user's own R_HOME environment variable when r is executed.
 
   Bit two
 
