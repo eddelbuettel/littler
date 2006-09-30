@@ -45,12 +45,12 @@
 #define R_240 132096 /* This is set in Rversion.h */
 
 int verbose=0;
-extern int R_Visible; /* We're cheating here, as this undocumented and not in the
+extern int R_Visible; /* We're cheating here, as this is undocumented and not in the
                        * R embedded interface.
 					   * 
-					   * This variable controls when an expression is printed
-					   * via PrintValue()
-					   */
+                       * This variable controls when an expression is printed
+                       * via PrintValue()
+                       */
 
 /* these two are being filled by autoconf and friends via config.h */
 /* VERSION */
@@ -131,8 +131,8 @@ int source(char *file){
  * }
  *
  * What's missing is the updating of the string vector .Autoloaded with the list
- * of packages, which by my code analysis is useless; meaning it's for informational
- * purposes only.
+ * of packages, which by my code analysis is useless and only for informational
+ * purposes.
  *
  */
 void autoloads(void){

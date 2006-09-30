@@ -19,7 +19,6 @@
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
-
   I     Installation 
   ==================
 
@@ -32,7 +31,7 @@
   littler is a c program named r that embeds GNU R (see "Embedding
   R under Unix-alikes" in the "Writing R Extensions" manual from
   http://www.r-project.org/) to provide the UNIX hashbang mechanism and
-  simpler command-line support. This allows users to creat R scripts and
+  simpler command-line support, allowiing users to creat R scripts and
   popular "one-liners" using the command line flag --eval.  To do this,
   littler hard-codes certain bits of R's installation and environment.
   The first R program in the user's path, found during configuration,
@@ -46,27 +45,25 @@
 
   Bit two
 
-  To decrease r's startup time, it autoloads all methods found in R's default
-  packages. This is done by inspecting the R user option 'defaultPackages' and
-  emitting c code via the following command:
-
-  R --vanilla --slave --silent < autoloads.R > autoloads.h
+  To decrease r's startup time, it sets the environment variable
+  R_DEFAULT_PACKAGES to NULL and then autoloads all of the default package
+  methods. This is done by inspecting the R user option 'defaultPackages'
+  and emitting c code to be statically compiled into r. See autoloads.R
+  for more info.
 
   Bit three
 
   To eliminate the dependency on the LD_LIBRARY_PATH environment
   variable, at least on linux, r looks to the file R_HOME/etc/ldpaths
-  to set its rpath via the -rpath linker option  (see ldpaths.R for more
-  information). Unfortunately this linker flag is not supported on Mac OS
-  X, so on that platform r still depends on DYLD_LIBRARY_PATH.
+  to set the -rpath linker option  (see ldpaths.R for more
+  info). Unfortunately this linker flag is not supported on Mac
+  OS X, so r still depends on DYLD_LIBRARY_PATH.
 
   One caveat of Bit three is that if one runs R CMD javareconf to update
   R_HOME/etc/ldpaths, this will not be reflected in r. Thus, a re-compilation
-  of r is necessary.
+  is necessary
 
-  Also, .Last() is never run by r. While r could certainly run it, if
-  users demand this featulre , but we currently see no need for it in
-  a scripting/command-line environment.
+  Also, upon exit no cleanup is done and .Last() is not run.
 
   III.  (In-) Frequently asked questions
   ======================================
