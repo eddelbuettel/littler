@@ -1,7 +1,11 @@
-2006-09-29  Dirk Eddelbuettel  <edd@debian.org>
+2006-10-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* Release 0.0.6 RSN.
 
+	* configure.in: Added check for R version >= 2.3.1
+
+2006-09-29  Dirk Eddelbuettel  <edd@debian.org>
+	
 	* littler.c: support svnrevision/date in --version
 	* bootstrap, svnversion.h: call svn and do some awk'ing borrowed from
 	  R's Makefiles to auto-create svnversion.h

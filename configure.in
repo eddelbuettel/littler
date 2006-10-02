@@ -79,7 +79,18 @@ AC_DEFUN([R_PROG],[
     fi
 ])
 
+
 R_PROG
+
+dnl R version check 
+dnl Note that this may fail really old versions of R as the string wasn't always "R version x.y.z ..." 
+r_version=`${RPROG} --version | head -1 | cut -f3 -d" " `
+case ${r_version} in
+     1.*.*|2.0.*|2.1.*|2.2.*|2.3.0)
+	 AC_MSG_ERROR([R version ${r_version} is too old. Please upgrade to a more recent version.])
+     ;;
+esac
+
 
 dnl Are we building for Mac OS X? this program will exist if so.
 AC_PATH_PROG(NAMETOOL,install_name_tool)
