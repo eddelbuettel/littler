@@ -25,25 +25,30 @@
   Linux and OS X builds are supported.  Please see the file 'INSTALL'
   for installation tips.
 
+
   II.   Implementation
   ====================
 
-  littler is a c program named r that embeds GNU R (see "Embedding
-  R under Unix-alikes" in the "Writing R Extensions" manual from
-  http://www.r-project.org/) to provide the UNIX hashbang mechanism and
-  simpler command-line support, allowing users to create R scripts and
-  popular "one-liners" using the command line flag --eval.  To do this,
-  littler hard-codes certain bits of R's installation and environment.
-  The first R program in the user's path, found during configuration,
-  is used the glean those bits.
+  littler is a C-language program named r that embeds GNU R (see "Embedding
+  R under Unix-alikes" in the "Writing R Extensions" manual from either
+  http://www.r-project.org/, or your R installations / sources) to
+  provide the UNIX hashbang mechanism and simpler command-line support, 
+  allowing users to create R scripts and popular "one-liners" using the 
+  command-line flag --eval.  To do this, littler hard-codes certain bits 
+  of R's installation and environment. The first R program in the user's 
+  path, found during configuration, is used the glean those bits.
 
-  Bit one
+
+  II.1 R_HOME
+  -----------
 
   The R_HOME environment variable is written to the header file littler.h
   so that it can be hard-coded into the r binary. Note that it overrides
   the user's own R_HOME environment variable when r is executed.
 
-  Bit two
+
+  II.2 R_DEFAULT_PACKAGES
+  -----------------------
 
   To decrease r's startup time, it sets the environment variable
   R_DEFAULT_PACKAGES to NULL and then autoloads all of the default package
@@ -51,7 +56,9 @@
   and emitting c code to be statically compiled into r. See autoloads.R
   for more info.
 
-  Bit three
+
+  II.3 LD_LIBRARY_PATH
+  --------------------
 
   To eliminate the dependency on the LD_LIBRARY_PATH environment
   variable, at least on linux, r looks to the file R_HOME/etc/ldpaths
@@ -59,11 +66,15 @@
   info). Unfortunately this linker flag is not supported on Mac
   OS X, so r still depends on DYLD_LIBRARY_PATH.
 
-  One caveat of Bit three is that if one runs R CMD javareconf to update
-  R_HOME/etc/ldpaths, this will not be reflected in r. Thus, a re-compilation
-  is necessary
+  One caveat of working directly with LD_LIBRARY_PATH is that if one ever 
+  alters or updates R_HOME/etc/ldpaths (e.g. by running 'R CMD javareconf'),
+  this will not be reflected in r. Thus, a re-compilation of r is necessary.
 
-  Also, upon exit no cleanup is done and .Last() is not run.
+  II.4 Last but not least
+  -----------------------
+
+  Upon exit no cleanup is done and .Last() is not run.
+
 
   III.  (In-) Frequently asked questions
   ======================================
@@ -87,7 +98,7 @@
   III.2. Wasn't there once a 'rinterp' as well ?
   ---------------------------------------------
  
-  There was, but we think littler is cuter. See the previous questions.
+  There was, but we think littler is cuter. See the previous question.
 
 
   III.3  I run a script trough 'littler' but nothing shows. What's up? 
