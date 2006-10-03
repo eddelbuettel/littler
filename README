@@ -138,14 +138,16 @@
   the binary name. For instance, if you would like the binary name to be
   'rsp' run configure like this:
 
-  ./configure --program-suffix=sp
+      ./configure --program-suffix=sp
 
   and if you'd rather have a prefix to the binary, run:
 
-  ./configure --program-prefix=little
+      ./configure --program-prefix=little
 
-  which will name the binary 'littler'. The binary is renamed when
-  'make install' is run.
+  which will name the binary 'littler'. The binary, as well as the manual page,
+  are renamed when 'make install' is run.  Should you need it, 'make uninstall'
+  will also remember this setting.
+
 
   IV    Feedback
   ==============

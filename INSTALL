@@ -28,9 +28,20 @@
 
  	$ ./configure
 
-   which will find the first path to R in your environment variable PATH. If
-   there's another R installation you want to use, then you'll have to readjust
-   PATH. For example:
+   which will find the first path to R in your environment variable PATH. 
+   
+   If you want the binary to be installation with a name other than 'r' 
+   (which is a good idea on case-insensitive systems like OS X), then you 
+   can set either --program-suffix or --program-prefix as in
+
+      ./configure --program-suffix=sp			# creates rsp
+
+   and 
+
+      ./configure --program-prefix=little		# creates littler
+
+   If there's another R installation you want to use, then you'll have to 
+   readjust the PATH. For example:
 
 		$ PATH=~/R-trunk/bin:$PATH ./configure
 
@@ -67,11 +78,14 @@
 2.3 Build preparation
 ---------------------
 
-    You typically need to rebuild configure via
+    You can simply run the catch-all script 'bootstrap':
 
-	$ aclocal && autoheader && automake && autconf 
+	$ bootstrap
 
-    after which Step 1.2 applies: './configure && make && sudo make install'.
+    which includes the steps from 1.2 above and produces a new executable.
+
+    If you want to set configure options, you can do so too after an initial
+    'bootstrap' call.
 
 
 
