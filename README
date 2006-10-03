@@ -131,12 +131,21 @@
   not.
 
 
-  III.6  The r binary clashed with my R binary.
+  III.6  The r binary name clashes with my R binary.
   --------------------------------------------
 
-  Yes, we didn't do enough testing on OS X. That is an oversight we intend 
-  to fix somewhow.  OS X will probably have to get a distinct binary name.
+  Use the configure flag --program-prefix or --program-suffix to transform
+  the binary name. For instance, if you would like the binary name to be
+  'rsp' run configure like this:
 
+  ./configure --program-suffix=sp
+
+  and if you'd rather have a prefix to the binary, run:
+
+  ./configure --program-prefix=little
+
+  which will name the binary 'littler'. The binary is renamed when
+  'make install' is run.
 
   IV    Feedback
   ==============
