@@ -36,7 +36,7 @@
   allowing users to create R scripts and popular "one-liners" using the 
   command-line flag --eval.  To do this, littler hard-codes certain bits 
   of R's installation and environment. The first R program in the user's 
-  path, found during configuration, is used the glean those bits.
+  path, found during configuration, is used to glean those bits.
 
 
   II.1 R_HOME
@@ -73,7 +73,9 @@
   II.4 Last but not least
   -----------------------
 
-  Upon exit no cleanup is done and .Last() is not run.
+  Upon exit no cleanup is done and .Last() is not run. This behavior is
+  more suitable for a scripting environment as opposed to an interactive
+  one.
 
 
   III.  (In-) Frequently asked questions
