@@ -1,8 +1,11 @@
 2006-10-03  Dirk Eddelbuettel  <edd@debian.org>
 
-	* Release 0.0.6 RSN.
-
 	* README, INSTALL: Some more polishing
+
+2006-10-03 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* README: added FAQ answer to use the configure flags
+	--program-prefix and/or --program-suffix for renaming r binary.
 
 2006-10-02  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -11,9 +14,15 @@
 2006-09-29  Dirk Eddelbuettel  <edd@debian.org>
 	
 	* littler.c: support svnrevision/date in --version
+
 	* bootstrap, svnversion.h: call svn and do some awk'ing borrowed from
 	  R's Makefiles to auto-create svnversion.h
+
 	* configure.in, Makefile.am: updated accordingly
+
+2006-09-29 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* README: Added 'Implementation' section.
 
 2006-09-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
