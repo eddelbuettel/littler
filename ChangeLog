@@ -1,3 +1,7 @@
+2006-10-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.0.6
+
 2006-10-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* README, INSTALL: Some more polishing
@@ -15,8 +19,8 @@
 	
 	* littler.c: support svnrevision/date in --version
 
-	* bootstrap, svnversion.h: call svn and do some awk'ing borrowed from
-	  R's Makefiles to auto-create svnversion.h
+	* bootstrap, svnversion.h: call svn and do some awk'ing borrowed
+	from R's Makefiles to auto-create svnversion.h
 
 	* configure.in, Makefile.am: updated accordingly
 
@@ -26,11 +30,11 @@
 
 2006-09-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
-	* littler.c: parse_eval(), the REP loop for stdin and '-e', now use
-	R_tryEval() instead of eval().
+	* littler.c: parse_eval(), the REP loop for stdin and '-e', now
+	use R_tryEval() instead of eval().
 
-	* configure.in, Makefile.am, ldflags.R: For linux, we add all paths set by
-	RHOME/etc/ldpaths to r's RPATH.
+	* configure.in, Makefile.am, ldflags.R: For linux, we add all
+	paths set by RHOME/etc/ldpaths to r's RPATH.
 
 2006-09-26  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -48,7 +52,7 @@
 	* Release 0.0.4:
 
 	* rinterp.c: Bug fix: forgot to reset membuf_t.buf after a call to
-	resize_membuf() 
+	resize_membuf()
 
 	* rinterp.c: After R init, we delete R_SESSION_TMPDIR and point it
 	to one of TMPDIR, TMP, TEMP, or "/tmp". We also turn off R's
