@@ -25,12 +25,6 @@ static const char* compiledate = __DATE__;
 EOF
 }
 
-if test -f Makefile; then
-	make distclean
-else
-	rm config.h littler.h autoloads.h
-fi
-
 svnversion 
 aclocal 
 autoheader 

@@ -3,6 +3,9 @@
 	* configure.in, littler.c, Makefile.am, littler.R: make
 	littler set all R_* environment variables.
 
+	* configure.in: unconditionally create littler.h, autoloads.h,
+	and ldflags.txt during configure.
+
 2006-10-05 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* Release 0.0.7
