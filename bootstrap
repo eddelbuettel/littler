@@ -25,7 +25,11 @@ static const char* compiledate = __DATE__;
 EOF
 }
 
-svnversion 
+if [ "$#" -ge 1 ]; then
+    if [ "$1" == "--svnversion" ]; then
+	svnversion 
+    fi
+fi
 aclocal 
 autoheader 
 automake 

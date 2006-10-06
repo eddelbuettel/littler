@@ -18,6 +18,9 @@ autoloads.h:
 ldflags.txt:
 	R_HOME= ${RPROG} --silent --vanilla --slave < ldflags.R > ldflags.txt
 
+svnversion.h:
+	./bootstrap --svnversion
+
 r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
 	@rm -f r$(EXEEXT)
 	$(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) `cat ldflags.txt` $(LDFLAGS) -o $@ $(r_LDFLAGS) $(r_OBJECTS) $(r_LDADD) $(LIBS)
@@ -38,3 +41,5 @@ MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h
 
 #  install the man page
 man_MANS=r.1
+
+.PHONY: littler.h autoloads.h ldflags.txt 

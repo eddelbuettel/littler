@@ -80,11 +80,6 @@ AC_DEFUN([R_PROG],[
         AC_MSG_ERROR( aborting! )
     fi
 
-	# Now prepare some littler.c  dependencies. These need to be updated
-	# every time configure runs.
-	${RPROG} --silent --vanilla --slave < ldflags.R > ldflags.txt
-	${RPROG} --silent --vanilla --slave < autoloads.R > autoloads.h
-	${RPROG} --silent --vanilla --slave < littler.R > littler.h
 ])
 
 
