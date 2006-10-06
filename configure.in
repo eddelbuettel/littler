@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 dnl Every other copy of the package version number gets its value from here
-AC_INIT(littler,0.0.6)
+AC_INIT(littler,0.0.7)
 
 dnl  Look for ancillary configure tools in tools
 AC_CONFIG_AUX_DIR(tools)
@@ -51,6 +51,8 @@ dnl Test the R version for shared library
 AC_DEFUN([R_PROG],[
     AC_MSG_CHECKING([if R was built as a shared library])
 
+	# Unset any user defined notion of R_HOME
+	export R_HOME
 	# First test if R was found
 	if test "${RPROG}" = ""; then
 		echo
@@ -62,7 +64,6 @@ AC_DEFUN([R_PROG],[
     # Now make sure that a well known include file exists
     # and the libR.so
     if ${RPROG} CMD config --ldflags 2>/dev/null | grep -v 'R was not built as a shared library' >/dev/null; then
-        RHOME=`$RPROG RHOME`
 		AM_CFLAGS=`${RPROG} CMD config --cppflags`
 		AM_LDFLAGS="`${RPROG} CMD config --ldflags`"
 		if test "$build_vendor" != "apple"; then
@@ -97,16 +98,15 @@ AC_PATH_PROG(NAMETOOL,install_name_tool)
 
 AC_DEFUN([NAMETOOL_FUN],[
 	if test "${NAMETOOL}" != ""; then
-			RUN_NAMETOOL="${NAMETOOL} -change libR.dylib ${RHOME}/lib/libR.dylib `cat ldflags.txt` r"
+			RUN_NAMETOOL="${NAMETOOL} -change libR.dylib `${RPROG} RHOME`/lib/libR.dylib `cat ldflags.txt` r"
 	fi
 ])
 
 NAMETOOL_FUN
 
 AC_SUBST(RPROG)
-AC_SUBST(RHOME)
 AC_SUBST(RUN_NAMETOOL)
 AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
 
-AC_OUTPUT(Makefile littler.h)
+AC_OUTPUT(Makefile)

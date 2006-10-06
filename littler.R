@@ -1,0 +1,5 @@
+vars <- c('R_HOME','R_SHARE_DIR','R_INCLUDE_DIR','R_DOC_DIR','R_ARCH')
+cat("char *R_VARS[] = {\n")
+for (var in vars)
+	cat('"',var,'","',Sys.getenv(var),'",\n',sep='')
+cat("NULL };\n")

@@ -1,4 +1,11 @@
+2006-10-06 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* configure.in, littler.c, Makefile.am, littler.R: make
+	littler set all R_* environment variables.
+
 2006-10-05 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* Release 0.0.7
 
 	* Makefile.am: added ldflags.R to dist
 

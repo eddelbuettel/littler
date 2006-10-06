@@ -21,11 +21,6 @@
  *  $Id$
  */
 
-#include "config.h"
-#include "littler.h"
-#include "svnversion.h"
-#include "autoloads.h"
-
 #include <getopt.h>
 #include <stdio.h>
 #include <string.h>
@@ -34,6 +29,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
+#include "config.h"
+#include "svnversion.h"
+#include "autoloads.h"
+#include "littler.h"
 
 #include <R.h>
 #include <Rversion.h>
@@ -529,12 +529,13 @@ int main(int argc, char **argv){
 		}
 	}
 
-	/* Setenv R_HOME: insert or replace into environment.
-	 * The RHOME macro is defined during configure
-	 */
-	if (setenv("R_HOME",RHOME,1) != 0){
-		perror("ERROR: couldn't set/replace R_HOME");
-		exit(1);
+	/* Setenv R_* env vars: insert or replace into environment.  */
+
+	for (i = 0; R_VARS[i] != NULL; i+= 2){
+		if (setenv(R_VARS[i],R_VARS[i+1],1) != 0){
+			perror("ERROR: couldn't set/replace an R environment variable");
+			exit(1);
+		}
 	}
 
 	/* We don't require() default packages upon startup; rather, we

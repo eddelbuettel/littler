@@ -2,12 +2,15 @@
 bin_PROGRAMS=r
 
 # List of files to include in distribution (e.g. make dist)
-r_SOURCES=littler.c r.1 autoloads.R ldflags.R ANNOUNCEMENT tests/* examples/* svnversion.h
+r_SOURCES=littler.c r.1 autoloads.R ldflags.R littler.R ANNOUNCEMENT tests/* examples/* svnversion.h
 
 # These two together will tell make to create autoloads.h before
 # any target.
-nodist_r_SOURCES=autoloads.h ldflags.txt
-BUILT_SOURCES=autoloads.h ldflags.txt
+nodist_r_SOURCES=autoloads.h ldflags.txt littler.h
+BUILT_SOURCES=autoloads.h ldflags.txt littler.h
+
+littler.h:
+	R_HOME= ${RPROG} --silent --vanilla --slave < littler.R > littler.h
 
 autoloads.h:
 	R_HOME= ${RPROG} --silent --vanilla --slave < autoloads.R > autoloads.h
@@ -21,7 +24,7 @@ r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
 	$(RUN_NAMETOOL)
 
 #  Clean target to delete stuff make generates
-MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o
+MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h
 
 #EXTRA_DIST=littler.texinfo
 
