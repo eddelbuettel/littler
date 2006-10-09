@@ -132,7 +132,7 @@
 
 
   III.6  The r binary name clashes with my R binary.
-  --------------------------------------------
+  --------------------------------------------------
 
   Use the configure flag --program-prefix or --program-suffix to transform
   the binary name. For instance, if you would like the binary name to be
@@ -147,6 +147,15 @@
   which will name the binary 'littler'. The binary, as well as the manual page,
   are renamed when 'make install' is run.  Should you need it, 'make uninstall'
   will also remember this setting.
+
+
+  III.7  Typing r repeats the last command.
+  -----------------------------------------
+
+  You must be a zsh user -- 'r' is a builtin command, so to prefer to littler, 
+  you will have to either use an explicit path (/usr/bin/r), create an alias
+  under a different name, and install littler using a suffix or prefix as 
+  describe in III.6.
 
 
   IV    Feedback
