@@ -8,8 +8,8 @@ r_SOURCES=littler.c r.1 autoloads.R ldflags.R littler.R ANNOUNCEMENT \
 			tests/* examples/* svnversion.h
 
 # These two together will tell make to create autoloads.h before any target.
-nodist_r_SOURCES=autoloads.h ldflags.txt littler.h
-BUILT_SOURCES=autoloads.h ldflags.txt littler.h
+nodist_r_SOURCES=autoloads.h ldflags.txt littler.h svnversion.h
+BUILT_SOURCES=autoloads.h ldflags.txt littler.h svnversion.h
 
 ROPTIONS=--silent --vanilla --slave
 
@@ -41,4 +41,4 @@ EXTRA_DIST=svnversion.h
 #  install the man page
 man_MANS=r.1
 
-.PHONY: littler.h autoloads.h ldflags.txt 
+.PHONY: littler.h autoloads.h ldflags.txt
