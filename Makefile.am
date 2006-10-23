@@ -33,7 +33,7 @@ r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
 	$(RUN_NAMETOOL)
 
 #  Clean target to delete stuff make generates
-MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h
+MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h svnversion.h
 
 # Ensure that svnversion.h is regenerated on 'make dist'
 EXTRA_DIST=svnversion.h
