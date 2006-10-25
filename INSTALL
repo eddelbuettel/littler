@@ -5,15 +5,15 @@
 1.1 Requirements
 ----------------
 
-    GNU R has to be installed in a shared-library configuration. This is the
-    default. If in doubt, look for a file 'libR.so' which should be in the 
-    lib/ directory of your R installtions, i.e. in
+    GNU R has to be installed in a shared-library configuration. This not the
+    default, so you may have to rebuild R. If in doubt, look for a file 'libR.so' 
+    which should be in the lib/ directory of your R installtions, i.e. in
 	/usr/local/lib/R/libR.so
     or
 	/usr/lib/R/libR.so
 
     If R is not compiled with a shared library, you need to rebuild and 
-    reinstall R.  
+    reinstall R.  See the R manuals for details.
 
     Linux and OS X are known to be supported at this point.
     
@@ -95,17 +95,17 @@
 3.1 Debian
 ----------
 
-    Real Soon Now, we expect to be able to do
+    Calling
 
 	$ sudo apt-get install littler
 
-    but we're not quite there yet.
+    is all it takes if your sources.list files points to testing or unstable.
 
 
 4. Feedback
 ===========
 
-   Is encouraged ;-)
+    Is encouraged ;-)
 
     
 	- Jeffrey Horner <jeff.horner@vanderbilt.edu>
