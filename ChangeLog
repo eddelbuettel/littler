@@ -4,7 +4,7 @@
 
 	* examples/install.r, examples/update.r: Two new examples
 
-	* Makefile.am: Some small cleanups 
+	* Makefile.am: Some small cleanups and fixes 
 
 	* INSTALL: Clarified need for R as shared library, reformatted
 

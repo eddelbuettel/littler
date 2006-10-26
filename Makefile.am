@@ -5,7 +5,7 @@ bin_PROGRAMS=r
 
 # List of files to include in distribution (e.g. make dist)
 r_SOURCES=littler.c r.1 autoloads.R ldflags.R littler.R ANNOUNCEMENT \
-			tests/* examples/* svnversion.h
+			tests/* examples/* svnversion.h bootstrap
 
 # These two together will tell make to create autoloads.h before any target.
 nodist_r_SOURCES=autoloads.h ldflags.txt littler.h svnversion.h
@@ -33,7 +33,7 @@ r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
 	$(RUN_NAMETOOL)
 
 #  Clean target to delete stuff make generates
-MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h svnversion.h
+MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h 
 
 # Ensure that svnversion.h is regenerated on 'make dist'
 EXTRA_DIST=svnversion.h
