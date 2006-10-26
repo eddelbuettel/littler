@@ -5,20 +5,24 @@
 1.1 Requirements
 ----------------
 
-    GNU R has to be installed in a shared-library configuration. This not the
-    default, so you may have to rebuild R. If in doubt, look for a file 'libR.so' 
-    which should be in the lib/ directory of your R installtions, i.e. in
+    GNU R has to be installed in a shared-library configuration. This
+    not the default, so you may have to rebuild R.  If in doubt, look
+    for a file 'libR.so' which should be in the lib/ directory of your
+    R installtions, i.e. in
+
 	/usr/local/lib/R/libR.so
+
     or
+
 	/usr/lib/R/libR.so
 
-    If R is not compiled with a shared library, you need to rebuild and 
-    reinstall R.  See the R manuals for details.
+    If R is not compiled with a shared library, you need to rebuild
+    and reinstall R.  See the R manuals for details.
 
     Linux and OS X are known to be supported at this point.
     
-    In all likelihood, the requirement of shared libary precludes installation
-    of littler on Windoze. 
+    In all likelihood, the requirement of shared libary precludes
+    installation of littler on Windoze.
 
 
 1.2 Basic Steps
@@ -63,8 +67,8 @@
 2.1 Requirements
 ----------------
 
-    As above, but you will also need autoconf, aclocal, and of course svn
-    itself. 
+    As above, but you will also need autoconf, aclocal, and of course
+    svn itself.
 
 
 2.2 SVN checkout
@@ -82,10 +86,11 @@
 
 	$ bootstrap
 
-    which includes the steps from 1.2 above and produces a new executable.
+    which includes the steps from 1.2 above and produces a new
+    executable.
 
-    If you want to set configure options, you can do so too after an initial
-    'bootstrap' call.
+    If you want to set configure options, you can do so too after an
+    initial 'bootstrap' call.
 
 
 
@@ -99,7 +104,8 @@
 
 	$ sudo apt-get install littler
 
-    is all it takes if your sources.list files points to testing or unstable.
+    is all it takes if your sources.list file points to testing or
+    unstable.
 
 
 4. Feedback
