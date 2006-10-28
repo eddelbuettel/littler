@@ -4,7 +4,7 @@
 # parameters are easily adjustable
 
 ## adjust as necessary, see help('download.packages')
-repos <- "http://cran.us.r-project.org"  
+repos <- "http://cran.r-project.org"  
 
 ## this makes sense on Debian where no package touch /usr/local
 lib.loc <- "/usr/local/lib/R/site-library"
