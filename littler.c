@@ -36,35 +36,27 @@
 #include "littler.h"
 
 #include <R.h>
+#include <Rembedded.h>
 #include <Rversion.h>
 #include <Rdefines.h>
 #define R_INTERFACE_PTRS
 #include <Rinterface.h>
 #include <R_ext/Parse.h>
 
-#define R_240 132096 /* This is set in Rversion.h */
-
 int verbose=0;
 extern int R_Visible; /* We're cheating here, as this is undocumented and not in the
                        * R embedded interface.
 					   * 
                        * This variable controls when an expression is printed
-                       * via PrintValue()
+                       * via PrintValue(). 
+					   *
+					   * Looks like this will go away in R 2.5.x
                        */
 
 /* these two are being filled by autoconf and friends via config.h */
 /* VERSION */
 const char *programName = PACKAGE;
 const char *binaryName = "r";
-
-#if (R_VERSION < R_240) /* we can delete this code after R 2.4.0 release */
-/* 
- * Exported by libR
- * Shouldn't this prototype exist in a header?
- * It will in R-2.4.x.
- */
-extern int Rf_initEmbeddedR(int argc, char *argv[]);
-#endif
 
 #ifndef HAVE_SETENV
 int  setenv(char *name, char *value, int clobber){
@@ -297,6 +289,8 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 
 	PROTECT(cmdSexp = allocVector(STRSXP, 1));
 	SET_STRING_ELT(cmdSexp, 0, mkChar((char*)mb->buf));
+
+	/* Expect to add srcfile argument to R_ParseVector when R 2.5.x is released */
 	cmdexpr = PROTECT(R_ParseVector(cmdSexp, -1, &status));
 	switch (status){
 		case PARSE_OK:
@@ -304,7 +298,12 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 			for(i = 0; i < length(cmdexpr); i++){
 				ans = R_tryEval(VECTOR_ELT(cmdexpr, i),NULL,&errorOccurred);
 				if (errorOccurred) return 1;
+
+				/* We won't be able to test for R_Visible after R 2.5.x.
+				 * need to figure out why...
+				 */
 				if (verbose && R_Visible){
+				/*if (verbose){*/
 					PrintValue(ans);
 				}
 			}
@@ -338,16 +337,6 @@ extern char *R_TempDir;
 void littler_InitTempDir()
 {
 	char *tmp;
-
-	#if (R_VERSION < R_240) /* we can delete this code after R 2.4.0 release */
-	if (R_TempDir){
-		/* Undo R's InitTempdir() and do something sane */
-		if (rmdir(R_TempDir) != 0){
-			perror("Fatal Error: could not remove R's TempDir!");
-			exit(1);
-		}
-	}
-	#endif
 
 	tmp = getenv("TMPDIR");
 	if (tmp == NULL) {
@@ -554,15 +543,11 @@ int main(int argc, char **argv){
 	R_CStackLimit = -1;
 	#endif
 
-	#if (R_VERSION >= R_240) /* we'll take out the ifdef after R 2.4.0 release */
 	littler_InitTempDir();
-	#endif
 
 	Rf_initEmbeddedR(R_argc, R_argv);
 
-	#if (R_VERSION < R_240) /* we can delete this code after R 2.4.0 release */
-	littler_InitTempDir();
-	#endif
+	R_ReplDLLinit(); /* this is to populate the repl console buffers */
 
 	ptr_R_CleanUp = littler_CleanUp;
 

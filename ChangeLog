@@ -1,3 +1,7 @@
+2007-01-04 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* littler.c: added call to R_ReplDLLinit to initialize console buffers
+	
 2006-10-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* update.r: Switched repos to to cran.r-project.org 
