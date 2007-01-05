@@ -1,7 +1,15 @@
+2007-01-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.in: Tag it as release 0.0.9
+
 2007-01-04 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* littler.c: added call to R_ReplDLLinit to initialize console buffers
 	
+2006-11-22 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* examples/updates.r: always regenerate package cache
+
 2006-10-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* update.r: Switched repos to to cran.r-project.org 

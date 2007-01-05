@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 dnl Every other copy of the package version number gets its value from here
-AC_INIT(littler,0.0.8)
+AC_INIT(littler,0.0.9)
 
 dnl  Look for ancillary configure tools in tools
 AC_CONFIG_AUX_DIR(tools)
