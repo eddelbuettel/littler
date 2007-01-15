@@ -31,3 +31,5 @@ cat("Pace    : ",
     format(minutespermile, digits=1), "min",
     format(secondspermile, digits=dig), "sec\n")
 
+cat("Mph     : ",
+	format( (rundist * 3600)/totalseconds, digits=dig),"\n")
