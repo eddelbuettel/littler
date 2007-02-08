@@ -38,11 +38,13 @@ AC_CHECK_HEADER([getopt.h],
 
 AC_HEADER_MAJOR
 
+dnl Checks for library functions.
+
 AC_CHECK_FUNC(setenv,AC_DEFINE(HAVE_SETENV,1, [Define if you have the setenv function.]))
+AC_CHECK_FUNC(gettimeofday,AC_DEFINE(HAVE_GETTIMEOFDAY,1, [Define if you have the gettimeofday function.]))
+AC_CHECK_FUNC(time,AC_DEFINE(HAVE_TIME,1, [Define if you have the time function.]))
 
 dnl Checks for typedefs, structures, and compiler characteristics.
-
-dnl Checks for library functions.
 
 dnl Let configure find R using the AC_PATH_PROG macro
 AC_PATH_PROG(RPROG,R)

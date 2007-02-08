@@ -430,6 +430,26 @@ void showUsageAndExit() {
 	exit(-1);       
 }
 
+/* set seed for tempfile()  */
+void init_rand()
+{
+    unsigned int seed;
+#if HAVE_GETTIMEOFDAY
+  {
+    struct timeval tv;
+    gettimeofday (&tv, NULL);
+	/* changed uint64_t to unsigned int. Need to figure out why
+	 * PBR used that instead. */
+    seed = ((unsigned int) tv.tv_usec << 16) ^ tv.tv_sec;
+  }
+#elif HAVE_TIME
+    seed = (unsigned int) time(NULL);
+#else
+    /* unlikely, but use random contents */
+#endif
+    srand(seed);
+}
+
 int main(int argc, char **argv){
 
 	/* R embedded arguments, and optional arguments to be picked via cmdline switches */
@@ -571,6 +591,9 @@ int main(int argc, char **argv){
 	} else {
 		setVar(install("argv"),R_NilValue,R_GlobalEnv);
 	}
+
+	/* for tempfile() to work correctly */
+	init_rand();
 
 	/* Now determine which R code to evaluate */
 
