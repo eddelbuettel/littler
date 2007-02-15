@@ -1,5 +1,10 @@
-vars <- c('R_HOME','R_SHARE_DIR','R_INCLUDE_DIR','R_DOC_DIR','R_ARCH')
+ExcludeVars <- c("R_SESSION_TMPDIR","R_HISTFILE")
+IncludeVars <- Sys.getenv()
+IncludeVars <- IncludeVars[grep("^R_",names(IncludeVars),perl=TRUE)]
 cat("char *R_VARS[] = {\n")
-for (var in vars)
-	cat('"',var,'","',Sys.getenv(var),'",\n',sep='')
+for (i in 1:length(IncludeVars)){
+	if (names(IncludeVars)[i] %in% ExcludeVars)
+		next
+	cat('"',names(IncludeVars)[i],'","',IncludeVars[i],'",\n',sep='')
+}
 cat("NULL };\n")

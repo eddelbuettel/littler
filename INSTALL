@@ -6,7 +6,7 @@
 ----------------
 
     GNU R has to be installed in a shared-library configuration. This
-    not the default, so you may have to rebuild R.  If in doubt, look
+    is not the default, so you may have to rebuild R.  If in doubt, look
     for a file 'libR.so' which should be in the lib/ directory of your
     R installtions, i.e. in
 
@@ -16,8 +16,15 @@
 
 	/usr/lib/R/libR.so
 
-    If R is not compiled with a shared library, you need to rebuild
-    and reinstall R.  See the R manuals for details.
+    If R is not compiled with a shared library, you can rebuild from source
+	with the following miminal recipe:
+
+	# For GNU R, not littler
+	./configure --enable-R-shlib
+	make
+	make install
+
+    See the R manuals for details.
 
     Linux and OS X are known to be supported at this point.
     

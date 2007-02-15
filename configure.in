@@ -69,6 +69,14 @@ AC_DEFUN([R_PROG],[
     if ${RPROG} CMD config --ldflags 2>/dev/null | grep -v 'R was not built as a shared library' >/dev/null; then
 		AM_CFLAGS=`${RPROG} CMD config --cppflags`
 		AM_LDFLAGS="`${RPROG} CMD config --ldflags`"
+
+		# Now add the various libraries for linking
+		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config BLAS_LIBS | grep -v ERROR`"
+		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config JAVA_LIBS | grep -v ERROR`"
+		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config LAPACK_LIBS | grep -v ERROR`"
+		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config TCLTK_LIBS | grep -v ERROR`"
+
+		# are we on apple or not
 		if test "$build_vendor" != "apple"; then
 			RUN_NAMETOOL=""
 		fi
