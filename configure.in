@@ -72,9 +72,7 @@ AC_DEFUN([R_PROG],[
 
 		# Now add the various libraries for linking
 		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config BLAS_LIBS | grep -v ERROR`"
-		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config JAVA_LIBS | grep -v ERROR`"
 		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config LAPACK_LIBS | grep -v ERROR`"
-		AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config TCLTK_LIBS | grep -v ERROR`"
 
 		# are we on apple or not
 		if test "$build_vendor" != "apple"; then
@@ -94,6 +92,30 @@ AC_DEFUN([R_PROG],[
 
 
 R_PROG
+
+dnl Now check if certain libraries should be linked in
+
+dnl Java
+AC_ARG_WITH([java-libs],
+[AC_HELP_STRING([--with-java-libs],
+		[Link littler to R's java libraries])],
+	[
+		if test x$"$withval" != xno; then
+				AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config JAVA_LIBS | grep -v ERROR`"
+		fi
+	],
+)
+
+dnl Tcl/TK
+AC_ARG_WITH([tcltk-libs],
+[AC_HELP_STRING([--with-tcltk-libs],
+		[Link littler to R's tcltk libraries])],
+	[
+		if test x$"$withval" != xno; then
+				AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config TCLTK_LIBS | grep -v ERROR`"
+		fi
+	],
+)
 
 dnl R version check 
 dnl Note that this may fail really old versions of R as the string wasn't always "R version x.y.z ..." 

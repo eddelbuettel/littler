@@ -1,3 +1,8 @@
+2007-02-16 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* configure.in: added --with-java-libs and --with-tcltk-libs
+	for conditionally linking littler against respective libraries.
+
 2007-02-15 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* littler.R: added more R_* environment variables to output.
