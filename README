@@ -2,7 +2,7 @@
 
   'littler' - Provides hash-bang (#!) capability for R (www.r-project.org)
 
-  Copyright (C) 2006 Jeffrey Horner and Dirk Eddelbuettel
+  Copyright (C) 2006, 2007  Jeffrey Horner and Dirk Eddelbuettel
 
   'littler' is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -156,6 +156,22 @@
   you will have to either use an explicit path (/usr/bin/r), create an alias
   under a different name, and install littler using a suffix or prefix as 
   describe in III.6.
+
+
+  III.8  What about Rscript?
+  --------------------------
+
+  Good question. Starting with release 2.5.0, R itself will now contain
+  something remarkably similar to littler: Rscript.  From what we know now
+  (i.e. prior to the R 2.5.0 release), Rscript is similar to /usr/bin/R in
+  that it is a script wrapper around the core R libraries -- so littler may
+  still be a tad more direct, lighter and faster.  Time will tell which
+  features differentiate the two, and which interface proves more useful to
+  the R community.  
+
+  For now, we are simply thrilled to see functionality that we and others
+  deemed important -- yet that was missing from R itself -- added to the core
+  R distribution.
 
 
   IV    Feedback
