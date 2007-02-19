@@ -29,14 +29,15 @@
   II.   Implementation
   ====================
 
-  littler is a C-language program named r that embeds GNU R (see "Embedding
-  R under Unix-alikes" in the "Writing R Extensions" manual from either
-  http://www.r-project.org/, or your R installations / sources) to
-  provide the UNIX hashbang mechanism and simpler command-line support, 
-  allowing users to create R scripts and popular "one-liners" using the 
-  command-line flag --eval.  To do this, littler hard-codes certain bits 
-  of R's installation and environment. The first R program in the user's 
-  path, found during configuration, is used to glean those bits.
+  littler, a C-language program named 'r', is an alternative front end
+  to GNU R for '#!' (hashbang) scripting.  (see "Embedding R under
+  Unix-alikes" in the "Writing R Extensions" manual from either
+  http://www.r-project.org/, or your R installations / sources).
+  With it's simpler command-line argument set geared toward scripting,
+  littler allows users to create R scripts and popular "one-liners" using
+  the command-line flag --eval.  To do this, littler hard-codes certain
+  bits of R's installation and environment, and the first R program in the
+  user's path, found during configuration, is used to glean those bits.
 
 
   II.1 R_HOME
@@ -162,16 +163,40 @@
   --------------------------
 
   Good question. Starting with release 2.5.0, R itself will now contain
-  something remarkably similar to littler: Rscript.  From what we know now
-  (i.e. prior to the R 2.5.0 release), Rscript is similar to /usr/bin/R in
-  that it is a script wrapper around the core R libraries -- so littler may
-  still be a tad more direct, lighter and faster.  Time will tell which
-  features differentiate the two, and which interface proves more useful to
-  the R community.  
+  something remarkably similar to littler: Rscript, an alternative
+  front end to R for use in '#!' scripts.  Time will tell which features
+  differentiate the two, and which interface proves more useful to the
+  R community. For now, we are simply thrilled to see functionality that
+  we and others deemed important -- yet that was missing from R itself --
+  added to the core R distribution.
 
-  For now, we are simply thrilled to see functionality that we and others
-  deemed important -- yet that was missing from R itself -- added to the core
-  R distribution.
+  Here's a look at the most visibly distinguishing feature of each front
+  end: how arguments are passed to a script. Below are two 'hello world'
+  scripts that print out their arguments, one  implemented in Rscript
+  and the other littler:
+
+  Rscript
+  -------
+  #! /path/to/Rscript
+  args <- commandArgs()
+  args <- args[-(1:match("--args", args)]
+  cat('hello world! ', args,"\n")
+  -------
+
+  littler
+  -------
+  #! /path/to/r
+  cat('hello world! ', argv,"\n")
+  -------
+
+  Rscript passes all script arguments to R as additional elements to
+  the vector returned from commandArgs(). Thus, the script must use the
+  negative indexing method above to get the script argument into it's
+  own variable.
+
+  littler provides convenience by assigning the script arguments to an
+  "argv" vector and placing that into the global environemt, a convention
+  followed by other popular scripting languages.
 
 
   IV    Feedback

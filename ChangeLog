@@ -1,3 +1,20 @@
+2007-02-19 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* README: Updated FAQ entry regarding Rscript with 'hello world!'
+	example.
+
+	* littler.c: Added R version checking to support R 2.4 and 2.5
+
+	* tests/*: Convened on ../r as path to r.
+
+2007-02-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.in: Tag it as release 0.0.10
+
+	* README: Added FAQ entry regarding Rscript
+
+	* README, littler.c: Rolled copyright into 2007
+
 2007-02-16 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* configure.in: added --with-java-libs and --with-tcltk-libs

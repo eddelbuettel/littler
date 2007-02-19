@@ -1,6 +1,6 @@
 #!/bin/bash
 
-N=100
+N=20
 
 function loopLittleR {
   echo
@@ -8,7 +8,7 @@ function loopLittleR {
   i=0
   while [ $i -lt $N ]
   do
-    ./tests/summary2.R >/dev/null
+    ./summary2.R >/dev/null
     i=$((i + 1))
   done
 }
@@ -19,7 +19,7 @@ function loopR {
   i=0
   while [ $i -lt $N ]
   do
-	R --silent --vanilla < ./tests/summary2.R >/dev/null
+	R --silent --vanilla < ./summary2.R >/dev/null
     i=$((i + 1))
   done
 }

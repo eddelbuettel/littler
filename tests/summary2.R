@@ -1,3 +1,3 @@
-#!./r
+#!../r
 
-print(summary(as.integer(readLines("tests/dat.txt"))));
+print(summary(as.integer(readLines("dat.txt"))));

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-N=100
+N=10
 function loopBC {
   echo 
   echo -n " --- GNU bc doing the addition $N times"
@@ -18,7 +18,7 @@ function loopLittleR {
   i=0
   while [ $i -lt $N ]
   do
-    echo "cat(1+2,'\n')" | ../r --slave --vanilla > /dev/null
+    echo "cat(1+2,'\n')" | ../r --vanilla > /dev/null
     i=$((i + 1))
   done
 }
