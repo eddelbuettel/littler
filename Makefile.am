@@ -1,4 +1,6 @@
 # Makefile.am for littler
+#
+# Copyright 2006, 2007  Jeffrey Horner and Dirk Eddelbuettel, GNU GPL'ed
 
 # Installed program name
 bin_PROGRAMS=r
@@ -13,18 +15,23 @@ BUILT_SOURCES=autoloads.h ldflags.txt littler.h svnversion.h
 
 ROPTIONS=--silent --vanilla --slave
 
+# The next three rules could be written more compactly as '... < $< > $@'
+# using the GNU make 'extention variables' $< and $@, but as this may get
+# executed under a non-GNU make on *BSD, we expand explicitly.
 littler.h: littler.R
-	R_HOME= ${RPROG} ${ROPTIONS} < $< > $@
+	R_HOME= ${RPROG} ${ROPTIONS} < $littler.R > $littler.h
 
 autoloads.h: autoloads.R
-	R_HOME= ${RPROG} ${ROPTIONS} < $< > $@
+	R_HOME= ${RPROG} ${ROPTIONS} < $autoloads.R > $autoloads.h
 
 ldflags.txt: ldflags.R
-	R_HOME= ${RPROG} ${ROPTIONS} < $< > $@
+	R_HOME= ${RPROG} ${ROPTIONS} < $ldflags.R > $ldflags.txt
 
+# Always create a fresh svn version
 svnversion.h: bootstrap
 	./bootstrap --svnversion
 
+# Main r build rule, with suitable extension where needed (as eg on OS X)
 r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
 	@rm -f r$(EXEEXT)
 	$(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
