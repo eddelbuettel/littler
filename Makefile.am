@@ -19,13 +19,13 @@ ROPTIONS=--silent --vanilla --slave
 # using the GNU make 'extention variables' $< and $@, but as this may get
 # executed under a non-GNU make on *BSD, we expand explicitly.
 littler.h: littler.R
-	R_HOME= ${RPROG} ${ROPTIONS} < $littler.R > $littler.h
+	R_HOME= ${RPROG} ${ROPTIONS} < littler.R > littler.h
 
 autoloads.h: autoloads.R
-	R_HOME= ${RPROG} ${ROPTIONS} < $autoloads.R > $autoloads.h
+	R_HOME= ${RPROG} ${ROPTIONS} < autoloads.R > autoloads.h
 
 ldflags.txt: ldflags.R
-	R_HOME= ${RPROG} ${ROPTIONS} < $ldflags.R > $ldflags.txt
+	R_HOME= ${RPROG} ${ROPTIONS} < ldflags.R > ldflags.txt
 
 # Always create a fresh svn version
 svnversion.h: bootstrap
