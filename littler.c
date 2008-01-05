@@ -548,7 +548,7 @@ int main(int argc, char **argv){
 	 * So call stat(1) on it, and if its a file we will treat it as such.
 	 */
 	struct stat sbuf;
-	if (optind < argc) { 
+	if (optind < argc && evalstr==NULL) { 
 		if ((strcmp(argv[optind],"-") != 0) && (stat(argv[optind],&sbuf) != 0)) {
 			perror(argv[optind]);
 			exit(1);
@@ -592,14 +592,16 @@ int main(int argc, char **argv){
 	autoloads();
 
 	/* Place any argv arguments into argv vector in Global Environment */
-	if ((argc - optind) > 1){
+	/* if we have an evalstr supplied from -e|--eval, correct for it */
+	if ((argc - optind - (evalstr==NULL)) >= 1) {
+		int offset = (evalstr==NULL);
 		/* Build string vector */
-		nargv = argc - optind - 1;
+		nargv = argc - optind - offset;
 		PROTECT(s_argv = allocVector(STRSXP,nargv));
 		for (i = 0; i <nargv; i++){
-			STRING_PTR(s_argv)[i] = mkChar(argv[i+1+optind]);
+			STRING_PTR(s_argv)[i] = mkChar(argv[i+offset+optind]);
 			#ifdef DEBUG
-				printf("Passing %s to R\n", argv[i+1+optind]);
+				printf("Passing %s to R\n", argv[i+offset+optind]);
 			#endif
 		}
 		UNPROTECT(1);
