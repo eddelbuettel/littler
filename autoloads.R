@@ -1,5 +1,6 @@
 dp <- getOption("defaultPackages")
-dp <- dp[dp != 'datasets']
+#dp <- dp[dp != 'datasets'] ## Rscript loads it too
+#dp <- dp[dp != 'methods']  ## Rscript (in R 2.6.1) doesn't load methods either
 
 # Count of default packages
 cat("int packc = ",length(dp),";\n",sep='')

@@ -425,17 +425,20 @@ void showVersionAndExit() {
 
 void showUsageAndExit() {
   	printf("\n" 						
-	       "%s (aka '%s') can be used in three main modes.\n\n"
+	       "%s (aka '%s') can be used in four main modes.\n\n"
 	       "The first is via the so-called 'shebang' support it provides for GNU R.\n"
 	       "Suppose '%s' is installed in /usr/local/bin/%s. Then the first line of a\n"
 	       "script can be written as \"#!/usr/local/bin/%s\" and the rest of the file\n"
 	       "can contain standard R commands.  By setting executable permissions\n"
-	       "on the file, one can now create executable  R scripts.\n\n" 
+	       "on the file, one can now create executable R scripts.\n\n" 
 	       "The second is to supply a filename with commands that are to be\n"
 	       "evaluated.\n\n"
 	       "The third use is in standard compound command-line expressions common\n" 
 	       "under Unix (so called 'command pipes') as '%s' can take arguments\n"
 	       "from stdin if the special filename '-' is used to select stdin.\n\n"
+	       "The fourth use is in on-tge-fly evaluation of R expressions supplied\n"
+	       "via the -e or --eval options to provide a quick R expression tester\n"
+	       "and calculator.\n"
 	       "More documentation is provided in the '%s' manual page and via\n"
 	       "the tests directory in the sources.\n\n",
 	       binaryName, programName, binaryName, binaryName, binaryName,  programName, binaryName);

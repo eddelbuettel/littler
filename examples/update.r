@@ -3,8 +3,15 @@
 # a simple example to update packages in /usr/local/lib/R/site-library
 # parameters are easily adjustable
 
+suppressMessages(library(methods))   ## used by Biobase
+
 ## adjust as necessary, see help('download.packages')
-repos <- "http://cran.r-project.org"  
+repos <- "http://cran.r-project.org"
+## or use BioC's repo list if Biobase is installed:
+suppressMessages(rc <- require(Biobase))
+if (rc) {
+  repos <- Biobase:::biocReposList()
+}
 
 ## this makes sense on Debian where no package touch /usr/local
 lib.loc <- "/usr/local/lib/R/site-library"
