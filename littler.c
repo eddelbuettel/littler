@@ -464,7 +464,7 @@ void init_rand()
 int main(int argc, char **argv){
 
 	/* R embedded arguments, and optional arguments to be picked via cmdline switches */
-	char *R_argv[] = {(char*)programName, "--gui=none", "--no-save", "--no-readline", "--silent", "", ""};
+	char *R_argv[] = {(char*)programName, "--gui=none", "--no-restore", "--no-save", "--no-readline", "--silent", "", ""};
 	char *R_argv_opt[] = {"--vanilla", "--slave"};
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
 	int i, nargv, c, optpos=0, vanilla=0;
