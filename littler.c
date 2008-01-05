@@ -2,7 +2,7 @@
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006, 2007 Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006, 2007, 2008 Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -88,7 +88,7 @@ int source(char *file){
 	SET_STRING_ELT(f, 0, COPY_TO_USER_STRING(file));
 
 	/* Make print.eval argument */
-    PROTECT(p = NEW_LOGICAL(1));
+	PROTECT(p = NEW_LOGICAL(1));
 	LOGICAL_DATA(p)[0] = (verbose)? TRUE : FALSE;
 
 	/* expression source(f,print.eval=p) */
@@ -352,11 +352,11 @@ void littler_InitTempDir()
 	tmp = getenv("TMPDIR");
 	if (tmp == NULL) {
 		tmp = getenv("TMP");
-			if (tmp == NULL) { 
-				tmp = getenv("TEMP");
-				if (tmp == NULL) 
-					tmp = "/tmp";
-			}
+		if (tmp == NULL) { 
+			tmp = getenv("TEMP");
+			if (tmp == NULL) 
+				tmp = "/tmp";
+		}
 	}
 
 	R_TempDir=tmp;
@@ -387,6 +387,7 @@ void showHelpAndExit() {
 	       "  -V, --version        Show the version number\n"
 	       "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
 	       "  -p, --verbose        Print the value of expressions to the console\n"  
+	       "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
 	       "  -e, --eval  expr     Let R evaluate 'expr'\n"
 	       "\n\n",
 	       binaryName);
@@ -412,7 +413,7 @@ void showVersionAndExit() {
 					R_SVN_REVISION);
 		}
 	}
-  	printf("\n\nCopyright (C) 2006, 2007 Jeffrey Horner and Dirk Eddelbuettel\n"
+  	printf("\n\nCopyright (C) 2006, 2007, 2008 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
@@ -469,6 +470,7 @@ int main(int argc, char **argv){
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
 	int i, nargv, c, optpos=0, vanilla=0;
 	char *evalstr = NULL;
+	char *libstr = NULL;
 	SEXP s_argv;
 
 	static struct option optargs[] = {
@@ -477,10 +479,11 @@ int main(int argc, char **argv){
 		{"version", no_argument,       NULL, 'V'},
 		{"vanilla", no_argument,       NULL, 'v'},
 		{"eval",    required_argument, NULL, 'e'},
+		{"packages",required_argument, NULL, 'l'},
 		{"verbose", no_argument,       NULL, 'p'},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, "+hVve:np", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, "+hVve:npl:", optargs, &optpos)) != -1) {
 		switch (c) {	
 			case 0:					/* numeric 0 is code for a long option */
 				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
@@ -504,6 +507,9 @@ int main(int argc, char **argv){
 				break;  			/* never reached */
 			case 'e':
 				evalstr = optarg;
+				break;
+			case 'l':
+				libstr = optarg;
 				break;
 			case 'v':	
 				vanilla=1;
@@ -606,8 +612,25 @@ int main(int argc, char **argv){
 	/* for tempfile() to work correctly */
 	init_rand();
 
-	/* Now determine which R code to evaluate */
+	/* deal with libraries, if requested */
+	if (libstr != NULL) {
+		char *ptr, *token, *strptr;
+		char buf[128];
 
+		ptr = token = libstr;
+		membuf_t pb = init_membuf(512);
+		while (token != NULL) {
+			token = strtok_r(ptr, ",", &strptr);
+			ptr = NULL; 			/* after initial call strtok expects NULL */
+			if (token != NULL) {
+				snprintf(buf, 127-27-strlen(token), "suppressMessages(library(%s));", token); 
+				parse_eval(&pb, buf, 1);
+			}
+		} 
+		destroy_membuf(pb);
+	}
+
+	/* Now determine which R code to evaluate */
 	int exit_val;
 	if (evalstr != NULL) {				
 		/* we have a command line expression to evaluate */
