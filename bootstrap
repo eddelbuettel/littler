@@ -25,8 +25,8 @@ static const char* compiledate = __DATE__;
 EOF
 }
 
-if [ "$#" -ge 1 ]; then
-    if [ "$1" == "--svnversion" ]; then
+if [ "$#" -ge 0 ]; then
+    if [ "$1" = "--svnversion" ]; then
 	svnversion 
     fi
 fi
