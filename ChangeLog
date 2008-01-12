@@ -1,3 +1,25 @@
+2008-01-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.1.0
+
+	* littler.c: Added new option -l|--packages to load R packages
+
+	* littler.c: Small change to optional argument handling
+
+	* littler.c: Also use --no-restore argument on startup
+
+	* littler.c: Small additions to --help output
+
+	* r.1: Documented new option -l | --packages
+
+	* README: Updated as well
+
+	* autoloads.R: No longer suppress autoload of package datasets
+
+	* bootstrap: Two small fixes for non-bash sh use
+
+	* examples/update.r: rewritten cache clearing part
+	
 2007-04-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* Release 0.0.11
