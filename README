@@ -2,7 +2,7 @@
 
   'littler' - Provides hash-bang (#!) capability for R (www.r-project.org)
 
-  Copyright (C) 2006, 2007  Jeffrey Horner and Dirk Eddelbuettel
+  Copyright (C) 2006, 2007, 2008  Jeffrey Horner and Dirk Eddelbuettel
 
   'littler' is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
   ====================
 
   littler, a C-language program named 'r', is an alternative front end
-  to GNU R for '#!' (hashbang) scripting.  (see "Embedding R under
+  to GNU R for '#!' (hashbang) scripting  (see "Embedding R under
   Unix-alikes" in the "Writing R Extensions" manual from either
   http://www.r-project.org/, or your R installations / sources).
   With it's simpler command-line argument set geared toward scripting,
@@ -120,7 +120,7 @@
   Actually, they aren't. But because 'littler' optimises the startup,
   they are never loaded. Just add
       library(datasets)
-  to your script.
+  to your script. We may change that, let us know.
 
 
   III.5  It doesn't build and complains about 'R_SignalHandlers undeclared'
@@ -168,7 +168,9 @@
   differentiate the two, and which interface proves more useful to the
   R community. For now, we are simply thrilled to see functionality that
   we and others deemed important -- yet that was missing from R itself --
-  added to the core R distribution.
+  added to the core R distribution. As they say, 'Imitation is the 
+  sincerest form of flattery'.  Still, it would have been if Rscript had 
+  given credit to littler
 
   Here's a look at the most visibly distinguishing feature of each front
   end: how arguments are passed to a script. Below are two 'hello world'
@@ -198,6 +200,8 @@
   "argv" vector and placing that into the global environemt, a convention
   followed by other popular scripting languages.
 
+  littler also tends to start faster as it doesn't need to exec() the main
+  R process due to its embedding of R.
 
   IV    Feedback
   ==============
