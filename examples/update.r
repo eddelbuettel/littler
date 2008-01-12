@@ -3,8 +3,6 @@
 # a simple example to update packages in /usr/local/lib/R/site-library
 # parameters are easily adjustable
 
-suppressMessages(library(methods))   ## used by Biobase
-
 ## adjust as necessary, see help('download.packages')
 repos <- "http://cran.r-project.org"
 ## or use BioC's repo list if Biobase is installed:
