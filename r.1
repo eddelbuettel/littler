@@ -38,10 +38,7 @@
 r \- Provides hash-bang (#!) capability for R (www.r-project.org)
 .SH SYNOPSIS
 .B r
-[\fIoptions\fR] \fIfile
-.br
-.B r
-[\fIoptions\fR] \fI-
+[\fIoptions\fR] [\fI-|file\fR]
 .SH DESCRIPTION
 Launches GNU R to execute the specified file containing R commands, or takes
 commands from stdin if '-' is used to denote stdin, using the specified
@@ -62,7 +59,10 @@ Show the version number.
 Pass the '\-\-vanilla' option to R.
 .TP
 \fB\-p\fR, \fB\-\-verbose\fR
-Print the value of expressions to the console
+Print the value of expressions to the console.
+.TP
+\fB\-l\fR, \fB\-\-packages\fR list
+Load the R packages from the comma\-separated 'list'.
 .TP
 \fB\-e\fR, \fB\-\-eval expr\fR
 Evaluate 'expr' in R.
