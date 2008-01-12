@@ -120,7 +120,10 @@
   Actually, they aren't. But because 'littler' optimises the startup,
   they are never loaded. Just add
       library(datasets)
-  to your script. We may change that, let us know.
+  to your script. 
+
+  We have changed this behaviour in release 0.1.0, and datasets are now
+  loaded on startup.
 
 
   III.5  It doesn't build and complains about 'R_SignalHandlers undeclared'
