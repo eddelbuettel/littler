@@ -438,7 +438,7 @@ void showUsageAndExit() {
 	       "from stdin if the special filename '-' is used to select stdin.\n\n"
 	       "The fourth use is in on-tge-fly evaluation of R expressions supplied\n"
 	       "via the -e or --eval options to provide a quick R expression tester\n"
-	       "and calculator.\n"
+	       "and calculator.\n\n"
 	       "More documentation is provided in the '%s' manual page and via\n"
 	       "the tests directory in the sources.\n\n",
 	       binaryName, programName, binaryName, binaryName, binaryName,  programName, binaryName);
@@ -597,7 +597,7 @@ int main(int argc, char **argv){
 	/* Place any argv arguments into argv vector in Global Environment */
 	/* if we have an evalstr supplied from -e|--eval, correct for it */
 	if ((argc - optind - (evalstr==NULL)) >= 1) {
-		int offset = (evalstr==NULL);
+		int offset = (evalstr==NULL) + (strcmp(argv[optind],"-") == 0);
 		/* Build string vector */
 		nargv = argc - optind - offset;
 		PROTECT(s_argv = allocVector(STRSXP,nargv));
@@ -608,7 +608,6 @@ int main(int argc, char **argv){
 			#endif
 		}
 		UNPROTECT(1);
-
 		setVar(install("argv"),s_argv,R_GlobalEnv);
 	} else {
 		setVar(install("argv"),R_NilValue,R_GlobalEnv);
