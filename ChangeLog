@@ -1,4 +1,4 @@
-2008-01-12  Dirk Eddelbuettel  <edd@debian.org>
+2008-01-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* Release 0.1.0
 
@@ -19,6 +19,8 @@
 	* bootstrap: Two small fixes for non-bash sh use
 
 	* examples/update.r: rewritten cache clearing part
+
+	* tests/timing*.sh: added Rscript for comparison
 	
 2007-04-13  Dirk Eddelbuettel  <edd@debian.org>
 
