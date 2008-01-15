@@ -1,6 +1,7 @@
 #!/bin/bash
 
-littler=../r
+## run this test from the build directory, ie above tests/
+littler=./r
 
 echo "Shebang 1"
 $littler tests/shebang foo
@@ -10,10 +11,14 @@ echo "Shebang 2, verbose"
 $littler  --verbose tests/shebang foo bar
 
 echo "Piping a file to r"
-cat test1.R | $littler
+cat tests/test1.R | $littler
 echo "Piping a file to r -"
-cat test1.R | $littler -
+cat tests/test1.R | $littler -
 
+echo "Looking at what argv contains"
+$littler -e 'print(argv)' -- -a -b
+echo "Looking at what argv contains, piped"
+echo 'print(argv)' | $littler - -- -a -b
 
 echo ""
 echo "Eval expr: cat('Hello, world\n')"
