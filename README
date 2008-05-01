@@ -172,8 +172,8 @@
   R community. For now, we are simply thrilled to see functionality that
   we and others deemed important -- yet that was missing from R itself --
   added to the core R distribution. As they say, 'Imitation is the 
-  sincerest form of flattery'.  Still, it would have been if Rscript had 
-  given credit to littler
+  sincerest form of flattery'.  Still, it would have been nice if Rscript 
+  had given credit to littler
 
   Here's a look at the most visibly distinguishing feature of each front
   end: how arguments are passed to a script. Below are two 'hello world'
@@ -205,6 +205,19 @@
 
   littler also tends to start faster as it doesn't need to exec() the main
   R process due to its embedding of R.
+
+
+  III.9  What about getopt-style command-line parsing?
+  ----------------------------------------------------
+
+  Great question!  This was asked for a few times.  Luckily, Allen Day came
+  forward and wrote getopt (now on CRAN), initially for Rscript.  Moreover, 
+  he also agreed to add a two-line patch for seamless littler support.
+
+  See the getopt examples and documentation at 
+     http://cran.r-project.org/web/packages/getopt/index.html
+  for usage -- it is really straightforward.
+
 
   IV    Feedback
   ==============
