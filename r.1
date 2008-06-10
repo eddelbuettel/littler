@@ -38,12 +38,13 @@
 r \- Provides hash-bang (#!) capability for R (www.r-project.org)
 .SH SYNOPSIS
 .B r
-[\fIoptions\fR] [\fI-|file\fR]
+[\fIoptions\fR] [\fI-|file\fR] [\fIR arguments\fR]
 .SH DESCRIPTION
 Launches GNU R to execute the specified file containing R commands, or takes
 commands from stdin if '-' is used to denote stdin, using the specified
 options. This makes it suitable to create R scripts via the so\-called
-shebang '#!/' line.
+shebang '#!/' line. The optional \fBR arguments\fR are stored in the 
+\fBR\fR vector \fBargv\fR.
 .SH OPTIONS
 .TP
 \fB\-h\fR, \fB\-\-help\fR
@@ -69,7 +70,46 @@ Evaluate 'expr' in R.
 .PP
 .SH USAGE
 \fBr\fR can be used in command-line 'pipes' as well as in 'shebang'-style
-scripts. 
+scripts.
+.SH EXAMPLES
+Piping \fBR\fP commands:
+
+echo 'cat(pi^2,"\n")' | r
+
+Equivalently, \fBR\fP commands can be given on the command-line:
+
+r -e 'cat(pi^2, "\n")'
+
+Alternatively, commands can be stored in a file, which in turn might use
+\fBR\fP command 'readLines' to process stdin input:
+
+ $ cat examples/fsizes.r
+ fsizes <- as.integer(readLines())
+ print(summary(fsizes))
+ stem(fsizes)
+
+which can be evaluated by \fBr\fP with the following command:
+
+ ls -l /boot | awk '!/^total/ {print $5}' | r examples/fsizes.r
+
+The script file may contain a "shebang" line:
+
+ $ cat examples/install.r
+ #!/usr/bin/env r
+ # a simple example to install one or more packages
+ if (is.null(argv) | length(argv)<1) {
+   cat("Usage: installr.r pkg1 [pkg2 pkg3 ...]\n")
+   q()
+ }
+ repos <- "http://cran.us.r-project.org"
+ lib.loc <- "/usr/local/lib/R/site-library"
+ install.packages(argv, lib.loc, repos, dependencies=TRUE)
+
+and if it is executable, it can be called as:
+
+ examples/install.r "TeachingDemos"
+
+See the examples directory in the sources for more.
 .SH NOTE
 The executable program is called 
 \fBr\fR,
