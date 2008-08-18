@@ -1,3 +1,7 @@
+2008-08-18 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* littler.c: now exits with status provided by call to q().
+
 2008-01-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* Release 0.1.0

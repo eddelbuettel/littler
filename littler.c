@@ -370,8 +370,8 @@ void littler_InitTempDir()
 /* For stdin processing: if an error condition occurs and getOption("error") == NULL,
  * we go here. 
  */
-void littler_CleanUp(SA_TYPE s, int a, int b){
-	exit(1);
+void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
+	exit(status);
 }
 
 void showHelpAndExit() {
@@ -635,10 +635,10 @@ int main(int argc, char **argv){
 	}
 
 	/* Now determine which R code to evaluate */
-	int exit_val;
+	int exit_val = 0;
 	if (evalstr != NULL) {				
 		/* we have a command line expression to evaluate */
-		membuf_t pb = init_membuf(512);
+		membuf_t pb = init_membuf(1024);
 		exit_val = parse_eval(&pb, evalstr, 1);
 		destroy_membuf(pb);
 	} else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
