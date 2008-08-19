@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Testing value of 'q(status=...)' exits:"
+echo "Testing value of 'q(status=...)' exits for r:"
 echo "q(status=123)" | ../r  
 echo "  Got: $? via stdin"
 
@@ -17,18 +17,15 @@ echo -n "  Got: $? from temp. file and "
 rm -v $tempfile
 
 
-echo "Testing value of final expression (i.e. '123') exits:"
-echo "123" | ../r  
+echo "Testing value of 'q(status=...)' exits for Rscript:"
+echo "q(status=123)" | Rscript -
 echo "  Got: $? via stdin"
 
-echo "124" | ../r -
-echo "  Got: $? via file '-'"
-
-../r -e "125" 
+Rscript -e "q(status=124)" 
 echo "  Got: $? from 'r -e'"
 
 tempfile=`tempfile`
-echo "126" > $tempfile
-../r $tempfile
+echo "q(status=125)" > $tempfile
+Rscript $tempfile
 echo -n "  Got: $? from temp. file and "
 rm -v $tempfile
