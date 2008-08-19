@@ -367,9 +367,7 @@ void littler_InitTempDir()
 	}
 }
 
-/* For stdin processing: if an error condition occurs and getOption("error") == NULL,
- * we go here. 
- */
+/* Called via q() or if an error condition occurs and getOption("error") == NULL */
 void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
 	exit(status);
 }
