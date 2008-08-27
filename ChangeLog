@@ -1,6 +1,26 @@
+2008-08-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.1.1 
+
+2008-08-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tests/exitstatus.sh: Added test script for new exit status feature
+
 2008-08-18 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* littler.c: now exits with status provided by call to q().
+
+2008-06-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* r.1: Applied patch by Seb which adds more examples. Thanks!
+
+2008-04-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README: added entry about getopt
+
+2008-03-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/update.r: simplified clearCache
 
 2008-01-14  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -25,14 +45,14 @@
 	* examples/update.r: rewritten cache clearing part
 
 	* tests/timing*.sh: added Rscript for comparison
-	
+
 2007-04-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* Release 0.0.11
-	
+
 	* Makefile.am: Removed use of one GNU extension to Make to
 	facilitate builds on non-GNU systems
-	
+
 	* examples/update.r: Fix by Jeff for file caching issues
 
 2007-02-20  Dirk Eddelbuettel  <edd@debian.org>
@@ -84,7 +104,7 @@
 2007-01-04 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* littler.c: added call to R_ReplDLLinit to initialize console buffers
-	
+
 2006-11-22 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* examples/updates.r: always regenerate package cache
