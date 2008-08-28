@@ -45,17 +45,6 @@
 
 int verbose=0;
 
-#if R_VERSION < R_Version(2,5,0)
-extern int R_Visible; /* We're cheating here, as this is undocumented and not in the
-                       * R embedded interface.
-					   * 
-                       * This variable controls when an expression is printed
-                       * via PrintValue(). 
-					   *
-					   * Looks like this will go away in R 2.5.x
-                       */
-#endif
-
 /* these two are being filled by autoconf and friends via config.h */
 /* VERSION */
 const char *programName = PACKAGE;
@@ -294,11 +283,7 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 	SET_STRING_ELT(cmdSexp, 0, mkChar((char*)mb->buf));
 
 	/* R_ParseVector gets a new argument in R 2.5.x */
-	#if R_VERSION >= R_Version(2,5,0)
-	cmdexpr = PROTECT(R_ParseVector(cmdSexp, -1, &status,R_NilValue));
-	#else
-	cmdexpr = PROTECT(R_ParseVector(cmdSexp, -1, &status));
-	#endif
+	cmdexpr = PROTECT(R_ParseVector(cmdSexp, -1, &status, R_NilValue));
 
 	switch (status){
 		case PARSE_OK:
@@ -307,14 +292,7 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 				ans = R_tryEval(VECTOR_ELT(cmdexpr, i),NULL,&errorOccurred);
 				if (errorOccurred) return 1;
 
-				#if R_VERSION < R_Version(2,5,0)
-				/* We won't be able to test for R_Visible after R 2.5.x.
-				 * need to figure out why...
-				 */
-				if (verbose && R_Visible){
-				#else 
 				if (verbose){
-				#endif
 					PrintValue(ans);
 				}
 			}
@@ -557,7 +535,6 @@ int main(int argc, char **argv){
 	}
 
 	/* Setenv R_* env vars: insert or replace into environment.  */
-
 	for (i = 0; R_VARS[i] != NULL; i+= 2){
 		if (setenv(R_VARS[i],R_VARS[i+1],1) != 0){
 			perror("ERROR: couldn't set/replace an R environment variable");
