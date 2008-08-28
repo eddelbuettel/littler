@@ -42,6 +42,7 @@
 #define R_INTERFACE_PTRS
 #include <Rinterface.h>
 #include <R_ext/Parse.h>
+#include <R_ext/RStartup.h>
 
 int verbose=0;
 
@@ -299,7 +300,8 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 			mb = *pmb = rewind_membuf(pmb);
 		break;
 		case PARSE_INCOMPLETE:
-			/* need to read another line */
+			fprintf(stderr, "%s: Incomplete Line! Need more code!\n", programName, status);
+			return 1;
 		break;
 		case PARSE_NULL:
 			fprintf(stderr, "%s: ParseStatus is null (%d)\n", programName, status);
@@ -310,7 +312,7 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 			return 1;
 		break;
 		case PARSE_EOF:
-			fprintf(stderr, "%s: ParseStatus is eof (%d)\n", programName, status);
+			fprintf(stderr, "%s: EOF reached (%d)\n", programName, status);
 		break;
 		default:
 			fprintf(stderr, "%s: ParseStatus is not documented %d\n", programName, status);
@@ -322,10 +324,13 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 }
 
 extern char *R_TempDir;
+int RSetsTempDir=FALSE;
 
 void littler_InitTempDir()
 {
 	char *tmp;
+
+	if (RSetsTempDir) return; /* R will set the temporary directory */
 
 	tmp = getenv("TMPDIR");
 	if (tmp == NULL) {
@@ -345,8 +350,9 @@ void littler_InitTempDir()
 	}
 }
 
-/* Called via q() or if an error condition occurs and getOption("error") == NULL */
+/* littler exit */
 void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
+	if (RSetsTempDir) R_CleanTempDir();
 	exit(status);
 }
 
@@ -460,9 +466,10 @@ int main(int argc, char **argv){
 		{"eval",    required_argument, NULL, 'e'},
 		{"packages",required_argument, NULL, 'l'},
 		{"verbose", no_argument,       NULL, 'p'},
+		{"rtemp",   no_argument,       NULL, 't'},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, "+hVve:npl:", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, "+hVve:npl:t", optargs, &optpos)) != -1) {
 		switch (c) {	
 			case 0:					/* numeric 0 is code for a long option */
 				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
@@ -499,6 +506,9 @@ int main(int argc, char **argv){
 			case 'V':
 				showVersionAndExit();
 				break;  			/* never reached */
+			case 't':
+				RSetsTempDir=TRUE;
+				break;
 			default:
 				printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
 				exit(-1);
@@ -631,5 +641,6 @@ int main(int argc, char **argv){
 		destroy_membuf(lb);
 		destroy_membuf(pb);
 	}
-	exit(exit_val);
+	littler_CleanUp(SA_NOSAVE, exit_val,0);
+	/* not reached */
 }

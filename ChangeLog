@@ -1,3 +1,7 @@
+2008-08-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
+
+	* littler.c: added -t|--rtemp to use R's temp dir strategy
+
 2008-08-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* Release 0.1.1 
