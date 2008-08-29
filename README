@@ -29,15 +29,17 @@
   II.   Implementation
   ====================
 
-  littler, a C-language program named 'r', is an alternative front end
-  to GNU R for '#!' (hashbang) scripting  (see "Embedding R under
+  littler, a C-language program named 'r', is an alternative front
+  end to GNU R for '#!' (hashbang) scripting  (see "Embedding R under
   Unix-alikes" in the "Writing R Extensions" manual from either
   http://www.r-project.org/, or your R installations / sources).
   With it's simpler command-line argument set geared toward scripting,
   littler allows users to create R scripts and popular "one-liners" using
   the command-line flag --eval.  To do this, littler hard-codes certain
-  bits of R's installation and environment, and the first R program in the
-  user's path, found during configuration, is used to glean those bits.
+  bits of R's installation and environment using the first R program
+  found in the user's path. For instance, if you installed R in
+  both /usr/bin and /usr/local/bin, and your PATH variable references
+  /usr/bin first, then littler will configure itself with /usr/bin/R.
 
 
   II.1 R_HOME
@@ -95,7 +97,7 @@
   We also like 'r' in /usr/local/bin/r, /usr/bin/r or on the command-line
   as it saves keystrokes, and does not harm the Shift key as much.
 
-  Lastly, you will find a little r in both Jeffrey and Dirk.
+  Lastly, you will find a little r in both Jeffrey and Dirk :-)
 
 
   III.2. Wasn't there once a 'rinterp' as well ?
@@ -104,7 +106,7 @@
   There was, but we think littler is cuter. See the previous question.
 
 
-  III.3  I run a script trough 'littler' but nothing shows. What's up? 
+  III.3  I run a script through 'littler' but nothing shows. What's up? 
   -----------------------------------------------------------------
 
   Add the --verbose flag (or its -p short version). This will print out many
@@ -170,10 +172,10 @@
   front end to R for use in '#!' scripts.  Time will tell which features
   differentiate the two, and which interface proves more useful to the
   R community. For now, we are simply thrilled to see functionality that
-  we and others deemed important -- yet that was missing from R itself --
+  we and others deemed important -- yet was missing from R itself --
   added to the core R distribution. As they say, 'Imitation is the 
   sincerest form of flattery'.  Still, it would have been nice if Rscript 
-  had given credit to littler
+  had given credit to littler.
 
   Here's a look at the most visibly distinguishing feature of each front
   end: how arguments are passed to a script. Below are two 'hello world'
