@@ -324,13 +324,13 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 }
 
 extern char *R_TempDir;
-int RSetsTempDir=FALSE;
+int perSessionTempDir = FALSE;	/* by default, r differs from R and defaults to /tmp unless env.vars set, or flag chosen */
 
 void littler_InitTempDir()
 {
 	char *tmp;
 
-	if (RSetsTempDir) return; /* R will set the temporary directory */
+	if (perSessionTempDir) return; /* use a per-session temporary directory by following R */
 
 	tmp = getenv("TMPDIR");
 	if (tmp == NULL) {
@@ -352,7 +352,7 @@ void littler_InitTempDir()
 
 /* littler exit */
 void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
-	if (RSetsTempDir) R_CleanTempDir();
+	if (perSessionTempDir) R_CleanTempDir();
 	exit(status);
 }
 
@@ -368,6 +368,7 @@ void showHelpAndExit() {
 	       "      --usage          Give a short usage message\n"
 	       "  -V, --version        Show the version number\n"
 	       "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
+	       "  -t, --rtemp          Use per-session temporary directory as R does\n"
 	       "  -p, --verbose        Print the value of expressions to the console\n"  
 	       "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
 	       "  -e, --eval  expr     Let R evaluate 'expr'\n"
@@ -507,7 +508,7 @@ int main(int argc, char **argv){
 				showVersionAndExit();
 				break;  			/* never reached */
 			case 't':
-				RSetsTempDir=TRUE;
+				perSessionTempDir=TRUE;
 				break;
 			default:
 				printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
