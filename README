@@ -107,11 +107,11 @@
   III.3  I run a script trough 'littler' but nothing shows. What's up? 
   -----------------------------------------------------------------
 
-  Add the --verbose flag. This will print out many relevant expressions,
-  similar to GNU R. However, it won't print the value of expressions
-  like for loops, if/else, or expressions within function calls. In
-  that case you probably need to wrap a print() or cat() around what
-  you want to show.
+  Add the --verbose flag (or its -p short version). This will print out many
+  relevant expressions, similar to GNU R. However, it won't print the value
+  of expressions like for loops, if/else, or expressions within function
+  calls. In that case you probably need to wrap a print() or cat() around
+  what you want to show.
 
 
   III.4  Data sets are lost!
@@ -217,6 +217,44 @@
   See the getopt examples and documentation at 
      http://cran.r-project.org/web/packages/getopt/index.html
   for usage -- it is really straightforward.
+
+
+  III.10  What about temporary files and directories?
+  ---------------------------------------------------
+
+  If nothing else is specified, r defaults to /tmp after having checked the
+  environment variables TMPDIR, TMP and TEMP.  Since version 0.1.2, you can
+  also provide the --rtemp option (or its short form -t) to let r behave like
+  R with a unique per-session directory that gets removed at exit:
+
+     $ r -tpe 'tempdir()'
+     [1] "/tmp/RtmpSbNQBj"
+     $ ls /tmp/RtmpSbNQBj
+     ls: cannot access /tmp/RtmpSbNQBj: No such file or directory
+     $
+
+  showing that the temporary directory is created and provided while r is
+  running, but removed after r has finished.
+
+
+  III.11  What about 'shebang' starts and command-line options?
+  -------------------------------------------------------------
+
+  The usual operating systems can parse the so-called 'shebang' line, ie the 
+  first line of scripts that starts with the '#!' characters and the path to 
+  the executable --- and as much as one argument.  That means we can provide
+  short option arguments together in one string as in
+  
+      #!/usr/bin/r -pt
+
+  which enables 'verbose printing' and 'R-alike per-session temp. directories'.
+
+  What are typically not supported are multiple tokens (as used for an option
+  and its argument, or multiple options).  This also means that in the 
+
+     #!/usr/bin/env r
+
+  case we cannot supply further arguments to r.
 
 
   IV    Feedback
