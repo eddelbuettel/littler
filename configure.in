@@ -1,34 +1,34 @@
-dnl Process this file with autoconf to produce a configure script.
+# Process this file with autoconf to produce a configure script.
 
-dnl Every other copy of the package version number gets its value from here
+# Every other copy of the package version number gets its value from here
 AC_INIT(littler,0.1.1)
 
-dnl  Look for ancillary configure tools in tools
+#  Look for ancillary configure tools in tools
 AC_CONFIG_AUX_DIR(tools)
 
-dnl Options for Automake
-dnl
-dnl no-texinfo.tex - obviously means don't include the big texinfo.tex file
-dnl                  in the dist.
-dnl foreign - treats our package as non-gnu, essentially excudluding strict
-dnl           checks for certain files like ChangeLog, NEWS, README, etc
-dnl
+# Options for Automake
+#
+# no-texinfo.tex - obviously means don't include the big texinfo.tex file
+#                  in the dist.
+# foreign - treats our package as non-gnu, essentially excudluding strict
+#           checks for certain files like ChangeLog, NEWS, README, etc
+#
 AM_INIT_AUTOMAKE( no-texinfo.tex foreign )
 
-dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
+# create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AC_CONFIG_HEADERS(config.h)
 
 AC_SUBST(VERSION)
 
 AC_CANONICAL_HOST
 
-dnl Checks for programs.
+# Checks for programs.
 AC_PROG_INSTALL
 AC_PROG_CC
 
-dnl Checks for libraries.
+# Checks for libraries.
 
-dnl Checks for header files.
+# Checks for header files.
 AC_HEADER_STDC
 AC_CHECK_HEADERS( stdio.h string.h errno.h stdlib.h sys/types.h sys/stat.h unistd.h)
 AC_CHECK_HEADER([getopt.h],
@@ -38,18 +38,18 @@ AC_CHECK_HEADER([getopt.h],
 
 AC_HEADER_MAJOR
 
-dnl Checks for library functions.
+# Checks for library functions.
 
 AC_CHECK_FUNC(setenv,AC_DEFINE(HAVE_SETENV,1, [Define if you have the setenv function.]))
 AC_CHECK_FUNC(gettimeofday,AC_DEFINE(HAVE_GETTIMEOFDAY,1, [Define if you have the gettimeofday function.]))
 AC_CHECK_FUNC(time,AC_DEFINE(HAVE_TIME,1, [Define if you have the time function.]))
 
-dnl Checks for typedefs, structures, and compiler characteristics.
+# Checks for typedefs, structures, and compiler characteristics.
 
-dnl Let configure find R using the AC_PATH_PROG macro
+# Let configure find R using the AC_PATH_PROG macro
 AC_PATH_PROG(RPROG,R)
 
-dnl Test the R version for shared library
+# Test the R version for shared library
 AC_DEFUN([R_PROG],[
     AC_MSG_CHECKING([if R was built as a shared library])
 
@@ -90,12 +90,11 @@ AC_DEFUN([R_PROG],[
 
 ])
 
-
 R_PROG
 
-dnl Now check if certain libraries should be linked in
+# Now check if certain libraries should be linked in
 
-dnl Java
+# Java
 AC_ARG_WITH([java-libs],
 [AC_HELP_STRING([--with-java-libs],
 		[Link littler to R's java libraries])],
@@ -106,7 +105,7 @@ AC_ARG_WITH([java-libs],
 	],
 )
 
-dnl Tcl/TK
+# Tcl/TK
 AC_ARG_WITH([tcltk-libs],
 [AC_HELP_STRING([--with-tcltk-libs],
 		[Link littler to R's tcltk libraries])],
@@ -117,8 +116,8 @@ AC_ARG_WITH([tcltk-libs],
 	],
 )
 
-dnl R version check 
-dnl Note that this may fail really old versions of R as the string wasn't always "R version x.y.z ..." 
+# R version check 
+# Note that this may fail really old versions of R as the string wasn't always "R version x.y.z ..." 
 r_version=`${RPROG} --version | head -1 | cut -f3 -d" " `
 case ${r_version} in
      1.*.*|2.0.*|2.1.*|2.2.*|2.3.0)
@@ -127,7 +126,7 @@ case ${r_version} in
 esac
 
 
-dnl Are we building for Mac OS X? this program will exist if so.
+# Are we building for Mac OS X? this program will exist if so.
 AC_PATH_PROG(NAMETOOL,install_name_tool)
 
 AC_DEFUN([NAMETOOL_FUN],[
