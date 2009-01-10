@@ -3,9 +3,9 @@
 # Copyright (C) 2006 - 2009  Jeffrey Horner and Dirk Eddelbuettel, GNU GPL'ed
 
 # Installed program name
-bin_PROGRAMS=r
+bin_PROGRAMS=r$(EXEEXT)
 
-all: r$(EXEEXT)
+all-am: r$(EXEEXT) littler.h autoloads.h ldflags.txt
 
 # List of files to include in distribution (e.g. make dist)
 r_SOURCES=littler.c r.1 autoloads.R ldflags.R littler.R ANNOUNCEMENT \
@@ -20,6 +20,7 @@ ROPTIONS=--silent --vanilla --slave
 # The next three rules could be written more compactly as '... < $< > $@'
 # using the GNU make 'extention variables' $< and $@, but as this may get
 # executed under a non-GNU make on *BSD, we expand explicitly.
+# The .PHONY settings that these targets are always freshly re-made.
 .PHONY: littler.h
 littler.h: littler.R
 	R_HOME= ${RPROG} ${ROPTIONS} < littler.R > littler.h
@@ -32,7 +33,7 @@ autoloads.h: autoloads.R
 ldflags.txt: ldflags.R
 	R_HOME= ${RPROG} ${ROPTIONS} < ldflags.R > ldflags.txt
 
-# Always create a fresh svn version
+# Always create a fresh svn version -- but .PHONy used here create a loop
 svnversion.h: 
 	./bootstrap --svnversion
 
