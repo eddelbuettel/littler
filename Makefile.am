@@ -44,6 +44,7 @@ r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
 		`cat ldflags.txt` $(LDFLAGS) \
 		-o $@ $(r_LDFLAGS) $(r_OBJECTS) $(r_LDADD) $(LIBS)
 	$(RUN_NAMETOOL)
+	@rm -f svnversion.h
 
 #  Clean target to delete stuff make generates
 MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h 
