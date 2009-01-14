@@ -2,7 +2,7 @@
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006, 2007, 2008 Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006 - 2009  Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -369,6 +369,7 @@ void showHelpAndExit() {
 	       "  -V, --version        Show the version number\n"
 	       "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
 	       "  -t, --rtemp          Use per-session temporary directory as R does\n"
+	       "  -q, --quick          Skip autoload / delayed assign of default libraries\n"
 	       "  -p, --verbose        Print the value of expressions to the console\n"  
 	       "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
 	       "  -e, --eval  expr     Let R evaluate 'expr'\n"
@@ -396,7 +397,7 @@ void showVersionAndExit() {
 					R_SVN_REVISION);
 		}
 	}
-  	printf("\n\nCopyright (C) 2006, 2007, 2008 Jeffrey Horner and Dirk Eddelbuettel\n"
+  	printf("\n\nCopyright (C) 2006 - 2009 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
@@ -454,7 +455,7 @@ int main(int argc, char **argv){
 	char *R_argv[] = {(char*)programName, "--gui=none", "--no-restore", "--no-save", "--no-readline", "--silent", "", ""};
 	char *R_argv_opt[] = {"--vanilla", "--slave"};
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
-	int i, nargv, c, optpos=0, vanilla=0;
+	int i, nargv, c, optpos=0, vanilla=0, quick=0;
 	char *evalstr = NULL;
 	char *libstr = NULL;
 	SEXP s_argv;
@@ -468,9 +469,10 @@ int main(int argc, char **argv){
 		{"packages",required_argument, NULL, 'l'},
 		{"verbose", no_argument,       NULL, 'p'},
 		{"rtemp",   no_argument,       NULL, 't'},
+		{"quick",   no_argument,       NULL, 'q'},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, "+hVve:npl:t", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, "+hVve:npl:tq", optargs, &optpos)) != -1) {
 		switch (c) {	
 			case 0:					/* numeric 0 is code for a long option */
 				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
@@ -509,6 +511,9 @@ int main(int argc, char **argv){
 				break;  			/* never reached */
 			case 't':
 				perSessionTempDir=TRUE;
+				break;
+			case 'q':
+				quick=1;
 				break;
 			default:
 				printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
@@ -577,8 +582,10 @@ int main(int argc, char **argv){
 
 	ptr_R_CleanUp = littler_CleanUp;
 
-	/* Force all default package to be dynamically required */
-	autoloads();
+	/* Force all default package to be dynamically required, unless chosen not to */
+	if (quick != 1) {
+		autoloads();
+	}
 
 	/* Place any argv arguments into argv vector in Global Environment */
 	/* if we have an evalstr supplied from -e|--eval, correct for it */
