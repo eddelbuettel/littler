@@ -28,8 +28,11 @@ EOF
 if [ "$#" -ge 0 ]; then
     if [ "$1" = "--svnversion" ]; then
 	svnversion 
+	exit
     fi
 fi
+
+test -f svnversion.h || svnversion
 aclocal 
 autoheader 
 automake 

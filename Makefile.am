@@ -34,17 +34,17 @@ ldflags.txt: ldflags.R
 	R_HOME= ${RPROG} ${ROPTIONS} < ldflags.R > ldflags.txt
 
 # Always create a fresh svn version -- but .PHONy used here create a loop
+.PHONY: svnversion.h
 svnversion.h: 
 	./bootstrap --svnversion
 
 # Main r build rule, with suitable extension where needed (as eg on OS X)
-r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES)
+r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES) svnversion.h
 	@rm -f r$(EXEEXT)
 	$(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 		`cat ldflags.txt` $(LDFLAGS) \
 		-o $@ $(r_LDFLAGS) $(r_OBJECTS) $(r_LDADD) $(LIBS)
 	$(RUN_NAMETOOL)
-	@rm -f svnversion.h
 
 #  Clean target to delete stuff make generates
 MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h 
