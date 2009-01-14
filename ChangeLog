@@ -1,10 +1,22 @@
+2009-01-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.in: Mark as release 0.1.2
+
+	* littler.c,r.1: Added -q|--quick switch to skip autoload
+
+	* littler.c: Updated copyright to 2009
+
+2009-01-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Makefile.am: Tweaked flow and logic a little, updated copyright
+
 2008-08-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* littler.c: added -t|--rtemp to use R's temp dir strategy
 
 2008-08-27  Dirk Eddelbuettel  <edd@debian.org>
 
-	* Release 0.1.1 
+	* Release 0.1.1
 
 2008-08-18  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -115,7 +127,7 @@
 
 2006-10-28  Dirk Eddelbuettel  <edd@debian.org>
 
-	* update.r: Switched repos to to cran.r-project.org 
+	* update.r: Switched repos to to cran.r-project.org
 
 2006-10-25  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -123,7 +135,7 @@
 
 	* examples/install.r, examples/update.r: Two new examples
 
-	* Makefile.am: Some small cleanups and fixes 
+	* Makefile.am: Some small cleanups and fixes
 
 	* INSTALL: Clarified need for R as shared library, reformatted
 
@@ -166,7 +178,7 @@
 	* configure.in: Added check for R version >= 2.3.1
 
 2006-09-29  Dirk Eddelbuettel  <edd@debian.org>
-	
+
 	* littler.c: support svnrevision/date in --version
 
 	* bootstrap, svnversion.h: call svn and do some awk'ing borrowed
