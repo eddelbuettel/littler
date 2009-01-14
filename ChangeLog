@@ -3,6 +3,7 @@
 	* configure.in: Mark as release 0.1.2
 
 	* littler.c,r.1: Added -q|--quick switch to skip autoload
+	  with thanks to Simon Urbanek for the suggestion.
 
 	* littler.c: Updated copyright to 2009
 
@@ -13,6 +14,7 @@
 2008-08-28 Jeffrey Horner <jeffrey.horner@vanderbilt.edu>
 
 	* littler.c: added -t|--rtemp to use R's temp dir strategy
+	  with thanks to Paul Gilbert for the suggestion.
 
 2008-08-27  Dirk Eddelbuettel  <edd@debian.org>
 
