@@ -1,4 +1,4 @@
-/*                  -*- mode: C; c-indent-level: 8; c-basic-offset: 8; -*-
+/*                  -*- mode: C; c-indent-level: 8; c-basic-offset: 8; tab-width: 8 -*-
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
@@ -46,8 +46,7 @@
 
 int verbose=0;
 
-/* these two are being filled by autoconf and friends via config.h */
-/* VERSION */
+/* PACKAGE, VERSION, ... are being filled by autoconf and friends via config.h */
 const char *programName = PACKAGE;
 const char *binaryName = "r";
 
@@ -62,7 +61,6 @@ int  setenv(char *name, char *value, int clobber){
 	sprintf(cp, "%s=%s", name, value);
 	return (putenv(cp));
 }
-
 #endif 
 
 int source(char *file){
@@ -149,7 +147,7 @@ void autoloads(void){
 
 	ptct = 5;
 	for(i = 0; i < packc; i++){
-		 idx += (i != 0)? packobjc[i-1] : 0;
+		idx += (i != 0)? packobjc[i-1] : 0;
 		for (j = 0; j < packobjc[i]; j++){
 			/*printf("autload(%s,%s)\n",packobj[idx+j],pack[i]);*/
 
@@ -183,9 +181,9 @@ void autoloads(void){
 
 /* Line reading code */
 typedef struct membuf_st {
-	    int size;
-		int count;
-		unsigned char *buf;
+	int size;
+	int count;
+	unsigned char *buf;
 } *membuf_t;
 
 membuf_t init_membuf(int sizebytes){
@@ -290,34 +288,40 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 		case PARSE_OK:
 			/* Loop is needed here as EXPSEXP might be of length > 1 */
 			for(i = 0; i < length(cmdexpr); i++){
-				ans = R_tryEval(VECTOR_ELT(cmdexpr, i),NULL,&errorOccurred);
-				if (errorOccurred) return 1;
-
-				if (verbose){
+				ans = R_tryEval(VECTOR_ELT(cmdexpr, i),NULL, &errorOccurred);
+				if (errorOccurred) { 
+					UNPROTECT(2);
+					return 1;
+				}
+				if (verbose) {
 					PrintValue(ans);
 				}
 			}
 			mb = *pmb = rewind_membuf(pmb);
-		break;
+			break;
 		case PARSE_INCOMPLETE:
 			fprintf(stderr, "%s: Incomplete Line! Need more code!\n", programName, status);
+			UNPROTECT(2);
 			return 1;
-		break;
+			break;
 		case PARSE_NULL:
 			fprintf(stderr, "%s: ParseStatus is null (%d)\n", programName, status);
+			UNPROTECT(2);
 			return 1;
-		break;
+			break;
 		case PARSE_ERROR:
 			fprintf(stderr,"Parse Error line %d: \"%s\"\n", lineno, line);
+			UNPROTECT(2);
 			return 1;
-		break;
+			break;
 		case PARSE_EOF:
 			fprintf(stderr, "%s: EOF reached (%d)\n", programName, status);
-		break;
+			break;
 		default:
 			fprintf(stderr, "%s: ParseStatus is not documented %d\n", programName, status);
+			UNPROTECT(2);
 			return 1;
-		break;
+			break;
 	}
 	UNPROTECT(2);
 	return 0;
@@ -330,9 +334,9 @@ void littler_InitTempDir()
 {
 	char *tmp;
 
-	if (perSessionTempDir) return; /* use a per-session temporary directory by following R */
+	if (perSessionTempDir) return; 			/* use a per-session temporary directory by following R */
 
-	tmp = getenv("TMPDIR");
+	tmp = getenv("TMPDIR");				/* set tmp to TMPDIR, or TMP, or TEMP, or "/tmp" */
 	if (tmp == NULL) {
 		tmp = getenv("TMP");
 		if (tmp == NULL) { 
@@ -432,21 +436,20 @@ void showUsageAndExit() {
 /* set seed for tempfile()  */
 void init_rand()
 {
-    unsigned int seed;
+	unsigned int seed;
 #if HAVE_GETTIMEOFDAY
-  {
-    struct timeval tv;
-    gettimeofday (&tv, NULL);
-	/* changed uint64_t to unsigned int. Need to figure out why
-	 * PBR used that instead. */
-    seed = ((unsigned int) tv.tv_usec << 16) ^ tv.tv_sec;
-  }
+	{
+		struct timeval tv;
+		gettimeofday (&tv, NULL);
+		/* changed uint64_t to unsigned int. Need to figure out why PBR used that instead. */
+		seed = ((unsigned int) tv.tv_usec << 16) ^ tv.tv_sec;
+	}
 #elif HAVE_TIME
-    seed = (unsigned int) time(NULL);
+	seed = (unsigned int) time(NULL);
 #else
-    /* unlikely, but use random contents */
+	/* unlikely, but use random contents */
 #endif
-    srand(seed);
+	srand(seed);
 }
 
 int main(int argc, char **argv){
@@ -561,30 +564,27 @@ int main(int argc, char **argv){
 	/* We don't require() default packages upon startup; rather, we
 	 * set up delayedAssign's instead. see autoloads().
 	 */
-	if (setenv("R_DEFAULT_PACKAGES","NULL",1) != 0){
+	if (setenv("R_DEFAULT_PACKAGES","NULL",1) != 0) {
 		perror("ERROR: couldn't set/replace R_DEFAULT_PACKAGES");
 		exit(1);
 	}
 
-	/* Don't let R set up its own signal handlers */
-	R_SignalHandlers = 0;
+	R_SignalHandlers = 0;			/* Don't let R set up its own signal handlers */
 
 	#ifdef CSTACK_DEFNS
-	/* Don't do any stack checking */
-	R_CStackLimit = -1;
+	R_CStackLimit = (uintptr_t)-1;		/* Don't do any stack checking, see R Exts, '8.1.5 Threading issues' */
 	#endif
 
-	littler_InitTempDir();
+	littler_InitTempDir();			/* Set up temporary directoy */
+	
+	Rf_initEmbeddedR(R_argc, R_argv);	/* Initialize the embedded R interpreter */
 
-	Rf_initEmbeddedR(R_argc, R_argv);
+	R_ReplDLLinit(); 			/* this is to populate the repl console buffers */
 
-	R_ReplDLLinit(); /* this is to populate the repl console buffers */
+	ptr_R_CleanUp = littler_CleanUp; 	/* R Exts, '8.1.2 Setting R callbacks */
 
-	ptr_R_CleanUp = littler_CleanUp;
-
-	/* Force all default package to be dynamically required, unless chosen not to */
-	if (quick != 1) {
-		autoloads();
+	if (quick != 1) {			/* Unless user chose not to load libraries */
+		autoloads();			/* Force all default package to be dynamically required */
 	}
 
 	/* Place any argv arguments into argv vector in Global Environment */
@@ -606,11 +606,9 @@ int main(int argc, char **argv){
 		setVar(install("argv"),R_NilValue,R_GlobalEnv);
 	}
 
-	/* for tempfile() to work correctly */
-	init_rand();
+	init_rand();				/* for tempfile() to work correctly */
 
-	/* deal with libraries, if requested */
-	if (libstr != NULL) {
+	if (libstr != NULL) {			/* if requested by user, load libraries */
 		char *ptr, *token, *strptr;
 		char buf[128];
 
@@ -629,7 +627,7 @@ int main(int argc, char **argv){
 
 	/* Now determine which R code to evaluate */
 	int exit_val = 0;
-	if (evalstr != NULL) {				
+	if (evalstr != NULL) {			
 		/* we have a command line expression to evaluate */
 		membuf_t pb = init_membuf(1024);
 		exit_val = parse_eval(&pb, evalstr, 1);
