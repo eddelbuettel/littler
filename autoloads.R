@@ -6,7 +6,7 @@ dp <- getOption("defaultPackages")
 cat("int packc = ",length(dp),";\n",sep='')
 
 # List of packages
-cat("char *pack[] = {\n",paste('"',dp,'"',sep='',collapse=",\n"),"\n};\n")
+cat("const char *pack[] = {\n",paste('"',dp,'"',sep='',collapse=",\n"),"\n};\n")
 
 packobjc <- array(0,dim=length(dp))
 packobj <- NULL
@@ -20,4 +20,4 @@ for (i in 1:length(dp)){
 cat("int packobjc[] = {\n",paste(packobjc,sep='',collapse=",\n"),"\n};\n")
 
 # List of object names
-cat("char *packobj[] = {\n",paste('"',packobj,'"',sep='',collapse=",\n"),"\n};\n")
+cat("const char *packobj[] = {\n",paste('"',packobj,'"',sep='',collapse=",\n"),"\n};\n")
