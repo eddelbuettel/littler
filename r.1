@@ -80,11 +80,11 @@ scripts.
 .SH EXAMPLES
 Piping \fBR\fP commands:
 
-echo 'cat(pi^2,"\n")' | r
+ echo 'cat(pi^2,"\\n")' | r
 
 Equivalently, \fBR\fP commands can be given on the command-line:
 
-r -e 'cat(pi^2, "\n")'
+ r -e 'cat(pi^2, "\\n")'
 
 Alternatively, commands can be stored in a file, which in turn might use
 \fBR\fP command 'readLines' to process stdin input:
