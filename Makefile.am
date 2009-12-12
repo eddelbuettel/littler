@@ -33,7 +33,7 @@ autoloads.h: autoloads.R
 ldflags.txt: ldflags.R
 	R_HOME= ${RPROG} ${ROPTIONS} < ldflags.R > ldflags.txt
 
-# Always create a fresh svn version -- but .PHONy used here create a loop
+# Always create a fresh svn version -- but .PHONY used here create a loop
 .PHONY: svnversion.h
 svnversion.h: 
 	./bootstrap --svnversion
