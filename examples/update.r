@@ -16,7 +16,7 @@ lib.loc <- "/usr/local/lib/R/site-library"
 
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
 clearCache <- function() {
-  sapply(list.files(path=tempdir(), pattern="repos*", full.names=TRUE), unlink)
+  sapply(list.files(path=tempdir(), pattern="libloc*", full.names=TRUE), unlink)
 }
 
 ## Always clear caches of remote and local packages

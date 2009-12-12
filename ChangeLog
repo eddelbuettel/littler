@@ -1,3 +1,13 @@
+2009-12-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install.r: Do not call install.packages  with 
+	  dependencies=TRUE as this leads to too many auxilliary pkgs
+	* examples/update.r: Small fix to clearCache()
+
+2009-03-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* r.1: Added two missing \ to protect \n inside quotes 
+
 2009-01-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.in: Mark as release 0.1.2
@@ -238,7 +248,7 @@
 
 	* rinterp.c: Added argv support. (feature request from Juha
 	Vierine <jvierine@gmail.com>)
-	
+
 2006-07-14  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
 
 	* Release 0.0.1:
