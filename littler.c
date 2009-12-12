@@ -356,7 +356,12 @@ void littler_InitTempDir()
 
 /* littler exit */
 void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
+	R_dot_Last();
+	R_RunExitFinalizers();
 	if (perSessionTempDir) R_CleanTempDir();
+	Rf_KillAllDevices;
+	fpu_setup(FALSE);
+	Rf_endEmbeddedR(0);
 	exit(status);
 }
 
