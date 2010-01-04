@@ -378,6 +378,7 @@ void showHelpAndExit() {
 	       "  -V, --version        Show the version number\n"
 	       "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
 	       "  -t, --rtemp          Use per-session temporary directory as R does\n"
+	       "  -i, --interactive    Let interactive() return 'true' rather than 'false'\n"
 	       "  -q, --quick          Skip autoload / delayed assign of default libraries\n"
 	       "  -p, --verbose        Print the value of expressions to the console\n"  
 	       "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
@@ -463,10 +464,12 @@ int main(int argc, char **argv){
 	char *R_argv[] = {(char*)programName, "--gui=none", "--no-restore", "--no-save", "--no-readline", "--silent", "", ""};
 	char *R_argv_opt[] = {"--vanilla", "--slave"};
 	int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
-	int i, nargv, c, optpos=0, vanilla=0, quick=0;
+	int i, nargv, c, optpos=0, vanilla=0, quick=0, interactive=0;
 	char *evalstr = NULL;
 	char *libstr = NULL;
 	SEXP s_argv;
+	structRstart Rst;
+
 
 	static struct option optargs[] = {
 		{"help",    no_argument,       NULL, 'h'}, 		/* --help also has short option -h */
@@ -478,9 +481,10 @@ int main(int argc, char **argv){
 		{"verbose", no_argument,       NULL, 'p'},
 		{"rtemp",   no_argument,       NULL, 't'},
 		{"quick",   no_argument,       NULL, 'q'},
+		{"interactive",  no_argument,  NULL, 'i'},
 		{0, 0, 0, 0}
 	};
-	while ((c = getopt_long(argc, argv, "+hVve:npl:tq", optargs, &optpos)) != -1) {
+	while ((c = getopt_long(argc, argv, "+hVve:npl:tqi", optargs, &optpos)) != -1) {
 		switch (c) {	
 			case 0:					/* numeric 0 is code for a long option */
 				/* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
@@ -522,6 +526,9 @@ int main(int argc, char **argv){
 				break;
 			case 'q':
 				quick=1;
+				break;
+			case 'i':
+				interactive=1;
 				break;
 			default:
 				printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
@@ -585,6 +592,12 @@ int main(int argc, char **argv){
 	Rf_initEmbeddedR(R_argc, R_argv);	/* Initialize the embedded R interpreter */
 
 	R_ReplDLLinit(); 			/* this is to populate the repl console buffers */
+
+	if (!interactive) {			/* new in littler 0.1.3 */
+		R_DefParams(&Rst);
+		Rst.R_Interactive = 0;		/* sets interactive() to eval to false */
+		R_SetParams(&Rst);
+	}
 
 	ptr_R_CleanUp = littler_CleanUp; 	/* R Exts, '8.1.2 Setting R callbacks */
 
