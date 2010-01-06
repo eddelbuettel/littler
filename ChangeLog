@@ -8,6 +8,9 @@
 	* bootstrap: Added tests to not re-generate svnversion.h when
 	  information about revision number and date cannot be had retrieved
 
+	* ldflags.R: Ensure no 'empty string' entries get expanded as this
+	  triggered a Debian lintian error related to rpath usage
+	
 	* tools/config.{guess,sub}: Updated
 
 2010-01-04  Dirk Eddelbuettel  <edd@debian.org>
