@@ -1,4 +1,4 @@
-#!/usr/bin/env r
+#!/usr/bin/r -i
 
 fsizes <- as.integer(readLines())
 print(summary(fsizes))

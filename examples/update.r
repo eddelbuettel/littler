@@ -1,4 +1,4 @@
-#!/usr/bin/env r
+#!/usr/bin/r -t
 #
 # a simple example to update packages in /usr/local/lib/R/site-library
 # parameters are easily adjustable
