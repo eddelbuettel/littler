@@ -1,3 +1,20 @@
+2011-09-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.in: Mark as release 0.1.4
+
+	* Makefile.am: Applied patch by Mathias Klose to prevent FTBFS with
+	  'ld --as-needed', cf LP bug 770980.
+
+	* littler.c: A few small tweaks suggested by 'gcc -Wall'
+
+	* examples/install2.r: Added a second R package installer example
+
+	* examples/update.r: Switch to '/usr/bin/r -t' as shebang line
+	* examples/fsizes.r: Dito
+
+	* littler.c: Update copyrights to 2011
+	* README: Idem
+
 2010-01-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.in: Mark as release 0.1.3
@@ -10,7 +27,7 @@
 
 	* ldflags.R: Ensure no 'empty string' entries get expanded as this
 	  triggered a Debian lintian error related to rpath usage
-	
+
 	* tools/config.{guess,sub}: Updated
 
 2010-01-04  Dirk Eddelbuettel  <edd@debian.org>
