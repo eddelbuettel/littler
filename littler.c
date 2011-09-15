@@ -2,7 +2,7 @@
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006 - 2010  Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006 - 2011  Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 #include "config.h"
@@ -64,7 +65,7 @@ int  setenv(char *name, char *value, int clobber){
 #endif 
 
 int source(char *file){
-	SEXP val, expr, s, f, p;
+	SEXP expr, s, f, p;
 	int errorOccurred;
 
 	/* Find source function */
@@ -87,7 +88,7 @@ int source(char *file){
 	SET_TAG(CDR(CDR(expr)),Rf_install("print.eval"));
 
 	errorOccurred=0;
-	val = R_tryEval(expr,NULL,&errorOccurred);
+	R_tryEval(expr,NULL,&errorOccurred);
 	UNPROTECT(4);
 
 	return errorOccurred;
@@ -300,7 +301,7 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
 			mb = *pmb = rewind_membuf(pmb);
 			break;
 		case PARSE_INCOMPLETE:
-			fprintf(stderr, "%s: Incomplete Line! Need more code!\n", programName, status);
+			fprintf(stderr, "%s: Incomplete Line! Need more code! (%d)\n", programName, status);
 			UNPROTECT(2);
 			return 1;
 			break;
@@ -359,7 +360,7 @@ void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
 	R_dot_Last();
 	R_RunExitFinalizers();
 	if (perSessionTempDir) R_CleanTempDir();
-	Rf_KillAllDevices;
+	Rf_KillAllDevices();
 	fpu_setup(FALSE);
 	Rf_endEmbeddedR(0);
 	exit(status);
@@ -407,7 +408,7 @@ void showVersionAndExit() {
 					R_SVN_REVISION);
 		}
 	}
-  	printf("\n\nCopyright (C) 2006 - 2010 Jeffrey Horner and Dirk Eddelbuettel\n"
+  	printf("\n\nCopyright (C) 2006 - 2011 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
@@ -666,5 +667,5 @@ int main(int argc, char **argv){
 		destroy_membuf(pb);
 	}
 	littler_CleanUp(SA_NOSAVE, exit_val,0);
-	/* not reached */
+	return(0); /* not reached, but making -Wall happy */
 }
