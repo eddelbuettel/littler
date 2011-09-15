@@ -41,9 +41,9 @@ svnversion.h:
 # Main r build rule, with suitable extension where needed (as eg on OS X)
 r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES) svnversion.h
 	@rm -f r$(EXEEXT)
-	$(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	$(CCLD) $(AM_CFLAGS) $(CFLAGS) $(r_OBJECTS) $(AM_LDFLAGS) \
 		`cat ldflags.txt` $(LDFLAGS) \
-		-o $@ $(r_LDFLAGS) $(r_OBJECTS) $(r_LDADD) $(LIBS)
+		-o $@ $(r_LDFLAGS) $(r_LDADD) $(LIBS)
 	$(RUN_NAMETOOL)
 
 #  Clean target to delete stuff make generates
