@@ -9,7 +9,8 @@ all-am: r$(EXEEXT) littler.h autoloads.h ldflags.txt
 
 # List of files to include in distribution (e.g. make dist)
 r_SOURCES=littler.c r.1 autoloads.R ldflags.R littler.R ANNOUNCEMENT \
-			tests/* examples/* svnversion.h bootstrap
+			configure configure.in tests/* examples/* svnversion.h bootstrap 
+
 
 # These two together will tell make to create autoloads.h before any target.
 nodist_r_SOURCES=autoloads.h ldflags.txt littler.h svnversion.h

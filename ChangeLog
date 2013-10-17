@@ -1,8 +1,21 @@
+2013-10-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: Correction to display of '--version'
+
+2012-10-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* ldflags.R: Applied patch by Jonas Rauch to correctly compute -rpath
+	linker flags on Linux, squashing a really old bug
+
+2012-09-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/update.r: Minor tweak
+
 2011-09-17  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.in: Mark as release 0.1.5
 
-	* littler.c (littler_CleanUp): Remove call to Rf_KillAllDevices() 
+	* littler.c (littler_CleanUp): Remove call to Rf_KillAllDevices()
 
 2011-09-15  Dirk Eddelbuettel  <edd@debian.org>
 

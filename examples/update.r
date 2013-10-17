@@ -6,17 +6,18 @@
 ## adjust as necessary, see help('download.packages')
 repos <- "http://cran.r-project.org"
 ## or use BioC's repo list if Biobase is installed:
-suppressMessages(rc <- require(Biobase))
-if (rc) {
-  repos <- Biobase:::biocReposList()
-}
+#suppressMessages(rc <- require(Biobase))
+#if (rc) {
+#  repos <- Biobase:::biocReposList()
+#}
 
 ## this makes sense on Debian where no package touch /usr/local
 lib.loc <- "/usr/local/lib/R/site-library"
 
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
 clearCache <- function() {
-  sapply(list.files(path=tempdir(), pattern="libloc*", full.names=TRUE), unlink)
+  sapply(list.files(path=tempdir(), pattern="repos_http", full.names=TRUE), unlink)
+  #sapply(list.files(path=tempdir(), pattern="libloc_http", full.names=TRUE), unlink)
 }
 
 ## Always clear caches of remote and local packages

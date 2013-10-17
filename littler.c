@@ -2,7 +2,7 @@
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006 - 2011  Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006 - 2013  Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -389,11 +389,13 @@ void showHelpAndExit() {
 }
 
 void showVersionAndExit() {
+        char txt[64];
 	printf("%s ('%s') version %s\n\tsvn revision %s as of %s\n\tbuilt at %s on %s\n", 
 	       binaryName, programName, VERSION, 
 	       svnrevision, svndate, compiletime, compiledate);
 	printf("\tusing GNU R ");
-	if(strcmp(R_SVN_REVISION, "unknown")==0) {
+        snprintf(txt, 63, "%d", R_SVN_REVISION);
+	if(strcmp(txt, "unknown")==0) {
 		printf("Version %s.%s %s (%s-%s-%s)",
 				R_MAJOR, R_MINOR, R_STATUS, R_YEAR, R_MONTH, R_DAY);
 	} else {
@@ -402,12 +404,12 @@ void showVersionAndExit() {
 					R_MAJOR, R_MINOR, R_YEAR, R_MONTH, R_DAY);
 		}
 		else{
-			printf("Version %s.%s %s (%s-%s-%s r%s)",
+			printf("Version %s.%s %s (%s-%s-%s r%d)",
 					R_MAJOR, R_MINOR, R_STATUS, R_YEAR, R_MONTH, R_DAY,
 					R_SVN_REVISION);
 		}
 	}
-  	printf("\n\nCopyright (C) 2006 - 2011 Jeffrey Horner and Dirk Eddelbuettel\n"
+  	printf("\n\nCopyright (C) 2006 - 2013 Jeffrey Horner and Dirk Eddelbuettel\n"
 	       "\n"
 	       "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
 	       "You are welcome to redistribute it under the terms of the\n"
