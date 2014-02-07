@@ -1,4 +1,4 @@
-#                                          -*- mode: Autoconf; tab-width: 8; -*-
+#   -*- mode: Autoconf; tab-width: 4; -*-
 # Process this file with autoconf to produce a configure script.      
 
 # Every other copy of the package version number gets its value from here
@@ -54,7 +54,7 @@ AC_PATH_PROG(RPROG,R)
 AC_DEFUN([R_PROG],[
 	AC_MSG_CHECKING([if R was built as a shared library])
 
-    	# Unset any user defined notion of R_HOME
+    # Unset any user defined notion of R_HOME
 	export R_HOME
 
 	# First test if R was found
@@ -97,13 +97,13 @@ R_PROG
 
 # Java
 AC_ARG_WITH([java-libs],
-[AC_HELP_STRING([--with-java-libs],
-		[Link littler to R's java libraries])],
-	[
-		if test x$"$withval" != xno; then
-				AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config JAVA_LIBS | grep -v ERROR`"
-		fi
-	],
+        [AC_HELP_STRING([--with-java-libs],
+        [Link littler to R's java libraries])],
+        	[
+		    if test x$"$withval" != xno; then
+			   	AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config JAVA_LIBS | grep -v ERROR`"
+       		fi      
+        	],
 )
 
 # Tcl/TK
