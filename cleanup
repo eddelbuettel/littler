@@ -5,6 +5,7 @@ rm -f  aclocal.m4 \
        config.status config.log \
        Makefile Makefile.in \
        autoloads.h ldflags.txt littler.h \
-       r svnversion.h *~ *.o
+       r gitversion.h *~ *.o \
+       stamp-h1
 rm -rf autom4te.cache
 

@@ -1,6 +1,6 @@
 # Makefile.am for littler
 #
-# Copyright (C) 2006 - 2009  Jeffrey Horner and Dirk Eddelbuettel, GNU GPL'ed
+# Copyright (C) 2006 - 2014  Jeffrey Horner and Dirk Eddelbuettel, GNU GPL'ed
 
 # Installed program name
 bin_PROGRAMS=r$(EXEEXT)
@@ -9,12 +9,12 @@ all-am: r$(EXEEXT) littler.h autoloads.h ldflags.txt
 
 # List of files to include in distribution (e.g. make dist)
 r_SOURCES=littler.c r.1 autoloads.R ldflags.R littler.R ANNOUNCEMENT \
-			configure configure.in tests/* examples/* svnversion.h bootstrap 
+			configure configure.ac tests/* examples/* gitversion.h bootstrap 
 
 
 # These two together will tell make to create autoloads.h before any target.
-nodist_r_SOURCES=autoloads.h ldflags.txt littler.h svnversion.h
-BUILT_SOURCES=autoloads.h ldflags.txt littler.h svnversion.h
+nodist_r_SOURCES=autoloads.h ldflags.txt littler.h gitversion.h
+BUILT_SOURCES=autoloads.h ldflags.txt littler.h gitversion.h
 
 ROPTIONS=--silent --vanilla --slave
 
@@ -34,13 +34,13 @@ autoloads.h: autoloads.R
 ldflags.txt: ldflags.R
 	R_HOME= ${RPROG} ${ROPTIONS} < ldflags.R > ldflags.txt
 
-# Always create a fresh svn version -- but .PHONY used here create a loop
-.PHONY: svnversion.h
-svnversion.h: 
-	./bootstrap --svnversion
+# Always create a fresh gitversion -- but .PHONY used here creates a loop
+#.PHONY: gitversion.h
+gitversion.h: 
+	./bootstrap --gitversion
 
 # Main r build rule, with suitable extension where needed (as eg on OS X)
-r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES) svnversion.h
+r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES) gitversion.h
 	@rm -f r$(EXEEXT)
 	$(CCLD) $(AM_CFLAGS) $(CFLAGS) $(r_OBJECTS) $(AM_LDFLAGS) \
 		`cat ldflags.txt` $(LDFLAGS) \
@@ -50,8 +50,8 @@ r$(EXEEXT): $(r_OBJECTS) $(r_DEPENDENCIES) svnversion.h
 #  Clean target to delete stuff make generates
 MOSTLYCLEANFILES=autoloads.h ldflags.txt littler.o littler.h 
 
-# Ensure that svnversion.h is regenerated on 'make dist'
-EXTRA_DIST=svnversion.h
+# Ensure that gitversion.h is regenerated on 'make dist'
+EXTRA_DIST=gitversion.h
 
 #  install the man page
 man_MANS=r.1

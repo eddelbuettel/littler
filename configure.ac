@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.      
 
 # Every other copy of the package version number gets its value from here
-AC_INIT(littler,0.1.5)
+AC_INIT(littler,0.1.6)
 
 #  Look for ancillary configure tools in tools
 AC_CONFIG_AUX_DIR(tools)
