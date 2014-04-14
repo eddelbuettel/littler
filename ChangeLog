@@ -2,6 +2,8 @@
 
 	* configure.ac: Mark as release 0.1.6
 
+	* configure.ac: Renamed from configure.in
+
 	* bootstrap: Autogenerate header gitversion.h instead of svnversion.h
 	* littler.c: Use gitversion.h, also whitespace / indentation update
 	* Makefile.am: Use gitversiob.h
