@@ -13,7 +13,7 @@ install:
   
 script:
   - ./r --version
-  - ./r -e'q("no", 0)'
+  - ./r -e'cat("The value of pi is", pi)'
 
 notifications:
   email:

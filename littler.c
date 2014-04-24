@@ -415,7 +415,7 @@ void showVersionAndExit() {
            "GNU General Public License.  For more information about\n"
            "these matters, see http://www.gnu.org/copyleft/gpl.html.\n\n",
            binaryName);
-	exit(-1);       
+	exit(0);       
 }
 
 void showUsageAndExit() {
@@ -438,7 +438,7 @@ void showUsageAndExit() {
            "the tests directory in the sources.\n\n",
            binaryName, programName, binaryName, binaryName, binaryName,  
            programName, binaryName);
-    exit(-1);       
+    exit(0);       
 }
 
 /* set seed for tempfile()  */
@@ -667,6 +667,6 @@ int main(int argc, char **argv){
         destroy_membuf(lb);
         destroy_membuf(pb);
     }
-    littler_CleanUp(SA_NOSAVE, exit_val,0);
+    littler_CleanUp(SA_NOSAVE, exit_val, 0);
     return(0); /* not reached, but making -Wall happy */
 }
