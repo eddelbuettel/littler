@@ -1,3 +1,14 @@
+2014-04-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tools/missing: Updated to current version from libtool on Ubuntu
+	* tools/install.sh: Idem
+
+	* tools/config.guess: Updated to current version from autotools-dev
+	* tools/config.sub: Idem
+
+	* Makefile.am: Explicitly expand ldflags.txt to a Makefile variable
+	* Makefile.am: Removed use of .PHONY again
+
 2014-02-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.ac: Mark as release 0.1.6
