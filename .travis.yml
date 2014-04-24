@@ -13,6 +13,7 @@ install:
   
 script:
   - ./r --version
+  - ./r -e'cat("Pi is", pi, "\n"); q("no", 0)'
 
 notifications:
   email:
