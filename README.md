@@ -1,5 +1,7 @@
 # littler
 
+[![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler)
+
 A scripting and command-line front-end for GNU R permitting use of R in
 command-line contexts.
 
@@ -23,5 +25,6 @@ Jeff Horner and Dirk Eddelbuettel
 ## License
 
 GPL (>= 2)
+
 
 
