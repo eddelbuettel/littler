@@ -1,0 +1,21 @@
+# Sample .travis.yml for littler
+#
+# Dirk Eddelbuettel, April 2014
+
+language: c
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install --no-install-recommends r-base-dev automake autoconf
+
+install:
+  - ./bootstrap
+  
+script:
+  - ./r --version
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+

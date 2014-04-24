@@ -9,6 +9,8 @@
 	* Makefile.am: Explicitly expand ldflags.txt to a Makefile variable
 	* Makefile.am: Removed use of .PHONY again
 
+	* .travis.yml: Added a very simple .travis.yml
+
 2014-02-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.ac: Mark as release 0.1.6
