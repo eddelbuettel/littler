@@ -12,7 +12,9 @@
 	* .travis.yml: Added a very simple .travis.yml
 	* .travis.yml: Ensure we end 'script' section on error code 0
 
-	* littler.c: Ensure --help and --version end with exit(0) 
+	* littler.c: Ensure --help and --version end with exit(0)
+
+	* Makefile.am (CFLAGS): Add CFLAGS
 
 2014-02-07  Dirk Eddelbuettel  <edd@debian.org>
 
