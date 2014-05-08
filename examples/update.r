@@ -1,10 +1,11 @@
-#!/usr/bin/r -t
+#!/usr/bin/env r 
 #
 # a simple example to update packages in /usr/local/lib/R/site-library
 # parameters are easily adjustable
 
 ## adjust as necessary, see help('download.packages')
-repos <- "http://cran.r-project.org"
+repos <- "http://cran.rstudio.com" 
+
 ## or use BioC's repo list if Biobase is installed:
 #suppressMessages(rc <- require(Biobase))
 #if (rc) {
@@ -16,8 +17,7 @@ lib.loc <- "/usr/local/lib/R/site-library"
 
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
 clearCache <- function() {
-  sapply(list.files(path=tempdir(), pattern="repos_http", full.names=TRUE), unlink)
-  #sapply(list.files(path=tempdir(), pattern="libloc_http", full.names=TRUE), unlink)
+  sapply(list.files(path=tempdir(), pattern="*rds$", full.names=TRUE), unlink)
 }
 
 ## Always clear caches of remote and local packages
