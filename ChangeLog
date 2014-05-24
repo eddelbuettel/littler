@@ -1,3 +1,7 @@
+2014-05-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tools/compile: Added, based on current automake version
+
 2014-05-08  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install.r: Updated to currently used version containing
