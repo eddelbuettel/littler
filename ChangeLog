@@ -1,3 +1,7 @@
+2014-06-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/roxy.r: Added new example script
+
 2014-05-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* tools/compile: Added, based on current automake version
