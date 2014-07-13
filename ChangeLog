@@ -1,3 +1,8 @@
+2014-07-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/compAttr.r: Added new example script to call
+	compileAttributes() from the Rcpp package
+
 2014-06-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/roxy.r: Added new example script
