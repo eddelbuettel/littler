@@ -1,3 +1,7 @@
+2014-07-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/roxy.r: Expanded similar to compAttr.r
+
 2014-07-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/compAttr.r: Added new example script to call
