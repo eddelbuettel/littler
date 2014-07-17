@@ -1,3 +1,8 @@
+2014-07-17  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/highlightsweave.r: New example for a highlight sweave
+	driver (as eg needed for Rcpp vignettes) helper script 
+
 2014-07-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/roxy.r: Expanded similar to compAttr.r
