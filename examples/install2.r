@@ -3,18 +3,21 @@
 # a simple example to install one or more packages
 
 ## load getopt package from CRAN, or stop if getopt not available
-stopifnot(require(getopt, quiet=TRUE))
+suppressWarnings(stopifnot(require(getopt, quietly=TRUE)))
 
 ## default values
-repos <- "http://cran.us.r-project.org"		# us mirror
-lib.loc <- "/usr/local/lib/R/site-library"	# this makes sense on Debian where no packages touch /usr/local
+repos <- "http://cran.rstudio.com"		# RStudio CDN, "local everywhere"
+lib.loc <- "/usr/local/lib/R/site-library"	# on Debian where no packages touch /usr/local
 package <- ""
 
 ## option specification
-options <- matrix(c('repos',   'r', 1, "character", paste("repository to install from:\n\t\t\t ", repos),
-                    'libloc',  'l', 1, "character", paste("library location to use:\n\t\t\t", lib.loc),
+options <- matrix(c('repos',   'r', 1, "character",
+                    paste0("repository to install from, default is '", repos, "'"),
+                    'libloc',  'l', 1, "character",
+                    paste0("library location to use, default is '", lib.loc, "'"),
                     'help'   , 'h', 0, "logical", "help on options",
-                    'package', 'p', 1, "character", "mandatory argument for package to install"),
+                    'package', 'p', 1, "character",
+                    "mandatory argument for package to install"),
                   ncol=5,
                   byrow=TRUE)
 
@@ -36,13 +39,5 @@ if (nchar(package)==0) {
     q(status=101)
 }
 
-#args(install.packages)
-#function (pkgs, lib, repos = getOption("repos"),
-#          contriburl = contrib.url(repos, type),
-#          method, available = NULL, destdir = NULL,
-#          installWithVers = FALSE,
-#          dependencies = FALSE, type = getOption("pkgType"),
-#          configure.args = character(0),
-#          clean = FALSE)
 install.packages(package, lib.loc, repos, dependencies=TRUE)
 q(status=0)
