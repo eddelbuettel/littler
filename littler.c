@@ -84,7 +84,7 @@ int source(char *file){
     SETCAR(expr,s); 
     SETCAR(CDR(expr),f);
     SETCAR(CDR(CDR(expr)), p);
-    SET_TAG(CDR(CDR(expr)),Rf_install("print.eval"));
+    SET_TAG(CDR(CDR(expr)), Rf_install("print.eval"));
     
     errorOccurred=0;
     R_tryEval(expr,NULL,&errorOccurred);
@@ -381,6 +381,7 @@ void showHelpAndExit() {
            "  -q, --quick          Skip autoload / delayed assign of default libraries\n"
            "  -p, --verbose        Print the value of expressions to the console\n"  
            "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
+           "  -d, --datastdin      Prepend command to load 'dat' as csv from stdin\n"	
            "  -e, --eval  expr     Let R evaluate 'expr'\n"
            "\n\n",
            binaryName);
@@ -466,27 +467,28 @@ int main(int argc, char **argv){
     char *R_argv[] = {(char*)programName, "--gui=none", "--no-restore", "--no-save", "--no-readline", "--silent", "", ""};
     char *R_argv_opt[] = {"--vanilla", "--slave"};
     int R_argc = (sizeof(R_argv) - sizeof(R_argv_opt) ) / sizeof(R_argv[0]);
-    int i, nargv, c, optpos=0, vanilla=0, quick=0, interactive=0;
+    int i, nargv, c, optpos=0, vanilla=0, quick=0, interactive=0, datastdin=0;
     char *evalstr = NULL;
     char *libstr = NULL;
     SEXP s_argv;
     structRstart Rst;
-
+    char *datastdincmd = "dat <- read.csv(file(\"stdin\"), stringsAsFactors=FALSE);";
 
     static struct option optargs[] = {
-        {"help",    no_argument,       NULL, 'h'}, 	/* --help also has short option -h */
-        {"usage",   no_argument,       0,    0},
-        {"version", no_argument,       NULL, 'V'},
-        {"vanilla", no_argument,       NULL, 'v'},
-        {"eval",    required_argument, NULL, 'e'},
-        {"packages",required_argument, NULL, 'l'},
-        {"verbose", no_argument,       NULL, 'p'},
-        {"rtemp",   no_argument,       NULL, 't'},
-        {"quick",   no_argument,       NULL, 'q'},
-        {"interactive",  no_argument,  NULL, 'i'},
+        {"help",         no_argument,       NULL, 'h'}, 	/* --help also has short option -h */
+        {"usage",        no_argument,       0,    0},
+        {"version",      no_argument,       NULL, 'V'},
+        {"vanilla",      no_argument,       NULL, 'v'},
+        {"eval",         required_argument, NULL, 'e'},
+        {"packages",     required_argument, NULL, 'l'},
+        {"verbose",      no_argument,       NULL, 'p'},
+        {"rtemp",        no_argument,       NULL, 't'},
+        {"quick",        no_argument,       NULL, 'q'},
+        {"interactive",  no_argument,       NULL, 'i'},
+        {"datastdin",    no_argument,       NULL, 'd'},
         {0, 0, 0, 0}
     };
-    while ((c = getopt_long(argc, argv, "+hVve:npl:tqi", optargs, &optpos)) != -1) {
+    while ((c = getopt_long(argc, argv, "+hVve:npl:tqid", optargs, &optpos)) != -1) {
         switch (c) {	
         case 0:				/* numeric 0 is code for a long option */
             /* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
@@ -531,6 +533,9 @@ int main(int argc, char **argv){
             break;
         case 'i':
             interactive=1;
+            break;
+        case 'd':
+            datastdin=1;
             break;
         default:
             printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
@@ -642,6 +647,12 @@ int main(int argc, char **argv){
                 parse_eval(&pb, buf, 1);
             }
         } 
+        destroy_membuf(pb);
+    }
+
+    if (datastdin) {				/* if requested by user, read 'dat' from stdin */
+        membuf_t pb = init_membuf(512);
+        parse_eval(&pb, datastdincmd, 1);
         destroy_membuf(pb);
     }
 

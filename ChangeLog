@@ -1,3 +1,8 @@
+2014-07-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: New command-line option '-d|--datastdin' which triggers
+	execution of 'dat <- read.csv(file("stdin", stringsAsFactors=FALSE)'
+
 2014-07-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install2.r: Updated throughout
