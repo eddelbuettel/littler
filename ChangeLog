@@ -1,5 +1,7 @@
 2014-07-27  Dirk Eddelbuettel  <edd@debian.org>
 
+	* r.1: Update manual page about new -d option
+
 	* littler.c: Store read.csv() result in 'X', not 'dat'
 
 2014-07-26  Dirk Eddelbuettel  <edd@debian.org>

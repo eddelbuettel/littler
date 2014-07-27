@@ -74,6 +74,10 @@ Skip autoload (i.e. delayed assign) of default libraries.
 \fB\-i\fR, \fB\-\-interactive\fR
 Force 'interactive()' to evaluate to TRUE, whereas the default is FALSE.
 .TP
+\fB\-d\fR, \fB\-\-datastdin\fR
+Evaluates 'X <- read.csv(file="stdin", stringsAsFactors=FALSE)' to read a
+data set from stdin..
+.TP
 \fB\-e\fR, \fB\-\-eval expr\fR
 Evaluate 'expr' in R.
 .PP
