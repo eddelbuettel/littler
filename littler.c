@@ -472,7 +472,7 @@ int main(int argc, char **argv){
     char *libstr = NULL;
     SEXP s_argv;
     structRstart Rst;
-    char *datastdincmd = "dat <- read.csv(file(\"stdin\"), stringsAsFactors=FALSE);";
+    char *datastdincmd = "X <- read.csv(file(\"stdin\"), stringsAsFactors=FALSE);";
 
     static struct option optargs[] = {
         {"help",         no_argument,       NULL, 'h'}, 	/* --help also has short option -h */

@@ -1,3 +1,7 @@
+2014-07-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: Store read.csv() result in 'X', not 'dat'
+
 2014-07-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* littler.c: New command-line option '-d|--datastdin' which triggers
