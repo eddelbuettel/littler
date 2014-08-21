@@ -2,6 +2,8 @@
 
 	* examples/runit.r: New example file 'runit.r' (using docopt)
 
+	* examples/install2.r: Simplified by using docopt
+
 2014-07-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* r.1: Update manual page about new -d option

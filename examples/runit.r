@@ -7,6 +7,7 @@ doc <- "Usage: runit.r [-p PACKAGES] [--help] [FILES ...]
 
 -p --packages PACKAGES      comma-separated list of packages to install [default: ]
 -h --help                   show this help text"
+
 opt <- docopt(doc, args=argv)
 
 
