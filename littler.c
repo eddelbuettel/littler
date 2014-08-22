@@ -381,7 +381,7 @@ void showHelpAndExit() {
            "  -q, --quick          Skip autoload / delayed assign of default libraries\n"
            "  -p, --verbose        Print the value of expressions to the console\n"  
            "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
-           "  -d, --datastdin      Prepend command to load 'dat' as csv from stdin\n"	
+           "  -d, --datastdin      Prepend command to load 'X' as csv from stdin\n"	
            "  -e, --eval  expr     Let R evaluate 'expr'\n"
            "\n\n",
            binaryName);
