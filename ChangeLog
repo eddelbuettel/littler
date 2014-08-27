@@ -1,3 +1,7 @@
+2014-08-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install2.r: Using docopt (>= 0.3) using stripped names
+
 2014-08-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/fileOps.r: Really simple example on vectorised file
