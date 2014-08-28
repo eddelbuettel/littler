@@ -16,9 +16,9 @@ doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [PACKAGES ...]
 opt <- docopt(doc)
 
 ## installation given selected options and arguments
-install.packages(pkgs  = opt[["PACKAGES"]],
-                 lib   = opt[["libloc"]],
-                 repos = opt[["repos"]],
+install.packages(pkgs  = opt$PACKAGES,
+                 lib   = opt$libloc,
+                 repos = opt$repos,
                  dependencies=TRUE)
 
 q(status=0)
