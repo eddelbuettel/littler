@@ -1,3 +1,7 @@
+2014-08-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/fsizes.r: Use explicit 'file("stdin")' with 'readLines()'
+
 2014-08-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* littler.c (main): Minor correction for help text
