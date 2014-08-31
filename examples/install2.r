@@ -3,7 +3,7 @@
 # a simple example to install one or more packages
 
 ## load docopt package from CRAN, or stop if not available
-suppressMessages(library(docopt))       # we need the docopt package
+suppressMessages(library(docopt))       # we need the docopt package 0.3 or later
 
 ## configuration for docopt
 doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [PACKAGES ...]
@@ -13,12 +13,12 @@ doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [PACKAGES ...]
 -h --help                   show this help text"
 
 ## docopt parsing
-opt <- docopt(doc, args=argv)
+opt <- docopt(doc)
 
 ## installation given selected options and arguments
-install.packages(pkgs  = opt[["PACKAGES"]],
-                 lib   = opt[["--libloc"]],
-                 repos = opt[["--repos"]],
+install.packages(pkgs  = opt$PACKAGES,
+                 lib   = opt$libloc,
+                 repos = opt$repos,
                  dependencies=TRUE)
 
 q(status=0)
