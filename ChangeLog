@@ -1,3 +1,7 @@
+2014-09-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Mark as release 0.2.0
+
 2014-08-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/fsizes.r: Use explicit 'file("stdin")' with 'readLines()'
@@ -86,7 +90,7 @@
 
 2014-02-07  Dirk Eddelbuettel  <edd@debian.org>
 
-	* configure.ac: Mark as release 0.1.6
+	* configure.ac: Mark as release 0.1.6 [though never released as 0.1.6]
 
 	* configure.ac: Renamed from configure.in
 
