@@ -18,6 +18,13 @@ confusing the main binary `R` for the R system with our smaller scripting
 frontend `r`, we suggest to consider running `configure --program-prefix="l"`
 which this leads to installation of a binary `lr` instead of `r`.
 
+## More Information
+
+For moer information about littler, please see
+
+* [Dirk's main littler page](http://dirk.eddelbuettel.com/code/littler.html)
+* [Dirk's page with littler examples](http://dirk.eddelbuettel.com/code/littler.examples.html)
+
 ## Authors
 
 Jeff Horner and Dirk Eddelbuettel
