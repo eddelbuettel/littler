@@ -20,7 +20,7 @@ which this leads to installation of a binary `lr` instead of `r`.
 
 ## More Information
 
-For moer information about littler, please see
+For more information about littler, please see
 
 * [Dirk's main littler page](http://dirk.eddelbuettel.com/code/littler.html)
 * [Dirk's page with littler examples](http://dirk.eddelbuettel.com/code/littler.examples.html)
