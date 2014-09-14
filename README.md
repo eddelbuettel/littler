@@ -13,7 +13,7 @@ install the resulting binary.
 
 On Linux systems, ensure you have the `autotools-dev` package (or its
 equivalent on non-Debian/Ubuntu systems).  On OS X, you may need to run `brew
-install automake` to get all the tools. 
+install automake autoconf` to get all the tools. 
 
 ### Alternate naming
 
