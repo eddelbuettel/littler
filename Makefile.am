@@ -18,7 +18,7 @@ BUILT_SOURCES = autoloads.h ldflags.txt littler.h gitversion.h
 
 ROPTIONS = --silent --vanilla --slave
 
-CFLAGS = -march=native -O3 -pipe 
+CFLAGS = -O3 -pipe 
 
 # The next three rules could be written more compactly as '... < $< > $@'
 # using the GNU make 'extention variables' $< and $@, but as this may get
