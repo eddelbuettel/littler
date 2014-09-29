@@ -21,4 +21,5 @@ install.packages(pkgs  = opt$PACKAGES,
                  repos = opt$repos,
                  dependencies=TRUE)
 
-q(status=0)
+# Let errors be errors
+# q(status=0)
