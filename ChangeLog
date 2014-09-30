@@ -1,3 +1,13 @@
+2014-09-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install2.r: Minor edits
+	* examples/installGitHub.r: Ditto
+
+2014-09-29  Carl Boettiger <cboettig@gmail.com>
+
+	* examples/install2.r: Fix return code, and add new option --deps
+	* examples/installGitHub.r: New example to install from GitHub
+
 2014-09-01  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.ac: Mark as release 0.2.0
