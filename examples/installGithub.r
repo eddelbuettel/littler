@@ -1,6 +1,6 @@
 #!/usr/bin/env r
 #
-# a simple example to install one or more packages
+# a simple example to install one or more packages from GitHub
 
 ## load docopt and devtools from CRAN
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
