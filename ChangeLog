@@ -1,3 +1,10 @@
+2014-10-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* INSTALL: Updated, made distinction between installing from a
+	tarball and installing from git [via './bootstrap'] more clear
+
+	* README: Brief update, still needs more thorough rewrite
+
 2014-10-04  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/testInstalled.r: Renamed from test.r, minor edits
