@@ -1,6 +1,6 @@
 #!/usr/bin/env r
 #
-# a second example to install one or more packages, now with options
+# a second example to install one or more packages, now with option parsing
 
 ## load docopt package from CRAN
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
@@ -17,10 +17,11 @@ doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGE
 ## docopt parsing
 opt <- docopt(doc)
 
-if(opt$deps == "TRUE" || opt$deps == "FALSE")
-  opt$deps <- as.logical(opt$deps)
-if(opt$deps == "NA")
-  opt$deps <- NA
+if (opt$deps == "TRUE" || opt$deps == "FALSE") {
+    opt$deps <- as.logical(opt$deps)
+} else if (opt$deps == "NA") {
+    opt$deps <- NA
+}
 
 ## installation given selected options and arguments
 
