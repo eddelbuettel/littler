@@ -1,6 +1,10 @@
 #!/usr/bin/env r
 #
-# a simple example to install one or more packages from GitHub
+# A simple example to install one or more packages from GitHub
+#
+# Copyright (C) 2014         Carl Boettiger and Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
 
 ## load docopt and devtools from CRAN
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN

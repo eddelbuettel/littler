@@ -1,3 +1,12 @@
+2014-10-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install.r: Remove temporary rds files matching libloc or
+	repos containing info about installed and available packages
+
+	* examples/update.r: Add proper copyright and license header
+	* examples/update.r: Ditto
+	* examples/install2.r: Ditto
+
 2014-10-11  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install2.r: Minor polishing

@@ -1,7 +1,11 @@
 #!/usr/bin/env r 
 #
-# a simple example to update packages in /usr/local/lib/R/site-library
-# parameters are easily adjustable
+# A simple example to update packages in /usr/local/lib/R/site-library
+# Parameters are easily adjustable
+#
+# Copyright (C) 2006 - 2014  Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
 
 ## adjust as necessary, see help('download.packages')
 repos <- "http://cran.rstudio.com" 

@@ -1,6 +1,11 @@
 #!/usr/bin/env r
 #
-# a second example to install one or more packages, now with option parsing
+# A second example to install one or more packages, now with option parsing
+#
+# Copyright (C) 2011 - 2014  Dirk Eddelbuettel
+# Copyright (C) 2014         Carl Boettiger and Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
 
 ## load docopt package from CRAN
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
@@ -11,7 +16,7 @@ doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGE
 -r --repos REPO     repository to install from [default: http://cran.rstudio.com]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      Install suggested dependencies as well [default: NA]
--e --error          Throw error and halt if package cannot be installed? (usually a warning). [default: FALSE]
+-e --error          Throw error and halt instead of a warning [default: FALSE]
 -h --help           show this help text"
 
 ## docopt parsing
