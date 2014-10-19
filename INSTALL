@@ -40,17 +40,17 @@
 1.1.2 Build-tools when building from git
 ----------------------------------------
 
-   When building from the git repo, the autoconf / autotools / automake suite
-   of programs is required. 
+    When building from the git repo, the autoconf / autotools / automake suite
+    of programs is required. 
 
-   On a Debian / Ubuntu based system do
+    On a Debian / Ubuntu based system do
 
         sudo apt-get install r-base-dev autoconf-dev
 
-   to install R dependencies as well as build tools.
+    to install R dependencies as well as build tools.
 
-   When building from a release tarball, the auto* tools should not be
-   required.
+    When building from a release tarball, the auto* tools should not be
+    required.
 
 
 1.2 Basic Steps
@@ -60,39 +60,39 @@
 1.2.1 Building from repo sources
 --------------------------------
 
-   The minimal recipe for installation should apply, i.e. start by
+    The minimal recipe for installation should apply, i.e. start by
 
  	$ ./bootstrap
 
-   which will first run the auto* tools to create the configure script.
+    which will first run the auto* tools to create the configure script.
    
-   It the invokes the configure script to find the first path to R in your
-   environment variable PATH.
+    It the invokes the configure script to find the first path to R in your
+    environment variable PATH.
    
-   If you want the binary to be installation with a name other than 'r' 
-   (which is a good idea on case-insensitive systems like OS X), then you 
-   can set either --program-suffix or --program-prefix as in
+    If you want the binary to be installation with a name other than 'r' 
+    (which is a good idea on case-insensitive systems like OS X), then you 
+    can set either --program-suffix or --program-prefix as in
 
       ./configure --program-suffix=sp			# creates rsp
 
-   and 
+    and 
 
       ./configure --program-prefix=little		# creates littler
 
-   If there's another R installation you want to use, then you'll have to 
-   readjust the PATH. For example:
+    If there's another R installation you want to use, then you'll have to 
+    readjust the PATH. For example:
 
 		$ PATH=~/R-trunk/bin:$PATH ./configure
 
-   Then
+    Then
 
 	$ make
 
-   should build the 'r' binary, and 
+    should build the 'r' binary, and 
 
 	$ sudo make install
 
-   should install it, as well as the manual page.
+    should install it, as well as the manual page.
 
 
 2. Installation from GIT
