@@ -1,3 +1,12 @@
+2014-10-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Mark as release 0.2.1
+
+	* littler.c: Minor whitespace changes for 'r --version'
+
+	* examples/*.r: Add proper copyright and license header for remaining
+	files
+
 2014-10-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install.r: Remove temporary rds files matching libloc or

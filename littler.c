@@ -390,16 +390,16 @@ void showHelpAndExit() {
 
 void showVersionAndExit() {
     char txt[64];
-    printf("%s ('%s') version %s\n\tgit revision %s as of %s\n\tbuilt at %s on %s\n", 
+    printf("%s ('%s') version %s\n\ngit revision %s as of %s\nbuilt at %s on %s\n", 
            binaryName, programName, VERSION, 
            gitrevision, gitdate, compiletime, compiledate);
-    printf("\tusing GNU R ");
+    printf("using GNU R ");
     snprintf(txt, 63, "%d", R_SVN_REVISION);
-    if(strcmp(txt, "unknown")==0) {
+    if (strcmp(txt, "unknown")==0) {
         printf("Version %s.%s %s (%s-%s-%s)",
                R_MAJOR, R_MINOR, R_STATUS, R_YEAR, R_MONTH, R_DAY);
     } else {
-        if(strlen(R_STATUS)==0){
+        if (strlen(R_STATUS)==0) {
             printf("Version %s.%s (%s-%s-%s)",
                    R_MAJOR, R_MINOR, R_YEAR, R_MONTH, R_DAY);
         }
@@ -409,7 +409,7 @@ void showVersionAndExit() {
                    R_SVN_REVISION);
         }
     }
-    printf("\n\nCopyright (C) 2006 - 2014 Jeffrey Horner and Dirk Eddelbuettel\n"
+    printf("\n\nCopyright (C) 2006 - 2014  Jeffrey Horner and Dirk Eddelbuettel\n"
            "\n"
            "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
            "You are welcome to redistribute it under the terms of the\n"
@@ -432,7 +432,7 @@ void showUsageAndExit() {
            "The third use is in standard compound command-line expressions common\n" 
            "under Unix (so called 'command pipes') as '%s' can take arguments\n"
            "from stdin if the special filename '-' is used to select stdin.\n\n"
-           "The fourth use is in on-tge-fly evaluation of R expressions supplied\n"
+           "The fourth use is in on-the-fly evaluation of R expressions supplied\n"
            "via the -e or --eval options to provide a quick R expression tester\n"
            "and calculator.\n\n"
            "More documentation is provided in the '%s' manual page and via\n"
