@@ -2,6 +2,10 @@
 #
 # Convert miles-per-hour, time-distance measure settable
 # on treadmiles, to different race times.
+#
+# Copyright (C) 2006 - 2014  Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
 
 if (is.null(argv) | length(argv)<1) {
 

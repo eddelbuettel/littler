@@ -4,6 +4,10 @@
 # where the convention is that we write e.g. 37 min 15 secs
 # as 37.15 -- so a call 'pace.r 4.5 37.15' yields a pace of
 # 8.1667, ie 8 mins 16.67 secs per mile
+#
+# Copyright (C) 2006 - 2014  Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
 
 if (is.null(argv) | length(argv)!=2) {
 

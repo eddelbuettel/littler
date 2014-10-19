@@ -1,4 +1,10 @@
 #!/usr/bin/env r
+#
+# A simple example to invoke unit tests
+#
+# Copyright (C) 2014  Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
 
 suppressMessages(library(docopt))       # we need the docopt package
 suppressMessages(library(RUnit))        # we need the RUnit package

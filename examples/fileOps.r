@@ -1,4 +1,10 @@
 #!/usr/bin/env r
+#
+# A simple example to do operations on files
+#
+# Copyright (C) 2014  Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
 
 ## read files
 files <- dir("..", full.names=TRUE)
