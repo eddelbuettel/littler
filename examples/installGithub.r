@@ -20,10 +20,11 @@ doc <- "Usage: installGithub.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [PACKAGES ..
 
 ## docopt parsing
 opt <- docopt(doc)
-if(opt$deps == "TRUE" || opt$deps == "FALSE")
-  opt$deps <- as.logical(opt$deps)
-if(opt$deps == "NA")
-  opt$deps <- NA
+if (opt$deps == "TRUE" || opt$deps == "FALSE") {
+    opt$deps <- as.logical(opt$deps)
+} else if (opt$deps == "NA") {
+    opt$deps <- NA
+}
 
 ## installation given selected options and arguments
 options(repos = opt$repos)
