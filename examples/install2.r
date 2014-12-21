@@ -28,6 +28,9 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
+## doctopt results are characters, so if we meant NULL we have to set NULL
+if (opt$repos == "NULL") opt$repos = NULL
+
 ## installation given selected options and arguments
 
 if (opt$error) {
