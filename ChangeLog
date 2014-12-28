@@ -3,6 +3,10 @@
 	* examples/install.r: Smarter use of arguments: files with matching
 	extension are installed directly; also expanded help text
 
+2014-12-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.R: Do not include R_LIBS_USER in list of variables
+
 2014-12-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install.r: Reflect value of REPOS and LIBLOC in addition
