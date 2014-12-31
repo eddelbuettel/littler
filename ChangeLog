@@ -1,3 +1,8 @@
+2014-12-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install2.r: Smarter use of arguments: files with matching
+	extension are installed directly; also clean up temp files
+
 2014-12-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install.r: Smarter use of arguments: files with matching
