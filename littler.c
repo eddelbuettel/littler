@@ -2,7 +2,7 @@
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006 - 2014  Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006 - 2015  Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -633,6 +633,28 @@ int main(int argc, char **argv){
 
     init_rand();				/* for tempfile() to work correctly */
 
+    if (!vanilla) {
+        FILE *fp;
+        char *etclittler = "/etc/littler.r";	/* load /etc/litter.r if it exists */
+        if (fp = fopen(etclittler, "r")) {
+            fclose(fp);        			/* don't actually need it */
+#ifdef DEBUG
+            printf("Sourcing %s\n", etclittler);
+#endif
+            source(etclittler);
+        }
+
+        char dotlittler[128];			/* load ~/.litter.r if it exists */
+        snprintf(dotlittler, 110, "%s/.littler.r", getenv("HOME"));
+        if (fp = fopen(dotlittler, "r")) {
+            fclose(fp);             		/* don't actually need it */
+#ifdef DEBUG
+            printf("Sourcing %s\n", dotlittler);
+#endif
+            source(dotlittler);
+        }
+    }
+
     if (libstr != NULL) {			/* if requested by user, load libraries */
         char *ptr, *token, *strptr;
         char buf[128];
@@ -650,7 +672,7 @@ int main(int argc, char **argv){
         destroy_membuf(pb);
     }
 
-    if (datastdin) {				/* if requested by user, read 'dat' from stdin */
+    if (datastdin) {				/* if req. by user, read 'dat' from stdin */
         membuf_t pb = init_membuf(512);
         parse_eval(&pb, datastdincmd, 1);
         destroy_membuf(pb);

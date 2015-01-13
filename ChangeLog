@@ -1,3 +1,8 @@
+2015-01-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: Test for both /etc/littler.r and ~/.littler.r and source
+	if found (but not if -v|--vanilla was given)
+
 2014-12-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install2.r: Smarter use of arguments: files with matching
