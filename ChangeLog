@@ -2,6 +2,8 @@
 
 	* examples/check.r: Add (early version) of a R CMD check wrapper
 
+	* examples/shiny.r: Add simple wrapper for shiny::runApp()
+
 2015-01-12  Dirk Eddelbuettel  <edd@debian.org>
 
 	* littler.c: Test for both /etc/littler.r and ~/.littler.r and source

@@ -1,8 +1,8 @@
 #!/usr/bin/env r
 #
-# Another example tp check one or more packages, with option parsing
+# Another example to check one or more packages, with option parsing
 #
-# Copyright (C) 2011 - 2015  Dirk Eddelbuettel
+# Copyright (C) 2015  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
