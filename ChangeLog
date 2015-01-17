@@ -1,6 +1,7 @@
 2015-01-17  Dirk Eddelbuettel  <edd@debian.org>
 
-	* examples/check.r: Add (early version) of a R CMD check wrapper
+	* examples/check.r: Add a script which wrap R CMD check; with
+	optional support for prior installation of dependencies
 
 	* examples/shiny.r: Add simple wrapper for shiny::runApp()
 
