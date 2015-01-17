@@ -21,6 +21,14 @@ scripting frontend `r`, we suggest to consider running `configure
 --program-prefix="l"` which this leads to installation of a binary `lr`
 instead of `r`.
 
+#### Alternate R version
+
+As littler uses autoconf its `AC_PATH_PROG()` macro to find `R`, one can
+simply adjust the `PATH` when calling `configure` (or, rather, `bootstrap`)
+to have another version of R used. For example, on a server with R-devel in
+this location, the following builds littler using this R-devel version:
+`PATH="/usr/local/lib/R-devel/bin/:$PATH" ./bootstrap`. 
+
 ### More Information
 
 For more information about littler, please see
