@@ -1,3 +1,7 @@
+2015-02-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (showVersionAndExit): Update copyright to 2015 here too
+
 2015-01-29  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.ac: Mark as release 0.2.2
