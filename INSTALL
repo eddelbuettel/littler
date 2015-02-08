@@ -92,7 +92,8 @@
 
 	$ sudo make install
 
-    should install it, as well as the manual page.
+    should install it, as well as the manual page. Note that the renaming is
+    only done at the installation stage so you must run (sudo) make install.
 
 
 2. Installation from GIT
