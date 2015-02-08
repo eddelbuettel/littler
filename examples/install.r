@@ -5,7 +5,7 @@
 # Note that a more featureful version exists in install2.r
 # with an added dependency on the 'docopt' argument parser
 #
-# Copyright (C) 2006 - 2014  Dirk Eddelbuettel
+# Copyright (C) 2006 - 2015  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -17,9 +17,10 @@ if (is.null(argv) | length(argv) < 1) {
 }
 
 ## adjust as necessary, see help('download.packages')
-repos <- Sys.getenv("REPOS", unset="http://cran.rstudio.com")
-## NULL means install file
-if (repos == "NULL") repos = NULL
+## littler can now read ~/.littler.r and /etc/littler,r to set this
+repos <- getOption("repos")
+## NULL means install file, and we supported env var previously
+if (Sys.getenv("REPOS") == "NULL") repos = NULL
 
 ## this makes sense on Debian where no packages touch /usr/local
 lib.loc <- Sys.getenv("LIBLOC", unset="/usr/local/lib/R/site-library")

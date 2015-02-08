@@ -3,18 +3,13 @@
 # A simple example to update packages in /usr/local/lib/R/site-library
 # Parameters are easily adjustable
 #
-# Copyright (C) 2006 - 2014  Dirk Eddelbuettel
+# Copyright (C) 2006 - 2015  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
 ## adjust as necessary, see help('download.packages')
-repos <- "http://cran.rstudio.com" 
-
-## or use BioC's repo list if Biobase is installed:
-#suppressMessages(rc <- require(Biobase))
-#if (rc) {
-#  repos <- Biobase:::biocReposList()
-#}
+## littler can now read ~/.littler.r and /etc/littler,r to set this
+repos <- getOption("repos")
 
 ## this makes sense on Debian where no package touch /usr/local
 lib.loc <- "/usr/local/lib/R/site-library"

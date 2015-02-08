@@ -13,7 +13,7 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 ## configuration for docopt
 doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
 
--r --repos REPO     repository to use, or NULL for file [default: http://cran.rstudio.com]
+-r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -e --error          throw error and halt instead of a warning [default: FALSE]
@@ -27,6 +27,9 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 } else if (opt$deps == "NA") {
     opt$deps <- NA
 }
+
+## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+if (opt$repos == "getOption") opt$repos = getOption("repos")
 
 ## doctopt results are characters, so if we meant NULL we have to set NULL
 if (opt$repos == "NULL") opt$repos = NULL
