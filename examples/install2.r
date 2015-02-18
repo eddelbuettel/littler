@@ -11,7 +11,7 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
+doc <- "Usage: install.r [-r REPO...] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
