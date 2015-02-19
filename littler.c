@@ -382,6 +382,7 @@ void showHelpAndExit() {
            "  -p, --verbose        Print the value of expressions to the console\n"  
            "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
            "  -d, --datastdin      Prepend command to load 'X' as csv from stdin\n"	
+           "  -L, --libpath dir    Add directory to library path via '.libPaths(dir)'\n"	
            "  -e, --eval  expr     Let R evaluate 'expr'\n"
            "\n\n",
            binaryName);
@@ -470,12 +471,13 @@ int main(int argc, char **argv){
     int i, nargv, c, optpos=0, vanilla=0, quick=0, interactive=0, datastdin=0;
     char *evalstr = NULL;
     char *libstr = NULL;
+    char *libpathstr = NULL;
     SEXP s_argv;
     structRstart Rst;
     char *datastdincmd = "X <- read.csv(file(\"stdin\"), stringsAsFactors=FALSE);";
 
     static struct option optargs[] = {
-        {"help",         no_argument,       NULL, 'h'}, 	/* --help also has short option -h */
+        {"help",         no_argument,       NULL, 'h'}, 
         {"usage",        no_argument,       0,    0},
         {"version",      no_argument,       NULL, 'V'},
         {"vanilla",      no_argument,       NULL, 'v'},
@@ -486,9 +488,10 @@ int main(int argc, char **argv){
         {"quick",        no_argument,       NULL, 'q'},
         {"interactive",  no_argument,       NULL, 'i'},
         {"datastdin",    no_argument,       NULL, 'd'},
+        {"libpath",      required_argument, NULL, 'L'},
         {0, 0, 0, 0}
     };
-    while ((c = getopt_long(argc, argv, "+hVve:npl:tqid", optargs, &optpos)) != -1) {
+    while ((c = getopt_long(argc, argv, "+hVve:npl:L:tqid", optargs, &optpos)) != -1) {
         switch (c) {	
         case 0:				/* numeric 0 is code for a long option */
             /* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
@@ -536,6 +539,9 @@ int main(int argc, char **argv){
             break;
         case 'd':
             datastdin=1;
+            break;
+        case 'L':
+            libpathstr = optarg;
             break;
         default:
             printf("Unknown option '%c'. Try `%s --help' for help\n",(char)c, programName);
@@ -655,6 +661,14 @@ int main(int argc, char **argv){
         }
     }
 
+    if (libpathstr != NULL) {			/* if requested by user, set libPaths */
+        char buf[128];
+        membuf_t pb = init_membuf(512);
+        snprintf(buf, 127 - 12 - strlen(libpathstr), ".libPaths(\"%s\");", libpathstr); 
+        parse_eval(&pb, buf, 1);
+        destroy_membuf(pb);
+    }
+
     if (libstr != NULL) {			/* if requested by user, load libraries */
         char *ptr, *token, *strptr;
         char buf[128];
@@ -665,7 +679,7 @@ int main(int argc, char **argv){
             token = strtok_r(ptr, ",", &strptr);
             ptr = NULL; 			/* after initial call strtok expects NULL */
             if (token != NULL) {
-                snprintf(buf, 127-27-strlen(token), "suppressMessages(library(%s));", token); 
+                snprintf(buf, 127 - 27 - strlen(token), "suppressMessages(library(%s));", token); 
                 parse_eval(&pb, buf, 1);
             }
         } 

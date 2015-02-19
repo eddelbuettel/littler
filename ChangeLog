@@ -1,3 +1,8 @@
+2015-02-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: New command-line argument -L|--libpath to add a
+	directory to the `.libPaths()`
+
 2015-02-17  Carl Boettiger  <cboettig@gmail.com>
 
 	* examples/install2.r: Permit multiple -r|--repos arguments
