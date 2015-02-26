@@ -10,11 +10,12 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--library LIB] [--setwd DIR] [TARGZ ...]
+doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--debinst] [--library LIB] [--setwd DIR] [TARGZ ...]
 
 -a --as-cran        customization similar to CRAN's incoming [default: FALSE]
 -r --repo REPO      repository to use, or NULL for file [default: http://cran.rstudio.com]
 -i --install-deps   also install packages along with their dependencies [default: FALSE]
+-d --deb-pkgs PKGS  also install binary .deb packages with their dependencies [default: FALSE]
 -l --library LIB    when installing use this library [default: /usr/local/lib/R/site-library]
 -s --setwd DIR      change to this directoru before undertaking the test [default: ]
 -h --help           show this help text"
@@ -44,6 +45,12 @@ installArg <- function(p, lib, rep) {
                      lib=lib,
                      repos=rep,
                      dependencies=TRUE)
+}
+
+## if binary .deb files are to be installed first:
+if (opt$`deb-pkgs`) {
+    cmd <- paste("apt-get install", opt$PKGS)
+    system(cmd)
 }
 
 ## if dependencies are to be installed first:

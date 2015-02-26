@@ -1,3 +1,8 @@
+2015-02-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/check.r: New option '--deb-pkgs PKGS' to install .deb
+	packages prior to running the check (in one-command Docker use)
+
 2015-02-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* littler.c: New command-line argument -L|--libpath to add a
