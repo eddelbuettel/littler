@@ -1,3 +1,7 @@
+2015-02-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/dratInsert.r: New script to insert package into drat
+
 2015-02-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/check.r: New option '--deb-pkgs PKGS' to install .deb
