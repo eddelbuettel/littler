@@ -383,7 +383,7 @@ void showHelpAndExit() {
            "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
            "  -d, --datastdin      Prepend command to load 'X' as csv from stdin\n"	
            "  -L, --libpath dir    Add directory to library path via '.libPaths(dir)'\n"	
-           "  -e, --eval  expr     Let R evaluate 'expr'\n"
+           "  -e, --eval expr      Let R evaluate 'expr'\n"
            "\n\n",
            binaryName);
     exit(-1);
