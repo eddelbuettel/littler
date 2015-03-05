@@ -1,3 +1,7 @@
+2015-03-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* r.1: Updated with recent command additions.
+
 2015-02-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/dratInsert.r: New script to insert package into drat

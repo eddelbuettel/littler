@@ -59,24 +59,27 @@ Show the version number.
 \fB\-v\fR, \fB\-\-vanilla\fR
 Pass the '\-\-vanilla' option to R.
 .TP
+\fB\-t\fR, \fB\-\-rtemp\fR
+Use a per-session temporary directory as R does.
+.TP
+\fB\-i\fR, \fB\-\-interactive\fR
+Force 'interactive()' to evaluate to TRUE, whereas the default is FALSE.
+.TP
+\fB\-q\fR, \fB\-\-quick\fR
+Skip autoload (i.e. delayed assign) of default libraries.
+.TP
 \fB\-p\fR, \fB\-\-verbose\fR
 Print the value of expressions to the console.
 .TP
 \fB\-l\fR, \fB\-\-packages\fR list
 Load the R packages from the comma\-separated 'list'.
 .TP
-\fB\-t\fR, \fB\-\-rtemp\fR
-Use a per-session temporary directory as R does.
-.TP
-\fB\-q\fR, \fB\-\-quick\fR
-Skip autoload (i.e. delayed assign) of default libraries.
-.TP
-\fB\-i\fR, \fB\-\-interactive\fR
-Force 'interactive()' to evaluate to TRUE, whereas the default is FALSE.
-.TP
 \fB\-d\fR, \fB\-\-datastdin\fR
 Evaluates 'X <- read.csv(file="stdin", stringsAsFactors=FALSE)' to read a
-data set from stdin..
+data set from stdin.
+.TP
+\fB\-L\fR, \fB\-\-libpath\fR dir
+Add directory to library path via '.libPaths(dir)'.
 .TP
 \fB\-e\fR, \fB\-\-eval expr\fR
 Evaluate 'expr' in R.
