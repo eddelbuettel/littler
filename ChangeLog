@@ -1,3 +1,7 @@
+2015-03-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (showUsageAndExit): Add link to examples web page.
+
 2015-03-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* r.1: Updated with recent command additions.

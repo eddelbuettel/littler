@@ -437,7 +437,9 @@ void showUsageAndExit() {
            "via the -e or --eval options to provide a quick R expression tester\n"
            "and calculator.\n\n"
            "More documentation is provided in the '%s' manual page and via\n"
-           "the tests directory in the sources.\n\n",
+           "the tests directory in the sources.\n\n"
+           "A number of examples are also available at\n"
+           "http://dirk.eddelbuettel.com/code/littler.examples.html.\n\n",
            binaryName, programName, binaryName, binaryName, binaryName,  
            programName, binaryName);
     exit(0);       
