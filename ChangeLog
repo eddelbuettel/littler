@@ -1,3 +1,11 @@
+2015-03-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (showVersionAndExit):  If REPRODUCIBLE_BUILD is defined,
+	do not display built time and date to ensure binary reproducibility
+
+	* bootstrap: If REPRODUCIBLE_BUILD is defined, do not insert __TIME__
+	and __DATE__ compile time macros into generated header gitversion.h
+
 2015-03-06  Dirk Eddelbuettel  <edd@debian.org>
 
 	* littler.c (showUsageAndExit): Add link to examples web page.
