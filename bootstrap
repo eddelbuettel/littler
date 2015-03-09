@@ -47,11 +47,16 @@ call_gitversion() {
 // compiledate and compiletime are being filled gcc at compilation
 
 #include <stdlib.h>
- 
+
 static const char* gitrevision = "$gitrevision";
 static const char* gitdate = "$gitdate";
-static const char* compiletime = __TIME__;
-static const char* compiledate = __DATE__;
+#if defined(REPRODUCIBLE_BUILD)
+    static const char* compiletime = "(fixed)";
+    static const char* compiledate = "(fixed)";
+#else 
+    static const char* compiletime = __TIME__;
+    static const char* compiledate = __DATE__;
+#endif
 
 EOF
 	fi
