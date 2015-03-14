@@ -1,3 +1,7 @@
+2015-03-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Mark as release 0.2.3
+
 2015-03-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* littler.c (showVersionAndExit):  If REPRODUCIBLE_BUILD is defined,
