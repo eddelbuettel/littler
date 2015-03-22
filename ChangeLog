@@ -2,6 +2,9 @@
 
 	* examples/dratInsert.r: Changed to support a commit message
 
+	* examples/installGithub.r: Remove support -l which no longer works
+	with the current version of devtool (but .libLoc() is respected)
+
 2015-03-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.ac: Mark as release 0.2.3
