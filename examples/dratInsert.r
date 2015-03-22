@@ -11,14 +11,16 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 suppressMessages(library(drat))     
 
 ## configuration for docopt
-doc <- "Usage: drat.r [-h] [--repo REPO] [--commit] TARGZ...
+doc <- "Usage: drat.r [-h] [--repo REPO] [--commit MSG] TARGZ...
 
 -r --repo REPO      repository path to use [default: ~/git/drat]
--c --commit         in github use, also commit [default: FALSE]
+-c --commit MSG     in github use, commit with MSG (default: no commit)
 -h --help           show this help text"
 
 ## docopt parsing
 opt <- docopt(doc)
+
+if (is.null(opt$commit)) opt$commit <- FALSE
 
 ## helper function 
 installArg <- function(p, repo, commit) {

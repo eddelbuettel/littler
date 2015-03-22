@@ -1,3 +1,7 @@
+2015-03-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/dratInsert.r: Changed to support a commit message
+
 2015-03-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.ac: Mark as release 0.2.3
