@@ -8,7 +8,7 @@
 # Released under GPL (>= 2)
 
 ## adjust as necessary, see help('download.packages')
-## littler can now read ~/.littler.r and /etc/littler,r to set this
+## littler can now read ~/.littler.r and /etc/littler.r to set this
 repos <- getOption("repos")
 
 ## this makes sense on Debian where no package touch /usr/local
