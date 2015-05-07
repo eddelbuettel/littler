@@ -393,7 +393,7 @@ void showVersionAndExit() {
     char txt[64];
     printf("%s ('%s') version %s\n\ngit revision %s as of %s\n", 
            binaryName, programName, VERSION, gitrevision, gitdate);
-#if !defined(REPRODUCIBLE_BUILD)
+#if defined(VERBOSE_BUILD)
     printf("built at %s on %s\n", compiletime, compiledate);
 #endif
     printf("using GNU R ");

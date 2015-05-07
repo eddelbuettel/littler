@@ -50,12 +50,12 @@ call_gitversion() {
 
 static const char* gitrevision = "$gitrevision";
 static const char* gitdate = "$gitdate";
-#if defined(REPRODUCIBLE_BUILD)
-    static const char* compiletime = "(fixed)";
-    static const char* compiledate = "(fixed)";
-#else 
+#if defined(VERBOSE_BUILD)
     static const char* compiletime = __TIME__;
     static const char* compiledate = __DATE__;
+#else 
+    static const char* compiletime = "(fixed)";
+    static const char* compiledate = "(fixed)";
 #endif
 
 EOF
