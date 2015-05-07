@@ -438,8 +438,11 @@ void showUsageAndExit() {
            "The fourth use is in on-the-fly evaluation of R expressions supplied\n"
            "via the -e or --eval options to provide a quick R expression tester\n"
            "and calculator.\n\n"
-           "More documentation is provided in the '%s' manual page and via\n"
-           "the tests directory in the sources.\n\n"
+           "You can provide configuration via file \${R_HOME}/etc/Rprofile.site,\n"
+           "~/.Rprofile, /etc/littler.r or ~/.littler.r all of which are sourced\n"
+           "if present.\n\n"  
+           "More documentation is provided in the '%s' manual page and via the\n"
+           "tests directory in the sources.\n\n"
            "A number of examples are also available at\n"
            "http://dirk.eddelbuettel.com/code/littler.examples.html.\n\n",
            binaryName, programName, binaryName, binaryName, binaryName,  
@@ -645,6 +648,27 @@ int main(int argc, char **argv){
 
     if (!vanilla) {
         FILE *fp;
+
+        char rprofilesite[128]; 
+        snprintf(rprofilesite, 110, "%s/etc/Rprofile.site", getenv("R_HOME"));
+        if (fp = fopen(rprofilesite, "r")) {
+            fclose(fp);             		/* don't actually need it */
+#ifdef DEBUG
+            printf("Sourcing %s\n", rprofilesite);
+#endif
+            source(rprofilesite);
+        }
+
+        char dotrprofile[128]; 
+        snprintf(dotrprofile, 110, "%s/.Rprofile", getenv("HOME"));
+        if (fp = fopen(dotrprofile, "r")) {
+            fclose(fp);             		/* don't actually need it */
+#ifdef DEBUG
+            printf("Sourcing %s\n", dotrprofile);
+#endif
+            source(dotrprofile);
+        }
+
         char *etclittler = "/etc/littler.r";	/* load /etc/litter.r if it exists */
         if (fp = fopen(etclittler, "r")) {
             fclose(fp);        			/* don't actually need it */

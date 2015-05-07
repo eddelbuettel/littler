@@ -2,8 +2,12 @@
 
 	* littler.c: Invert #ifdef on REPRODUCIBLE_BUILD to VERBOSE_BUILD: by
 	default we no longer encode the timestamp of the builds
+
 	* bootstrap: Ditto: Unless VERBOSE_BUILD is define do not place
 	timestamps in to gitversion.h
+
+	* littler.c: Also source $R_HOME/etc/Rprofile.site and ~/.Rprofile if
+	present, and document this via --usage flag output.
 
 2015-03-22  Dirk Eddelbuettel  <edd@debian.org>
 
