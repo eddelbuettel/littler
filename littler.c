@@ -438,7 +438,7 @@ void showUsageAndExit() {
            "The fourth use is in on-the-fly evaluation of R expressions supplied\n"
            "via the -e or --eval options to provide a quick R expression tester\n"
            "and calculator.\n\n"
-           "You can provide configuration via file \${R_HOME}/etc/Rprofile.site,\n"
+           "You can provide configuration via file ${R_HOME}/etc/Rprofile.site,\n"
            "~/.Rprofile, /etc/littler.r or ~/.littler.r all of which are sourced\n"
            "if present.\n\n"  
            "More documentation is provided in the '%s' manual page and via the\n"
