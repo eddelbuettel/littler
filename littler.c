@@ -44,7 +44,7 @@
 #include <R_ext/Parse.h>
 #include <R_ext/RStartup.h>
 
-int verbose=0;
+int verbose = 0;                	/* should we be verbose? default no, use -p */
 
 /* PACKAGE, VERSION, ... are being filled by autoconf and friends via config.h */
 const char *programName = PACKAGE;
@@ -270,7 +270,7 @@ int readline_stdin(membuf_t *plb){
     } while(1);	
 }
 
-int parse_eval(membuf_t *pmb, char *line, int lineno){
+int parse_eval(membuf_t *pmb, char *line, int lineno, int localverbose){
     membuf_t mb = *pmb;
     ParseStatus status;
     SEXP cmdSexp, cmdexpr, ans = R_NilValue;
@@ -293,7 +293,7 @@ int parse_eval(membuf_t *pmb, char *line, int lineno){
                 UNPROTECT(2);
                 return 1;
             }
-            if (verbose) {
+            if (localverbose) {
                 PrintValue(ans);
             }
         }
@@ -693,7 +693,7 @@ int main(int argc, char **argv){
         char buf[128];
         membuf_t pb = init_membuf(512);
         snprintf(buf, 127 - 12 - strlen(libpathstr), ".libPaths(\"%s\");", libpathstr); 
-        parse_eval(&pb, buf, 1);
+        parse_eval(&pb, buf, 1, 0); 		/* evaluate this silently */
         destroy_membuf(pb);
     }
 
@@ -708,7 +708,7 @@ int main(int argc, char **argv){
             ptr = NULL; 			/* after initial call strtok expects NULL */
             if (token != NULL) {
                 snprintf(buf, 127 - 27 - strlen(token), "suppressMessages(library(%s));", token); 
-                parse_eval(&pb, buf, 1);
+                parse_eval(&pb, buf, 1, 0); 	/* evaluate this silently */
             }
         } 
         destroy_membuf(pb);
@@ -716,7 +716,7 @@ int main(int argc, char **argv){
 
     if (datastdin) {				/* if req. by user, read 'dat' from stdin */
         membuf_t pb = init_membuf(512);
-        parse_eval(&pb, datastdincmd, 1);
+        parse_eval(&pb, datastdincmd, 1, 0); 	/* evaluate this silently */
         destroy_membuf(pb);
     }
 
@@ -725,7 +725,7 @@ int main(int argc, char **argv){
     if (evalstr != NULL) {			
         /* we have a command line expression to evaluate */
         membuf_t pb = init_membuf(1024);
-        exit_val = parse_eval(&pb, evalstr, 1);
+        exit_val = parse_eval(&pb, evalstr, 1, verbose);
         destroy_membuf(pb);
     } else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
         /* call R function source(filename) */
@@ -736,7 +736,7 @@ int main(int argc, char **argv){
         membuf_t pb = init_membuf(1024);
         int lineno = 1;
         while(readline_stdin(&lb)){
-            exit_val = parse_eval(&pb,(char*)lb->buf,lineno++);
+            exit_val = parse_eval(&pb, (char*)lb->buf, lineno++, verbose);
             if (exit_val) break;
         }
         destroy_membuf(lb);

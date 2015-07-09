@@ -1,3 +1,9 @@
+2015-07-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (main): Add verbosity argument to parse_eval() which
+	allows for more silent initial operations to set library paths, load
+	libraries and load data -- addresses wish of GitHub ticket #26
+
 2015-05-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* littler.c: Invert #ifdef on REPRODUCIBLE_BUILD to VERBOSE_BUILD: by
