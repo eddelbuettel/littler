@@ -28,11 +28,13 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
-## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
-if (opt$repos == "getOption") opt$repos = getOption("repos")
-
 ## doctopt results are characters, so if we meant NULL we have to set NULL
-if (opt$repos == "NULL") opt$repos = NULL
+if (opt$repos == "NULL")  {
+   opt$repos = NULL
+} else if (opt$repos == "getOption") {
+   ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+   opt$repos = getOption("repos")
+}
 
 ## helper function to for existing files with matching extension
 isMatchingFile <- function(f) file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)
