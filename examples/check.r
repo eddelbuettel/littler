@@ -45,7 +45,7 @@ installArg <- function(p, lib, rep) {
     install.packages(pkgs=p,
                      lib=lib,
                      repos=rep,
-                     dependencies=TRUE)
+                     dependencies=c("Depends", "Imports", "LinkingTo", "Suggests"))
 }
 
 ## if binary .deb files are to be installed first:
