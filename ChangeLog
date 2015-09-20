@@ -1,3 +1,8 @@
+2015-09-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/check.r: Added new option to support 'kitchen sink'
+	installation of Depends, Imports, LinkingTo and Suggests (cf #30)
+
 2015-08-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install2.r: Better testing of opt$repos values

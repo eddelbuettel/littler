@@ -12,14 +12,15 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 ## configuration for docopt
 doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
 
--a --as-cran        customization similar to CRAN's incoming [default: FALSE]
--r --repo REPO      repository to use, or NULL for file [default: http://cran.rstudio.com]
--i --install-deps   also install packages along with their dependencies [default: FALSE]
--l --library LIB    when installing use this library [default: /usr/local/lib/R/site-library]
--s --setwd DIR      change to this directoru before undertaking the test [default: ]
--d --deb-pkgs PKGS  also install binary .deb packages with their dependencies [default: FALSE]
--u --use-sudo       use sudo when installing .deb packages [default: TRUE]
--h --help           show this help text"
+-a --as-cran         customization similar to CRAN's incoming [default: FALSE]
+-r --repo REPO       repository to use, or NULL for file [default: http://cran.rstudio.com]
+-i --install-deps    also install packages along with their dependencies [default: FALSE]
+-k --install-kitchen even install packages 'kitchen sink'-style up to suggests [default: FALSE]
+-l --library LIB     when installing use this library [default: /usr/local/lib/R/site-library]
+-s --setwd DIR       change to this directoru before undertaking the test [default: ]
+-d --deb-pkgs PKGS   also install binary .deb packages with their dependencies [default: FALSE]
+-u --use-sudo        use sudo when installing .deb packages [default: TRUE]
+-h --help            show this help text"
 
 ## docopt parsing
 opt <- docopt(doc)
@@ -45,7 +46,11 @@ installArg <- function(p, lib, rep) {
     install.packages(pkgs=p,
                      lib=lib,
                      repos=rep,
-                     dependencies=TRUE)
+                     dependencies=if(opt$`install-kitchen`)
+                                      c("Depends", "Imports", "LinkingTo", "Suggests")
+                                  else
+                                      TRUE
+                     )
 }
 
 ## if binary .deb files are to be installed first:
@@ -55,8 +60,8 @@ if (length(opt$`deb-pkgs`) > 1 || opt$`deb-pkgs` != FALSE) {
     system(cmd)
 }
 
-## if dependencies are to be installed first:
-if (opt$`install-deps`) sapply(opt$TARGZ, installArg, opt$lib, opt$repo)
+## if dependencies (or even suggests) are to be installed first:
+if (opt$`install-deps` || opt$`install-kitchen`) sapply(opt$TARGZ, installArg, opt$lib, opt$repo)
 
 ## change directory if a target directory was given
 if (opt$setwd != "") setwd(opt$setwd)
