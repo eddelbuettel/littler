@@ -11,9 +11,8 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 suppressMessages(library(devtools)) 
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-r REPO] [-h] [-d DEPS] [PACKAGES ...]
+doc <- "Usage: installGithub.r [-h] [-d DEPS] REPOS...
 
--r --repos REPO     repository to install from [default: http://cran.rstudio.com]
 -d --deps DEPS      Install suggested dependencies as well? [default: NA]
 -h --help           show this help text"
 
@@ -25,6 +24,4 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
-## installation given selected options and arguments
-options(repos = opt$repos)
-install_github(repo  = opt$PACKAGES, dependencies = opt$deps)
+invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps)))
