@@ -1,3 +1,8 @@
+2015-10-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/installRepo.r: New script wrapping GitHub, Bitbucket,
+	Subversion (via http) and generic URL access.
+
 2015-09-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/installGithub.r: Simplify, correct and extend script (with
