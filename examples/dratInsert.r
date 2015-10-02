@@ -15,7 +15,15 @@ doc <- "Usage: drat.r [-h] [--repo REPO] [--commit MSG] TARGZ...
 
 -r --repo REPO      repository path to use [default: ~/git/drat]
 -c --commit MSG     in github use, commit with MSG (default: no commit)
--h --help           show this help text"
+-h --help           show this help text
+
+Examples:
+  dratInsert.r myPkg_1.2-3.tar.gz              # installs into default (git) repo
+  dratInsert.r -r /srv/R/  myPkg_1.2-3.tar.gz  # installs into local directory repo
+
+dratInstert.r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.
+"
 
 ## docopt parsing
 opt <- docopt(doc)

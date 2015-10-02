@@ -11,13 +11,23 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: install.r [-r REPO...] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
+doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -e --error          throw error and halt instead of a warning [default: FALSE]
--h --help           show this help text"
+-h --help           show this help text
+
+where PACKAGES... can be one or more CRAN package names, or local (binary or source)
+package files (where extensions .tar.gz, .tgz and .zip are recognised).
+
+Examples:
+  install2.r -l /tmp/lib Rcpp BH                         # installs into given library
+
+install2.r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.
+"
 
 ## docopt parsing
 opt <- docopt(doc)

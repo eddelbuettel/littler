@@ -3,6 +3,11 @@
 	* examples/installRepo.r: New script wrapping GitHub, Bitbucket,
 	Subversion (via http) and generic URL access.
 
+	* examples/check.r: Expanded --help thanks to docopt
+	* examples/installGithub.r: Ditto
+	* examples/install2.r: Ditto
+	* examples/dratInsert.r: Ditto
+
 2015-09-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/installGithub.r: Simplify, correct and extend script (with

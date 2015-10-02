@@ -14,7 +14,16 @@ suppressMessages(library(devtools))
 doc <- "Usage: installGithub.r [-h] [-d DEPS] REPOS...
 
 -d --deps DEPS      Install suggested dependencies as well? [default: NA]
--h --help           show this help text"
+-h --help           show this help text
+
+where REPOS... is one or more GitHub repositories.
+
+Examples:
+  installGithub.r RcppCore/RcppEigen                     
+
+installGithub.r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.
+"
 
 ## docopt parsing
 opt <- docopt(doc)

@@ -20,7 +20,15 @@ doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--deb-pk
 -s --setwd DIR       change to this directoru before undertaking the test [default: ]
 -d --deb-pkgs PKGS   also install binary .deb packages with their dependencies [default: FALSE]
 -u --use-sudo        use sudo when installing .deb packages [default: TRUE]
--h --help            show this help text"
+-h --help            show this help text
+
+Examples:
+  check.r -a -i -s /tmp myPkg_1.2-3.tar.gz    # run a check --as-cran with depends in /tmp
+                                              # for package myPkg_1.2-3.tar.gz
+
+check.r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.
+"
 
 ## docopt parsing
 opt <- docopt(doc)
