@@ -1,0 +1,33 @@
+
+RPROG=@RPROG@
+ROPTS = --silent --vanilla --slave
+
+CC=@CC@
+PKG_CFLAGS=@AM_CFLAGS@
+PKG_LDFLAGS=@AM_LDFLAGS@ @EXTRA_LDFLAGS@
+
+RUN_NAMETOOL=@RUN_NAMETOOL@
+
+SRCS = littler.c 
+TGT = r$(EXEEXT)
+
+# By setting OBJECTS to "" we avoid having littler.so built
+OBJECTS=
+
+all:    littler.h autoloads.h $(SHLIB) $(TGT) 
+
+prog:   littler.c
+
+# Main r build rule, with suitable extension where needed (as eg on OS X)
+$(TGT): $(SRCS)
+	$(CC) -o $(TGT) $(PKG_CFLAGS) $(SRCS) $(PKG_LDFLAGS)
+	@mkdir -p ../inst/bin$(R_ARCH)
+	@cp -ax $(TGT) ../inst/bin$(R_ARCH)
+
+littler.h: scripts/littler.R
+	@$(RPROG) $(ROPTS) --file=scripts/littler.R > littler.h
+
+autoloads.h: scripts/autoloads.R
+	@$(RPROG) $(ROPTS) --file=scripts/autoloads.R > autoloads.h
+
+
