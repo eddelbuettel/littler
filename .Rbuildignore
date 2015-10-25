@@ -1,0 +1,8 @@
+^PACKAGE
+NOTES.txt
+bootstrap
+INSTALL
+COPYING
+LICENSE
+.travis.yml
+src/install.lib.R
