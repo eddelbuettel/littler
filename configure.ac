@@ -31,7 +31,7 @@ dnl #
 dnl AM_INIT_AUTOMAKE( no-texinfo.tex foreign )
 
 # create a config.h file (Automake will add -DHAVE_CONFIG_H)
-AC_CONFIG_HEADERS(src/config.h)
+dnl AC_CONFIG_HEADERS(src/config.h)
 
 AC_SUBST(VERSION)
 

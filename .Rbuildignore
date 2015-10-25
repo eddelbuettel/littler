@@ -6,3 +6,4 @@ COPYING
 LICENSE
 .travis.yml
 src/install.lib.R
+src/config.h.in

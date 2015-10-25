@@ -4,10 +4,9 @@ Makefile
 Makefile.in
 aclocal.m4
 autom4te.cache
-src/config.h
+src/config.h.in
 config.log
 config.status
-configure
 r
 stamp-h1
 svnversion.h
