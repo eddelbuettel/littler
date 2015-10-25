@@ -3,8 +3,8 @@
 rm -f  aclocal.m4 \
        config.h config.h.in \
        config.status config.log \
-       Makefile Makefile.in \
-       autoloads.h ldflags.txt littler.h \
+       src/Makevars \
+       src/autoloads.h src/ldflags.txt src/littler.h \
        r gitversion.h *~ *.o \
        stamp-h1
 rm -rf autom4te.cache .deps
