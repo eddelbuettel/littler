@@ -25,6 +25,9 @@ before_install:
 script: 
   - ./travis-tool.sh run_tests
 
+after_failure:
+  - ./travis-tool.sh dump_logs
+
 notifications:
   email:
     on_success: change
