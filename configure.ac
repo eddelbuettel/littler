@@ -5,7 +5,9 @@
 AC_PREREQ(2.61)
 
 # Every other copy of the package version number gets its value from here
-AC_INIT(littler,0.2.3)
+dnl AC_INIT(littler,0.2.9.1)
+dnl AC_INIT([littler], m4_esyscmd_s([R --slave --vanilla --silent -e 'cat(read.dcf("DESCRIPTION")[[1,"Version"]])']))
+AC_INIT([littler], m4_esyscmd_s([awk -e '/^Version:/ {print $2}' DESCRIPTION]))
 
 #  Look for ancillary configure tools in tools
 dnl AC_CONFIG_AUX_DIR(tools)
@@ -30,8 +32,8 @@ dnl #           checks for certain files like ChangeLog, NEWS, README, etc
 dnl #
 dnl AM_INIT_AUTOMAKE( no-texinfo.tex foreign )
 
-# create a config.h file (Automake will add -DHAVE_CONFIG_H)
-dnl AC_CONFIG_HEADERS(src/config.h)
+# create a config.h file 
+AC_CONFIG_HEADERS(src/config.h)
 
 AC_SUBST(VERSION)
 
