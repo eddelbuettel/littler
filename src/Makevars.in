@@ -1,3 +1,9 @@
+## -*- mode: Makefile; tab-width: 8 -*-
+##
+## Makevars.in for littler
+## Based on older Makefile.am
+##
+## Copyright (C) 2006 - 2015  Jeffrey Horner and Dirk Eddelbuettel, GNU GPL'ed
 
 RPROG=@RPROG@
 ROPTS = --silent --vanilla --slave
@@ -23,6 +29,7 @@ $(TGT): $(SRCS)
 	@$(RPROG) $(ROPTS) --file=scripts/autoloads.R > autoloads.h
 	@$(RPROG) $(ROPTS) --file=scripts/littler.R > littler.h
 	$(CC) -o $(TGT) $(PKG_CFLAGS) $(SRCS) $(PKG_LDFLAGS)
+	$(RUN_NAMETOOL)
 	@mkdir -p ../inst/bin$(R_ARCH)
 	@cp -ax $(TGT) ../inst/bin$(R_ARCH)
 	@echo "*"

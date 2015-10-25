@@ -8,7 +8,7 @@ command-line contexts.
 #### Version 0.3.0 or later
 
 _Once the package hits a [drat](http://dirk.eddelbuettel.com/code/drat.html)
-repository, just run
+repository_, just run
 
 ```
 install.packages("littler")
