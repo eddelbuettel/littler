@@ -14,20 +14,20 @@ TGT = r$(EXEEXT)
 # By setting OBJECTS to "" we avoid having littler.so built
 OBJECTS=
 
-all:    littler.h autoloads.h $(SHLIB) $(TGT) 
+all:    $(SHLIB) $(TGT) 
 
 prog:   littler.c
 
 # Main r build rule, with suitable extension where needed (as eg on OS X)
 $(TGT): $(SRCS)
+	@$(RPROG) $(ROPTS) --file=scripts/autoloads.R > autoloads.h
+	@$(RPROG) $(ROPTS) --file=scripts/littler.R > littler.h
 	$(CC) -o $(TGT) $(PKG_CFLAGS) $(SRCS) $(PKG_LDFLAGS)
 	@mkdir -p ../inst/bin$(R_ARCH)
 	@cp -ax $(TGT) ../inst/bin$(R_ARCH)
-
-littler.h: scripts/littler.R
-	@$(RPROG) $(ROPTS) --file=scripts/littler.R > littler.h
-
-autoloads.h: scripts/autoloads.R
-	@$(RPROG) $(ROPTS) --file=scripts/autoloads.R > autoloads.h
+	@echo "*"
+	@echo "* new binary $(TGT) installed in bin/ subdirectory"
+	@echo "* consider adding a symbolic link from, e.g., /usr/local/bin"
+	@echo "*"
 
 
