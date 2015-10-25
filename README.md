@@ -5,6 +5,17 @@ command-line contexts.
 
 ### Installation
 
+#### Version 0.3.0 or later
+
+_Once the package hits a [drat](http://dirk.eddelbuettel.com/code/drat.html)
+repository, just run
+
+```
+install.packages("littler")
+```
+
+#### Versions up to 0.2.3 
+
 In general, simply running the script `bootstrap` will configure and build the
 executable. Running `make install` (possibly as `sudo make install`) will
 install the resulting binary.

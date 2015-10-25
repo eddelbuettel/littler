@@ -4,18 +4,29 @@
 
 language: c
 
-before_install:
-  - sudo add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -cs)/"
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-  - sudo apt-get update -qq
-  - sudo apt-get install --no-install-recommends r-base-dev
+#before_install:
+#  - sudo add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -cs)/"
+#  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+#  - sudo apt-get update -qq
+#  - sudo apt-get install --no-install-recommends r-base-dev
 
-install:
-  - ./bootstrap
+before_install:
+  - curl -OL http://raw.github.com/eddelbuettel/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+
+#install:
+#  - ./bootstrap
   
-script:
-  - ./r --version
-  - ./r -e'cat("The value of pi is", pi)'
+#script:
+#  - ./r --version
+#  - ./r -e'cat("The value of pi is", pi)'
+
+script: 
+  - ./travis-tool.sh run_tests
+
+after_failure:
+  - ./travis-tool.sh dump_logs
 
 notifications:
   email:

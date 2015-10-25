@@ -31,6 +31,7 @@
 #include <unistd.h>
 
 #include "config.h"
+/*#include "config-const.h"*/
 #include "gitversion.h"
 #include "autoloads.h"
 #include "littler.h"
@@ -47,7 +48,7 @@
 int verbose = 0;                	/* should we be verbose? default no, use -p */
 
 /* PACKAGE, VERSION, ... are being filled by autoconf and friends via config.h */
-const char *programName = PACKAGE;
+const char *programName = PACKAGE_NAME;
 const char *binaryName = "r";
 
 #ifndef HAVE_SETENV
@@ -392,7 +393,7 @@ void showHelpAndExit() {
 void showVersionAndExit() {
     char txt[64];
     printf("%s ('%s') version %s\n\ngit revision %s as of %s\n", 
-           binaryName, programName, VERSION, gitrevision, gitdate);
+           binaryName, programName, PACKAGE_VERSION, gitrevision, gitdate);
 #if defined(VERBOSE_BUILD)
     printf("built at %s on %s\n", compiletime, compiledate);
 #endif

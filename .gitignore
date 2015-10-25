@@ -4,13 +4,12 @@ Makefile
 Makefile.in
 aclocal.m4
 autom4te.cache
-config.h
-config.h.in
+src/config.h.in
 config.log
 config.status
-configure
 r
 stamp-h1
 svnversion.h
 authors.txt
 .Rproj.user
+PACKAGE
