@@ -18,10 +18,7 @@ if test -z "${R_HOME}"; then
     AC_MSG_ERROR([Couxold not determine R_HOME.])   
 fi
 CC=`${R_HOME}/bin/R CMD config CC`
-
-#PKGVER="`${RPROG} -e 'unname(read.dcf("DESCRIPTION")[1, "Version"])'"
-
-
+AM_CFLAGS=`${R_HOME}/bin/R CMD config CFLAGS`
 
 dnl # Options for Automake
 dnl #
@@ -84,7 +81,7 @@ AC_DEFUN([R_PROG],[
     # Now make sure that a well known include file exists
     # and the libR.so
     if ${RPROG} CMD config --ldflags 2>/dev/null | grep -v 'R was not built as a shared library' >/dev/null; then
-    	AM_CFLAGS=`${RPROG} CMD config --cppflags`
+    	AM_CFLAGS="${AM_CFLAGS} `${RPROG} CMD config --cppflags`"
         AM_LDFLAGS="`${RPROG} CMD config --ldflags`"
 
         # Now add the various libraries for linking

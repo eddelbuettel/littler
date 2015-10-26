@@ -13,7 +13,4 @@ static const char* gitdate = "Fri Oct 2 08:36:28 2015 -0500";
 #if defined(VERBOSE_BUILD)
     static const char* compiletime = __TIME__;
     static const char* compiledate = __DATE__;
-#else 
-    static const char* compiletime = "(fixed)";
-    static const char* compiledate = "(fixed)";
 #endif

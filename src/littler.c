@@ -652,7 +652,7 @@ int main(int argc, char **argv){
 
         char rprofilesite[128]; 
         snprintf(rprofilesite, 110, "%s/etc/Rprofile.site", getenv("R_HOME"));
-        if (fp = fopen(rprofilesite, "r")) {
+        if ((fp = fopen(rprofilesite, "r")) != 0) {
             fclose(fp);             		/* don't actually need it */
 #ifdef DEBUG
             printf("Sourcing %s\n", rprofilesite);
@@ -662,7 +662,7 @@ int main(int argc, char **argv){
 
         char dotrprofile[128]; 
         snprintf(dotrprofile, 110, "%s/.Rprofile", getenv("HOME"));
-        if (fp = fopen(dotrprofile, "r")) {
+        if ((fp = fopen(dotrprofile, "r")) != 0) {
             fclose(fp);             		/* don't actually need it */
 #ifdef DEBUG
             printf("Sourcing %s\n", dotrprofile);
@@ -671,7 +671,7 @@ int main(int argc, char **argv){
         }
 
         char *etclittler = "/etc/littler.r";	/* load /etc/litter.r if it exists */
-        if (fp = fopen(etclittler, "r")) {
+        if ((fp = fopen(etclittler, "r")) != 0) {
             fclose(fp);        			/* don't actually need it */
 #ifdef DEBUG
             printf("Sourcing %s\n", etclittler);
@@ -681,7 +681,7 @@ int main(int argc, char **argv){
 
         char dotlittler[128];			/* load ~/.litter.r if it exists */
         snprintf(dotlittler, 110, "%s/.littler.r", getenv("HOME"));
-        if (fp = fopen(dotlittler, "r")) {
+        if ((fp = fopen(dotlittler, "r")) != 0) {
             fclose(fp);             		/* don't actually need it */
 #ifdef DEBUG
             printf("Sourcing %s\n", dotlittler);
