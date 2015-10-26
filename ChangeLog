@@ -1,3 +1,31 @@
+2015-10-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Added, as part of conversion to package
+	* NAMESPACE: Ditto
+	* R/init.R: Ditto
+
+	* src/littler.c: Moved from top-level
+	* src/config.h.in: Ditto
+	* src/Makevars.in: Moved, and adapted from Makefile.am
+	* src/config-const.h: Added with some (so far) const values
+
+	* src/scripts/autoloads.R: Moved from top-level
+	* src/scripts/littler.R: Ditto
+
+	* cleanup: Adapted to new layout
+	* .gitignore: Ditto
+	* .Rbuildignore: Added
+
+	* inst/script-tests/: Moved from top-level tests/
+	* inst/examples/: Moved from top-level examples/
+	* inst/man-page/r.1: Moved from top-level r.1
+
+	* .travis.yml: Adapted to work on R package
+
+	* deprecated/: Added to hold some no-longer used files
+
+	* README.md: Updated
+
 2015-10-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/installRepo.r: New script wrapping GitHub, Bitbucket,
