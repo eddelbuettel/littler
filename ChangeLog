@@ -9,6 +9,8 @@
 	* deprecated/tools: Moved from tools as no longer needed under
 	rewritten configure.ac
 
+	* man/littler.Rd: Added manual page
+
 2015-10-26  Jeroen Oooms  <jeroen.ooms@stat.ucla.edu>
 
 	* R/tests.R: Added wrapper to call 'r' from tests/ directory

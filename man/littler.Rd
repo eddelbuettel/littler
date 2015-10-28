@@ -8,15 +8,6 @@
   the shell prompt: scripting, filename execution, piping and direct expression
   evaluation.
 }
-\usage{
-  #!/usr/bin/env r
-
-  other input | r
-
-  r somefile.R
-
-  r -e 'expr'
-}
 \details{
   The \code{r} front-end was written with four distinct usage modes in mind.
 
@@ -41,7 +32,7 @@
   Common with other shell tools and programs, \code{r} returns its exit code where
   a value of zero indicates success.
 }
-\notes{
+\note{
   On OS X one may have to link the binary to, say, \code{lr} instead. As OS X
   insists that files named \code{R} and \code{r} are the same, we cannot use the
   latter.
@@ -51,5 +42,19 @@
   contributions from several others.
 
   Dirk Eddelbuettel \email{edd@debian.org} is the maintainer.
+}
+\examples{
+  \dontrun{
+  #!/usr/bin/env r              ## for use in scripts
+
+  other input | r               ## for use in pipes
+
+  r somefile.R                  ## for running files
+
+  r -e 'expr'                   ## for evaluating expressions
+
+  r --help                      ## to show a quick synopsis
+        
+  }
 }
 \keyword{package}
