@@ -1,0 +1,352 @@
+---
+title: "Littler Examples"
+author: "Dirk Eddelbuettel"
+date: "2015-10-28"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Littler Examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## Examples
+
+We show and discuss a few of the files included in the `inst/examples/` source directory of
+[littler](http://dirk.eddelbuettel.com/code/littler.html) (which becomes the `examples/` directory 
+once installed). In a few cases we remove comment lines to keep things more concise on this page.
+We use `$` to denote a shell (_i.e._ terminal) prompt.
+
+### Simple Command-line Use
+
+[littler](http://dirk.eddelbuettel.com/code/littler.html) can be used
+directly on the command-line just like, say, `bc`: 
+
+```bash
+$ echo 'cat(pi^2,"\n")' | r
+9.869604
+```
+
+Equivalently, commands that are to be evaluated can be given on
+the command-line
+
+```bash
+$ r -e 'cat(pi^2, "\n")'
+9.869604
+```
+
+But unlike bc(1), GNU R has a vast number of statistical
+functions. For example, we can quickly compute a `summary()` and show
+a stem-and-leaf plot for file sizes in a given directory via
+
+```bash
+$ ls -l /boot | awk 'BEGIN {print "size"} !/^total/ {print $5}' | \
+     r -de "print(summary(X[,1])); stem(X[,1])"
+```
+
+which produces something like 
+
+```
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+     13     512  110100  486900  768400 4735000
+
+  The decimal point is 6 digit(s) to the right of the |
+
+   0 | 0000001122222279222
+   2 | 79444
+   4 | 71888
+   6 | 
+   8 | 
+  10 | 
+  12 | 
+  14 | 8
+  16 | 4
+  18 | 
+  20 | 333
+```
+
+As we saw in the preceding example, the program can also be shortened like
+using the new `-d` option which reads 
+from stdin and assigns to a `data.frame` named `X`. 
+
+And, last but not least, this (somewhat unwieldy) expression can be stored in
+a helper script (where we now switch to using an explicit `readLines()` on `stdin`):
+
+```r
+#!/usr/bin/env r
+
+fsizes <- as.integer(readLines(file("stdin")))
+print(summary(fsizes))
+stem(fsizes)
+```
+
+(where calling `#!/usr/bin/env` is a trick from Python which allows one
+to forget whether r is installed in `/usr/bin/r`, `/usr/local/bin/r`,
+`~/bin/r`, ...).
+
+
+### CRAN package installation
+
+#### Direct Installation
+
+This is one of my favourite
+[littler](http://dirk.eddelbuettel.com/code/littler.html) scripts which I use
+frequently to install packages off [CRAN](http://cran.r-project.orh).
+
+```r
+#!/usr/bin/env r
+
+if (is.null(argv) | length(argv)<1) {
+  cat("Usage: installr.r pkg1 [pkg2 pkg3 ...]\n")
+  q()
+}
+
+## adjust as necessary, see help('download.packages')
+repos <- "http://cran.rstudio.com" 
+
+## this makes sense on Debian where no packages touch /usr/local
+lib.loc <- "/usr/local/lib/R/site-library"
+
+install.packages(argv, lib.loc, repos)
+```
+
+I invoke it all the time with one, two or more packages to install (or
+reinstall).
+
+```bash
+$ install.r digest RcppCNPy
+```
+
+It conveniently installs all dependencies, and uses the chosen target
+directory, all while keeping my R prompt (or prompts with multiple sessions)
+free to do other things.
+
+#### With Command-Line Parsing
+
+Thanks to the fabulous [docopt](https://github.com/edwindj/docopt.R) package,
+we also have a variant with optional settings of repo and location. Below is
+the updated version from [littler 0.2.1](http://dirk.eddelbuettel.com/blog/2014/10/19#littler-0.2.1):
+
+```r
+#!/usr/bin/env r
+#
+# A second example to install one or more packages, now with option parsing
+#
+# Copyright (C) 2011 - 2014  Dirk Eddelbuettel
+# Copyright (C) 2014 - 2015  Carl Boettiger and Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
+
+## load docopt package from CRAN
+suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
+
+## configuration for docopt
+doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
+
+-r --repos REPO     repository to install from [default: http://cran.rstudio.com]
+-l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
+-d --deps DEPS      Install suggested dependencies as well [default: NA]
+-e --error          Throw error and halt instead of a warning [default: FALSE]
+-h --help           show this help text"
+
+## docopt parsing
+opt <- docopt(doc)
+
+if (opt$deps == "TRUE" || opt$deps == "FALSE") {
+    opt$deps <- as.logical(opt$deps)
+} else if (opt$deps == "NA") {
+    opt$deps <- NA
+}
+
+## installation given selected options and arguments
+
+if (opt$error) {
+    withCallingHandlers(
+        install.packages(pkgs  = opt$PACKAGES,
+                         lib   = opt$libloc,
+                         repos = opt$repos,
+                         dependencies=opt$deps),
+        warning = stop)
+
+} else { 
+    install.packages(pkgs  = opt$PACKAGES,
+                     lib   = opt$libloc,
+                     repos = opt$repos,
+                     dependencies=opt$deps)
+}
+
+```
+
+#### Installing From Sources
+
+Starting with version 0.2.2, `install.r` and `install2.r` now recognise
+installable source files.  So one can also do this
+
+```bash
+$ install.r digest_0.6.8.tar.gz
+```
+
+and the local source file will the installed via a call to `R CMD INSTALL`.
+
+
+### Checking Packages
+
+A related use case is to check packages via `check.r`.  This script run `R
+CMD check`, but also installs package dependencies first as tests may have
+dependencies not yet satisfied on the test machine. 
+
+
+
+### GitHub package installation
+
+Installation directly from [GitHub](https://github.com) is also popular, and
+now supported via a new helper script:
+
+```r
+#!/usr/bin/env r
+#
+# A simple example to install one or more packages from GitHub
+#
+# Copyright (C) 2014 - 2015  Carl Boettiger and Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
+
+## load docopt and devtools from CRAN
+suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
+suppressMessages(library(devtools)) 
+
+## configuration for docopt
+doc <- "Usage: installGithub.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [PACKAGES ...]
+
+-r --repos REPO     repository to install from [default: http://cran.rstudio.com]
+-l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
+-d --deps DEPS      Install suggested dependencies as well? [default: NA]
+-h --help           show this help text"
+
+## docopt parsing
+opt <- docopt(doc)
+if(opt$deps == "TRUE" || opt$deps == "FALSE")
+  opt$deps <- as.logical(opt$deps)
+if(opt$deps == "NA")
+  opt$deps <- NA
+
+## installation given selected options and arguments
+options(repos = opt$repos)
+install_github(repo  = opt$PACKAGES,
+               paste("-l =", opt$libloc),
+               dependencies = opt$deps)
+
+```
+
+### CRAN package update
+
+One of the scripts I use the most (interactively) updates installed packages:
+
+```r
+#!/usr/bin/env r 
+#
+# a simple example to update packages in /usr/local/lib/R/site-library
+# parameters are easily adjustable
+
+## adjust as necessary, see help('download.packages')
+repos <- "http://cran.rstudio.com" 
+
+## this makes sense on Debian where no package touch /usr/local
+lib.loc <- "/usr/local/lib/R/site-library"
+
+## r use requires non-interactive use
+update.packages(repos=repos, ask=FALSE, lib.loc=lib.loc)
+
+```
+
+As above, it has my preferred mirror and library location hard-wired.
+
+
+### Calling knitr
+
+Here is another convenience script which _knits_ a given file after
+testing the file actually exists.
+
+```r
+#!/usr/bin/r
+#
+# Simple helper script for knitr
+#
+# Dirk Eddelbuettel, May 2013
+#
+# GPL-2 or later
+
+if (is.null(argv)) {
+    cat("Need an argument FILE.Rnw\n")
+    q(status=-1)
+}
+
+
+file <- argv[1]
+if (!file.exists(file)) {
+    cat("File not found: ", file, "\n")
+    q(status=-1)
+}
+
+require(knitr)
+knit2pdf(file)
+
+```
+
+
+### Running roxygen
+
+Similar to the previous example, this one uses roxygen to extract
+documentation from R files -- either in the current directory, or in the
+given directory or directories.
+
+```r
+#!/usr/bin/r
+#
+# Simple helper script for roxygen2::roxygenize() 
+#
+# Dirk Eddelbuettel, August 2013
+#
+# GPL-2 or later
+
+## load roxygen
+library(roxygen2)
+
+## check all command-line arguments (if any are given) for directory status
+argv <- Filter(function(x) file.info(x)$is.dir, argv)
+
+## loop over all argument, with fallback of the current directory, and
+## call compileAttributes() on the given directory
+sapply(ifelse(length(argv) > 0, argv, "."), FUN=roxygenize, roclets="rd")
+
+```
+
+### Compiling Attributes
+
+The next script can be used with
+[Rcpp](http://dirk.eddelbuettel.com/code/rcpp.html), and particularly is
+powerful _Attributes_ feature, in order to auto-generate helper code. It is
+similar to the preceding script, but invokes `compileAttributes()` instead.
+
+```r
+#!/usr/bin/r
+#
+# Simple helper script for compileAttributes() 
+#
+# Dirk Eddelbuettel, July 2014
+#
+# GPL-2 or later
+
+## load Rcpp
+suppressMessages(library(Rcpp))
+
+## check all command-line arguments (if any are given) for directory status
+argv <- Filter(function(x) file.info(x)$is.dir, argv)
+
+## loop over all argument, with fallback of the current directory, and
+## call compileAttributes() on the given directory
+sapply(ifelse(length(argv) > 0, argv, "."), compileAttributes)
+
+```
+
+
+
