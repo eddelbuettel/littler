@@ -15,8 +15,8 @@ before_install:
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
 
-#install:
-#  - ./bootstrap
+install:
+  - ./travis-tool.sh install_aptget r-cran-knitr
   
 #script:
 #  - ./r --version
