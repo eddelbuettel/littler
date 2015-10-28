@@ -7,9 +7,9 @@
  *
  */
 
-static const char* gitrevision = "34e14b6";
-static const char* gitdate = "Tue Oct 27 19:59:32 2015 -0500";
 #if defined(VERBOSE_BUILD)
+    static const char* gitrevision = "@GITREVISION@";
+    static const char* gitdate = "@GITDATE@";
     static const char* compiletime = __TIME__;
     static const char* compiledate = __DATE__;
 #endif

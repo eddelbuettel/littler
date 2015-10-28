@@ -5,6 +5,8 @@
 	* configure.ac: Detect if built in git repo
 	* src/gitversion.h.in: Reflect git version if built from repo
 
+	* src/littler.c: Small tweaks to --version output 
+
 2015-10-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* R/test.R: Generalized binary for other OS types, switched to

@@ -392,12 +392,12 @@ void showHelpAndExit() {
 
 void showVersionAndExit() {
     char txt[64];
-    printf("%s ('%s') version %s\n\ngit revision %s as of %s\n", 
-           binaryName, programName, PACKAGE_VERSION, gitrevision, gitdate);
+    printf("%s ('%s') version %s\n", binaryName, programName, PACKAGE_VERSION);
 #if defined(VERBOSE_BUILD)
+    printf("\ngit revision %s as of %s\n", gitrevision, gitdate);
     printf("built at %s on %s\n", compiletime, compiledate);
 #endif
-    printf("using GNU R ");
+    printf("\nusing GNU R ");
     snprintf(txt, 63, "%d", R_SVN_REVISION);
     if (strcmp(txt, "unknown")==0) {
         printf("Version %s.%s %s (%s-%s-%s)",
