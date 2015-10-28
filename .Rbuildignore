@@ -9,3 +9,5 @@ src/install.lib.R
 ANNOUNCEMENT
 AUTHORS
 deprecated
+^.*\.Rproj$
+^\.Rproj\.user$
