@@ -1,3 +1,10 @@
+2015-10-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/littler-examples.Rmd: Added vignette
+
+	* configure.ac: Detect if built in git repo
+	* src/gitversion.h.in: Reflect git version if built from repo
+
 2015-10-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* R/test.R: Generalized binary for other OS types, switched to

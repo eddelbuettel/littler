@@ -80,3 +80,8 @@
 
 /* Version number of package */
 /* #undef VERSION */
+
+/* when git is seen, we want a more verbose build */
+#define VERBOSE_BUILD 1
+
+

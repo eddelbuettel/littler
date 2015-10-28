@@ -620,6 +620,8 @@ ac_includes_default="\
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+GITDATE
+GITREVISION
 RUN_NAMETOOL
 EXTRA_LDFLAGS
 AM_LDFLAGS
@@ -2094,7 +2096,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 # Ensure R_HOME is set yet respect a previously set value
 : ${R_HOME=`R RHOME`}
 if test -z "${R_HOME}"; then
-    as_fn_error $? "Couxold not determine R_HOME." "$LINENO" 5
+    as_fn_error $? "Could not determine R_HOME." "$LINENO" 5
 fi
 CC=`${R_HOME}/bin/R CMD config CC`
 AM_CFLAGS=`${R_HOME}/bin/R CMD config CFLAGS`
@@ -2106,6 +2108,7 @@ ac_config_headers="$ac_config_headers src/config.h"
 
 
 
+# commenting this out relieves us from requiring tools/ with all the scripts
 
 # Checks for programs.
 ac_ext=c
@@ -3474,6 +3477,18 @@ $as_echo "yes" >&6; }
 
 
 
+
+## Check for .git directory
+if test -d ".git/"; then
+    GITREVISION=`git log --format=fuller | head -6 | awk '/^commit / {print substr($2,1,7)}'`
+    GITDATE=`git log --format=fuller | head -6 | awk '/^CommitDate: / {print $2, $3, $4, $5, $6, $7}'`
+    $as_echo "#define VERBOSE_BUILD 1" >>confdefs.h
+
+else
+    GITREVISION=""
+    GITDATE=""
+fi
+
 # Now check if certain libraries should be linked in
 
 # Java
@@ -3492,8 +3507,6 @@ fi
 # get other linker flags for rpath
 EXTRA_LDFLAGS=`${RPROG} --silent --vanilla --slave --file=src/scripts/ldflags.R`
 #AC_MSG_RESULT([EXTRA_LDFLAGS is now: ${EXTRA_LDFLAGS}])
-#AC_MSG_RESULT([${EXTRA_LDFLAGS}])
-#AC_MSG_RESULT([${AM_LDFLAGS}])
 #AM_LDFLAGS="${AM_LDFLAGS} ${EXTRA_LDFLAGS}"
 #AC_MSG_RESULT([AM_LDFLAGS is now: ${AM_LDFLAGS}])
 
@@ -3554,7 +3567,9 @@ fi
 
 
 
-ac_config_files="$ac_config_files src/Makevars"
+
+
+ac_config_files="$ac_config_files src/Makevars src/gitversion.h"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -4247,6 +4262,7 @@ do
   case $ac_config_target in
     "src/config.h") CONFIG_HEADERS="$CONFIG_HEADERS src/config.h" ;;
     "src/Makevars") CONFIG_FILES="$CONFIG_FILES src/Makevars" ;;
+    "src/gitversion.h") CONFIG_FILES="$CONFIG_FILES src/gitversion.h" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

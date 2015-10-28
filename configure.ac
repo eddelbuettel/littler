@@ -5,8 +5,7 @@
 AC_PREREQ(2.61)
 
 # Every other copy of the package version number gets its value from here
-dnl AC_INIT(littler,0.2.9.1)
-dnl AC_INIT([littler], m4_esyscmd_s([R --slave --vanilla --silent -e 'cat(read.dcf("DESCRIPTION")[[1,"Version"]])']))
+# The m4_esyscmd_s invocation is due to an excellent StackOverflow answer.
 AC_INIT([littler], m4_esyscmd_s([awk -e '/^Version:/ {print $2}' DESCRIPTION]))
 
 #  Look for ancillary configure tools in tools
@@ -15,7 +14,7 @@ dnl AC_CONFIG_AUX_DIR(tools)
 # Ensure R_HOME is set yet respect a previously set value
 : ${R_HOME=`R RHOME`}
 if test -z "${R_HOME}"; then
-    AC_MSG_ERROR([Couxold not determine R_HOME.])   
+    AC_MSG_ERROR([Could not determine R_HOME.])   
 fi
 CC=`${R_HOME}/bin/R CMD config CC`
 AM_CFLAGS=`${R_HOME}/bin/R CMD config CFLAGS`
@@ -34,6 +33,7 @@ AC_CONFIG_HEADERS(src/config.h)
 
 AC_SUBST(VERSION)
 
+# commenting this out relieves us from requiring tools/ with all the scripts
 dnl AC_CANONICAL_HOST
 
 # Checks for programs.
@@ -106,6 +106,17 @@ AC_DEFUN([R_PROG],[
 
 R_PROG
 
+
+## Check for .git directory
+if test -d ".git/"; then
+    GITREVISION=`git log --format=fuller | head -6 | awk '/^commit / {print substr($2,1,7)}'`
+    GITDATE=`git log --format=fuller | head -6 | awk '/^CommitDate: / {print $2, $3, $4, $5, $6, $7}'`
+    AC_DEFINE(VERBOSE_BUILD)
+else
+    GITREVISION=""
+    GITDATE=""
+fi    
+
 # Now check if certain libraries should be linked in
 
 # Java
@@ -141,13 +152,11 @@ dnl esac
 # get other linker flags for rpath 
 EXTRA_LDFLAGS=`${RPROG} --silent --vanilla --slave --file=src/scripts/ldflags.R`
 #AC_MSG_RESULT([EXTRA_LDFLAGS is now: ${EXTRA_LDFLAGS}])
-#AC_MSG_RESULT([${EXTRA_LDFLAGS}])
-#AC_MSG_RESULT([${AM_LDFLAGS}])
 #AM_LDFLAGS="${AM_LDFLAGS} ${EXTRA_LDFLAGS}"
 #AC_MSG_RESULT([AM_LDFLAGS is now: ${AM_LDFLAGS}])
 
 # Are we building for Mac OS X? this program will exist if so.
-AC_PATH_PROG(NAMETOOL,install_name_tool)
+AC_PATH_PROG(NAMETOOL, install_name_tool)
 
 AC_DEFUN([NAMETOOL_FUN],[
 	if test "${NAMETOOL}" != ""; then
@@ -163,7 +172,9 @@ AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
 AC_SUBST(EXTRA_LDFLAGS)
 AC_SUBST(RUN_NAMETOOL)
+AC_SUBST(GITREVISION)
+AC_SUBST(GITDATE)
 
-AC_OUTPUT(src/Makevars)
+AC_OUTPUT([src/Makevars src/gitversion.h])
 
 
