@@ -3,7 +3,7 @@ Type: Package
 Title: R at the Command-Line via 'r'
 Version: 0.3.0
 Date: 2015-10-29
-Author: Dirk Eddelbuettel
+Author: Dirk Eddelbuettel and Jeff Horner
 Maintainer: Dirk Eddelbuettel <edd@debian.org>
 Description: A scripting and command-line front-end
  is provided by 'r' (aka 'littler') as a lightweight binary wrapper around
