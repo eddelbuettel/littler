@@ -1,3 +1,3 @@
-#!../r
+#!/usr/bin/env r
 
 print(summary(as.integer(readLines())));
