@@ -90,7 +90,7 @@ to forget whether r is installed in `/usr/bin/r`, `/usr/local/bin/r`,
 
 This is one of my favourite
 [littler](http://dirk.eddelbuettel.com/code/littler.html) scripts which I use
-frequently to install packages off [CRAN](http://cran.r-project.orh).
+frequently to install packages off [CRAN](http://cran.r-project.org).
 
 ```r
 #!/usr/bin/env r

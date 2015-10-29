@@ -1,3 +1,11 @@
+2015-10-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Release 0.3.0
+
+	* inst/NEWS.Rd: Added NEWS.Rd file
+
+	* inst/script-tests/*: Set (old) scripts to #!/usr/bin/env r shebang
+
 2015-10-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* vignettes/littler-examples.Rmd: Added vignette
