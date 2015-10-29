@@ -16,8 +16,9 @@ dnl AC_CONFIG_AUX_DIR(tools)
 if test -z "${R_HOME}"; then
     AC_MSG_ERROR([Could not determine R_HOME.])   
 fi
-CC=`${R_HOME}/bin/R CMD config CC`
-AM_CFLAGS=`${R_HOME}/bin/R CMD config CFLAGS`
+RPROG=${R_HOME}/bin/R
+CC=`${RPROG} CMD config CC`
+AM_CFLAGS=`${RPROG} CMD config CFLAGS`
 
 dnl # Options for Automake
 dnl #
@@ -59,9 +60,6 @@ AC_CHECK_FUNC(gettimeofday,
 AC_CHECK_FUNC(time,AC_DEFINE(HAVE_TIME,1, [Define if you have the time function.]))
 
 # Checks for typedefs, structures, and compiler characteristics.
-
-# Let configure find R using the AC_PATH_PROG macro
-AC_PATH_PROG(RPROG,R)
 
 # Test the R version for shared library
 AC_DEFUN([R_PROG],[
