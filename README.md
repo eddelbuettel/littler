@@ -6,7 +6,7 @@ command-line contexts.
 ### So What Does it Do?
 
 See the
-[example vignette](https://cran.rstudio.com/web/packages/littler/vignettes/littler-examples.html)
+[examples vignette](https://cran.rstudio.com/web/packages/littler/vignettes/littler-examples.html)
 for a set of introductory examples.
 
 Then see the
