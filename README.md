@@ -5,11 +5,22 @@ command-line contexts.
 
 ### So What Does it Do?
 
+```r
+#!/usr/bin/env r              ## for use in scripts
+
+other input | r               ## for use in pipes
+
+r somefile.R                  ## for running files
+
+r -e 'expr'                   ## for evaluating expressions
+
+r --help                      ## to show a quick synopsis
+```
+
 See the
 [examples vignette](https://cran.rstudio.com/web/packages/littler/vignettes/littler-examples.html)
-for a set of introductory examples.
-
-Then see the
+for a full set of introductory examples. Also 
+see the
 [examples/ directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples),
 as well as maybe the
 [older tests directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests)
