@@ -15,5 +15,6 @@ Description: A scripting and command-line front-end
  the environment.
 License: GPL (>= 2)
 OS_type: unix
+SystemRequirements: libR
 Suggests: knitr
 VignetteBuilder: knitr
