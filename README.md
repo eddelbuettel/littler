@@ -69,8 +69,8 @@ For more information about littler, please see
 * [Dirk's littler page](http://dirk.eddelbuettel.com/code/littler.html)
 * [Dirk's page with littler examples](http://dirk.eddelbuettel.com/code/littler.examples.html)
 
-(but note that latter now overlaps with the
-[example vignette](https://cran.rstudio.com/web/packages/littler/vignettes/littler-examples.html).
+(but note that the latter now overlaps with the
+[example vignette](https://cran.rstudio.com/web/packages/littler/vignettes/littler-examples.html)).
 
 ### Authors
 
