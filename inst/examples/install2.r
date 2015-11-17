@@ -11,7 +11,7 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
+doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-d DEPS] [--error] [--] [PACKAGES ...]
 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
@@ -20,10 +20,14 @@ doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-d DEPS] [--error] [PAC
 -h --help           show this help text
 
 where PACKAGES... can be one or more CRAN package names, or local (binary or source)
-package files (where extensions .tar.gz, .tgz and .zip are recognised).
+package files (where extensions .tar.gz, .tgz and .zip are recognised). Optional
+arguments understood by R CMD INSTALL can be passed interspersed in the PACKAGES, though
+this requires use of '--'.
 
 Examples:
   install2.r -l /tmp/lib Rcpp BH                         # installs into given library
+  install2.r -- --with-keep.source drat                  # keeps the source
+  install2.r -- --data-compress=bzip2 stringdist         # for some reason, prefer different compression
 
 install2.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.
@@ -50,18 +54,24 @@ if (opt$repos == "NULL")  {
 isMatchingFile <- function(f) file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
-installArg <- function(f, lib, rep, dep) {
+installArg <- function(f, lib, rep, dep, iopts) {
     install.packages(pkgs=f,
                      lib=lib,
                      repos=if (isMatchingFile(f)) NULL else rep,
-                     dependencies=dep)
+                     dependencies=dep, 
+                     INSTALL_opts=iopts)
 }
+
+## strip out arguments to be passed to R CMD INSTALL
+isArg <- grepl('^--',opt$PACKAGES)
+installOpts <- opt$PACKAGES[isArg]
+opt$PACKAGES <- opt$PACKAGES[!isArg]
 
 ## installation given selected options and arguments
 if (opt$error) {
-    withCallingHandlers(sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps), warning = stop)
+    withCallingHandlers(sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps, installOpts), warning = stop)
 } else { 
-    sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps)
+    sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps, installOpts)
 }
 
 ## clean up any temp file containing CRAN directory information
