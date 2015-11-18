@@ -25,9 +25,9 @@ arguments understood by R CMD INSTALL can be passed interspersed in the PACKAGES
 this requires use of '--'.
 
 Examples:
-  install2.r -l /tmp/lib Rcpp BH                         # installs into given library
-  install2.r -- --with-keep.source drat                  # keeps the source
-  install2.r -- --data-compress=bzip2 stringdist         # for some reason, prefer different compression
+  install2.r -l /tmp/lib Rcpp BH                         # install into given library
+  install2.r -- --with-keep.source drat                  # keep the source
+  install2.r -- --data-compress=bzip2 stringdist         # prefer bz2 compression
 
 install2.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.
