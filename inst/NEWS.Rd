@@ -4,6 +4,16 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.1 (2015-12-31)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item \code{install2.r} now passes on extra options past \code{--}
+      to \code{R CMD INSTALL}
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.0 (2015-10-29)}{
   \itemize{
     \item Changes in build system
