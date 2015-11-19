@@ -16,5 +16,5 @@ Description: A scripting and command-line front-end
 License: GPL (>= 2)
 OS_type: unix
 SystemRequirements: libR
-Suggests: knitr, doctopt
+Suggests: knitr, docopt
 VignetteBuilder: knitr
