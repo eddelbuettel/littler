@@ -1,3 +1,9 @@
+2015-11-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Add Suggests: docopt
+
+	* .travis.yml: Add r-cran-docopt
+
 2015-11-17  Steven Pav <shabbychef@gmail.com>
 
 	* inst/examples/install2.r: Support options past '--' which are
