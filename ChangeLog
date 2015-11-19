@@ -2,7 +2,7 @@
 
 	* DESCRIPTION: Add Suggests: docopt
 
-	* .travis.yml: Add r-cran-docopt
+	* .travis.yml: Add r-cran-docopt (via our PPA)
 
 2015-11-17  Steven Pav <shabbychef@gmail.com>
 

@@ -13,6 +13,9 @@ sudo: required
 #  - sudo apt-get install --no-install-recommends r-base-dev
 
 before_install:
+  ## PPA for Rcpp and some other packages
+  - sudo add-apt-repository -y ppa:edd/misc
+  ## r-travis by Craig Citro et al
   - curl -OL http://raw.github.com/eddelbuettel/r-travis/master/scripts/travis-tool.sh
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
