@@ -19,6 +19,7 @@ fi
 RPROG=${R_HOME}/bin/R
 CC=`${RPROG} CMD config CC`
 AM_CFLAGS=`${RPROG} CMD config CFLAGS`
+AM_LDFLAGS=`${RPROG} CMD config LDFLAGS`
 
 dnl # Options for Automake
 dnl #
@@ -80,7 +81,7 @@ AC_DEFUN([R_PROG],[
     # and the libR.so
     if ${RPROG} CMD config --ldflags 2>/dev/null | grep -v 'R was not built as a shared library' >/dev/null; then
     	AM_CFLAGS="${AM_CFLAGS} `${RPROG} CMD config --cppflags`"
-        AM_LDFLAGS="`${RPROG} CMD config --ldflags`"
+        AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config --ldflags`"
 
         # Now add the various libraries for linking
         AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config BLAS_LIBS | grep -v ERROR`"
