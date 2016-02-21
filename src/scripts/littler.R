@@ -1,4 +1,4 @@
-ExcludeVars <- c("R_SESSION_TMPDIR","R_HISTFILE","R_LIBS_USER")
+ExcludeVars <- c("R_SESSION_TMPDIR","R_HISTFILE","R_LIBS_USER","R_LIBRARY_DIR","R_LIBS","R_PACKAGE_DIR")
 IncludeVars <- Sys.getenv()
 IncludeVars <- IncludeVars[grep("^R_",names(IncludeVars),perl=TRUE)]
 cat("const char *R_VARS[] = {\n")
