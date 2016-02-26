@@ -9,7 +9,21 @@
     \item Changes in examples
     \itemize{
       \item \code{install2.r} now passes on extra options past \code{--}
-      to \code{R CMD INSTALL}
+      to \code{R CMD INSTALL} (\ghpr{37} by Steven Pav)
+    }
+    \item Changes in build system
+    \itemize{
+      \item The \code{AM_LDFLAGS} variable is now set and used too
+      (\ghpr{38} by Matthias Ellert)
+      \item Three more directories, used when an explicit installation
+      directory is set, are excluded (also (\ghpr{38}))
+    }
+    \item Changes in package
+    \itemize{
+      \item SystemRequirements now mentions the need for \code{libR},
+      i.e. an R built with a shared library so that we can embed R.
+      \item The \CRANpkg{docopt} is now suggested, and added to the
+      Travis installation.
     }
   }
 }

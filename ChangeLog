@@ -1,3 +1,17 @@
+2016-02-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/littler.c (showVersionAndExit): Updated copyright
+
+	* src/scripts/littler.R: Added copyright header, reindented
+	* src/scripts/autoloads.R: Idem
+	* src/scripts/ldflags.R: Idem
+
+2016-02-21  Mattias Ellert  <mattias.ellert@fysast.uu.se>
+
+	* configure.ac: Add support for AM_LDFLAGS
+	* src/scripts/littler.R: Exclude three more variables
+	reflecting the (optional) installation directory
+
 2015-11-20  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rhome.r: New script to call R.home(...)
