@@ -3,7 +3,7 @@
 ## Makevars.in for littler
 ## Based on older Makefile.am
 ##
-## Copyright (C) 2006 - 2015  Jeffrey Horner and Dirk Eddelbuettel, GNU GPL'ed
+## Copyright (C) 2006 - 2016  Jeffrey Horner and Dirk Eddelbuettel, GNU GPL'ed
 
 RPROG=@RPROG@
 ROPTS = --silent --vanilla --slave
