@@ -14,7 +14,7 @@
     \item Changes in build system
     \itemize{
       \item The \code{AM_LDFLAGS} variable is now set and used too
-      (\ghpr{38} by Matthias Ellert)
+      (\ghpr{38} by Mattias Ellert)
       \item Three more directories, used when an explicit installation
       directory is set, are excluded (also (\ghpr{38}))
     }
