@@ -1,3 +1,7 @@
+2016-03-21  Brandon Bertelsen <brandon@bertelsen.ca>
+
+	* vignettes/littler-examples.Rmd: Correct installGithub.r example
+
 2016-02-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* src/littler.c (showVersionAndExit): Updated copyright

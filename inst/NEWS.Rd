@@ -4,7 +4,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.1 (2015-12-31)}{
+\section{Changes in littler version 0.3.1 (2016-03-31)}{
   \itemize{
     \item Changes in examples
     \itemize{
@@ -16,7 +16,7 @@
       \item The \code{AM_LDFLAGS} variable is now set and used too
       (\ghpr{38} by Mattias Ellert)
       \item Three more directories, used when an explicit installation
-      directory is set, are excluded (also (\ghpr{38}))
+      directory is set, are excluded (also \ghpr{38} by Mattias)
     }
     \item Changes in package
     \itemize{
@@ -25,6 +25,10 @@
       \item The \CRANpkg{docopt} is now suggested, and added to the
       Travis installation.
     }
+    \item Changes in documentation
+    \itemize{
+      \item The help output for \code{installGithub.r} was corrected
+      (\ghpr{39} by Brandon Bertelsen)
   }
 }
 
