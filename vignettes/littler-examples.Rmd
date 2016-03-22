@@ -179,7 +179,7 @@ if (opt$error) {
 #### Installing From Sources
 
 Starting with version 0.2.2, `install.r` and `install2.r` now recognise
-installable source files.  So one can also do this
+installable source files.  So one can also do this: 
 
 ```bash
 $ install.r digest_0.6.8.tar.gz
@@ -198,8 +198,12 @@ dependencies not yet satisfied on the test machine.
 
 ### GitHub package installation
 
-Installation directly from [GitHub](https://github.com) is also popular, and
-now supported via a new helper script:
+Installation directly from [GitHub](https://github.com) is also popular. Here is an example: 
+
+```bash
+$ installGithub.r RcppCore/RcppEigen 
+```
+Installing from github is supported via the following helper script:
 
 ```r
 #!/usr/bin/env r
@@ -215,26 +219,29 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 suppressMessages(library(devtools)) 
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [PACKAGES ...]
+doc <- "Usage: installGithub.r [-h] [-d DEPS] REPOS...
 
--r --repos REPO     repository to install from [default: http://cran.rstudio.com]
--l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      Install suggested dependencies as well? [default: NA]
--h --help           show this help text"
+-h --help           show this help text
+
+where REPOS... is one or more GitHub repositories.
+
+Examples:
+  installGithub.r RcppCore/RcppEigen                     
+
+installGithub.r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.
+"
 
 ## docopt parsing
 opt <- docopt(doc)
-if(opt$deps == "TRUE" || opt$deps == "FALSE")
-  opt$deps <- as.logical(opt$deps)
-if(opt$deps == "NA")
-  opt$deps <- NA
+if (opt$deps == "TRUE" || opt$deps == "FALSE") {
+    opt$deps <- as.logical(opt$deps)
+} else if (opt$deps == "NA") {
+    opt$deps <- NA
+}
 
-## installation given selected options and arguments
-options(repos = opt$repos)
-install_github(repo  = opt$PACKAGES,
-               paste("-l =", opt$libloc),
-               dependencies = opt$deps)
-
+invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps)))
 ```
 
 ### CRAN package update
