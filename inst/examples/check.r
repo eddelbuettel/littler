@@ -2,7 +2,7 @@
 #
 # Another example to check one or more packages, with option parsing
 #
-# Copyright (C) 2015  Dirk Eddelbuettel
+# Copyright (C) 2015 - 2016  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -10,10 +10,10 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
+doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
 
 -a --as-cran         customization similar to CRAN's incoming [default: FALSE]
--r --repo REPO       repository to use, or NULL for file [default: http://cran.rstudio.com]
+-r --repo REPO       repository to use, or NULL for file [default: https://cran.rstudio.com]
 -i --install-deps    also install packages along with their dependencies [default: FALSE]
 -k --install-kitchen even install packages 'kitchen sink'-style up to suggests [default: FALSE]
 -l --library LIB     when installing use this library [default: /usr/local/lib/R/site-library]
@@ -37,15 +37,25 @@ args <- character()
 if (opt$`as-cran`) args <- c(args, "--as-cran")
 
 ## doctopt results are characters, so if we meant NULL we have to set NULL
-if (opt$repo == "NULL") opt$repo = NULL
+if (opt$repo == "NULL") opt$repo <- NULL
 
 r <- getOption("repos")
 r["CRAN"] <- opt$repo
 options(repos = r)
 
+hasRcmdcheck <- requireNamespace("rcmdcheck", quietly=TRUE)
+if (hasRcmdcheck) suppressMessages(library("rcmdcheck"))
+    
 ## helper functions
 checkArg <- function(p, args) {
-    tools:::.check_packages(c(p, args))
+    if (hasRcmdcheck) {
+        #if (length(args) == 0) args <- ""
+        res <- rcmdcheck(p, args=args)        
+    } else {
+        tools:::.check_packages(c(p, args))
+        res <- NULL
+    }
+    res
 }
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
