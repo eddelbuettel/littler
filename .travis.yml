@@ -22,6 +22,7 @@ before_install:
 
 install:
   - ./travis-tool.sh install_aptget r-cran-knitr r-cran-docopt
+  - ./travis-tool.sh install_r rcmdcheck
   
 #script:
 #  - ./r --version
