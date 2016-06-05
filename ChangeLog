@@ -1,3 +1,7 @@
+2016-06-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/roxy.r: Minor correction to documentation
+
 2016-03-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/check.r: Add support for rcmdcheck

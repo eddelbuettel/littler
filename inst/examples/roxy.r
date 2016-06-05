@@ -13,5 +13,5 @@ library(roxygen2)
 argv <- Filter(function(x) file.info(x)$is.dir, argv)
 
 ## loop over all argument, with fallback of the current directory, and
-## call compileAttributes() on the given directory
+## call roxygenize() on the given directory with roclets="rd" set
 sapply(ifelse(length(argv) > 0, argv, "."), FUN=roxygenize, roclets="rd")
