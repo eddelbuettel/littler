@@ -1,0 +1,274 @@
+
+
+  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
+
+  Copyright (C) 2006 - 2015  Jeffrey Horner and Dirk Eddelbuettel
+
+  littler is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  littler is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+
+
+  ### Note:  This README file dates from 2007 and needs an update. 
+  ###        For current information, also the links in README.md
+
+
+  I     Installation 
+  ==================
+
+  Linux and OS X builds are supported.  Please see the file 'INSTALL'
+  for installation tips.
+
+
+  II.   Implementation
+  ====================
+
+  littler, a C-language program named 'r', is an alternative front
+  end to GNU R for '#!' (hashbang) scripting  (see "Embedding R under
+  Unix-alikes" in the "Writing R Extensions" manual from either
+  http://www.r-project.org/, or your R installations / sources).
+  With it's simpler command-line argument set geared toward scripting,
+  littler allows users to create R scripts and popular "one-liners" using
+  the command-line flag --eval.  To do this, littler hard-codes certain
+  bits of R's installation and environment using the first R program
+  found in the user's path. For instance, if you installed R in
+  both /usr/bin and /usr/local/bin, and your PATH variable references
+  /usr/bin first, then littler will configure itself with /usr/bin/R.
+
+
+  II.1 R_HOME
+  -----------
+
+  The R_HOME environment variable is written to the header file littler.h
+  so that it can be hard-coded into the r binary. Note that it overrides
+  the user's own R_HOME environment variable when r is executed.
+
+
+  II.2 R_DEFAULT_PACKAGES
+  -----------------------
+
+  To decrease r's startup time, it sets the environment variable
+  R_DEFAULT_PACKAGES to NULL and then autoloads all of the default package
+  methods. This is done by inspecting the R user option 'defaultPackages'
+  and emitting c code to be statically compiled into r. See autoloads.R
+  for more info.
+
+
+  II.3 LD_LIBRARY_PATH
+  --------------------
+
+  To eliminate the dependency on the LD_LIBRARY_PATH environment
+  variable, at least on linux, r looks to the file R_HOME/etc/ldpaths
+  to set the -rpath linker option  (see ldpaths.R for more
+  info). Unfortunately this linker flag is not supported on Mac
+  OS X, so r still depends on DYLD_LIBRARY_PATH.
+
+  One caveat of working directly with LD_LIBRARY_PATH is that if one ever 
+  alters or updates R_HOME/etc/ldpaths (e.g. by running 'R CMD javareconf'),
+  this will not be reflected in r. Thus, a re-compilation of r is necessary.
+
+  II.4 Last but not least
+  -----------------------
+
+  Upon exit no cleanup is done and .Last() is not run. This behavior is
+  more suitable for a scripting environment as opposed to an interactive
+  one.
+
+
+  III.  (In-) Frequently asked questions
+  ======================================
+
+  III.1  Why the name 'littler' ?
+  ------------------------------
+
+  We wanted something short, sweet and with sufficient reference to R
+  without trampling over R. The 'little' part implies two things: 1)
+  that the program name is the lower case 'r', and 2) that 'r' provides
+  something less than GNU R, mainly the language interpreter without the
+  R environment. 'littler' is meant to run in an automated, i.e scripted,
+  fashion with little interaction from the user.
+
+  We also like 'r' in /usr/local/bin/r, /usr/bin/r or on the command-line
+  as it saves keystrokes, and does not harm the Shift key as much.
+
+  Lastly, you will find a little r in both Jeffrey and Dirk :-)
+
+
+  III.2. Wasn't there once a 'rinterp' as well ?
+  ---------------------------------------------
+ 
+  There was, but we think littler is cuter. See the previous question.
+
+
+  III.3  I run a script through 'littler' but nothing shows. What's up? 
+  -----------------------------------------------------------------
+
+  Add the --verbose flag (or its -p short version). This will print out many
+  relevant expressions, similar to GNU R. However, it won't print the value
+  of expressions like for loops, if/else, or expressions within function
+  calls. In that case you probably need to wrap a print() or cat() around
+  what you want to show.
+
+
+  III.4  Data sets are lost!
+  -------------------------
+
+  Actually, they aren't. But because 'littler' optimises the startup,
+  they are never loaded. Just add
+      library(datasets)
+  to your script. 
+
+  We have changed this behaviour in release 0.1.0, and datasets are now
+  loaded on startup.
+
+
+  III.5  It doesn't build and complains about 'R_SignalHandlers undeclared'
+  ------------------------------------------------------------------------
+
+  You need to upgrade to R 2.3.1 or newer. 
+
+  Our configure ought to check for a minimal R versions and currently does
+  not.
+
+
+  III.6  The r binary name clashes with my R binary.
+  --------------------------------------------------
+
+  Use the configure flag --program-prefix or --program-suffix to transform
+  the binary name. For instance, if you would like the binary name to be
+  'rsp' run configure like this:
+
+      ./configure --program-suffix=sp
+
+  and if you'd rather have a prefix to the binary, run:
+
+      ./configure --program-prefix=little
+
+  which will name the binary 'littler'. The binary, as well as the manual page,
+  are renamed when 'make install' is run.  Should you need it, 'make uninstall'
+  will also remember this setting.
+
+
+  III.7  Typing r repeats the last command.
+  -----------------------------------------
+
+  You must be a zsh user -- 'r' is a builtin command, so to prefer to littler, 
+  you will have to either use an explicit path (/usr/bin/r), create an alias
+  under a different name, and install littler using a suffix or prefix as 
+  describe in III.6.
+
+
+  III.8  What about Rscript?
+  --------------------------
+
+  Good question. Starting with release 2.5.0, R itself will now contain
+  something remarkably similar to littler: Rscript, an alternative
+  front end to R for use in '#!' scripts.  Time will tell which features
+  differentiate the two, and which interface proves more useful to the
+  R community. For now, we are simply thrilled to see functionality that
+  we and others deemed important -- yet was missing from R itself --
+  added to the core R distribution. As they say, 'Imitation is the 
+  sincerest form of flattery'.  Still, it would have been nice if Rscript 
+  had given credit to littler.
+
+  Here's a look at the most visibly distinguishing feature of each front
+  end: how arguments are passed to a script. Below are two 'hello world'
+  scripts that print out their arguments, one  implemented in Rscript
+  and the other littler:
+
+  Rscript
+  -------
+  #! /path/to/Rscript
+  args <- commandArgs()
+  args <- args[-(1:match("--args", args)]
+  cat('hello world! ', args,"\n")
+  -------
+
+  littler
+  -------
+  #! /path/to/r
+  cat('hello world! ', argv,"\n")
+  -------
+
+  Rscript passes all script arguments to R as additional elements to
+  the vector returned from commandArgs(). Thus, the script must use the
+  negative indexing method above to get the script argument into it's
+  own variable.
+
+  littler provides convenience by assigning the script arguments to an
+  "argv" vector and placing that into the global environemt, a convention
+  followed by other popular scripting languages.
+
+  littler also tends to start faster as it doesn't need to exec() the main
+  R process due to its embedding of R.
+
+
+  III.9  What about getopt-style command-line parsing?
+  ----------------------------------------------------
+
+  Great question!  This was asked for a few times.  Luckily, Allen Day came
+  forward and wrote getopt (now on CRAN), initially for Rscript.  Moreover, 
+  he also agreed to add a two-line patch for seamless littler support.
+
+  See the getopt examples and documentation at 
+     http://cran.r-project.org/web/packages/getopt/index.html
+  for usage -- it is really straightforward.
+
+
+  III.10  What about temporary files and directories?
+  ---------------------------------------------------
+
+  If nothing else is specified, r defaults to /tmp after having checked the
+  environment variables TMPDIR, TMP and TEMP.  Since version 0.1.2, you can
+  also provide the --rtemp option (or its short form -t) to let r behave like
+  R with a unique per-session directory that gets removed at exit:
+
+     $ r -tpe 'tempdir()'
+     [1] "/tmp/RtmpSbNQBj"
+     $ ls /tmp/RtmpSbNQBj
+     ls: cannot access /tmp/RtmpSbNQBj: No such file or directory
+     $
+
+  showing that the temporary directory is created and provided while r is
+  running, but removed after r has finished.
+
+
+  III.11  What about 'shebang' starts and command-line options?
+  -------------------------------------------------------------
+
+  The usual operating systems can parse the so-called 'shebang' line, ie the 
+  first line of scripts that starts with the '#!' characters and the path to 
+  the executable --- and as much as one argument.  That means we can provide
+  short option arguments together in one string as in
+  
+      #!/usr/bin/r -pt
+
+  which enables 'verbose printing' and 'R-alike per-session temp. directories'.
+
+  What are typically not supported are multiple tokens (as used for an option
+  and its argument, or multiple options).  This also means that in the 
+
+     #!/usr/bin/env r
+
+  case we cannot supply further arguments to r.
+
+
+  IV    Feedback
+  ==============
+
+  Comments are welcome, as are are suggestions, bug fixes, or patches.
+
+
+	- Jeffrey Horner <jeff.horner@vanderbilt.edu>
+	- Dirk Eddelbuettel <edd@debian.org> 

@@ -1,0 +1,12 @@
+^PACKAGE
+NOTES.txt
+bootstrap
+COPYING
+LICENSE
+.travis.yml
+src/install.lib.R
+ANNOUNCEMENT
+AUTHORS
+deprecated
+^.*\.Rproj$
+^\.Rproj\.user$

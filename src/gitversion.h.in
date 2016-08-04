@@ -1,0 +1,15 @@
+
+/* 
+ * gitrevision and gitdate are as reported by git at that point in time,
+ * compiledate and compiletime are being filled gcc at compilation 
+ *
+ * verbose_build gets set along with them
+ *
+ */
+
+#if defined(VERBOSE_BUILD)
+    static const char* gitrevision = "@GITREVISION@";
+    static const char* gitdate = "@GITDATE@";
+    static const char* compiletime = __TIME__;
+    static const char* compiledate = __DATE__;
+#endif

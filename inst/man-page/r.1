@@ -1,0 +1,144 @@
+.\"                              hey, Emacs:   -*- nroff -*-
+.\" littler is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; see the file COPYING.  If not, write to
+.\" the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.\" Use 
+.\"   help2man ./r --no-info \
+.\"    --name="Provides hash-bang (#!) capability for R (www.r-project.org)"\
+.\"    --output /tmp/r.1   
+.\" to create a new stub directly from the executable
+.\"
+.TH R "1" "September 2006" "r " "User Commands"
+.\"
+.\" Please update the above date whenever this man page is modified.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins (default)
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.\"
+.SH NAME
+r \- Provides hash-bang (#!) capability for R (www.r-project.org)
+.SH SYNOPSIS
+.B r
+[\fIoptions\fR] [\fI-|file\fR] [\fIR arguments\fR]
+.SH DESCRIPTION
+Launches GNU R to execute the specified file containing R commands, or takes
+commands from stdin if '-' is used to denote stdin, using the specified
+options. This makes it suitable to create R scripts via the so\-called
+shebang '#!/' line. The optional \fBR arguments\fR are stored in the 
+\fBR\fR vector \fBargv\fR.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Display a short help list.
+.TP
+\fB\-\-usage\fR
+Give a short usage message.
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Show the version number.
+.TP
+\fB\-v\fR, \fB\-\-vanilla\fR
+Pass the '\-\-vanilla' option to R.
+.TP
+\fB\-t\fR, \fB\-\-rtemp\fR
+Use a per-session temporary directory as R does.
+.TP
+\fB\-i\fR, \fB\-\-interactive\fR
+Force 'interactive()' to evaluate to TRUE, whereas the default is FALSE.
+.TP
+\fB\-q\fR, \fB\-\-quick\fR
+Skip autoload (i.e. delayed assign) of default libraries.
+.TP
+\fB\-p\fR, \fB\-\-verbose\fR
+Print the value of expressions to the console.
+.TP
+\fB\-l\fR, \fB\-\-packages\fR list
+Load the R packages from the comma\-separated 'list'.
+.TP
+\fB\-d\fR, \fB\-\-datastdin\fR
+Evaluates 'X <- read.csv(file="stdin", stringsAsFactors=FALSE)' to read a
+data set from stdin.
+.TP
+\fB\-L\fR, \fB\-\-libpath\fR dir
+Add directory to library path via '.libPaths(dir)'.
+.TP
+\fB\-e\fR, \fB\-\-eval expr\fR
+Evaluate 'expr' in R.
+.PP
+.SH USAGE
+\fBr\fR can be used in command-line 'pipes' as well as in 'shebang'-style
+scripts.
+.SH EXAMPLES
+Piping \fBR\fP commands:
+
+ echo 'cat(pi^2,"\\n")' | r
+
+Equivalently, \fBR\fP commands can be given on the command-line:
+
+ r -e 'cat(pi^2, "\\n")'
+
+Alternatively, commands can be stored in a file, which in turn might use
+\fBR\fP command 'readLines' to process stdin input:
+
+ $ cat examples/fsizes.r
+ fsizes <- as.integer(readLines())
+ print(summary(fsizes))
+ stem(fsizes)
+
+which can be evaluated by \fBr\fP with the following command:
+
+ ls -l /boot | awk '!/^total/ {print $5}' | r examples/fsizes.r
+
+The script file may contain a "shebang" line:
+
+ $ cat examples/install.r
+ #!/usr/bin/env r
+ # a simple example to install one or more packages
+ if (is.null(argv) | length(argv)<1) {
+   cat("Usage: installr.r pkg1 [pkg2 pkg3 ...]\n")
+   q()
+ }
+ repos <- "http://cran.us.r-project.org"
+ lib.loc <- "/usr/local/lib/R/site-library"
+ install.packages(argv, lib.loc, repos, dependencies=TRUE)
+
+and if it is executable, it can be called as:
+
+ examples/install.r "TeachingDemos"
+
+See the examples directory in the sources for more.
+.SH NOTE
+The executable program is called 
+\fBr\fR,
+but the project is called
+\fBlittler\fR
+to avoid confusion with the real
+\fBGNU R\fR.
+.SH SEE ALSO
+The 
+\fBGNU R\fR
+language is documented extensively at the R website
+(http://www.r-project.org) and in several
+manuals available in html, info and pdf.
+.SH AUTHORS
+Jeffrey Horner <jeff.horner@vanderbilt.edu>.
+Dirk Eddelbuettel <edd@debian.org>.

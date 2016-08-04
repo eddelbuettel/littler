@@ -1,3 +1,275 @@
+2016-06-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/roxy.r: Minor correction to documentation
+
+2016-03-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/check.r: Add support for rcmdcheck
+	* DESCRIPTION: Add Suggests: rcmdcheck
+
+2016-03-21  Brandon Bertelsen <brandon@bertelsen.ca>
+
+	* vignettes/littler-examples.Rmd: Correct installGithub.r example
+
+2016-02-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/littler.c (showVersionAndExit): Updated copyright
+
+	* src/scripts/littler.R: Added copyright header, reindented
+	* src/scripts/autoloads.R: Idem
+	* src/scripts/ldflags.R: Idem
+
+2016-02-21  Mattias Ellert  <mattias.ellert@fysast.uu.se>
+
+	* configure.ac: Add support for AM_LDFLAGS
+	* src/scripts/littler.R: Exclude three more variables
+	reflecting the (optional) installation directory
+
+2015-11-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rhome.r: New script to call R.home(...)
+
+2015-11-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Add Suggests: docopt
+
+	* .travis.yml: Add r-cran-docopt (via our PPA)
+
+2015-11-17  Steven Pav <shabbychef@gmail.com>
+
+	* inst/examples/install2.r: Support options past '--' which are
+	passed on to R CMD INSTALL as INSTALL_opts
+
+2015-11-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Add 'SystemRequirements: libR' per discussion with CRAN
+
+2015-10-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* NAMESPACE: Added some comments explaining empty content
+
+2015-10-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Release 0.3.0
+
+	* inst/NEWS.Rd: Added NEWS.Rd file
+
+	* inst/script-tests/*: Set (old) scripts to #!/usr/bin/env r shebang
+
+2015-10-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/littler-examples.Rmd: Added vignette
+
+	* configure.ac: Detect if built in git repo
+	* src/gitversion.h.in: Reflect git version if built from repo
+
+	* src/littler.c: Small tweaks to --version output
+
+	* .travis.yml: Install knitr for Travis
+
+2015-10-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/test.R: Generalized binary for other OS types, switched to
+	simpler and more predictable default command
+
+	* tests/simpleTests.R: Renamed from run-all.R, simpler default test,
+	added new test calling an R 'state' variable
+
+	* deprecated/tools: Moved from tools as no longer needed under
+	rewritten configure.ac
+
+	* man/littler.Rd: Added manual page
+
+2015-10-26  Jeroen Oooms  <jeroen.ooms@stat.ucla.edu>
+
+	* R/tests.R: Added wrapper to call 'r' from tests/ directory
+	* tests/run-all.R: Added simple test
+
+2015-10-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Also respect 'R CMD config CFLAGS' in build
+
+	* src/littler.c: Suppress pedantic warnings on fopen results
+
+	* src/gitversion.h: Define compiletime and compiledate only if
+	VERBOSE_BUILD is set
+
+2015-10-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Added, as part of conversion to package
+	* NAMESPACE: Ditto
+	* R/init.R: Ditto
+
+	* src/littler.c: Moved from top-level
+	* src/config.h.in: Ditto
+	* src/Makevars.in: Moved, and adapted from Makefile.am
+	* src/config-const.h: Added with some (so far) const values
+
+	* src/scripts/autoloads.R: Moved from top-level
+	* src/scripts/littler.R: Ditto
+
+	* cleanup: Adapted to new layout
+	* .gitignore: Ditto
+	* .Rbuildignore: Added
+
+	* inst/script-tests/: Moved from top-level tests/
+	* inst/examples/: Moved from top-level examples/
+	* inst/man-page/r.1: Moved from top-level r.1
+
+	* .travis.yml: Adapted to work on R package
+
+	* deprecated/: Added to hold some no-longer used files
+
+	* README.md: Updated
+
+2015-10-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/installRepo.r: New script wrapping GitHub, Bitbucket,
+	Subversion (via http) and generic URL access.
+
+	* examples/check.r: Expanded --help thanks to docopt
+	* examples/installGithub.r: Ditto
+	* examples/install2.r: Ditto
+	* examples/dratInsert.r: Ditto
+
+2015-09-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/installGithub.r: Simplify, correct and extend script (with
+	thanks to Alexios for the bug report)
+
+2015-09-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/check.r: Added new option to support 'kitchen sink'
+	installation of Depends, Imports, LinkingTo and Suggests (cf #30)
+
+2015-08-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install2.r: Better testing of opt$repos values
+
+2015-07-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (main): Add verbosity argument to parse_eval() which
+	allows for more silent initial operations to set library paths, load
+	libraries and load data -- addresses wish of GitHub ticket #26
+
+2015-05-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: Invert #ifdef on REPRODUCIBLE_BUILD to VERBOSE_BUILD: by
+	default we no longer encode the timestamp of the builds
+
+	* bootstrap: Ditto: Unless VERBOSE_BUILD is define do not place
+	timestamps in to gitversion.h
+
+	* littler.c: Also source $R_HOME/etc/Rprofile.site and ~/.Rprofile if
+	present, and document this via --usage flag output.
+
+2015-03-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/dratInsert.r: Changed to support a commit message
+
+	* examples/installGithub.r: Remove support -l which no longer works
+	with the current version of devtools (but .libLoc() is respected)
+
+2015-03-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Mark as release 0.2.3
+
+2015-03-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (showVersionAndExit):  If REPRODUCIBLE_BUILD is defined,
+	do not display built time and date to ensure binary reproducibility
+
+	* bootstrap: If REPRODUCIBLE_BUILD is defined, do not insert __TIME__
+	and __DATE__ compile time macros into generated header gitversion.h
+
+2015-03-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (showUsageAndExit): Add link to examples web page.
+
+2015-03-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* r.1: Updated with recent command additions.
+
+2015-02-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/dratInsert.r: New script to insert package into drat
+
+2015-02-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/check.r: New option '--deb-pkgs PKGS' to install .deb
+	packages prior to running the check (in one-command Docker use)
+
+2015-02-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: New command-line argument -L|--libpath to add a
+	directory to the `.libPaths()`
+
+2015-02-17  Carl Boettiger  <cboettig@gmail.com>
+
+	* examples/install2.r: Permit multiple -r|--repos arguments
+
+2015-02-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install.r: Set the default value of repos to
+	getOption("repos") as we can now set values in the littler dotfile
+	* examples/install2.r: Ditto
+	* examples/update.r: Ditto
+
+2015-02-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c (showVersionAndExit): Update copyright to 2015 here too
+
+2015-01-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Mark as release 0.2.2
+
+2015-01-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/check.r: Add --setwd dir option to change directories
+
+2015-01-17  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/check.r: Add a script which wrap R CMD check; with
+	optional support for prior installation of dependencies
+
+	* examples/shiny.r: Add simple wrapper for shiny::runApp()
+
+2015-01-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.c: Test for both /etc/littler.r and ~/.littler.r and source
+	if found (but not if -v|--vanilla was given)
+
+2014-12-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install2.r: Smarter use of arguments: files with matching
+	extension are installed directly; also clean up temp files
+
+2014-12-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install.r: Smarter use of arguments: files with matching
+	extension are installed directly; also expanded help text
+
+2014-12-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* littler.R: Do not include R_LIBS_USER in list of variables
+
+2014-12-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* examples/install.r: Reflect value of REPOS and LIBLOC in addition
+	to the [unchanged] default values for either
+
+	* examples/install2.r: If 'repos' is set to (string) NULL, set it to
+	the actual NULL symbol (so that installation from file proceeds)
+
+2014-10-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Mark as release 0.2.1
+
+	* littler.c: Minor whitespace changes for 'r --version'
+
+	* examples/*.r: Add proper copyright and license header for remaining
+	files
+
 2014-10-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* examples/install.r: Remove temporary rds files matching libloc or

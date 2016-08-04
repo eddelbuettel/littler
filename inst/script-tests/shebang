@@ -1,0 +1,6 @@
+#!/usr/bin/env r
+if (!is.null(argv)){
+	for ( i in 1:length(argv)){
+		cat("<",argv[i],">\n",sep='')
+	}
+}
