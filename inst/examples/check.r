@@ -10,17 +10,17 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
+doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
 
--a --as-cran         customization similar to CRAN's incoming [default: FALSE]
--r --repo REPO       repository to use, or NULL for file [default: https://cran.rstudio.com]
--i --install-deps    also install packages along with their dependencies [default: FALSE]
--k --install-kitchen even install packages 'kitchen sink'-style up to suggests [default: FALSE]
--l --library LIB     when installing use this library [default: /usr/local/lib/R/site-library]
--s --setwd DIR       change to this directoru before undertaking the test [default: ]
--d --deb-pkgs PKGS   also install binary .deb packages with their dependencies [default: FALSE]
--u --use-sudo        use sudo when installing .deb packages [default: TRUE]
--h --help            show this help text
+-a --as-cran          customization similar to CRAN's incoming [default: FALSE]
+-r --repo REPO        repository to use, or NULL for file [default: https://cran.rstudio.com]
+-i --install-deps     also install packages along with their dependencies [default: FALSE]
+-k --install-kitchen  even install packages 'kitchen sink'-style up to suggests [default: FALSE]
+-l --library LIB      when installing use this library [default: /usr/local/lib/R/site-library]
+-s --setwd DIR        change to this directoru before undertaking the test [default: ]
+-d --deb-pkgs PKGS    also install binary .deb packages with their dependencies [default: FALSE]
+-u --use-sudo         use sudo when installing .deb packages [default: TRUE]
+-h --help             show this help text
 
 Examples:
   check.r -a -i -s /tmp myPkg_1.2-3.tar.gz    # run a check --as-cran with depends in /tmp
