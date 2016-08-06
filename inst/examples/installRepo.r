@@ -2,7 +2,7 @@
 #
 # A simple example to install one or more packages from GitHub
 #
-# Copyright (C) 2014 - 2015  Carl Boettiger, Dirk Eddelbuettel and Alexios Galanos
+# Copyright (C) 2014 - 2016  Carl Boettiger, Dirk Eddelbuettel and Alexios Galanos
 #
 # Released under GPL (>= 2)
 
@@ -11,15 +11,20 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 suppressMessages(library(devtools)) 
 
 ## configuration for docopt
-doc <- "Usage: installRepo.r [-l LIBLOC] [-h] [-d DEPS] [-r REPOS] [-s subdir] SRC
+doc <- "Usage: installRepo.r [-l LIBLOC] [-h] [-x] [-d DEPS] [-r REPOS] [-s subdir] [SRC]
 
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      Install suggested dependencies as well? [default: NA]
 -r --repos REPOS    The repository, eg github, bitbucket, svn, or url [default: github]
 -s --subdir SUBDIR  For svn or url, an optional sub-directory within the repo
 -h --help           show this help text
+-x --usage          show help and short example usage"
 
-where SRC is either a git-style repo (author/repo) or a URL for svn.
+opt <- docopt(doc)			# docopt parsing
+
+if (opt$usage) {
+    cat(doc, "\n\n")
+    cat("where SRC is either a git-style repo (author/repo) or a URL for svn.
 
 Examples:
   installRepo.r RcppCore/RcppEigen                       # standard GitHub
@@ -28,8 +33,9 @@ Examples:
   installRepo.r -r url https://cran.rstudio.com/src/contrib/Archive/digest/digest_0.5.0.tar.gz
 
 installRepo.r is part of littler which brings 'r' to the command-line.
-See http://dirk.eddelbuettel.com/code/littler.html for more information.
-"
+See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+    q("no")
+}
 
 ## docopt parsing
 opt <- docopt(doc)
@@ -38,6 +44,7 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 } else if (opt$deps == "NA") {
     opt$deps <- NA
 }
+if (is.null(opt$SRC)) q("no")           # need optional args to support -x
 
 ## installation given selected options and arguments
 switch(tolower(opt$repos),

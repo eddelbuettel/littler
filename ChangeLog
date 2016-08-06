@@ -6,8 +6,14 @@
 	* NAMESPACE: Export r
 
 	* inst/examples/rcc.r: New example wrapping rcmdcheck::rcmdcheck()
+	* inst/examples/render.r: New (still very simple) example to call
+	rmarkdown::render()
 
-	* inst/examples/check.r: Extended help with usage now via '-x'
+	* inst/examples/check.r: Extended help and usage now via '-x'
+	* inst/examples/dratInsert.r: Idem
+	* inst/examples/install2.r: Idem
+	* inst/examples/installGithub.r: Idem
+	* inst/examples/installRepo.r: Idem
 
 	* .travis.yml: Switch to using run.sh for Travis CI
 

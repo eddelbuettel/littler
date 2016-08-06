@@ -1,4 +1,4 @@
-#!/usr/bin/r -i
+#!/usr/bin/env r
 ##
 ##  Call 'rcmdcheck' on a package
 ##
@@ -9,16 +9,28 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: rcc.r [-h] [-c] [-q] [--args ARGS] [--libpath LIBP] [--repos REPO] [PATH...]
+doc <- "Usage: rcc.r [-h] [-x] [-c] [-q] [--args ARGS] [--libpath LIBP] [--repos REPO] [PATH...]
 
--c --as-cran         should '--as-cran' be added to ARGS [default: FALSE]
--a --args ARGS       additional arguments to be passed to 'R CMD CHECK' [default: ]
--l --libpath LIBP    additional library path to be used by 'R CMD CHECK' [default: ]
--r --repos REPO      additional repositories to be used by 'R CMD CHECK' [default: ]
--q --quiet           should 'rcmdcheck' be called qietly [default: FALSE]
--h --help            show this help text"
+-c --as-cran          should '--as-cran' be added to ARGS [default: FALSE]
+-a --args ARGS        additional arguments to be passed to 'R CMD CHECK' [default: ]
+-l --libpath LIBP     additional library path to be used by 'R CMD CHECK' [default: ]
+-r --repos REPO       additional repositories to be used by 'R CMD CHECK' [default: ]
+-q --quiet            should 'rcmdcheck' be called qietly [default: FALSE]
+-h --help             show this help text
+-x --usage            show help and short example usage"
 
 opt <- docopt(doc)			# docopt parsing
+
+if (opt$usage) {
+    cat(doc, "\n\n")
+    cat("Examples:
+  rcc.r                        # check repo in current (working) director
+  rcc.r -c                     # run as R CMD check --as-crn
+
+rcc.r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+    q("no")
+}
 
 if (opt$args == "") {                   # special treatment for --args and -c
     if (opt$`as-cran`) {

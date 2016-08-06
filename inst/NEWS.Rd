@@ -4,13 +4,16 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.1 (2016-03-31)}{
+\section{Changes in littler version 0.3.1 (2016-08-06)}{
   \itemize{
     \item Changes in examples
     \itemize{
       \item \code{install2.r} now passes on extra options past \code{--}
       to \code{R CMD INSTALL} (\ghpr{37} by Steven Pav)
       \item Added \code{rcc.r} to run 'rcmdcheck::rcmdcheck()'
+      \item Added (still simple) \code{render.r} to render (R)markdown
+      \item Several examples now support the \code{-x} or \code{--usage}
+      flag to show extended help.
     }
     \item Changes in build system
     \itemize{
