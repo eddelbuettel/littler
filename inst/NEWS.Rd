@@ -23,13 +23,14 @@
     \itemize{
       \item SystemRequirements now mentions the need for \code{libR},
       i.e. an R built with a shared library so that we can embed R.
-      \item The \CRANpkg{docopt} is now suggested, and added to the
-      Travis installation.
+      \item The \CRANpkg{docopt} and \CRANpkg{rcmdcheck} packages are
+      now suggested, and added to the Travis installation.
     }
     \item Changes in documentation
     \itemize{
       \item The help output for \code{installGithub.r} was corrected
       (\ghpr{39} by Brandon Bertelsen)
+    }
   }
 }
 

@@ -2,6 +2,8 @@
 
 	* inst/examples/rcc.r: New example wrapping rcmdcheck::rcmdcheck()
 
+	* inst/examples/check.r: Extended help with usage now via '-x'
+
 2016-06-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/roxy.r: Minor correction to documentation

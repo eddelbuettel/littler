@@ -26,6 +26,10 @@ if (opt$args == "") {                   # special treatment for --args and -c
     } else {
         opt$args <- character()
     }
+} else {
+    if (opt$`as-cran`) {
+        opt$args <- c(opt$args, "--as-cran")
+    }
 }
 
 if (length(opt$PATH) == 0) opt$PATH <- "." 		# default argument current directory
