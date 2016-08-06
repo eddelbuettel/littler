@@ -1,7 +1,7 @@
 Package: littler
 Type: Package
 Title: R at the Command-Line via 'r'
-Version: 0.3.0.2
+Version: 0.3.0.3
 Date: 2016-08-06
 Author: Dirk Eddelbuettel and Jeff Horner
 Maintainer: Dirk Eddelbuettel <edd@debian.org>
@@ -18,3 +18,4 @@ OS_type: unix
 SystemRequirements: libR
 Suggests: knitr, docopt, rcmdcheck
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1

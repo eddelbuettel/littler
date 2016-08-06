@@ -1,5 +1,10 @@
 2016-08-06  Dirk Eddelbuettel  <edd@debian.org>
 
+	* R/test.R (r): New helper function r() to return path to binary
+	* man/r.rd: Documentation
+	* man/littler.rd: Removed alias to 'r'
+	* NAMESPACE: Export r
+
 	* inst/examples/rcc.r: New example wrapping rcmdcheck::rcmdcheck()
 
 	* inst/examples/check.r: Extended help with usage now via '-x'

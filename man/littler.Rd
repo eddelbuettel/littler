@@ -1,6 +1,5 @@
 \name{littler}
 \alias{littler}
-\alias{r}
 \title{Command-line and scripting front-end for R}
 \description{
   The \code{r} \emph{binary} provides a convenient and powerful front-end.

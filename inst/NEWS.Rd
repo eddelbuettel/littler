@@ -25,6 +25,8 @@
       i.e. an R built with a shared library so that we can embed R.
       \item The \CRANpkg{docopt} and \CRANpkg{rcmdcheck} packages are
       now suggested, and added to the Travis installation.
+      \item A new helper function \code{r()} is now provided and
+      exported so that the package can be imported (closes \ghit{40}).
     }
     \item Changes in documentation
     \itemize{
