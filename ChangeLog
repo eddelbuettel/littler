@@ -1,5 +1,7 @@
 2016-08-06  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION: Added URL and BugReports:
+
 	* R/test.R (r): New helper function r() to return path to binary
 	* man/r.rd: Documentation
 	* man/littler.rd: Removed alias to 'r'

@@ -32,6 +32,7 @@
       now suggested, and added to the Travis installation.
       \item A new helper function \code{r()} is now provided and
       exported so that the package can be imported (closes \ghit{40}).
+      \item URL and BugReports links were added to DESCRIPTION.
     }
     \item Changes in documentation
     \itemize{
