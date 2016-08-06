@@ -9,6 +9,8 @@
 
 	* inst/examples/check.r: Extended help with usage now via '-x'
 
+	* .travis.yml: Switch to using run.sh for Travis CI
+
 2016-06-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/roxy.r: Minor correction to documentation

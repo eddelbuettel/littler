@@ -18,6 +18,8 @@
       (\ghpr{38} by Mattias Ellert)
       \item Three more directories, used when an explicit installation
       directory is set, are excluded (also \ghpr{38} by Mattias)
+      \item Travis CI is now driven via \code{run.sh} from our fork, and
+      deploys all packages as .deb binaries using our PPA where needed
     }
     \item Changes in package
     \itemize{
