@@ -10,6 +10,7 @@
     \itemize{
       \item \code{install2.r} now passes on extra options past \code{--}
       to \code{R CMD INSTALL} (\ghpr{37} by Steven Pav)
+      \item Added \code{rcc.r} to run 'rcmdcheck::rcmdcheck()'
     }
     \item Changes in build system
     \itemize{

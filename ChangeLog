@@ -1,3 +1,7 @@
+2016-08-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rcc.r: New example wrapping rcmdcheck::rcmdcheck()
+
 2016-06-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/roxy.r: Minor correction to documentation
