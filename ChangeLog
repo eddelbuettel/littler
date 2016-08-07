@@ -19,6 +19,8 @@
 
 	* .travis.yml: Switch to using run.sh for Travis CI
 
+	* tests/simpleTests.R: Make tests conditional on Linux
+
 2016-06-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/roxy.r: Minor correction to documentation
