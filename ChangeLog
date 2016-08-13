@@ -1,4 +1,10 @@
+2016-08-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure (PACKAGE_VERSION): Re-ran autoconf to set version to 0.3.1
+
 2016-08-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Release 0.3.1
 
 	* DESCRIPTION: Added URL and BugReports:
 
