@@ -8,7 +8,7 @@
 
 ## load docopt and devtools from CRAN
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
-suppressMessages(library(devtools)) 
+suppressMessages(library(remotes)) 
 
 ## configuration for docopt
 doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [REPOS...]
