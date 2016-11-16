@@ -2,7 +2,7 @@
 #
 # A simple example to install one or more packages from GitHub
 #
-# Copyright (C) 2014 - 2015  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2016  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -11,19 +11,25 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 suppressMessages(library(devtools)) 
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-h] [-d DEPS] REPOS...
+doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [REPOS...]
 
 -d --deps DEPS      Install suggested dependencies as well? [default: NA]
 -h --help           show this help text
+-x --usage          show help and short example usage"
 
-where REPOS... is one or more GitHub repositories.
+opt <- docopt(doc)			# docopt parsing
+
+if (opt$usage) {
+    cat(doc, "\n\n")
+    cat("where REPOS... is one or more GitHub repositories.
 
 Examples:
   installGithub.r RcppCore/RcppEigen                     
 
 installGithub.r is part of littler which brings 'r' to the command-line.
-See http://dirk.eddelbuettel.com/code/littler.html for more information.
-"
+See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+    q("no")
+}
 
 ## docopt parsing
 opt <- docopt(doc)

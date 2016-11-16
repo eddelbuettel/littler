@@ -4,31 +4,41 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.1 (2016-03-31)}{
+\section{Changes in littler version 0.3.1 (2016-08-06)}{
   \itemize{
     \item Changes in examples
     \itemize{
       \item \code{install2.r} now passes on extra options past \code{--}
-      to \code{R CMD INSTALL} (\ghpr{37} by Steven Pav)
+      to \code{R CMD INSTALL} (PR \ghpr{37} by Steven Pav)
+      \item Added \code{rcc.r} to run \code{rcmdcheck::rcmdcheck()}
+      \item Added (still simple) \code{render.r} to render (R)markdown
+      \item Several examples now support the \code{-x} or \code{--usage}
+      flag to show extended help.
     }
     \item Changes in build system
     \itemize{
       \item The \code{AM_LDFLAGS} variable is now set and used too
-      (\ghpr{38} by Mattias Ellert)
+      (PR \ghpr{38} by Mattias Ellert)
       \item Three more directories, used when an explicit installation
       directory is set, are excluded (also \ghpr{38} by Mattias)
+      \item Travis CI is now driven via \code{run.sh} from our fork, and
+      deploys all packages as .deb binaries using our PPA where needed
     }
     \item Changes in package
     \itemize{
       \item SystemRequirements now mentions the need for \code{libR},
       i.e. an R built with a shared library so that we can embed R.
-      \item The \CRANpkg{docopt} is now suggested, and added to the
-      Travis installation.
+      \item The \CRANpkg{docopt} and \CRANpkg{rcmdcheck} packages are
+      now suggested, and added to the Travis installation.
+      \item A new helper function \code{r()} is now provided and
+      exported so that the package can be imported (closes \ghit{40}).
+      \item URL and BugReports links were added to DESCRIPTION.
     }
     \item Changes in documentation
     \itemize{
       \item The help output for \code{installGithub.r} was corrected
-      (\ghpr{39} by Brandon Bertelsen)
+      (PR \ghpr{39} by Brandon Bertelsen)
+    }
   }
 }
 

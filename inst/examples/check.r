@@ -10,7 +10,7 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
+doc <- "Usage: check.r [-h] [-x] [--as-cran] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
 
 -a --as-cran          customization similar to CRAN's incoming [default: FALSE]
 -r --repo REPO        repository to use, or NULL for file [default: https://cran.rstudio.com]
@@ -21,17 +21,22 @@ doc <- "Usage: check.r [-h] [--as-cran] [--repo REPO] [--install-deps] [--instal
 -d --deb-pkgs PKGS    also install binary .deb packages with their dependencies [default: FALSE]
 -u --use-sudo         use sudo when installing .deb packages [default: TRUE]
 -h --help             show this help text
+-x --usage            show help and short example usage"
 
-Examples:
+## docopt parsing
+opt <- docopt(doc)
+
+if (opt$usage) {
+    cat(doc, "\n\n")
+    cat("Examples:
   check.r -a -i -s /tmp myPkg_1.2-3.tar.gz    # run a check --as-cran with depends in /tmp
                                               # for package myPkg_1.2-3.tar.gz
 
 check.r is part of littler which brings 'r' to the command-line.
-See http://dirk.eddelbuettel.com/code/littler.html for more information.
-"
+See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+    q("no")
+}
 
-## docopt parsing
-opt <- docopt(doc)
 
 args <- character()
 if (opt$`as-cran`) args <- c(args, "--as-cran")

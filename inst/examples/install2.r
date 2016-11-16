@@ -3,7 +3,7 @@
 # A second example to install one or more packages, now with option parsing
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
-# Copyright (C) 2014         Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2016  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -11,15 +11,20 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-d DEPS] [--error] [--] [PACKAGES ...]
+doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-x] [-d DEPS] [--error] [--] [PACKAGES ...]
 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -e --error          throw error and halt instead of a warning [default: FALSE]
 -h --help           show this help text
+-x --usage          show help and short example usage"
 
-where PACKAGES... can be one or more CRAN package names, or local (binary or source)
+opt <- docopt(doc)			# docopt parsing
+
+if (opt$usage) {
+    cat(doc, "\n\n")
+    cat("where PACKAGES... can be one or more CRAN package names, or local (binary or source)
 package files (where extensions .tar.gz, .tgz and .zip are recognised). Optional
 arguments understood by R CMD INSTALL can be passed interspersed in the PACKAGES, though
 this requires use of '--'.
@@ -30,8 +35,9 @@ Examples:
   install2.r -- --data-compress=bzip2 stringdist         # prefer bz2 compression
 
 install2.r is part of littler which brings 'r' to the command-line.
-See http://dirk.eddelbuettel.com/code/littler.html for more information.
-"
+See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+    q("no")
+}
 
 ## docopt parsing
 opt <- docopt(doc)

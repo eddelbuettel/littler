@@ -1,3 +1,32 @@
+2016-08-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure (PACKAGE_VERSION): Re-ran autoconf to set version to 0.3.1
+
+2016-08-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Release 0.3.1
+
+	* DESCRIPTION: Added URL and BugReports:
+
+	* R/test.R (r): New helper function r() to return path to binary
+	* man/r.rd: Documentation
+	* man/littler.rd: Removed alias to 'r'
+	* NAMESPACE: Export r
+
+	* inst/examples/rcc.r: New example wrapping rcmdcheck::rcmdcheck()
+	* inst/examples/render.r: New (still very simple) example to call
+	rmarkdown::render()
+
+	* inst/examples/check.r: Extended help and usage now via '-x'
+	* inst/examples/dratInsert.r: Idem
+	* inst/examples/install2.r: Idem
+	* inst/examples/installGithub.r: Idem
+	* inst/examples/installRepo.r: Idem
+
+	* .travis.yml: Switch to using run.sh for Travis CI
+
+	* tests/simpleTests.R: Make tests conditional on Linux
+
 2016-06-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/roxy.r: Minor correction to documentation

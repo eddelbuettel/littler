@@ -1,8 +1,8 @@
 Package: littler
 Type: Package
 Title: R at the Command-Line via 'r'
-Version: 0.3.0.1
-Date: 2015-11-17
+Version: 0.3.1
+Date: 2016-08-06
 Author: Dirk Eddelbuettel and Jeff Horner
 Maintainer: Dirk Eddelbuettel <edd@debian.org>
 Description: A scripting and command-line front-end
@@ -13,8 +13,11 @@ Description: A scripting and command-line front-end
  expression as the first line in scripts) as well as command-line use in
  standard Unix pipelines. In other words, r provides the R language without
  the environment.
+URL: http://dirk.eddelbuettel.com/code/littler.html
+BugReports: https://github.com/eddelbuettel/littler/issues 
 License: GPL (>= 2)
 OS_type: unix
 SystemRequirements: libR
 Suggests: knitr, docopt, rcmdcheck
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1
