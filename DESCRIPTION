@@ -18,6 +18,6 @@ BugReports: https://github.com/eddelbuettel/littler/issues
 License: GPL (>= 2)
 OS_type: unix
 SystemRequirements: libR
-Suggests: knitr, docopt, rcmdcheck, remotes
+Suggests: knitr, docopt, rcmdcheck
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
