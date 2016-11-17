@@ -6,9 +6,9 @@
 #
 # Released under GPL (>= 2)
 
-## load docopt and devtools from CRAN
+## load docopt and remotes (or devtools) from CRAN
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
-suppressMessages(library(devtools)) 
+suppressMessages(library(remotes))      # can use devtools as a fallback
 
 ## configuration for docopt
 doc <- "Usage: installRepo.r [-l LIBLOC] [-h] [-x] [-d DEPS] [-r REPOS] [-s subdir] [SRC]
