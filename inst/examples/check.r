@@ -37,9 +37,11 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
-
 args <- character()
 if (opt$`as-cran`) args <- c(args, "--as-cran")
+
+if (opt$libdir == "NULL") opt$libdir <- NULL
+if (!is.null(opt$libdir)) .libPaths(opt$libdir)
 
 ## doctopt results are characters, so if we meant NULL we have to set NULL
 if (opt$repo == "NULL") opt$repo <- NULL
@@ -50,12 +52,12 @@ options(repos = r)
 
 hasRcmdcheck <- requireNamespace("rcmdcheck", quietly=TRUE)
 if (hasRcmdcheck) suppressMessages(library("rcmdcheck"))
-    
+
 ## helper functions
 checkArg <- function(p, args) {
     if (hasRcmdcheck) {
         #if (length(args) == 0) args <- ""
-        res <- rcmdcheck(p, args=args)        
+        res <- rcmdcheck(p, args=args)
     } else {
         tools:::.check_packages(c(p, args))
         res <- NULL
