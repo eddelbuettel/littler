@@ -4,6 +4,8 @@
 	* inst/examples/installRepo.r: Ditto
 	* vignettes/littler-examples.Rmd: Ditto
 
+	* inst/examples/check.r: Small correction for .libPaths() management
+
 2016-08-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure (PACKAGE_VERSION): Re-ran autoconf to set version to 0.3.1
