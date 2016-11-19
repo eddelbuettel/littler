@@ -11,11 +11,12 @@ suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 suppressMessages(library(remotes))      # can use devtools as a fallback
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [REPOS...]
+doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [REPOS...]
 
--d --deps DEPS      Install suggested dependencies as well? [default: NA]
--h --help           show this help text
--x --usage          show help and short example usage"
+-d --deps DEPS       install suggested dependencies as well? [default: NA]
+-u --update UPDATE   update dependencies? [default: TRUE]
+-h --help            show this help text
+-x --usage           show help and short example usage"
 
 opt <- docopt(doc)			# docopt parsing
 
@@ -39,4 +40,6 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
-invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps)))
+opt$update <- as.logical(opt$update)
+
+invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps, update = opt$update)))
