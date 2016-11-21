@@ -6,6 +6,10 @@
 
 	* inst/examples/check.r: Small correction for .libPaths() management
 
+2016-10-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rd2md.r: Convert Rd to markdown (for use in posts)
+
 2016-08-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure (PACKAGE_VERSION): Re-ran autoconf to set version to 0.3.1
