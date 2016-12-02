@@ -1,4 +1,4 @@
-#!/usr/bin/env r 
+#!/usr/bin/env r
 ##
 ##  Retrieve R_HOME information
 ##
@@ -30,4 +30,4 @@
 
 if (is.null(argv) | length(argv) < 1) argv <- "home"
 
-cat(sapply(argv, R.home)))
+cat(sapply(argv, R.home))
