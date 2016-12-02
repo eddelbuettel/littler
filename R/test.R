@@ -17,6 +17,6 @@ r <- function(usecat=FALSE) {
     p <- file.path(system.file(package="littler"),
                    "bin",
                    paste0("r", ifelse(.Platform$OS.type=="windows", ".exe", "")))
-    if (usecat) return(cat(p))
+    if (usecat) return(cat(p)) # nocov
     p
 }
