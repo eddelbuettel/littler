@@ -1,3 +1,15 @@
+2017-02-05  Dirk Eddelbuettel  <edd@max.eddelbuettel.com>
+
+	* inst/examples/c4c.r: New script calling rhub::check4cran()
+
+	* inst/examples/getRStudioDesktop.r: New script
+	* inst/examples/getRStudioServer.r: New script
+
+2016-12-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/init.R: Additional #nocov tags
+	* R/test.R: Idem
+
 2016-11-17  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installGithub.r: Use remotes instead of devtools
