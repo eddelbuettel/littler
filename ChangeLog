@@ -1,3 +1,7 @@
+2017-02-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/build.r: New script calling R CMD build
+
 2017-02-05  Dirk Eddelbuettel  <edd@max.eddelbuettel.com>
 
 	* inst/examples/c4c.r: New script calling rhub::check4cran()
