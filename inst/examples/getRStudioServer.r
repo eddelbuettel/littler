@@ -1,7 +1,14 @@
 #!/usr/bin/r
 #
-# from https://raw.githubusercontent.com/rocker-org/rstudio-daily/master/latest.R
-                                        #
+# A simple example to install RStudio Desktop
+#
+# Copyright (C) 2014 - 2016  Carl Boettiger and Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
+#
+# based on earlier https://raw.githubusercontent.com/rocker-org/rstudio-daily/master/latest.R
+#
+# todo: cmdline options for different download options                                       #
 
 ## go to /tmp
 setwd("/tmp")
