@@ -1,4 +1,4 @@
-## littler [![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler)    [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/littler)](http://cran.r-project.org/package=littler) [![Downloads](http://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](http://www.r-pkg.org/pkg/littler)
+## littler [![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler)    [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler) [![Downloads](http://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](http://www.r-pkg.org/pkg/littler)
 
 A scripting and command-line front-end for GNU R permitting use of R in
 command-line contexts.
@@ -18,7 +18,7 @@ r --help                      ## to show a quick synopsis
 ```
 
 See the
-[examples vignette](https://cran.r-project.org/web/packages/littler/vignettes/littler-examples.html)
+[examples vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)
 for a full set of introductory examples. Also 
 see the
 [examples/ directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples),
@@ -70,7 +70,7 @@ For more information about littler, please see
 * [Dirk's page with littler examples](http://dirk.eddelbuettel.com/code/littler.examples.html)
 
 (but note that the latter now overlaps with the
-[example vignette](https://cran.r-project.org/web/packages/littler/vignettes/littler-examples.html)).
+[example vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)).
 
 ### Authors
 

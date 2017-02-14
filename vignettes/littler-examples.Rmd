@@ -90,7 +90,7 @@ to forget whether r is installed in `/usr/bin/r`, `/usr/local/bin/r`,
 
 This is one of my favourite
 [littler](http://dirk.eddelbuettel.com/code/littler.html) scripts which I use
-frequently to install packages off [CRAN](http://cran.r-project.org).
+frequently to install packages off [CRAN](https://cran.r-project.org).
 
 ```r
 #!/usr/bin/env r
@@ -101,7 +101,7 @@ if (is.null(argv) | length(argv)<1) {
 }
 
 ## adjust as necessary, see help('download.packages')
-repos <- "http://cran.rstudio.com" 
+repos <- "https://cran.rstudio.com" 
 
 ## this makes sense on Debian where no packages touch /usr/local
 lib.loc <- "/usr/local/lib/R/site-library"
