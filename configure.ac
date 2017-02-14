@@ -6,7 +6,8 @@ AC_PREREQ(2.61)
 
 # Every other copy of the package version number gets its value from here
 # The m4_esyscmd_s invocation is due to an excellent StackOverflow answer.
-AC_INIT([littler], m4_esyscmd_s([awk -e '/^Version:/ {print $2}' DESCRIPTION]))
+#AC_INIT([littler], m4_esyscmd_s([awk -e '/^Version:/ {print $2}' DESCRIPTION]))
+AC_INIT([littler], [0.3.2])
 
 #  Look for ancillary configure tools in tools
 dnl AC_CONFIG_AUX_DIR(tools)

@@ -4,14 +4,18 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.2 (2017-xx-yy)}{
+\section{Changes in littler version 0.3.2 (2017-02-14)}{
   \itemize{
     \item Changes in examples
     \itemize{
       \item New scripts \code{getRStudioServer.r} and
       \code{getRStudioDesktop.r} to download daily packages, currently
       defaults to Ubuntu amd64
-      \item New scrit \code{c4c.r} calling \code{rhub::check_for_cran()}
+      \item New script \code{c4c.r} calling \code{rhub::check_for_cran()}
+      \item New script \code{rd2md.r} to convert Rd to markdown.
+      \item New script \code{build.r} to create a source tarball.
+      \item The \code{installGitHub.r} script now use package
+      \CRANpkg{remotes} (PR \ghpr{44}, \ghpr{46})
     }
   }
 }

@@ -16,6 +16,10 @@
 
 2016-11-17  Dirk Eddelbuettel  <edd@debian.org>
 
+	* R/rd2md.r: New script
+
+2016-11-17  Dirk Eddelbuettel  <edd@debian.org>
+
 	* inst/examples/installGithub.r: Use remotes instead of devtools
 	* inst/examples/installRepo.r: Ditto
 	* vignettes/littler-examples.Rmd: Ditto
