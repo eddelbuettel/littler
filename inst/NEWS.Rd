@@ -1,6 +1,5 @@
 \name{NEWS}
-\title{News for Package 'littler'}
-\newcommand{\ghrepo}{\href{https://github.com/#1}{\pkg{#1}}}
+\title{News for Package \pkg{littler}}
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
