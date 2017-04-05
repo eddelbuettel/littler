@@ -42,4 +42,4 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 
 opt$update <- as.logical(opt$update)
 
-invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps, update = opt$update)))
+invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update)))
