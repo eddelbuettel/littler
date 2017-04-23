@@ -7,6 +7,16 @@
   \itemize{
     \item Changes in examples
     \itemize{
+      \item New script \code{pnrrs.r} to call the package-native
+      registration helper function added in R 3.4.0
+    }
+  }
+}
+
+\section{Changes in littler version 0.3.2 (2017-02-14)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
       \item New scripts \code{getRStudioServer.r} and
       \code{getRStudioDesktop.r} to download daily packages, currently
       defaults to Ubuntu amd64

@@ -1,3 +1,9 @@
+2017-04-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/pnrrs.r: Added 'pnrrs.r' helper calling
+	tools::package_native_routine_registration_skeleton() available in R
+	3.4.0 and later
+
 2017-02-18  Dirk Eddelbuettel  <edd@debian.org>
 
 	* .travis.yml (before_install): Use https
