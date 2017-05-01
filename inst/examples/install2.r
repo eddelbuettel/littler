@@ -56,16 +56,35 @@ if (opt$repos == "NULL")  {
    opt$repos = getOption("repos")
 }
 
+install_packages2 <- function(pkgs, ..., error = FALSE) {
+  e <- NULL
+  capture <- function(e) {
+    if (error) {
+      catch <-
+        grepl("package.*(is|are) not available", e$message) ||
+        grepl("installation of package.*had non-zero exit status", e$message)
+      if (catch) {
+        e <<- e
+      }
+    }
+  }
+  withCallingHandlers(install.packages(pkgs, ...), warning = capture)
+  if (!is.null(e)) {
+    stop(e$message, call. = FALSE)
+  }
+}
+
 ## helper function to for existing files with matching extension
 isMatchingFile <- function(f) file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
-installArg <- function(f, lib, rep, dep, iopts) {
-    install.packages(pkgs=f,
+installArg <- function(f, lib, rep, dep, iopts, error) {
+    install_packages2(pkgs=f,
                      lib=lib,
                      repos=if (isMatchingFile(f)) NULL else rep,
                      dependencies=dep, 
-                     INSTALL_opts=iopts)
+                     INSTALL_opts=iopts,
+		     error = error)
 }
 
 ## strip out arguments to be passed to R CMD INSTALL
@@ -73,12 +92,9 @@ isArg <- grepl('^--',opt$PACKAGES)
 installOpts <- opt$PACKAGES[isArg]
 opt$PACKAGES <- opt$PACKAGES[!isArg]
 
-## installation given selected options and arguments
-if (opt$error) {
-    withCallingHandlers(sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps, installOpts), warning = stop)
-} else { 
-    sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps, installOpts)
-}
+
+
+sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps, installOpts, opt$error)
 
 ## clean up any temp file containing CRAN directory information
 sapply(list.files(path=tempdir(), pattern="^(repos|libloc).*\\.rds$", full.names=TRUE), unlink)
