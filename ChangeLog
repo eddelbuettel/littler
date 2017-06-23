@@ -1,3 +1,9 @@
+2017-06-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/cow.r: Added simple rhub::check_on_windows() wrapper
+
+ 	* .travis.yml (group): Added as required by Travis CI
+
 2017-04-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/pnrrs.r: Added 'pnrrs.r' helper calling

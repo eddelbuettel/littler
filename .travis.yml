@@ -6,6 +6,8 @@ sudo: required
 
 dist: trusty
 
+group: edge
+
 before_install:
   - curl -OLs https://eddelbuettel.github.io/r-travis/run.sh && chmod 0755 run.sh
   # add our launchpad repo which has (inter alia) r-cran-rcmdcheck
