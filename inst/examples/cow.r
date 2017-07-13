@@ -1,4 +1,4 @@
-#!/usr/bin/r -i
+#!/usr/bin/env r
 #
 # Minimal rhub::check_on_windows() wrapper
 #
