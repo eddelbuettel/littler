@@ -6,12 +6,22 @@
 #
 # Released under GPL (>= 2)
 
-if (is.null(argv) | length(argv) < 1) {
-    cat("Usage: build.r [arg1 [args2 [...]]] pkg1 [pkg2 pkg3 ...]\n\n")
-    cat("Simple wrapper to 'R CMD build ...'\n")
-    cat("Calls 'tools:::.build_packages()' just like the 'R CMD build invocation.\n")
-    cat("Use 'build.r -h' to see the available options for 'R CMD build'.\n")
-    q()
-}
+suppressMessages({
+    library(docopt)       # we need the docopt package
+})
+
+doc <- "Usage: build.r [-f] [-h] [PACKAGES ...]
+
+-f --fast      skip building vignettes and manual
+-h --help      show this help text
+
+Simple wrapper to 'R CMD build ...' which
+calls 'tools:::.build_packages()' just like
+the 'R CMD build' invocation.
+"
+
+opt <- docopt(doc)
+
+argv <- if (opt$fast) c("--no-build-vignettes", "--no-manual", opt$PACKAGES) else opt$PACKAGES
 
 tools:::.build_packages(argv, no.q=interactive())
