@@ -3,12 +3,21 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.2 (2017-02-14)}{
+\section{Changes in littler version 0.3.3 (2017-08-xx)}{
   \itemize{
     \item Changes in examples
     \itemize{
+      \item New script \code{cow.r} to use R Hub's \code{check_on_windows}
       \item New script \code{pnrrs.r} to call the package-native
       registration helper function added in R 3.4.0
+      \item Scripts \code{cow.r} and \code{c4c.r} use
+      \code{#!/usr/bin/envr}
+      \item New option \code{--fast} (or \code{-f}) for scripts
+      \code{build.r} and \code{rcc.r} for faster package build and check
+    }
+    \item Changes in package
+    \itemize{
+      \item Travis CI now uses https to fetch script, and sets the group
     }
   }
 }
