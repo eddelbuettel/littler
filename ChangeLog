@@ -1,3 +1,11 @@
+2017-09-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/dratInsert.r: Combine suppressMessages() calls
+        * inst/examples/installGithub.r: Idem
+        * inst/examples/installRepo.r: Idem
+        * inst/examples/rd2md.r: Idem
+        * inst/examples/testInstalled.r: Idem
+
 2017-08-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version

@@ -2,7 +2,11 @@
 title: "Littler Examples"
 author: "Dirk Eddelbuettel"
 date: "2015-10-28"
-output: rmarkdown::html_vignette
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
 vignette: >
   %\VignetteIndexEntry{Littler Examples}
   %\VignetteEngine{knitr::rmarkdown}
