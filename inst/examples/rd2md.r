@@ -7,8 +7,11 @@
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
-suppressMessages(library(tools))     
+suppressMessages({
+    library(docopt)               # we need docopt (>= 0.3) as on CRAN
+    library(tools)
+})
+
 
 ## configuration for docopt
 doc <- "Usage: rd2md.r [-h] [-x] [--src REPODIR] [--out OUTDIR] [FILES...]
@@ -34,7 +37,7 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 ## docopt parsing
 opt <- docopt(doc)
 
-## helper function 
+## helper function
 convertArg <- function(p, src, out) {
     filename <- mdfile <- NULL
     if (file.exists(p)) {
@@ -55,6 +58,6 @@ convertArg <- function(p, src, out) {
     cat("Converted", filename, "into", mdfile, "\n")
 }
 
-## insert packages using helper function 
+## insert packages using helper function
 sapply(opt$FILES, convertArg, opt$src, opt$out)
 

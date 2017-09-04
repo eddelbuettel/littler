@@ -7,8 +7,10 @@
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
-suppressMessages(library(drat))     
+suppressMessages({
+    library(docopt)               # we need docopt (>= 0.3) as on CRAN
+    library(drat))
+})
 
 ## configuration for docopt
 doc <- "Usage: drat.r [-h] [-x] [--repo REPO] [--commit MSG] [TARGZ...]
@@ -36,11 +38,11 @@ opt <- docopt(doc)
 
 if (is.null(opt$commit)) opt$commit <- FALSE
 
-## helper function 
+## helper function
 installArg <- function(p, repo, commit) {
     if (!file.exists(p)) stop("No file '", p, "' found. Aborting.", .Call=FALSE)
     insertPackage(p, repo, commit)
 }
 
-## insert packages using helper function 
+## insert packages using helper function
 sapply(opt$TARGZ, installArg, opt$repo, opt$commit)

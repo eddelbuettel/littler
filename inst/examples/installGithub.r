@@ -7,8 +7,10 @@
 # Released under GPL (>= 2)
 
 ## load docopt and remotes (or devtools) from CRAN
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
-suppressMessages(library(remotes))      # can use devtools as a fallback
+suppressMessages({
+    library(docopt)               # we need docopt (>= 0.3) as on CRAN
+    library(remotes)              # or can use devtools as a fallback
+})
 
 ## configuration for docopt
 doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [REPOS...]
@@ -25,7 +27,7 @@ if (opt$usage) {
     cat("where REPOS... is one or more GitHub repositories.
 
 Examples:
-  installGithub.r RcppCore/RcppEigen                     
+  installGithub.r RcppCore/RcppEigen
 
 installGithub.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
