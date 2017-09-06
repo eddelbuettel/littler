@@ -20,7 +20,7 @@ We show and discuss a few of the files included in the `inst/examples/` source d
 once installed). In a few cases we remove comment lines to keep things more concise on this page.
 We use `$` to denote a shell (_i.e._ terminal) prompt.
 
-### Simple Command-line Use
+### Simple Direct Command-line Use
 
 [littler](http://dirk.eddelbuettel.com/code/littler.html) can be used
 directly on the command-line just like, say, `bc`: 
@@ -128,7 +128,8 @@ free to do other things.
 
 Thanks to the fabulous [docopt](https://github.com/edwindj/docopt.R) package,
 we also have a variant with optional settings of repo and location. Below is
-the updated version from [littler 0.2.1](http://dirk.eddelbuettel.com/blog/2014/10/19#littler-0.2.1):
+the updated version from 
+[littler 0.2.1 and later](http://dirk.eddelbuettel.com/blog/2014/10/19#littler-0.2.1):
 
 ```r
 #!/usr/bin/env r
@@ -194,10 +195,47 @@ and the local source file will the installed via a call to `R CMD INSTALL`.
 
 ### Checking Packages
 
-A related use case is to check packages via `check.r`.  This script run `R
-CMD check`, but also installs package dependencies first as tests may have
-dependencies not yet satisfied on the test machine. 
+#### Simple Checker
 
+A related use case is to check packages via `check.r`.  This script runs `R
+CMD check`, but also installs package dependencies first as tests may have
+dependencies not yet satisfied on the test machine.  It offers a number of options:
+
+```bash
+$ check.r  -h
+Usage: check.r [-h] [-x] [--as-cran] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
+
+-a --as-cran          customization similar to CRAN's incoming [default: FALSE]
+-r --repo REPO        repository to use, or NULL for file [default: https://cran.rstudio.com]
+-i --install-deps     also install packages along with their dependencies [default: FALSE]
+-k --install-kitchen  even install packages 'kitchen sink'-style up to suggests [default: FALSE]
+-l --library LIB      when installing use this library [default: /usr/local/lib/R/site-library]
+-s --setwd DIR        change to this directoru before undertaking the test [default: ]
+-d --deb-pkgs PKGS    also install binary .deb packages with their dependencies [default: FALSE]
+-u --use-sudo         use sudo when installing .deb packages [default: TRUE]
+-h --help             show this help text
+-x --usage            show help and short example usage
+$
+```
+
+#### R CMD check wrapper
+
+The script `rcc.r` will also check a source tarball, and offers another set of options:
+
+```bash
+$ rcc.r -h
+Usage: rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--repos REPO] [PATH...]
+
+-c --as-cran          should '--as-cran' be added to ARGS [default: FALSE]
+-a --args ARGS        additional arguments to be passed to 'R CMD CHECK' [default: ]
+-l --libpath LIBP     additional library path to be used by 'R CMD CHECK' [default: ]
+-r --repos REPO       additional repositories to be used by 'R CMD CHECK' [default: ]
+-f --fast             should vignettes and manuals be skipped [default: FALSE]
+-q --quiet            should 'rcmdcheck' be called qietly [default: FALSE]
+-h --help             show this help text
+-x --usage            show help and short example usage
+$
+```
 
 
 ### GitHub package installation

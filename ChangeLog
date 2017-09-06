@@ -1,3 +1,7 @@
+2017-09-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/littler-examples.Rmd (vignette): Expanded
+
 2017-09-04  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/dratInsert.r: Combine suppressMessages() calls
