@@ -9,7 +9,7 @@
 ## load docopt package from CRAN
 suppressMessages({
     library(docopt)               # we need docopt (>= 0.3) as on CRAN
-    library(drat))
+    library(drat)
 })
 
 ## configuration for docopt
