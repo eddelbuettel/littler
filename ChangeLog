@@ -1,3 +1,9 @@
+2017-11-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/examples/build.r: Use current directory if none given
+
 2017-09-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* vignettes/littler-examples.Rmd (vignette): Expanded

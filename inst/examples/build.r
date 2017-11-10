@@ -22,6 +22,8 @@ the 'R CMD build' invocation.
 
 opt <- docopt(doc)
 
+if (length(opt$PACKAGES) == 0) opt$PACKAGES <- "." 	# default argument current directory
+
 argv <- if (opt$fast) c("--no-build-vignettes", "--no-manual", opt$PACKAGES) else opt$PACKAGES
 
 tools:::.build_packages(argv, no.q=interactive())

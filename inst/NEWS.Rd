@@ -14,6 +14,8 @@
       \code{#!/usr/bin/envr}
       \item New option \code{--fast} (or \code{-f}) for scripts
       \code{build.r} and \code{rcc.r} for faster package build and check
+      \item The \code{build.r} script now defaults to using the current
+      directory if no argument is provided.
     }
     \item Changes in package
     \itemize{
