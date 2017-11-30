@@ -2,7 +2,7 @@
 #
 # A simple example to install RStudio Desktop
 #
-# Copyright (C) 2014 - 2016  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 #
@@ -10,16 +10,14 @@
 #
 # todo: cmdline options for different download options
 
-## go to /tmp
-setwd("/tmp")
+suppressMessages(library(rvest))
 
-## within _desktop_ one of _fedora32_, _fedora64_, _mac_, _ubuntu32_, _ubuntu64_, _windows_
-url <- "http://www.rstudio.org/download/daily/desktop/ubuntu64/"
+setwd("/tmp")                           # go to /tmp
 
-## get page and parse
-pg <- httr::content(httr::GET(url), as = "text")
-doc <- xml2::read_xml(pg)
-deb <- xml2::xml_attr(xml2::xml_find_all(doc, "//tr[@id='row0']/td/a[@href]"), "href")
-
-## download and save under given filename
-download.file(deb, basename(deb), method="wget")
+url <- "https://dailies.rstudio.com/rstudio/oss/xenial/amd64/"
+pg <- read_html(url)
+tb <- html_table(html_nodes(pg, "table"))[[1]]
+file <- tb[1,1]
+s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/"
+fileurl <- paste0(s3url, file)
+download.file(fileurl, file, method="wget")
