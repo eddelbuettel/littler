@@ -13,3 +13,4 @@ svnversion.h
 authors.txt
 .Rproj.user
 PACKAGE
+*.tar.gz
