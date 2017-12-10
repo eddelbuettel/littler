@@ -1,7 +1,7 @@
 ---
 title: "Littler Examples"
 author: "Dirk Eddelbuettel"
-date: "2015-10-28"
+date: "Originally written 2015-10-28; Updated 2017-12-10"
 output: 
   html_document:
     toc: true
@@ -126,59 +126,16 @@ free to do other things.
 
 #### With Command-Line Parsing
 
-Thanks to the fabulous [docopt](https://github.com/edwindj/docopt.R) package,
-we also have a variant with optional settings of repo and location. Below is
-the updated version from 
-[littler 0.2.1 and later](http://dirk.eddelbuettel.com/blog/2014/10/19#littler-0.2.1):
+Thanks to the fabulous [docopt](https://github.com/edwindj/docopt.R)
+package, we also have a variant `install2.r` with optional settings of
+repo and location. It was first installed with
+[littler 0.2.1](http://dirk.eddelbuettel.com/blog/2014/10/19#littler-0.2.1).
+The current (_i.e._, 0.3.3 as of this writing) version is more featureful and longer and included to keep this brief. Some usage examples are
 
-```r
-#!/usr/bin/env r
-#
-# A second example to install one or more packages, now with option parsing
-#
-# Copyright (C) 2011 - 2014  Dirk Eddelbuettel
-# Copyright (C) 2014 - 2015  Carl Boettiger and Dirk Eddelbuettel
-#
-# Released under GPL (>= 2)
-
-## load docopt package from CRAN
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
-
-## configuration for docopt
-doc <- "Usage: install.r [-r REPO] [-l LIBLOC] [-h] [-d DEPS] [--error] [PACKAGES ...]
-
--r --repos REPO     repository to install from [default: http://cran.rstudio.com]
--l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
--d --deps DEPS      Install suggested dependencies as well [default: NA]
--e --error          Throw error and halt instead of a warning [default: FALSE]
--h --help           show this help text"
-
-## docopt parsing
-opt <- docopt(doc)
-
-if (opt$deps == "TRUE" || opt$deps == "FALSE") {
-    opt$deps <- as.logical(opt$deps)
-} else if (opt$deps == "NA") {
-    opt$deps <- NA
-}
-
-## installation given selected options and arguments
-
-if (opt$error) {
-    withCallingHandlers(
-        install.packages(pkgs  = opt$PACKAGES,
-                         lib   = opt$libloc,
-                         repos = opt$repos,
-                         dependencies=opt$deps),
-        warning = stop)
-
-} else { 
-    install.packages(pkgs  = opt$PACKAGES,
-                     lib   = opt$libloc,
-                     repos = opt$repos,
-                     dependencies=opt$deps)
-}
-
+```sh
+$ install2.r -l /tmp/lib Rcpp BH                         # install into given library
+$ install2.r -- --with-keep.source drat                  # keep the source
+$ install2.r -- --data-compress=bzip2 stringdist         # prefer bz2 compression
 ```
 
 #### Installing From Sources
@@ -237,6 +194,16 @@ Usage: rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--repos RE
 $
 ```
 
+### Building Packages
+
+A related script is `build.r` which I often use inside a source repository to quickly build
+a source tarball. Like `rcc.r`, it has a switch `-f` or `--fast` to omit building of vignettes.
+
+```bash
+$ build.r            # without argument works on current directory
+$ build.r digest/    # with directory argument builds tar.gz from repo in directory
+```
+
 
 ### GitHub package installation
 
@@ -288,7 +255,7 @@ invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$dep
 
 ### CRAN package update
 
-One of the scripts I use the most (interactively) updates installed packages:
+One of the scripts I use the most (interactively) is `update.r` which updates installed packages:
 
 ```r
 #!/usr/bin/env r 
@@ -312,7 +279,7 @@ As above, it has my preferred mirror and library location hard-wired.
 
 ### Calling knitr
 
-Here is another convenience script which _knits_ a given file after
+Here is another convenience script, `knit.r`,  which _knits_ a given file after
 testing the file actually exists.
 
 ```r
@@ -344,7 +311,7 @@ knit2pdf(file)
 
 ### Running roxygen
 
-Similar to the previous example, this one uses roxygen to extract
+Similar to the previous example, the script `roxy.r` one uses roxygen to extract
 documentation from R files -- either in the current directory, or in the
 given directory or directories.
 
@@ -371,7 +338,7 @@ sapply(ifelse(length(argv) > 0, argv, "."), FUN=roxygenize, roclets="rd")
 
 ### Compiling Attributes
 
-The next script can be used with
+The next script, `compAttr.`,  can be used with
 [Rcpp](http://dirk.eddelbuettel.com/code/rcpp.html), and particularly is
 powerful _Attributes_ feature, in order to auto-generate helper code. It is
 similar to the preceding script, but invokes `compileAttributes()` instead.

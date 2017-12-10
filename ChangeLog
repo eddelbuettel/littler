@@ -1,3 +1,7 @@
+2017-12-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/littler-examples.Rmd: Expanded and updated
+
 2017-11-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
