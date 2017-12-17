@@ -43,7 +43,7 @@ if (opt$`as-cran`) args <- c(args, "--as-cran")
 if (opt$libdir == "NULL") opt$libdir <- NULL
 if (!is.null(opt$libdir)) .libPaths(opt$libdir)
 
-## doctopt results are characters, so if we meant NULL we have to set NULL
+## docopt results are characters, so if we meant NULL we have to set NULL
 if (opt$repo == "NULL") opt$repo <- NULL
 
 r <- getOption("repos")

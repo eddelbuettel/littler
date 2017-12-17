@@ -48,7 +48,7 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
-## doctopt results are characters, so if we meant NULL we have to set NULL
+## docopt results are characters, so if we meant NULL we have to set NULL
 if (opt$repos == "NULL")  {
    opt$repos = NULL
 } else if (opt$repos == "getOption") {
@@ -82,7 +82,7 @@ installArg <- function(f, lib, rep, dep, iopts, error) {
     install_packages2(pkgs=f,
                      lib=lib,
                      repos=if (isMatchingFile(f)) NULL else rep,
-                     dependencies=dep, 
+                     dependencies=dep,
                      INSTALL_opts=iopts,
 		     error = error)
 }
