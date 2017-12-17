@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.3 (2017-08-xx)}{
+\section{Changes in littler version 0.3.3 (2017-12-17)}{
   \itemize{
     \item Changes in examples
     \itemize{
@@ -11,11 +11,13 @@
       \item New script \code{pnrrs.r} to call the package-native
       registration helper function added in R 3.4.0
       \item Scripts \code{cow.r} and \code{c4c.r} use
-      \code{#!/usr/bin/envr}
+      \code{#!/usr/bin/env r}
       \item New option \code{--fast} (or \code{-f}) for scripts
       \code{build.r} and \code{rcc.r} for faster package build and check
       \item The \code{build.r} script now defaults to using the current
       directory if no argument is provided.
+      \item The RStudio getters now use the \code{rvest} package to
+      parse the webpage with available versions.
     }
     \item Changes in package
     \itemize{

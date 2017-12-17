@@ -3,7 +3,7 @@
 A scripting and command-line front-end for GNU R permitting use of R in
 command-line contexts.
 
-### So What Does it Do?
+### So What Is It For?
 
 ```r
 #!/usr/bin/env r              ## for use in scripts
@@ -17,14 +17,30 @@ r -e 'expr'                   ## for evaluating expressions
 r --help                      ## to show a quick synopsis
 ```
 
-See the
-[examples vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)
+### Examples? 
+
+Plenty. See the [examples vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)
 for a full set of introductory examples. Also 
-see the
-[examples/ directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples),
-as well as maybe the
+see the [examples/ directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples) for a full 28
+example scripts, as well as maybe the
 [older tests directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests)
 both of which are installed with the package.
+
+Some scripts I uses daily or near daily (in alphabetical order):
+
+```
+build.r                                ## builds from the current directory
+c4c.r                                  ## submits current directory to winbuilder
+compAttr.r                             ## run compileAttributes() for a Rcpp package
+dratInstert.r 1.2-3.tar.gz -r /srv     ## inserts package into drat repo
+install.r abc def                      ## installs packages abc and def
+install.r abc_1.2-3.tar.gz             ## installs given tarball
+install2.r -l /tmp/lib abc def         ## installs abc and def into /tmp/lib
+rcc.r abc_1.2-3.tar.gz                 ## run's R CMD check via Gabor's rcmdcheck
+render.r foo.Rmd                       ## calls rmarkdown::render()
+roxy.r                                 ## run roxyenize() for a package (only Rd creation)
+update.r                               ## updates any currently installed packages 
+```
 
 ### Installation
 
