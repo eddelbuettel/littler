@@ -11,7 +11,7 @@
       \code{upgrade} argument (Carl Boettiger in \ghpr{49}).
       \item New script \code{pnrrs.r} to call the package-native
       registration helper function added in R 3.4.0
-      \item The script \code[install2.r} now has more robust error
+      \item The script \code{install2.r} now has more robust error
       handling (Carl Boettiger in \ghpr{50}).
       \item New script \code{cow.r} to use R Hub's \code{check_on_windows}
       \item Scripts \code{cow.r} and \code{c4c.r} use
