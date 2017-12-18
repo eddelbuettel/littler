@@ -1,3 +1,12 @@
+2017-12-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/check.r: Remove second docopt() parse
+	* inst/examples/dratInsert.r: Idem
+	* inst/examples/install2.r: Idem
+	* inst/examples/installGithub.r: Idem
+	* inst/examples/installRepo.r: Idem
+	* inst/examples/rd2md.r: Idem
+
 2017-12-17  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.3
