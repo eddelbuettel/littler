@@ -2,7 +2,7 @@
 #
 # Another example to install one or more (source) packages into a drat
 #
-# Copyright (C) 2015 - 2016  Dirk Eddelbuettel
+# Copyright (C) 2015 - 2017  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -32,9 +32,6 @@ dratInsert.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
-
-## docopt parsing
-opt <- docopt(doc)
 
 if (is.null(opt$commit)) opt$commit <- FALSE
 

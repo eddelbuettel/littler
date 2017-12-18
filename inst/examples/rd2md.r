@@ -2,7 +2,7 @@
 #
 # Convert NEWS.Rd to markdown
 #
-# Copyright (C) 2016         Dirk Eddelbuettel
+# Copyright (C) 2016 - 2017  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -33,9 +33,6 @@ rd2md.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
-
-## docopt parsing
-opt <- docopt(doc)
 
 ## helper function
 convertArg <- function(p, src, out) {

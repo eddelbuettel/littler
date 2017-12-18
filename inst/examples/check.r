@@ -2,7 +2,7 @@
 #
 # Another example to check one or more packages, with option parsing
 #
-# Copyright (C) 2015 - 2016  Dirk Eddelbuettel
+# Copyright (C) 2015 - 2017  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 

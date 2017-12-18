@@ -2,7 +2,7 @@
 #
 # A simple example to install one or more packages from GitHub
 #
-# Copyright (C) 2014 - 2016  Carl Boettiger, Dirk Eddelbuettel and Alexios Galanos
+# Copyright (C) 2014 - 2017  Carl Boettiger, Dirk Eddelbuettel and Alexios Galanos
 #
 # Released under GPL (>= 2)
 
@@ -39,8 +39,6 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
-## docopt parsing
-opt <- docopt(doc)
 if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- as.logical(opt$deps)
 } else if (opt$deps == "NA") {
