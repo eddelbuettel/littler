@@ -1,8 +1,8 @@
-#!/usr/bin/r
+#!/usr/bin/env r
 #
 # A simple example to install RStudio Desktop
 #
-# Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2018  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 #

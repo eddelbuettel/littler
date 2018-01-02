@@ -1,6 +1,6 @@
-#!/usr/bin/r
+#!/usr/bin/env r
 #
-# Simple helper script for compileAttributes() 
+# Simple helper script for compileAttributes()
 #
 # Dirk Eddelbuettel, July 2014
 #

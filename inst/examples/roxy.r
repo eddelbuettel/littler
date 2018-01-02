@@ -1,6 +1,6 @@
-#!/usr/bin/r
+#!/usr/bin/env r
 #
-# Simple helper script for roxygen2::roxygenize() 
+# Simple helper script for roxygen2::roxygenize()
 #
 # Dirk Eddelbuettel, August 2013
 #

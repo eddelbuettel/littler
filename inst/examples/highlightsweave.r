@@ -1,4 +1,4 @@
-#!/usr/bin/r
+#!/usr/bin/env r
 #
 # A simple example to invoke Sweave
 #

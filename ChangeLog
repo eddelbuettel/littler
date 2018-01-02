@@ -1,3 +1,14 @@
+2018-01-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/compAttr.r: Use '#!/usr/bin/env r' as shebang line
+	* inst/examples/fsizes.r: Idem
+	* inst/examples/getRStudioDesktop.r: Idem
+	* getRStudioServer.r: Idem
+	* highlightsweave.r: Idem
+	* inst/examples/knit.r: Idem
+	* inst/examples/pnrrs.r: Idem
+	* inst/examples/roxy.r: Idem
+
 2017-12-18  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/check.r: Remove second docopt() parse

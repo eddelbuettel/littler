@@ -1,4 +1,4 @@
-#!/usr/bin/r -i
+#!/usr/bin/env r
 #
 # A simple example to do statistics on files
 #

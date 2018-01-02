@@ -1,4 +1,4 @@
-#!/usr/bin/r
+#!/usr/bin/env r
 #
 # Simple helper script for knitr
 #
