@@ -1,5 +1,7 @@
 2018-01-02  Dirk Eddelbuettel  <edd@debian.org>
 
+	* inst/examples/kitten.r: New script to call pkgKitten::kitten()
+
 	* inst/examples/compAttr.r: Use '#!/usr/bin/env r' as shebang line
 	* inst/examples/fsizes.r: Idem
 	* inst/examples/getRStudioDesktop.r: Idem
