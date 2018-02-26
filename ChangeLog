@@ -1,3 +1,7 @@
+2018-02-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/getRStudioDesktop.r: Source URL update
+
 2018-01-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/kitten.r: New script to call pkgKitten::kitten()
