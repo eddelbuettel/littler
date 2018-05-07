@@ -1,6 +1,8 @@
 #!/usr/bin/env r
 #
 # A second example to install one or more packages, now with option parsing
+# This version builds on install2.r and only installs packages if they
+# are not already installed.
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
