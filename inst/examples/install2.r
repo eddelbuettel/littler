@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
-# Copyright (C) 2017         Carl Boettiger, Dirk Eddelbuettel and Brandon Bertelsen
+# Copyright (C) 2018         Carl Boettiger, Dirk Eddelbuettel and Brandon Bertelsen
 #
 # Released under GPL (>= 2)
 
@@ -56,26 +56,26 @@ if (opt$repos == "NULL")  {
 }
 
 install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
-  e <- NULL
-  capture <- function(e) {
-    if (error) {
-      catch <-
-        grepl("package.*(is|are) not available", e$message) ||
-        grepl("installation of package.*had non-zero exit status", e$message)
-      if (catch) {
-        e <<- e
-      }
+    e <- NULL
+    capture <- function(e) {
+        if (error) {
+            catch <-
+                grepl("package.*(is|are) not available", e$message) ||
+                grepl("installation of package.*had non-zero exit status", e$message)
+            if (catch) {
+                e <<- e
+            }
+        }
     }
-  }
-  if (skipinstalled) {
-      pkgs <- setdiff(pkgs, installed.packages()[,1])
-  }
-  if (length(pkgs) > 0) {
-      withCallingHandlers(install.packages(pkgs, ...), warning = capture)
-      if (!is.null(e)) {
-          stop(e$message, call. = FALSE)
-      }
-  }
+    if (skipinstalled) {
+        pkgs <- setdiff(pkgs, installed.packages()[,1])
+    }
+    if (length(pkgs) > 0) {
+        withCallingHandlers(install.packages(pkgs, ...), warning = capture)
+        if (!is.null(e)) {
+            stop(e$message, call. = FALSE)
+        }
+    }
 }
 
 ## helper function to for existing files with matching extension
@@ -84,12 +84,12 @@ isMatchingFile <- function(f) file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zi
 ## helper function which switches to local (ie NULL) repo if matching file is presented
 installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled) {
     install_packages2(pkgs=f,
-                     lib=lib,
-                     repos=if (isMatchingFile(f)) NULL else rep,
-                     dependencies=dep,
-                     INSTALL_opts=iopts,
-		     error = error,
-                     skipinstalled = skipinstalled)
+                      lib=lib,
+                      repos=if (isMatchingFile(f)) NULL else rep,
+                      dependencies=dep,
+                      INSTALL_opts=iopts,
+                      error = error,
+                      skipinstalled = skipinstalled)
 }
 
 ## strip out arguments to be passed to R CMD INSTALL

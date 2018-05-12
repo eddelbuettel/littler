@@ -1,3 +1,10 @@
+2018-05-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install2.r: New option -s to skip installed packages
+	* inst/examples/installIfNew.R:	Removed as now redundant
+
+	* inst/examples/getRStudioServer.r: Update URL to trusty
+
 2018-05-06  Brandon Bertelsen  <brandon@bertelsen.ca>
 
 	* inst/examples/installIfNew.R: New example to only install new

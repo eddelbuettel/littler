@@ -18,6 +18,6 @@ url <- "https://dailies.rstudio.com/rstudioserver/oss/ubuntu/amd64/"
 pg <- read_html(url)
 tb <- html_table(html_nodes(pg, "table"))[[1]]
 file <- tb[1,1]
-s3url <- "https://s3.amazonaws.com/rstudio-ide-build/server/precise/amd64/"
+s3url <- "https://s3.amazonaws.com/rstudio-ide-build/server/trusty/amd64/"
 fileurl <- paste0(s3url, file)
 download.file(fileurl, file, method="wget")
