@@ -1,3 +1,8 @@
+2018-05-06  Brandon Bertelsen  <brandon@bertelsen.ca>
+
+	* inst/examples/installIfNew.R: New example to only install new
+	packages not already installed
+
 2018-02-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/getRStudioDesktop.r: Source URL update

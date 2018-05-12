@@ -4,6 +4,7 @@
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2017         Carl Boettiger, Dirk Eddelbuettel and Brandon Bertelsen
 #
 # Released under GPL (>= 2)
 
@@ -11,12 +12,13 @@
 suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
 ## configuration for docopt
-doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-x] [-d DEPS] [--error] [--] [PACKAGES ...]
+doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [--error] [--] [PACKAGES ...]
 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -e --error          throw error and halt instead of a warning [default: FALSE]
+-s --skipinstalled  skip installing already installed packages [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 
@@ -53,7 +55,7 @@ if (opt$repos == "NULL")  {
    opt$repos = getOption("repos")
 }
 
-install_packages2 <- function(pkgs, ..., error = FALSE) {
+install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
   e <- NULL
   capture <- function(e) {
     if (error) {
@@ -65,9 +67,14 @@ install_packages2 <- function(pkgs, ..., error = FALSE) {
       }
     }
   }
-  withCallingHandlers(install.packages(pkgs, ...), warning = capture)
-  if (!is.null(e)) {
-    stop(e$message, call. = FALSE)
+  if (skipinstalled) {
+      pkgs <- setdiff(pkgs, installed.packages()[,1])
+  }
+  if (length(pkgs) > 0) {
+      withCallingHandlers(install.packages(pkgs, ...), warning = capture)
+      if (!is.null(e)) {
+          stop(e$message, call. = FALSE)
+      }
   }
 }
 
@@ -75,13 +82,14 @@ install_packages2 <- function(pkgs, ..., error = FALSE) {
 isMatchingFile <- function(f) file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
-installArg <- function(f, lib, rep, dep, iopts, error) {
+installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled) {
     install_packages2(pkgs=f,
                      lib=lib,
                      repos=if (isMatchingFile(f)) NULL else rep,
                      dependencies=dep,
                      INSTALL_opts=iopts,
-		     error = error)
+		     error = error,
+                     skipinstalled = skipinstalled)
 }
 
 ## strip out arguments to be passed to R CMD INSTALL
@@ -90,8 +98,8 @@ installOpts <- opt$PACKAGES[isArg]
 opt$PACKAGES <- opt$PACKAGES[!isArg]
 
 
-
-sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps, installOpts, opt$error)
+sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
+       installOpts, opt$error, opt$skipinstalled)
 
 ## clean up any temp file containing CRAN directory information
 sapply(list.files(path=tempdir(), pattern="^(repos|libloc).*\\.rds$", full.names=TRUE), unlink)
