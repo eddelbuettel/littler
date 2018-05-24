@@ -1,3 +1,7 @@
+2018-05-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rcc.r: Correct args for '--fast' call
+
 2018-05-12  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install2.r: New option -s to skip installed packages

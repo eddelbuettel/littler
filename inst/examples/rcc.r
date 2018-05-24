@@ -2,7 +2,7 @@
 ##
 ##  Call 'rcmdcheck' on a package
 ##
-##  Copyright (C) 2016 - 2017  Dirk Eddelbuettel
+##  Copyright (C) 2016 - 2018  Dirk Eddelbuettel
 ##
 ##  Released under GPL (>= 2)
 
@@ -45,7 +45,7 @@ if (opt$args == "") {                   # special treatment for --args and -c
     }
 }
 if (opt$fast) {
-    opt$args <- c(opt$args, "--ignore-vignettes --no-manual")
+    opt$args <- c(opt$args, "--ignore-vignettes", "--no-manual")
 }
 
 if (length(opt$PATH) == 0) opt$PATH <- "." 		# default argument current directory
