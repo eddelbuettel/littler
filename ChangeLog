@@ -2,6 +2,8 @@
 
 	* DESCRIPTION (Version, Date): Roll minor version
 
+	* inst/examples/update.r: Added docopt support
+
 2018-05-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* vignettes/littler-examples.Rmd: Updated and extended

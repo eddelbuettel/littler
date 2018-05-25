@@ -1,29 +1,56 @@
-#!/usr/bin/env r 
+#!/usr/bin/env r
 #
 # A simple example to update packages in /usr/local/lib/R/site-library
 # Parameters are easily adjustable
 #
-# Copyright (C) 2006 - 2015  Dirk Eddelbuettel
+# Copyright (C) 2006 - 2018  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
-## adjust as necessary, see help('download.packages')
-## littler can now read ~/.littler.r and /etc/littler.r to set this
-repos <- getOption("repos")
+## load docopt package from CRAN
+suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
 
-## this makes sense on Debian where no package touch /usr/local
-lib.loc <- "/usr/local/lib/R/site-library"
+## configuration for docopt
+doc <- "Usage: update.r [-r REPO...] [-l LIBLOC] [-h] [-x]
+
+-r --repos REPO     repository to use, or NULL for file [default: getOption]
+-l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
+-h --help           show this help text
+-x --usage          show help and short example usage"
+
+opt <- docopt(doc)			# docopt parsing
+
+if (opt$usage) {
+    cat(doc, "\n\n")
+    cat("updates packages, optionally from a given repository, fo a library location.
+
+Examples:
+  update.r                                     # update installed packages
+  update.r -l /srv/R-lib                       # update for this location
+
+update,r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+    q("no")
+}
+
+## docopt results are characters, so if we meant NULL we have to set NULL
+if (opt$repos == "NULL")  {
+    opt$repos = NULL
+} else if (opt$repos == "getOption") {
+    ## adjust as necessary, see help('download.packages')
+    ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+    opt$repos = getOption("repos")
+}
 
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
 clearCache <- function() {
-  sapply(list.files(path=tempdir(), pattern="*rds$", full.names=TRUE), unlink)
+    sapply(list.files(path=tempdir(), pattern="*rds$", full.names=TRUE), unlink)
 }
 
 ## Always clear caches of remote and local packages
 clearCache()
 
-## r use requires non-interactive use
-update.packages(repos=repos, ask=FALSE, lib.loc=lib.loc)
+update.packages(lib.loc=opt$libloc, repos=opt$repos, ask=FALSE)
 
 ## Always clear caches of remote and local packages
 clearCache()
