@@ -1,3 +1,9 @@
+2018-05-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/littler-examples.Rmd: Updated and extended
+
+	* inst/examples/render.r: Minor tweak
+
 2018-05-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rcc.r: Correct args for '--fast' call

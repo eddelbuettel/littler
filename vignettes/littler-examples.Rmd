@@ -1,7 +1,7 @@
 ---
 title: "Littler Examples"
 author: "Dirk Eddelbuettel"
-date: "Originally written 2015-10-28; Updated 2017-12-10"
+date: "Originally written 2015-10-28; Updated 2017-12-10 and 2018-05-24"
 output: 
   html_document:
     toc: true
@@ -13,14 +13,14 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-## Examples
+## Overview
 
 We show and discuss a few of the files included in the `inst/examples/` source directory of
 [littler](http://dirk.eddelbuettel.com/code/littler.html) (which becomes the `examples/` directory 
 once installed). In a few cases we remove comment lines to keep things more concise on this page.
 We use `$` to denote a shell (_i.e._ terminal) prompt.
 
-### Simple Direct Command-line Use
+## Simple Direct Command-line Use
 
 [littler](http://dirk.eddelbuettel.com/code/littler.html) can be used
 directly on the command-line just like, say, `bc`: 
@@ -88,9 +88,7 @@ to forget whether r is installed in `/usr/bin/r`, `/usr/local/bin/r`,
 `~/bin/r`, ...).
 
 
-### CRAN package installation
-
-#### Direct Installation
+## install.r: Direct CRAN Installation
 
 This is one of my favourite
 [littler](http://dirk.eddelbuettel.com/code/littler.html) scripts which I use
@@ -124,7 +122,7 @@ It conveniently installs all dependencies, and uses the chosen target
 directory, all while keeping my R prompt (or prompts with multiple sessions)
 free to do other things.
 
-#### With Command-Line Parsing
+## install2.r: With Cmdline Parsing
 
 Thanks to the fabulous [docopt](https://github.com/edwindj/docopt.R)
 package, we also have a variant `install2.r` with optional settings of
@@ -138,7 +136,7 @@ $ install2.r -- --with-keep.source drat                  # keep the source
 $ install2.r -- --data-compress=bzip2 stringdist         # prefer bz2 compression
 ```
 
-#### Installing From Sources
+### Installing From Sources
 
 Starting with version 0.2.2, `install.r` and `install2.r` now recognise
 installable source files.  So one can also do this: 
@@ -150,9 +148,7 @@ $ install.r digest_0.6.8.tar.gz
 and the local source file will the installed via a call to `R CMD INSTALL`.
 
 
-### Checking Packages
-
-#### Simple Checker
+## check.r: Simple Checker
 
 A related use case is to check packages via `check.r`.  This script runs `R
 CMD check`, but also installs package dependencies first as tests may have
@@ -175,7 +171,7 @@ Usage: check.r [-h] [-x] [--as-cran] [--repo REPO] [--install-deps] [--install-k
 $
 ```
 
-#### R CMD check wrapper
+## rcc.r: R CMD check wrapper
 
 The script `rcc.r` will also check a source tarball, and offers another set of options:
 
@@ -194,7 +190,7 @@ Usage: rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--repos RE
 $
 ```
 
-### Building Packages
+## build.r: Building Packages
 
 A related script is `build.r` which I often use inside a source repository to quickly build
 a source tarball. Like `rcc.r`, it has a switch `-f` or `--fast` to omit building of vignettes.
@@ -205,7 +201,7 @@ $ build.r digest/    # with directory argument builds tar.gz from repo in direct
 ```
 
 
-### GitHub package installation
+## installGithub.r: GitHub install
 
 Installation directly from [GitHub](https://github.com) is also popular. Here is an example: 
 
@@ -253,7 +249,7 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps)))
 ```
 
-### CRAN package update
+## update.r: CRAN package update
 
 One of the scripts I use the most (interactively) is `update.r` which updates installed packages:
 
@@ -277,7 +273,7 @@ update.packages(repos=repos, ask=FALSE, lib.loc=lib.loc)
 As above, it has my preferred mirror and library location hard-wired.
 
 
-### Calling knitr
+## knit.r: Calling knitr
 
 Here is another convenience script, `knit.r`,  which _knits_ a given file after
 testing the file actually exists.
@@ -309,7 +305,7 @@ knit2pdf(file)
 ```
 
 
-### Running roxygen
+## roxy.r: Running roxygen
 
 Similar to the previous example, the script `roxy.r` one uses roxygen to extract
 documentation from R files -- either in the current directory, or in the
@@ -336,7 +332,7 @@ sapply(ifelse(length(argv) > 0, argv, "."), FUN=roxygenize, roclets="rd")
 
 ```
 
-### Compiling Attributes
+## compAttr.r: Compiling Attributes
 
 The next script, `compAttr.`,  can be used with
 [Rcpp](http://dirk.eddelbuettel.com/code/rcpp.html), and particularly is
@@ -361,6 +357,53 @@ argv <- Filter(function(x) file.info(x)$is.dir, argv)
 ## loop over all argument, with fallback of the current directory, and
 ## call compileAttributes() on the given directory
 sapply(ifelse(length(argv) > 0, argv, "."), compileAttributes)
+
+```
+
+## render.r: Render Markdown
+
+The `render.r` script generalizes the earlier `knit.r` to convert Markdown
+into its designated output.
+
+```r
+#!/usr/bin/env r
+#
+# Another example to run a shiny app
+#
+# Copyright (C) 2016  Dirk Eddelbuettel
+#
+# Released under GPL (>= 2)
+
+suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
+
+## configuration for docopt
+doc <- "Usage: render.r [-h] [-x] [FILES...]
+
+-h --help            show this help text
+-x --usage           show help and short example usage"
+
+opt <- docopt(doc)			# docopt parsing
+
+if (opt$usage) {
+    cat(doc, "\n\n")
+    cat("Examples:
+  render.r foo.Rmd bar.Rmd        # convert two given files
+
+render.r is part of littler which brings 'r' to the command-line.
+See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+    q("no")
+}
+
+library(rmarkdown)
+
+## helper function 
+renderArg <- function(p) {
+    if (!file.exists(p)) stop("No file '", p, "' found. Aborting.", .Call=FALSE)
+    render(p)
+}
+
+## render files using helper function 
+sapply(opt$FILES, renderArg)
 
 ```
 
