@@ -1,3 +1,8 @@
+2018-07-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/getRStudioDesktop.r: URLs updated
+	* inst/examples/getRStudioServer.r: Idem
+
 2018-05-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
