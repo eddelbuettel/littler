@@ -1,3 +1,9 @@
+2018-07-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/getRStudioDesktop.r: More defensive use of URL
+	while curl (OS-level) library packages have is more fragile
+	* inst/examples/getRStudioServer.r: Idem
+
 2018-07-29  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/getRStudioDesktop.r: URLs updated
