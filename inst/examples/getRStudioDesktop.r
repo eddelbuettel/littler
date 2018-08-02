@@ -24,3 +24,10 @@ s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/"
 #s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/"
 fileurl <- paste0(s3url, file)
 download.file(fileurl, file, method="wget")
+
+## ## probably simpler
+## ## cf https://support.rstudio.com/hc/en-us/articles/203842428-Getting-the-newest-RStudio-builds
+## fileurl <- "http://www.rstudio.org/download/latest/daily/desktop/ubuntu64/rstudio-latest-amd64.deb"
+## download.file(fileurl, "rstudio-latest-amd64.deb", method="wget")
+
+
