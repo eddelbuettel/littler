@@ -7,13 +7,13 @@
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
+library(docopt)
 
 ## same as runApp()
 host <- getOption("shiny.host", "127.0.0.1")
 
 ## configuration for docopt
-doc <- paste0("Usage: shiny.r [-h] [--port PORT] [--host HOST] [--dir DIR] 
+doc <- paste0("Usage: shiny.r [-h] [--port PORT] [--host HOST] [--dir DIR]
 
 -p --port PORT      port to use [default: NULL]
 -o --host HOST      host string to use [default: ", host, "]

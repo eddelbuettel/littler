@@ -7,11 +7,8 @@
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
-suppressMessages({
-    library(docopt)               # we need docopt (>= 0.3) as on CRAN
-    library(tools)
-})
-
+library(docopt)
+library(tools)
 
 ## configuration for docopt
 doc <- "Usage: rd2md.r [-h] [-x] [--src REPODIR] [--out OUTDIR] [FILES...]

@@ -13,6 +13,7 @@
       (Brandon Bertelsen in \ghpr{59}); later added into \code{install2.r}.
       \item Functions \code{getRStudioDesktop.r} and
       \code{getRStudioServer.r} updated their internal URLs.
+      \item Several minor enhancements were made to example scripts.
     }
   }
 }

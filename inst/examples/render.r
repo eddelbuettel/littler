@@ -6,7 +6,8 @@
 #
 # Released under GPL (>= 2)
 
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
+## load docopt package from CRAN
+library(docopt)
 
 ## configuration for docopt
 doc <- "Usage: render.r [-h] [-x] [FILES...]

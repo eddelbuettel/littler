@@ -6,9 +6,8 @@
 #
 # Released under GPL (>= 2)
 
-suppressMessages({
-    library(docopt)       # we need the docopt package
-})
+## load docopt package from CRAN
+library(docopt)
 
 doc <- "Usage: build.r [-f] [-h] [PACKAGES ...]
 

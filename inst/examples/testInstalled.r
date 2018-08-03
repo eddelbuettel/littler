@@ -2,11 +2,9 @@
 #
 # a simple example to test one or more installed packages
 
-## load docopt package from CRAN, or stop if not available
-suppressMessages({
-    library(docopt)          # we need the docopt package 0.3 or later
-    library(tools)
-})
+## load docopt package from CRAN
+library(docopt)
+library(tools)
 
 ## configuration for docopt
 doc <- "Usage: test.r [-l LIBLOC] [-o OUTDIR] [-t TYPES] [-s SRCDIR] [-h] [PACKAGES ...]

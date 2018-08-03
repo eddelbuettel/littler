@@ -7,7 +7,7 @@
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
+library(docopt)
 
 ## configuration for docopt
 doc <- "Usage: check.r [-h] [-x] [--as-cran] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]

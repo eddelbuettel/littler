@@ -8,7 +8,7 @@
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
-suppressMessages(library(docopt))       # we need docopt (>= 0.3) as on CRAN
+library(docopt)
 
 ## configuration for docopt
 doc <- "Usage: update.r [-r REPO...] [-l LIBLOC] [-h] [-x]

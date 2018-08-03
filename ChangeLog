@@ -1,3 +1,15 @@
+2018-08-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* update.r: No longer need suppressMessages() around library()
+	* shiny.r: Idem
+	* rcc.r: Idem
+	* install2.r: Idem
+	* check.r: Idem
+	* build.r: Idem
+	* render.r: Idem
+	* testInstalled.r: Idem
+	* rd2md.r: Idem
+
 2018-07-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/getRStudioDesktop.r: More defensive use of URL
