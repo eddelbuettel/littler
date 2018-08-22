@@ -1,3 +1,7 @@
+2018-08-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rcc.r: Use is.null() to test for empty arguments
+
 2018-08-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* update.r: No longer need suppressMessages() around library()

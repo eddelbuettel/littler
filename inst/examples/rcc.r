@@ -34,7 +34,7 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
-if (opt$args == "") {                   # special treatment for --args and -c
+if (is.null(opt$args)) {         # special treatment for --args and -c
     if (opt$`as-cran`) {
         opt$args <- "--as-cran"
     } else {
@@ -50,8 +50,8 @@ if (opt$fast) {
 }
 
 if (length(opt$PATH) == 0) opt$PATH <- "." 		# default argument current directory
-if (opt$libpath == "") opt$libpath <- .libPaths()	# default library pathr
-if (opt$repos == "") opt$repos <- getOption("repos")	# default repos
+if (is.null(opt$libpath)) opt$libpath <- .libPaths()	# default library pathr
+if (is.null(opt$repos)) opt$repos <- getOption("repos")	# default repos
 
 if (requireNamespace("rcmdcheck", quietly=TRUE) == FALSE)
     stop("This command requires the 'rcmdcheck' package.", call.=FALSE)
