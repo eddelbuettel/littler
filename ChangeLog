@@ -1,3 +1,7 @@
+2018-08-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/check.r: Use is.null(), other docopt simplifications
+
 2018-08-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rcc.r: Use is.null() to test for empty arguments
