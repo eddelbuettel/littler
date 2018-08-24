@@ -90,7 +90,7 @@ For more information about littler, please see
 
 ### Authors
 
-Jeff Horner and Dirk Eddelbuettel
+Jeff Horner (2006 to 2008) and Dirk Eddelbuettel (since 2006)
 
 ### License
 

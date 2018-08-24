@@ -1,3 +1,12 @@
+2018-08-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.3.4
+
+	* configure.ac: Idem
+	* configgure: Idem
+
+	* README.md: Updated
+
 2018-08-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/check.r: Use is.null(), other docopt simplifications

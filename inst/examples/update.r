@@ -38,7 +38,6 @@ if (opt$repos == "NULL")  {
     opt$repos = NULL
 } else if (opt$repos == "getOption") {
     ## adjust as necessary, see help('download.packages')
-    ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
     opt$repos = getOption("repos")
 }
 

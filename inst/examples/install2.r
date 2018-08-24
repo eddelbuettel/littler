@@ -49,10 +49,10 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 
 ## docopt results are characters, so if we meant NULL we have to set NULL
 if (opt$repos == "NULL")  {
-   opt$repos = NULL
+    opt$repos = NULL
 } else if (opt$repos == "getOption") {
-   ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
-   opt$repos = getOption("repos")
+    ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+    opt$repos = getOption("repos")
 }
 
 install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
