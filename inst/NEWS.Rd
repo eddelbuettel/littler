@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.4 (2018-xx-yy)}{
+\section{Changes in littler version 0.3.4 (2018-08-24)}{
   \itemize{
     \item Changes in examples
     \itemize{

@@ -1,3 +1,7 @@
+2018-09-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml: Switch Travis CI to R 3.5 repo
+
 2018-08-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.4
