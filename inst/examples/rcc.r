@@ -58,8 +58,12 @@ if (requireNamespace("rcmdcheck", quietly=TRUE) == FALSE)
 
 suppressMessages(library(rcmdcheck))
 
+rccwrapper <- function(pa, qu, ar, li, re) {
+    rcmdcheck(path=pa, quiet=qu, args=ar, libpath=li, repos=re)
+}
+
 sapply(opt$PATH,                        # iterate over arguments
-       rcmdcheck,                       # calling 'rcmdcheck()' with arguments
+       rccwrapper,                      # calling 'rcmdcheck()' with arguments
        opt$quiet,                       # quiet argument, default false
        opt$args,			# args arguments, possibly with --as-cran
        opt$libpath,			# libpath argument
