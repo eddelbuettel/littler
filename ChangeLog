@@ -1,3 +1,7 @@
+2018-09-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rchk.r: Minimal wrapper for rchk
+
 2018-09-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rcc.r (rccwrapper): Insert a wrapper to set arguments
