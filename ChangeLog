@@ -1,3 +1,10 @@
+2018-10-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.3.5
+
+	* configure.ac: Idem
+	* configgure: Idem
+
 2018-09-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rchk.r: Minimal wrapper for rchk

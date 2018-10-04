@@ -3,6 +3,25 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.5 (2018-10-04)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item  The script \code{roxy.r} now uses cached copy of \pkg{roxygen2}
+      version 6.0.1 (if available) as the current version 6.1.0  
+      changed behaviour.
+      \item The script \code{rcc.r} was updated as the underlying
+      \pkg{rcmdcheck} changed parameter order.
+      \item A new simpler wrapper \code{rchk.r} was added to use RHub
+      with the \code{rchk} image.
+    }
+    \item Changes in package
+    \itemize{
+      \item Travis CI now uses the R 3.5 PPA
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.4 (2018-08-24)}{
   \itemize{
     \item Changes in examples
