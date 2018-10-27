@@ -35,6 +35,7 @@ Examples:
   install2.r -l /tmp/lib Rcpp BH                         # install into given library
   install2.r -- --with-keep.source drat                  # keep the source
   install2.r -- --data-compress=bzip2 stringdist         # prefer bz2 compression
+  install2.r \".\"                                         # install package in current directory
 
 install2.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
@@ -79,7 +80,7 @@ install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
 }
 
 ## helper function to for existing files with matching extension
-isMatchingFile <- function(f) file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)
+isMatchingFile <- function(f) (file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
 installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled) {

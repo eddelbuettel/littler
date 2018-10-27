@@ -5,7 +5,7 @@
 # Note that a more featureful version exists in install2.r
 # with an added dependency on the 'docopt' argument parser
 #
-# Copyright (C) 2006 - 2015  Dirk Eddelbuettel
+# Copyright (C) 2006 - 2018  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -13,6 +13,7 @@ if (is.null(argv) | length(argv) < 1) {
     cat("Usage: installr.r pkg1 [pkg2 pkg3 ...]\n\n")
     cat("Set environment variables REPOS and LIBLOC to overrride defaults.\n")
     cat("Installs pkg1, ... from existing files with matching extension.\n")
+    cat("Use \".\" to install the package in current working directory.\n")
     q()
 }
 
@@ -26,7 +27,7 @@ if (Sys.getenv("REPOS") == "NULL") repos = NULL
 lib.loc <- Sys.getenv("LIBLOC", unset="/usr/local/lib/R/site-library")
 
 ## helper function to for existing files with matching extension
-isMatchingFile <- function(f) file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)
+isMatchingFile <- function(f) (file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
 installArg <- function(f, lib, rep) install.packages(f, lib, if (isMatchingFile(f)) NULL else repos)

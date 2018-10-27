@@ -1,3 +1,8 @@
+2018-10-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install.r: Use "." to install from current directory
+	* inst/examples/install2.r: Idem
+
 2018-10-04  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.5
