@@ -1,3 +1,9 @@
+2018-10-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install.r: Add "." if no argument given but
+	DESCRIPTION and NAMESPACE in current directory
+	* inst/examples/install2.r: Idem
+
 2018-10-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install.r: Use "." to install from current directory

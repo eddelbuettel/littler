@@ -10,11 +10,17 @@
 # Released under GPL (>= 2)
 
 if (is.null(argv) | length(argv) < 1) {
-    cat("Usage: installr.r pkg1 [pkg2 pkg3 ...]\n\n")
-    cat("Set environment variables REPOS and LIBLOC to overrride defaults.\n")
-    cat("Installs pkg1, ... from existing files with matching extension.\n")
-    cat("Use \".\" to install the package in current working directory.\n")
-    q()
+    if (length(opt$PACKAGES)==0 && file.exists("DESCRIPTION") && file.exists("NAMESPACE")) {
+        ## we are in a source directory, so build it
+        message("* installing *source* package found in current working directory ...")
+        opt$PACKAGES <- "."
+    } else {
+        cat("Usage: installr.r pkg1 [pkg2 pkg3 ...]\n\n")
+        cat("Set environment variables REPOS and LIBLOC to overrride defaults.\n")
+        cat("Installs pkg1, ... from existing files with matching extension.\n")
+        cat("Use \".\" to install the package in current working directory.\n")
+        q()
+    }
 }
 
 ## adjust as necessary, see help('download.packages')

@@ -98,6 +98,11 @@ isArg <- grepl('^--',opt$PACKAGES)
 installOpts <- opt$PACKAGES[isArg]
 opt$PACKAGES <- opt$PACKAGES[!isArg]
 
+if (length(opt$PACKAGES)==0 && file.exists("DESCRIPTION") && file.exists("NAMESPACE")) {
+    ## we are in a source directory, so build it
+    message("* installing *source* package found in current working directory ...")
+    opt$PACKAGES <- "."
+}
 
 sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
        installOpts, opt$error, opt$skipinstalled)
