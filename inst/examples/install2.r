@@ -17,7 +17,7 @@ doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
--n --ncpus NCPUS    number of parallel processes to use for a parallel install [default: getOption]
+-n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
 -e --error          throw error and halt instead of a warning [default: FALSE]
 -s --skipinstalled  skip installing already installed packages [default: FALSE]
 -h --help           show this help text
@@ -36,7 +36,7 @@ Examples:
   install2.r -- --with-keep.source drat             # keep the source
   install2.r -- --data-compress=bzip2 stringdist    # prefer bz2 compression
   install2.r \".\"                                  # install package in current directory
-  install2.r -n  6 ggplot2                          # parallel install: (6 processes)
+  install2.r -n 6 ggplot2                           # parallel install: (6 processes)
 
 install2.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")

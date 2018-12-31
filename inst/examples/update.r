@@ -11,10 +11,11 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: update.r [-r REPO...] [-l LIBLOC] [-h] [-x]
+doc <- "Usage: update.r [-r REPO...] [-l LIBLOC] [-n NCPUS] [-h] [-x]
 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
+-n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 
@@ -41,6 +42,13 @@ if (opt$repos == "NULL")  {
     opt$repos = getOption("repos")
 }
 
+if (opt$ncpus == "getOption") {
+    opt$ncpus <- getOption("Ncpus", 1L)
+} else if (opt$ncpus == "-1") {
+    ## parallel comes with R 2.14+
+    opt$ncpus <- max(1L, parallel::detectCores())
+}
+
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
 clearCache <- function() {
     sapply(list.files(path=tempdir(), pattern="*rds$", full.names=TRUE), unlink)
@@ -49,7 +57,7 @@ clearCache <- function() {
 ## Always clear caches of remote and local packages
 clearCache()
 
-update.packages(lib.loc=opt$libloc, repos=opt$repos, ask=FALSE)
+update.packages(lib.loc=opt$libloc, repos=opt$repos, Ncpus=opt$ncpus, ask=FALSE)
 
 ## Always clear caches of remote and local packages
 clearCache()

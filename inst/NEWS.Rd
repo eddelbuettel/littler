@@ -8,9 +8,11 @@
     \item Changes in examples
     \itemize{
       \item The scripts \code{install.r} and \code{install2.r} now support
-      argument \code{"."}, and add it in a source directory (Dirk)
+      argument \code{"."}, and add it in a source directory.
       \item The script \code{install2.r} can set \code{Ncpus} for
       \code{install.packages()} (Colin Gillespie in \ghpr{63} fixing \ghpr{62})
+      \item The script \code{update.r} can also set \code{Ncpus} for
+      \code{install.packages()}.
     }
   }
 }
