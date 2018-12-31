@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
-# Copyright (C) 2018         Carl Boettiger, Dirk Eddelbuettel and Brandon Bertelsen
+# Copyright (C) 2018         Carl Boettiger, Dirk Eddelbuettel, and Brandon Bertelsen
 #
 # Released under GPL (>= 2)
 
@@ -36,7 +36,7 @@ Examples:
   install2.r -- --with-keep.source drat             # keep the source
   install2.r -- --data-compress=bzip2 stringdist    # prefer bz2 compression
   install2.r \".\"                                  # install package in current directory
-  install2.r --n  6 ggplot2                         # parallel install: (6 processes)
+  install2.r -n  6 ggplot2                          # parallel install: (6 processes)
 
 install2.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
@@ -58,10 +58,10 @@ if (opt$repos == "NULL")  {
 }
 
 if (opt$ncpus == "getOption") {
-  opt$ncpus <- getOption("Ncpus", 1L)
+    opt$ncpus <- getOption("Ncpus", 1L)
 } else if (opt$ncpus == "-1") {
-  # parallel comes with R 2.14+
-  opt$ncpus <- max(1L, parallel::detectCores())
+    ## parallel comes with R 2.14+
+    opt$ncpus <- max(1L, parallel::detectCores())
 }
 
 install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {

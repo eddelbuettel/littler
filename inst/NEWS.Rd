@@ -3,11 +3,23 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.6 (2019-xx-yy)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item The scripts \code{install.r} and \code{install2.r} now support
+      argument \code{"."}, and add it in a source directory (Dirk)
+      \item The script \code{install2.r} can set \code{Ncpus} for
+      \code{install.packages()} (Colin Gillespie in \ghpr{63} fixing \ghpr{62})
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.5 (2018-10-04)}{
   \itemize{
     \item Changes in examples
     \itemize{
-      \item  The script \code{roxy.r} now uses cached copy of \pkg{roxygen2}
+      \item The script \code{roxy.r} now uses a cached copy of \pkg{roxygen2}
       version 6.0.1 (if available) as the current version 6.1.0  
       changed behaviour.
       \item The script \code{rcc.r} was updated as the underlying
