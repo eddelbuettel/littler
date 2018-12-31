@@ -36,8 +36,7 @@ Examples:
   install2.r -- --with-keep.source drat             # keep the source
   install2.r -- --data-compress=bzip2 stringdist    # prefer bz2 compression
   install2.r \".\"                                  # install package in current directory
-  install2.r --n  6 Rcpp                            # parallel install: (6 processes)
-  install2.r --n -1 Rcpp                 # parallel install: max(1, parallel::detectCores)
+  install2.r --n  6 ggplot2                         # parallel install: (6 processes)
 
 install2.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
