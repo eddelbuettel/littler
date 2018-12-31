@@ -1,3 +1,7 @@
+2018-12-30  Colin Gillespie  <csgillespie@gmail.com>
+
+	* inst/examples/install2.r: Add -n (Ncpus) argument
+
 2018-10-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install.r: Add "." if no argument given but
@@ -988,7 +992,7 @@
 	* configure.in: Added Dirk's patch to configure.in to
 	automatically find R in search path and to use --rpath linker option.
 
-	* rinterp.c: Read commands from stdin when no file is given on 
+	* rinterp.c: Read commands from stdin when no file is given on
 	cmdline. (feature request from Dirk Eddelbuettel <edd@debian.org>)
 
 2006-08-09  Jeffrey Horner  <jeffrey.horner@vanderbilt.edu>
