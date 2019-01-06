@@ -1,7 +1,7 @@
 ---
 title: "Littler Examples"
 author: "Dirk Eddelbuettel"
-date: "Originally written 2015-10-28; Updated 2017-12-10 and 2018-05-24"
+date: "Originally written 2015-10-28; Updated 2017-12-10, 2018-05-24 and 2018-01-06"
 output: 
   html_document:
     toc: true
@@ -136,6 +136,10 @@ $ install2.r -- --with-keep.source drat                  # keep the source
 $ install2.r -- --data-compress=bzip2 stringdist         # prefer bz2 compression
 ```
 
+Another _very_ useful option is `-n N` or `--ncpus N` which will parallelize
+the installation across `N` processes.  This can be set automagically by
+setting `options(Ncpus)`.
+
 ### Installing From Sources
 
 Starting with version 0.2.2, `install.r` and `install2.r` now recognise
@@ -251,7 +255,9 @@ invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$dep
 
 ## update.r: CRAN package update
 
-One of the scripts I use the most (interactively) is `update.r` which updates installed packages:
+One of the scripts I use the most (interactively) is `update.r` which updates installed packages.
+An earlier version looked like the following example, the current version is
+a little longer and has more features:
 
 ```r
 #!/usr/bin/env r 
@@ -260,7 +266,7 @@ One of the scripts I use the most (interactively) is `update.r` which updates in
 # parameters are easily adjustable
 
 ## adjust as necessary, see help('download.packages')
-repos <- "http://cran.rstudio.com" 
+repos <- "https://cloud.r-project.org" 
 
 ## this makes sense on Debian where no package touch /usr/local
 lib.loc <- "/usr/local/lib/R/site-library"
@@ -271,6 +277,10 @@ update.packages(repos=repos, ask=FALSE, lib.loc=lib.loc)
 ```
 
 As above, it has my preferred mirror and library location hard-wired.
+
+Another _very_ useful option is `-n N` or `--ncpus N` which will parallelize
+the upgrade across `N` processes.  This can be set automagically by setting
+`options(Ncpus)`.
 
 
 ## knit.r: Calling knitr

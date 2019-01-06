@@ -13,6 +13,7 @@
       \code{install.packages()} (Colin Gillespie in \ghpr{63} fixing \ghpr{62})
       \item The script \code{update.r} can also set \code{Ncpus} for
       \code{install.packages()}.
+      \item A new vignette "litter-faq" was added.
     }
   }
 }
