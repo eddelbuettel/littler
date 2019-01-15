@@ -1,4 +1,4 @@
-## littler [![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler)    [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler) [![Downloads](http://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](http://www.r-pkg.org/pkg/littler)
+## littler [![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler) [![Dependencies](https://tinyverse.netlify.com/badge/littler)](https://cran.r-project.org/package=littler) [![Downloads](http://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](http://www.r-pkg.org/pkg/littler)
 
 A scripting and command-line front-end for GNU R permitting use of R in
 command-line contexts.
