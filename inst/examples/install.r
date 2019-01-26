@@ -33,10 +33,12 @@ if (Sys.getenv("REPOS") == "NULL") repos = NULL
 lib.loc <- Sys.getenv("LIBLOC", unset="/usr/local/lib/R/site-library")
 
 ## helper function to for existing files with matching extension
-isMatchingFile <- function(f) (file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
+isMatchingFile <- function(f) (file.exists(f) &&
+                               grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
-installArg <- function(f, lib, rep) install.packages(f, lib, if (isMatchingFile(f)) NULL else repos)
+installArg <- function(f, lib, rep) install.packages(pkgs=f, lib=lib,
+                                                     repos=if (isMatchingFile(f)) NULL else repos)
 
 ## use argv [filtered by installArg()], lib.loc and repos to install the packages
 sapply(argv, installArg, lib.loc, repos)
