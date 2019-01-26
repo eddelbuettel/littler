@@ -1,6 +1,11 @@
 2019-01-26  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/install.r (installArg): One more explicit argument
+	* DESCRIPTION (Version, Date): Release 0.3.6
+
+	* configure.ac: Idem
+	* configgure: Idem
+
+	* inst/examples/install.r (installArg): Use explicit argument repos
 
 2019-01-14  Dirk Eddelbuettel  <edd@debian.org>
 

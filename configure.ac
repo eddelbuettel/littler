@@ -1,5 +1,5 @@
 #   -*- mode: Autoconf; tab-width: 4; -*-
-# Process this file with autoconf to produce a configure script.      
+# Process this file with autoconf to produce a configure script.
 
 # require at least autoconf 2.61
 AC_PREREQ(2.61)
@@ -7,7 +7,7 @@ AC_PREREQ(2.61)
 # Every other copy of the package version number gets its value from here
 # The m4_esyscmd_s invocation is due to an excellent StackOverflow answer.
 #AC_INIT([littler], m4_esyscmd_s([awk -e '/^Version:/ {print $2}' DESCRIPTION]))
-AC_INIT([littler], [0.3.5])
+AC_INIT([littler], [0.3.6])
 
 #  Look for ancillary configure tools in tools
 dnl AC_CONFIG_AUX_DIR(tools)
@@ -15,7 +15,7 @@ dnl AC_CONFIG_AUX_DIR(tools)
 # Ensure R_HOME is set yet respect a previously set value
 : ${R_HOME=`R RHOME`}
 if test -z "${R_HOME}"; then
-    AC_MSG_ERROR([Could not determine R_HOME.])   
+    AC_MSG_ERROR([Could not determine R_HOME.])
 fi
 RPROG=${R_HOME}/bin/R
 CC=`${RPROG} CMD config CC`
@@ -31,7 +31,7 @@ dnl #           checks for certain files like ChangeLog, NEWS, README, etc
 dnl #
 dnl AM_INIT_AUTOMAKE( no-texinfo.tex foreign )
 
-# create a config.h file 
+# create a config.h file
 AC_CONFIG_HEADERS(src/config.h)
 
 AC_SUBST(VERSION)
@@ -115,7 +115,7 @@ if test -d ".git/"; then
 else
     GITREVISION=""
     GITDATE=""
-fi    
+fi
 
 # Now check if certain libraries should be linked in
 
@@ -139,8 +139,8 @@ dnl             fi
 dnl     ],
 dnl )
 
-dnl # R version check 
-dnl # Note that this may fail really old versions of R as the string wasn't always "R version x.y.z ..." 
+dnl # R version check
+dnl # Note that this may fail really old versions of R as the string wasn't always "R version x.y.z ..."
 dnl r_version=`${RPROG} --version | head -1 | cut -f3 -d" " `
 dnl case ${r_version} in
 dnl     1.*.*|2.0.*|2.1.*|2.2.*|2.3.0)
@@ -149,7 +149,7 @@ dnl                      ;;
 dnl esac
 
 #AC_MSG_RESULT([AM_LDFLAGS is now: ${AM_LDFLAGS}])
-# get other linker flags for rpath 
+# get other linker flags for rpath
 EXTRA_LDFLAGS=`${RPROG} --silent --vanilla --slave --file=src/scripts/ldflags.R`
 #AC_MSG_RESULT([EXTRA_LDFLAGS is now: ${EXTRA_LDFLAGS}])
 #AM_LDFLAGS="${AM_LDFLAGS} ${EXTRA_LDFLAGS}"
@@ -176,5 +176,3 @@ AC_SUBST(GITREVISION)
 AC_SUBST(GITDATE)
 
 AC_OUTPUT([src/Makevars src/gitversion.h])
-
-

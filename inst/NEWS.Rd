@@ -3,12 +3,12 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.6 (2019-xx-yy)}{
+\section{Changes in littler version 0.3.6 (2019-01-26)}{
   \itemize{
     \item Changes in examples
     \itemize{
       \item The scripts \code{install.r} and \code{install2.r} now support
-      argument \code{"."}, and add it in a source directory.
+      argument \code{"."}, and add it if called in a source directory.
       \item The script \code{install2.r} can set \code{Ncpus} for
       \code{install.packages()} (Colin Gillespie in \ghpr{63} fixing \ghpr{62})
       \item The script \code{update.r} can also set \code{Ncpus} for
