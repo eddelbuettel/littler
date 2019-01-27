@@ -2,6 +2,8 @@
 
 	* src/littler.c: Update copyright year to 2019
 
+	* vignettes/littler-examples.Rmd (date): Correct typo in date
+
 2019-01-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.6
