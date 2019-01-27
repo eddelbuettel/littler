@@ -1,3 +1,7 @@
+2019-01-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/littler.c: Update copyright year to 2019
+
 2019-01-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.6

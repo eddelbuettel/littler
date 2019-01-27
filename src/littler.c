@@ -2,7 +2,7 @@
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006 - 2016  Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006 - 2019  Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -62,7 +62,7 @@ int  setenv(char *name, char *value, int clobber){
     sprintf(cp, "%s=%s", name, value);
     return (putenv(cp));
 }
-#endif 
+#endif
 
 int source(char *file){
     SEXP expr, s, f, p;
@@ -82,11 +82,11 @@ int source(char *file){
 
     /* expression source(f,print.eval=p) */
     PROTECT(expr = allocVector(LANGSXP,3));
-    SETCAR(expr,s); 
+    SETCAR(expr,s);
     SETCAR(CDR(expr),f);
     SETCAR(CDR(CDR(expr)), p);
     SET_TAG(CDR(CDR(expr)), Rf_install("print.eval"));
-    
+
     errorOccurred=0;
     R_tryEval(expr,NULL,&errorOccurred);
     UNPROTECT(4);
@@ -122,7 +122,7 @@ int source(char *file){
 void autoloads(void){
     SEXP da, dacall, al, alcall, AutoloadEnv, name, package;
     int i,j, idx=0, errorOccurred, ptct;
-    
+
     /* delayedAssign call*/
     PROTECT(da = Rf_findFun(Rf_install("delayedAssign"), R_GlobalEnv));
     PROTECT(AutoloadEnv = Rf_findVar(Rf_install(".AutoloadEnv"), R_GlobalEnv));
@@ -151,12 +151,12 @@ void autoloads(void){
         idx += (i != 0)? packobjc[i-1] : 0;
         for (j = 0; j < packobjc[i]; j++){
             /*printf("autload(%s,%s)\n",packobj[idx+j],pack[i]);*/
-            
+
             PROTECT(name = NEW_CHARACTER(1));
             PROTECT(package = NEW_CHARACTER(1));
             SET_STRING_ELT(name, 0, COPY_TO_USER_STRING(packobj[idx+j]));
             SET_STRING_ELT(package, 0, COPY_TO_USER_STRING(pack[i]));
-            
+
             /* Set up autoloader call */
             PROTECT(alcall = allocVector(LANGSXP,3));
             SET_TAG(alcall, R_NilValue); /* just like do_ascall() does */
@@ -167,13 +167,13 @@ void autoloads(void){
             /* Setup delayedAssign call */
             SETCAR(CDR(dacall),name);
             SETCAR(CDR(CDR(dacall)),alcall);
-            
+
             R_tryEval(dacall,R_GlobalEnv,&errorOccurred);
             if (errorOccurred){
                 fprintf(stderr,"%s: Error calling delayedAssign!\n", programName);
                 exit(1);
             }
-            
+
             ptct += 3;
         }
     }
@@ -254,8 +254,8 @@ int readline_stdin(membuf_t *plb){
         lb->buf[lb->size-2] = '\0'; /* mark last char position */
         str = fgets((char*)lb->buf+offset,lb->size-offset,stdin);
 
-        /* EOF or error */ 
-        if (str == NULL){ 
+        /* EOF or error */
+        if (str == NULL){
             return (offset)? 1 : 0;
         }
 
@@ -268,7 +268,7 @@ int readline_stdin(membuf_t *plb){
             /* Yes. return */
             return 1;
         }
-    } while(1);	
+    } while(1);
 }
 
 int parse_eval(membuf_t *pmb, char *line, int lineno, int localverbose){
@@ -290,7 +290,7 @@ int parse_eval(membuf_t *pmb, char *line, int lineno, int localverbose){
         /* Loop is needed here as EXPSEXP might be of length > 1 */
         for(i = 0; i < length(cmdexpr); i++){
             ans = R_tryEval(VECTOR_ELT(cmdexpr, i),NULL, &errorOccurred);
-            if (errorOccurred) { 
+            if (errorOccurred) {
                 UNPROTECT(2);
                 return 1;
             }
@@ -340,9 +340,9 @@ void littler_InitTempDir()
     tmp = getenv("TMPDIR");		/* set tmp to TMPDIR, or TMP, or TEMP, or "/tmp" */
     if (tmp == NULL) {
         tmp = getenv("TMP");
-        if (tmp == NULL) { 
+        if (tmp == NULL) {
             tmp = getenv("TEMP");
-            if (tmp == NULL) 
+            if (tmp == NULL)
                 tmp = "/tmp";
         }
     }
@@ -366,7 +366,7 @@ void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
 }
 
 void showHelpAndExit() {
-    printf("\n" 						
+    printf("\n"
            "Usage: %s [options] [-|file]"
            "\n\n"
            "Launch GNU R to execute the R commands supplied in the specified file, or\n"
@@ -376,14 +376,14 @@ void showHelpAndExit() {
            "  -h, --help           Give this help list\n"
            "      --usage          Give a short usage message\n"
            "  -V, --version        Show the version number\n"
-           "  -v, --vanilla        Pass the '--vanilla' option to R\n"  
+           "  -v, --vanilla        Pass the '--vanilla' option to R\n"
            "  -t, --rtemp          Use per-session temporary directory as R does\n"
            "  -i, --interactive    Let interactive() return 'true' rather than 'false'\n"
            "  -q, --quick          Skip autoload / delayed assign of default libraries\n"
-           "  -p, --verbose        Print the value of expressions to the console\n"  
-           "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"	
-           "  -d, --datastdin      Prepend command to load 'X' as csv from stdin\n"	
-           "  -L, --libpath dir    Add directory to library path via '.libPaths(dir)'\n"	
+           "  -p, --verbose        Print the value of expressions to the console\n"
+           "  -l, --packages list  Load the R packages from the comma-separated 'list'\n"
+           "  -d, --datastdin      Prepend command to load 'X' as csv from stdin\n"
+           "  -L, --libpath dir    Add directory to library path via '.libPaths(dir)'\n"
            "  -e, --eval expr      Let R evaluate 'expr'\n"
            "\n\n",
            binaryName);
@@ -413,27 +413,27 @@ void showVersionAndExit() {
                    R_SVN_REVISION);
         }
     }
-    printf("\n\nCopyright (C) 2006 - 2016  Jeffrey Horner and Dirk Eddelbuettel\n"
+    printf("\n\nCopyright (C) 2006 - 2019  Jeffrey Horner and Dirk Eddelbuettel\n"
            "\n"
            "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
            "You are welcome to redistribute it under the terms of the\n"
            "GNU General Public License.  For more information about\n"
            "these matters, see http://www.gnu.org/copyleft/gpl.html.\n\n",
            binaryName);
-	exit(0);       
+    exit(0);
 }
 
 void showUsageAndExit() {
-    printf("\n" 						
+    printf("\n"
            "%s (aka '%s') can be used in four main modes.\n\n"
            "The first is via the so-called 'shebang' support it provides for GNU R.\n"
            "Suppose '%s' is installed in /usr/local/bin/%s. Then the first line of a\n"
            "script can be written as \"#!/usr/local/bin/%s\" and the rest of the file\n"
            "can contain standard R commands.  By setting executable permissions\n"
-           "on the file, one can now create executable R scripts.\n\n" 
+           "on the file, one can now create executable R scripts.\n\n"
            "The second is to supply a filename with commands that are to be\n"
            "evaluated.\n\n"
-           "The third use is in standard compound command-line expressions common\n" 
+           "The third use is in standard compound command-line expressions common\n"
            "under Unix (so called 'command pipes') as '%s' can take arguments\n"
            "from stdin if the special filename '-' is used to select stdin.\n\n"
            "The fourth use is in on-the-fly evaluation of R expressions supplied\n"
@@ -441,14 +441,14 @@ void showUsageAndExit() {
            "and calculator.\n\n"
            "You can provide configuration via file ${R_HOME}/etc/Rprofile.site,\n"
            "~/.Rprofile, /etc/littler.r or ~/.littler.r all of which are sourced\n"
-           "if present.\n\n"  
+           "if present.\n\n"
            "More documentation is provided in the '%s' manual page and via the\n"
            "tests directory in the sources.\n\n"
            "A number of examples are also available at\n"
            "http://dirk.eddelbuettel.com/code/littler.examples.html.\n\n",
-           binaryName, programName, binaryName, binaryName, binaryName,  
+           binaryName, programName, binaryName, binaryName, binaryName,
            programName, binaryName);
-    exit(0);       
+    exit(0);
 }
 
 /* set seed for tempfile()  */
@@ -485,7 +485,7 @@ int main(int argc, char **argv){
     char *datastdincmd = "X <- read.csv(file(\"stdin\"), stringsAsFactors=FALSE);";
 
     static struct option optargs[] = {
-        {"help",         no_argument,       NULL, 'h'}, 
+        {"help",         no_argument,       NULL, 'h'},
         {"usage",        no_argument,       0,    0},
         {"version",      no_argument,       NULL, 'V'},
         {"vanilla",      no_argument,       NULL, 'v'},
@@ -500,11 +500,11 @@ int main(int argc, char **argv){
         {0, 0, 0, 0}
     };
     while ((c = getopt_long(argc, argv, "+hVve:npl:L:tqid", optargs, &optpos)) != -1) {
-        switch (c) {	
+        switch (c) {
         case 0:				/* numeric 0 is code for a long option */
             /* printf ("Got option %s %d", optargs[optpos].name, optpos);*/
             switch (optpos) {		/* so switch on the position in the optargs struct */
-					/* cases 0, 2, and 3 can't happen as they are covered by the '-h', */ 
+					/* cases 0, 2, and 3 can't happen as they are covered by the '-h', */
 					/* '-V', and '-v' equivalences */
             case 1:
                 showUsageAndExit();
@@ -513,7 +513,7 @@ int main(int argc, char **argv){
                 verbose = 1;
                 break;
             default:
-                printf("Uncovered option position '%d'. Try `%s --help' for help\n", 
+                printf("Uncovered option position '%d'. Try `%s --help' for help\n",
                        optpos, programName);
                 exit(-1);
             }
@@ -527,10 +527,10 @@ int main(int argc, char **argv){
         case 'l':
             libstr = optarg;
             break;
-        case 'v':	
+        case 'v':
             vanilla=1;
             break;
-        case 'p':	
+        case 'p':
             verbose=1;
             break;
         case 'V':
@@ -579,7 +579,7 @@ int main(int argc, char **argv){
      * So call stat(1) on it, and if its a file we will treat it as such.
      */
     struct stat sbuf;
-    if (optind < argc && evalstr==NULL) { 
+    if (optind < argc && evalstr==NULL) {
         if ((strcmp(argv[optind],"-") != 0) && (stat(argv[optind],&sbuf) != 0)) {
             perror(argv[optind]);
             exit(1);
@@ -609,7 +609,7 @@ int main(int argc, char **argv){
 #endif
 
     littler_InitTempDir();			/* Set up temporary directoy */
-    
+
     Rf_initEmbeddedR(R_argc, R_argv);	/* Initialize the embedded R interpreter */
 
     R_ReplDLLinit(); 			/* this is to populate the repl console buffers */
@@ -650,7 +650,7 @@ int main(int argc, char **argv){
     if (!vanilla) {
         FILE *fp;
 
-        char rprofilesite[128]; 
+        char rprofilesite[128];
         snprintf(rprofilesite, 110, "%s/etc/Rprofile.site", getenv("R_HOME"));
         if ((fp = fopen(rprofilesite, "r")) != 0) {
             fclose(fp);             		/* don't actually need it */
@@ -660,7 +660,7 @@ int main(int argc, char **argv){
             source(rprofilesite);
         }
 
-        char dotrprofile[128]; 
+        char dotrprofile[128];
         snprintf(dotrprofile, 110, "%s/.Rprofile", getenv("HOME"));
         if ((fp = fopen(dotrprofile, "r")) != 0) {
             fclose(fp);             		/* don't actually need it */
@@ -693,7 +693,7 @@ int main(int argc, char **argv){
     if (libpathstr != NULL) {			/* if requested by user, set libPaths */
         char buf[128];
         membuf_t pb = init_membuf(512);
-        snprintf(buf, 127 - 12 - strlen(libpathstr), ".libPaths(\"%s\");", libpathstr); 
+        snprintf(buf, 127 - 12 - strlen(libpathstr), ".libPaths(\"%s\");", libpathstr);
         parse_eval(&pb, buf, 1, 0); 		/* evaluate this silently */
         destroy_membuf(pb);
     }
@@ -701,17 +701,17 @@ int main(int argc, char **argv){
     if (libstr != NULL) {			/* if requested by user, load libraries */
         char *ptr, *token, *strptr;
         char buf[128];
-        
+
         ptr = token = libstr;
         membuf_t pb = init_membuf(512);
         while (token != NULL) {
             token = strtok_r(ptr, ",", &strptr);
             ptr = NULL; 			/* after initial call strtok expects NULL */
             if (token != NULL) {
-                snprintf(buf, 127 - 27 - strlen(token), "suppressMessages(library(%s));", token); 
+                snprintf(buf, 127 - 27 - strlen(token), "suppressMessages(library(%s));", token);
                 parse_eval(&pb, buf, 1, 0); 	/* evaluate this silently */
             }
-        } 
+        }
         destroy_membuf(pb);
     }
 
@@ -723,12 +723,12 @@ int main(int argc, char **argv){
 
     /* Now determine which R code to evaluate */
     int exit_val = 0;
-    if (evalstr != NULL) {			
+    if (evalstr != NULL) {
         /* we have a command line expression to evaluate */
         membuf_t pb = init_membuf(1024);
         exit_val = parse_eval(&pb, evalstr, 1, verbose);
         destroy_membuf(pb);
-    } else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {	
+    } else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {
         /* call R function source(filename) */
         exit_val = source(argv[optind]);
     } else {
