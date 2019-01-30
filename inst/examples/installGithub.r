@@ -13,11 +13,11 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-r DEPREPO...] [-h] [-x] [-d DEPS] [-u UPDATE] [REPOS...]
+doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-r REPOS...] [GHREPOS...]
 
--r --deprepo DEPREPO repository to use to install required dependencies [default: https://cloud.r-project.org]
 -d --deps DEPS       install suggested dependencies as well? [default: NA]
 -u --update UPDATE   update dependencies? [default: TRUE]
+-r --repos REPOS     repository/repositories to use to install required dependencies [default: getOption]
 -h --help            show this help text
 -x --usage           show help and short example usage"
 
@@ -25,7 +25,7 @@ opt <- docopt(doc)			# docopt parsing
 
 if (opt$usage) {
     cat(doc, "\n\n")
-    cat("where REPOS... is one or more GitHub repositories.
+    cat("where GHREPOS... is one or more GitHub repositories.
 
 Examples:
   installGithub.r RcppCore/RcppEigen
@@ -41,6 +41,11 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
+if (opt$repos == "getOption") {
+    ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+    opt$repos <- getOption("repos")
+}
+
 opt$update <- as.logical(opt$update)
 
-invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update, repos = opt$deprepo)))
+invisible(sapply(opt$GHREPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update, repos = opt$repos)))

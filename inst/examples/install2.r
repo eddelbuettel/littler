@@ -12,9 +12,9 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [--error] [--] [PACKAGES ...]
+doc <- "Usage: install2.r [-r REPOS...] [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [--error] [--] [PACKAGES ...]
 
--r --repos REPO     repository to use, or NULL for file [default: getOption]
+-r --repos REPOS    repository/repositories to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
