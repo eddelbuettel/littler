@@ -62,7 +62,7 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
-if (opt$repos == "getOption") {
+if (length(opt$repos) == 1 && opt$repos == "getOption") {
     ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
     opt$repos <- getOption("repos")
 }
