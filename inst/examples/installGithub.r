@@ -13,8 +13,9 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [REPOS...]
+doc <- "Usage: installGithub.r [-r DEPREPO...] [-h] [-x] [-d DEPS] [-u UPDATE] [REPOS...]
 
+-r --deprepo DEPREPO repository to use to install required dependencies [default: @CRAN@]
 -d --deps DEPS       install suggested dependencies as well? [default: NA]
 -u --update UPDATE   update dependencies? [default: TRUE]
 -h --help            show this help text
@@ -42,4 +43,4 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 
 opt$update <- as.logical(opt$update)
 
-invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update)))
+invisible(sapply(opt$REPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update, repos = opt$deprepo)))
