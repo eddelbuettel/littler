@@ -27,8 +27,29 @@ if (opt$usage) {
     cat(doc, "\n\n")
     cat("where GHREPOS... is one or more GitHub repositories.
 
-Examples:
+Basic usage:
+
   installGithub.r RcppCore/RcppEigen
+
+Install multiple R packages from GitHub:
+
+  installGithub.r RcppCore/Rcpp RcppCore/RcppEigen
+
+Install multiple R packages from GitHub listing the packages on separate lines with some comments:
+
+  installGithub.r \
+    `## dependencies` \
+    RcppCore/Rcpp \
+    `## this is what we actually need` \
+    RcppCore/RcppEigen
+
+Installing a specific branch, tag or commit:
+
+  installGithub.r RcppCore/Rcpp@1.0.0
+
+Setting multiple R package repositories to install dependencies of the R package:
+
+  installGithub.r -r https://cloud.r-project.org -r https://eddelbuettel.github.io/drat RcppCore/RcppEigen
 
 installGithub.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
