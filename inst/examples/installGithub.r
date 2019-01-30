@@ -15,7 +15,7 @@ suppressMessages({
 ## configuration for docopt
 doc <- "Usage: installGithub.r [-r DEPREPO...] [-h] [-x] [-d DEPS] [-u UPDATE] [REPOS...]
 
--r --deprepo DEPREPO repository to use to install required dependencies [default: @CRAN@]
+-r --deprepo DEPREPO repository to use to install required dependencies [default: https://cloud.r-project.org]
 -d --deps DEPS       install suggested dependencies as well? [default: NA]
 -u --update UPDATE   update dependencies? [default: TRUE]
 -h --help            show this help text
