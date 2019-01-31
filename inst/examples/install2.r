@@ -12,9 +12,9 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: install2.r [-r REPO...] [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [--error] [--] [PACKAGES ...]
+doc <- "Usage: install2.r [-r REPOS...] [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [--error] [--] [PACKAGES ...]
 
--r --repos REPO     repository to use, or NULL for file [default: getOption]
+-r --repos REPOS    repository/repositories to use, or NULL for file [default: getOption]
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
@@ -49,12 +49,16 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
-## docopt results are characters, so if we meant NULL we have to set NULL
-if (opt$repos == "NULL")  {
-    opt$repos <- NULL
-} else if (opt$repos == "getOption") {
-    ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
-    opt$repos <- getOption("repos")
+if (length(opt$repos) == 1) {
+    ## docopt results are characters, so if we meant NULL we have to set NULL
+    if (opt$repos == "NULL")  {
+        opt$repos <- NULL
+    } else {
+        if (opt$repos == "getOption") {
+            ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+            opt$repos <- getOption("repos")
+        }
+    }
 }
 
 if (opt$ncpus == "getOption") {
