@@ -20,8 +20,9 @@ url <- "https://dailies.rstudio.com/rstudio/oss/xenial/x86_64"
 pg <- read_html(url(url))
 tb <- html_table(html_nodes(pg, "table"))[[1]]
 file <- tb[1,1]
-s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/"
+#s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/"
 #s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/"
+s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/"
 fileurl <- paste0(s3url, file)
 download.file(fileurl, file, method="wget")
 
