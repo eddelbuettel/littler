@@ -17,7 +17,7 @@ doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-r REPOS...] [GH
 
 -d --deps DEPS       install suggested dependencies as well? [default: NA]
 -u --update UPDATE   update dependencies? [default: TRUE]
--r --repos REPOS     repository/repositories to use to install required dependencies [default: getOption]
+-r --repos REPOS     repositor(y|ies) to use if deps required [default: getOption]
 -h --help            show this help text
 -x --usage           show help and short example usage"
 
