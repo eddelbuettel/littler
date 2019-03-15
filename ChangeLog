@@ -1,3 +1,10 @@
+2019-03-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.3.7
+
+	* configure.ac: Idem
+	* configure: Idem
+
 2019-03-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version 
@@ -21,7 +28,7 @@
 	* DESCRIPTION (Version, Date): Release 0.3.6
 
 	* configure.ac: Idem
-	* configgure: Idem
+	* configure: Idem
 
 	* inst/examples/install.r (installArg): Use explicit argument repos
 

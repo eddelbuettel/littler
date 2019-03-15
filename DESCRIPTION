@@ -1,8 +1,8 @@
 Package: littler
 Type: Package
 Title: R at the Command-Line via 'r'
-Version: 0.3.6.1
-Date: 2019-03-14
+Version: 0.3.7
+Date: 2019-03-15
 Author: Dirk Eddelbuettel and Jeff Horner
 Maintainer: Dirk Eddelbuettel <edd@debian.org>
 Description: A scripting and command-line front-end
