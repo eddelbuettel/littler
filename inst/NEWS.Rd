@@ -5,6 +5,15 @@
 
 \section{Changes in littler version 0.3.6 (2019-01-26)}{
   \itemize{
+    \item Changes in build system
+    \itemize{
+      \item The \code{AC_DEFINE} macro use rewritten to please R CMD check.
+    }
+  }
+}
+
+\section{Changes in littler version 0.3.6 (2019-01-26)}{
+  \itemize{
     \item Changes in examples
     \itemize{
       \item The scripts \code{install.r} and \code{install2.r} now support

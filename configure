@@ -3454,7 +3454,8 @@ $as_echo "yes" >&6; }
 if test -d ".git/"; then
     GITREVISION=`git log --format=fuller | head -6 | awk '/^commit / {print substr($2,1,7)}'`
     GITDATE=`git log --format=fuller | head -6 | awk '/^CommitDate: / {print $2, $3, $4, $5, $6, $7}'`
-    $as_echo "#define VERBOSE_BUILD 1" >>confdefs.h
+
+$as_echo "#define VERBOSE_BUILD 1" >>confdefs.h
 
 else
     GITREVISION=""

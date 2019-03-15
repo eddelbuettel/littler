@@ -111,7 +111,7 @@ R_PROG
 if test -d ".git/"; then
     GITREVISION=`git log --format=fuller | head -6 | awk '/^commit / {print substr($2,1,7)}'`
     GITDATE=`git log --format=fuller | head -6 | awk '/^CommitDate: / {print $2, $3, $4, $5, $6, $7}'`
-    AC_DEFINE(VERBOSE_BUILD)
+    AC_DEFINE([VERBOSE_BUILD],[1],[Verbose build with git revision and date information])
 else
     GITREVISION=""
     GITDATE=""
