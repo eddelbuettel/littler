@@ -1,7 +1,7 @@
 ---
 title: "Littler FAQ"
 author: "Dirk Eddelbuettel"
-date: "2018-01-06"
+date: "2019-03-23"
 output: 
   html_document:
     toc: true
@@ -13,7 +13,7 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-## Well, why?
+### Well, why?
 
 Glad you asked. When the initial work started, `Rscript` did not exist so
 there was no scripting tool. We take a small amount of pride into beating
@@ -27,7 +27,7 @@ faster](http://dirk.eddelbuettel.com/blog/2014/09/02/#littler-faster-at-doing-no
 And `r` is just to cool a command (in relation to the trusted `R`) so someone
 had to!
 
-## No Printing
+### No Printing
 
 In the very beginning of `littler`, we made an executive decision to _not_
 echo each command output when we evaluate commands in the read-evaluate-print
@@ -38,7 +38,7 @@ will add a `print()` or `cat()` as needed.  If you desire each step to
 printed, add a `-p` or `--verbose` argument.
 
 
-## No `.Renviron`
+### No `.Renviron`
 
 Another early decision was to make `r` start _faster_ than the alternatives.
 Our `r` is "just" a small little binary.  Whereas `R` and `Rscript` are
@@ -51,9 +51,43 @@ to modify the already running process_.  So if you want to source `Renviron`
 you could add an explicit `readEnviron()` to `~/.littler.r` or
 `/etc/littler/r`. 
 
-## Lower-case / upper-case
+### Lower-case / upper-case
 
 This is mostly an issue on macOS where the brain surgeons behind the OS
 decided that `r` is the same as `R`. What can we say?  On that OS you may
 need to rename the build to `lr` instead.  Please send your complaints to
 Cupertino, California. 
+
+### Adding the binary to your path
+
+When the package is installed from source, it displays 
+
+```
+*
+* new binary $(TGT) installed in bin/ subdirectory"
+* consider adding a symbolic link from, e.g., /usr/local/bin"
+* on OS X, you may have to name this 'lr' instead"
+* see the littler-faq vignette for more details"
+*
+```
+
+where the variable `$(TGT)` normally expands to `r`. As the text suggests you may 
+want to create a [symbolic link](https://en.wikipedia.org/wiki/Symbolic_link) from a
+directory in the to make the newly built binary available to users.  On Linux you 
+may do
+
+```
+cd /usr/local/bin 
+sudo ln -s /usr/local/lib/R/site-library/littler/bin/r .
+```
+
+to create a link for `r` in `/usr/local/bin`.  On macOS, as suggested, you may want
+
+```
+cd /usr/local/bin 
+sudo ln -s /usr/local/lib/R/site-library/littler/bin/r lr
+```
+
+to create a command `lr` instead; see the previous question as to why.  In either case
+adjust the source part of the `ln` command to where your binary is -- which R can tell 
+you via `system.file("bin", "r", package="littler")`.

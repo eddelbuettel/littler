@@ -7,7 +7,8 @@
         if (unname(Sys.which("r")) == "") { # nocov start
             packageStartupMessage("You could link to the 'r' binary installed in\n'",
                                   system.file("bin", "r", package="littler"), "'\n",
-                                  "from '/usr/local/bin' in order to use 'r' for scripting.")
+                                  "from '/usr/local/bin' in order to use 'r' for scripting.",
+                                  "See the 'vignette(\"littler-faq\")' for more details.")
         } # nocov end
     }
     if (Sys.info()[["sysname"]] == "Darwin") { # nocov start
@@ -15,7 +16,8 @@
         if (unname(Sys.which("lr")) == "") {
             packageStartupMessage("You could link to the 'r' binary installed in\n'",
                                   system.file("bin", "r", package="littler"), "'\n",
-                                  "as '/usr/local/bin/lr' in order to use 'lr' for scripting.")
+                                  "as '/usr/local/bin/lr' in order to use 'lr' for scripting.",
+                                  "See the 'vignette(\"littler-faq\")' for more details.")
         }
     } # nocov end
 }
