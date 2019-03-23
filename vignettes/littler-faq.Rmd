@@ -67,10 +67,11 @@ When the package is installed from source, it displays
 * new binary $(TGT) installed in bin/ subdirectory"
 * consider adding a symbolic link from, e.g., /usr/local/bin"
 * on OS X, you may have to name this 'lr' instead"
+* see the littler-faq vignette for more details"
 *
 ```
 
-where the variable `$(TGT)` normally expands to. As the text suggests you may 
+where the variable `$(TGT)` normally expands to `r`. As the text suggests you may 
 want to create a [symbolic link](https://en.wikipedia.org/wiki/Symbolic_link) from a
 directory in the to make the newly built binary available to users.  On Linux you 
 may do

@@ -14,13 +14,13 @@ PKG_LDFLAGS=@AM_LDFLAGS@ @EXTRA_LDFLAGS@
 
 RUN_NAMETOOL=@RUN_NAMETOOL@
 
-SRCS = littler.c 
+SRCS = littler.c
 TGT = r$(EXEEXT)
 
 # By setting OBJECTS to "" we avoid having littler.so built
 OBJECTS=
 
-all:    $(SHLIB) $(TGT) 
+all:    $(SHLIB) $(TGT)
 
 prog:   littler.c
 
@@ -36,6 +36,5 @@ $(TGT): $(SRCS)
 	@echo "* new binary $(TGT) installed in bin/ subdirectory"
 	@echo "* consider adding a symbolic link from, e.g., /usr/local/bin"
 	@echo "* on OS X, you may have to name this 'lr' instead"
+	@echo "* see the littler-faq vignette for more details"
 	@echo "*"
-
-
