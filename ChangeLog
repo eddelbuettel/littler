@@ -4,6 +4,9 @@
 
 	* src/Makevars.in: Reference new littler-faq entry in help display
 
+	* R/init.R (.onAttach): If 'r' ('lr') is not in path, displayed
+	message also references new entry in littler-faq vignette
+
 2019-03-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.7
