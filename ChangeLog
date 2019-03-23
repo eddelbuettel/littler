@@ -1,5 +1,7 @@
 2019-03-23  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Roll minor version
+
 	* vignettes/littler-faq.Rmd (vignette): New section on adding r to PATH
 
 	* src/Makevars.in: Reference new littler-faq entry in help display
