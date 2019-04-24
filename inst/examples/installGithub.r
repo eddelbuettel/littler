@@ -13,10 +13,11 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-r REPOS...] [GHREPOS...]
+doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-n NCPUS] [-r REPOS...] [GHREPOS...]
 
 -d --deps DEPS       install suggested dependencies as well? [default: NA]
 -u --update UPDATE   update dependencies? [default: TRUE]
+-n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
 -r --repos REPOS     repositor(y|ies) to use if deps required [default: getOption]
 -h --help            show this help text
 -x --usage           show help and short example usage"
@@ -62,6 +63,13 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- NA
 }
 
+if (opt$ncpus == "getOption") {
+    opt$ncpus <- getOption("Ncpus", 1L)
+} else if (opt$ncpus == "-1") {
+    ## parallel comes with R 2.14+
+    opt$ncpus <- max(1L, parallel::detectCores())
+}
+
 if (length(opt$repos) == 1 && opt$repos == "getOption") {
     ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
     opt$repos <- getOption("repos")
@@ -69,4 +77,4 @@ if (length(opt$repos) == 1 && opt$repos == "getOption") {
 
 opt$update <- as.logical(opt$update)
 
-invisible(sapply(opt$GHREPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update, repos = opt$repos)))
+invisible(sapply(opt$GHREPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update, repos = opt$repos, Ncpus = opt$ncpus)))
