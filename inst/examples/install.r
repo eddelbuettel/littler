@@ -5,7 +5,7 @@
 # Note that a more featureful version exists in install2.r
 # with an added dependency on the 'docopt' argument parser
 #
-# Copyright (C) 2006 - 2018  Dirk Eddelbuettel
+# Copyright (C) 2006 - 2019  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -15,16 +15,18 @@ if (is.null(argv) | length(argv) < 1) {
         message("* installing *source* package found in current working directory ...")
         argv <- "."
     } else {
-        cat("Usage: installr.r pkg1 [pkg2 pkg3 ...]\n\n")
+        cat("Usage: installr.r [.] | [pkg1 [pkg2 pkg3 ...]]\n\n")
         cat("Set environment variables REPOS and LIBLOC to overrride defaults.\n")
         cat("Installs pkg1, ... from existing files with matching extension.\n")
+        cat("Or installs pkg1, ... from existing packages in (known) repos.\n")
         cat("Use \".\" to install the package in current working directory.\n")
+        cat("If use in a working directory, \".\" can be omitted.\n")
         q()
     }
 }
 
 ## adjust as necessary, see help('download.packages')
-## littler can now read ~/.littler.r and /etc/littler,r to set this
+## littler can now read ~/.littler.r and /etc/littler.r to set this
 repos <- getOption("repos")
 ## NULL means install file, and we supported env var previously
 if (Sys.getenv("REPOS") == "NULL") repos = NULL
