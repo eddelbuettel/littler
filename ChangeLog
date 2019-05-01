@@ -1,6 +1,6 @@
 2019-04-30  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/install.r: Small documentation update
+	* inst/examples/install.r: Usage help display update
 
 2019-03-23  Dirk Eddelbuettel  <edd@debian.org>
 
