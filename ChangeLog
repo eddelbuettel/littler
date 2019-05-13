@@ -1,3 +1,8 @@
+2019-05-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installParallel.r: Potential replacement for
+	install.r which can install external repos in parallel
+
 2019-04-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install.r: Usage help display update
