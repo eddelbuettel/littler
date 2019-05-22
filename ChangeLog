@@ -1,3 +1,9 @@
+2019-05-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install.r: Extend to optional parallel installation
+	as tested in installedParallel.r
+	* inst/examples/installParallel.r: Removed now redundant file
+
 2019-05-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installParallel.r: Potential replacement for
