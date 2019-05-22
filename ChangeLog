@@ -1,5 +1,7 @@
 2019-05-22  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Roll minor version
+
 	* inst/examples/install.r: Extend to optional parallel installation
 	as tested in installedParallel.r
 	* inst/examples/installParallel.r: Removed now redundant file
