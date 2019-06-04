@@ -1,3 +1,7 @@
+2019-06-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install2.r: Extend to optional parallel installation
+
 2019-05-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version

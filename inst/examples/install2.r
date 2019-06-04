@@ -117,8 +117,30 @@ if (length(opt$PACKAGES)==0 && file.exists("DESCRIPTION") && file.exists("NAMESP
     opt$PACKAGES <- "."
 }
 
-sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
-       installOpts, opt$error, opt$skipinstalled, opt$ncpus)
+## helper function to for existing files with matching extension
+isMatchingFile <-
+    function(f) (file.exists(f) &&
+                 grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
+
+## check arguments for local files -- if none, then we can pass vector on
+isLocal <- sapply(opt$PACKAGES, isMatchingFile)
+
+## for any local sources loop explicitly as before, otherwise for remote
+## packages pass vector to install_packages2 which does the rest (and
+## possibly in parallel using up to ncpus)
+if (any(isLocal)) {
+    sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
+           installOpts, opt$error, opt$skipinstalled, opt$ncpus)
+} else {
+    install_packages2(pkgs = opt$PACKAGES,
+                      lib = opt$libloc,
+                      repos = opt$repos,
+                      dependencies = opt$dep,
+                      INSTALL_opts = installOpts,
+                      Ncpus = opt$ncpus,
+                      error = opt$error,
+                      skipinstalled = opt$skipinstalled)
+}
 
 ## clean up any temp file containing CRAN directory information
 sapply(list.files(path=tempdir(), pattern="^(repos|libloc).*\\.rds$", full.names=TRUE), unlink)
