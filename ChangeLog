@@ -1,3 +1,7 @@
+2019-06-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tt.r: Initial steps towards a tinytest wrapper
+
 2019-06-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install2.r: Extend to optional parallel installation
