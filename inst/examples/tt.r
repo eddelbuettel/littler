@@ -39,6 +39,7 @@ Examples:
   tt.r -f testfile.R                  # test the file 'testfile.R'
   tt.t -d testdir                     # test all files in the directory 'testdir'
   tt.r -p testpkg                     # test the (installed) package 'testpkg'
+  tt.r                                # run test_all() iff DESCRIPTION && inst/tinytest/
 
 tt.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
@@ -55,4 +56,6 @@ if (opt$all) {
     run_test_dir(opt$ARG)
 } else if (opt$package) {
     test_package(opt$ARG)
+} else if (file.exists("DESCRIPTION") && dir.exists("inst/tinytest")) {
+    test_all(".")
 }
