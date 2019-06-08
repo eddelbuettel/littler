@@ -48,7 +48,7 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 if (opt$all) {
     test_all(if (length(opt$ARG) == 0) "." else opt$ARG)
 } else if (opt$build) {
-    build_install_test(opt$ARG)
+    build_install_test(if (length(opt$ARG) == 0) "." else opt$ARG)
 } else if (opt$file) {
     run_test_file(opt$ARG)
 } else if (opt$directory) {
