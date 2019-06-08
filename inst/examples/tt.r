@@ -19,13 +19,14 @@ suppressMessages({
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-f] [-d] [-p] [ARG...]
+doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-f] [-d] [-p] [-s] [ARG...]
 
 -a --all            use test_all mode [default: FALSE]
 -b --build          use build-install-test mode [default: FALSE]
 -f --file           use file mode [default: FALSE]
 -d --directory      use directory mode [default: FALSE]
 -p --package        use package mode [default: FALSE]
+-s --silent         use silent and do not print result [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -46,16 +47,19 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
+res <- NULL
 if (opt$all) {
-    test_all(if (length(opt$ARG) == 0) "." else opt$ARG)
+    res <- test_all(if (length(opt$ARG) == 0) "." else opt$ARG)
 } else if (opt$build) {
-    build_install_test(if (length(opt$ARG) == 0) "." else opt$ARG)
+    res <- build_install_test(if (length(opt$ARG) == 0) "." else opt$ARG)
 } else if (opt$file) {
-    run_test_file(opt$ARG)
+    res <- run_test_file(opt$ARG)
 } else if (opt$directory) {
-    run_test_dir(opt$ARG)
+    res <- run_test_dir(opt$ARG)
 } else if (opt$package) {
-    test_package(opt$ARG)
+    res <- test_package(opt$ARG)
 } else if (file.exists("DESCRIPTION") && dir.exists("inst/tinytest")) {
-    test_all(".")
+    res <- test_all(".")
 }
+
+if (!opt$silent && !is.null(res)) print(res)
