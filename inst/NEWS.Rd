@@ -3,7 +3,31 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.6 (2019-01-26)}{
+\section{Changes in littler version 0.3.8 (2019-06-09)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item The \code{install.r} and \code{install2.r} scripts now use
+      parallel installation using \code{options{Ncpu}} on remote packages.
+      \item The \code{install.r} script has an expanded help text
+      mentioning the environment variables it considers.
+      \item A new script \code{tt.t} was added to support \code{tinytest}.
+      \item The rhub checking scripts now all suppress builds of manual
+      and vignettes as asking for working latex appears to be too much. 
+    }
+    \item Changes in package
+    \itemize{
+      \item On startup checks if \code{r} is in \code{PATH} and if not
+      references new FAQ entry; text from \code{Makevars} mentions it too.
+    }
+    \item Changes in documentation
+    \itemize{
+      \item The FAQ vignette now details setting \code{r} to \code{PATH}.
+    }
+  }
+}
+
+\section{Changes in littler version 0.3.7 (2019-03-15)}{
   \itemize{
     \item Changes in examples
     \itemize{

@@ -11,3 +11,4 @@ deprecated
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^.*\.tar\.gz$
+local

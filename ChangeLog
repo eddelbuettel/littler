@@ -1,5 +1,10 @@
 2019-06-09  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Release 0.3.8
+
+	* configure.ac: Idem
+	* configure: Idem
+
 	* inst/examples/c4c.r: Set check_args="--no-manual --no-vignettes" as
 	we cannot assume rhub to have functioning latex infrastructure
 	* inst/examples/cow.r: Ditto

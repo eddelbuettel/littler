@@ -1,7 +1,7 @@
 ---
 title: "Littler Examples"
 author: "Dirk Eddelbuettel"
-date: "Originally written 2015-10-28; Updated 2017-12-10, 2018-05-24 and 2019-01-06"
+date: "Originally written 2015-10-28; Updated 2017-12-10, 2018-05-24, 2019-01-06 and 2019-06-09"
 output: 
   html_document:
     toc: true
@@ -23,7 +23,8 @@ We use `$` to denote a shell (_i.e._ terminal) prompt.
 ## Simple Direct Command-line Use
 
 [littler](http://dirk.eddelbuettel.com/code/littler.html) can be used
-directly on the command-line just like, say, `bc`: 
+directly on the command-line just like, say, `bc`, easily consuming standard
+input from a pipe: 
 
 ```bash
 $ echo 'cat(pi^2,"\n")' | r
@@ -69,8 +70,7 @@ which produces something like
 ```
 
 As we saw in the preceding example, the program can also be shortened like
-using the new `-d` option which reads 
-from stdin and assigns to a `data.frame` named `X`. 
+using the new `-d` option which reads from stdin and assigns to a `data.frame` named `X`. 
 
 And, last but not least, this (somewhat unwieldy) expression can be stored in
 a helper script (where we now switch to using an explicit `readLines()` on `stdin`):
@@ -120,7 +120,8 @@ $ install.r digest RcppCNPy
 
 It conveniently installs all dependencies, and uses the chosen target
 directory, all while keeping my R prompt (or prompts with multiple sessions)
-free to do other things.
+free to do other things.  Also, if used with `options("Ncpu")` set, then
+(remote CRAN) packages will be installed in parallel.
 
 ## install2.r: With Cmdline Parsing
 
@@ -138,7 +139,7 @@ $ install2.r -- --data-compress=bzip2 stringdist         # prefer bz2 compressio
 
 Another _very_ useful option is `-n N` or `--ncpus N` which will parallelize
 the installation across `N` processes.  This can be set automagically by
-setting `options(Ncpus)`.
+setting `options("Ncpus")`.
 
 ### Installing From Sources
 
