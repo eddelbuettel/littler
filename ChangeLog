@@ -1,3 +1,10 @@
+2019-06-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/c4c.r: Set check_args="--no-manual --no-vignettes" as
+	we cannot assume rhub to have functioning latex infrastructure
+	* inst/examples/cow.r: Ditto
+	* inst/examples/rchk.r: Ditto
+
 2019-06-08  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/tt.r: Initial steps towards a tinytest wrapper
