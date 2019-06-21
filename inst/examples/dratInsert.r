@@ -37,7 +37,7 @@ if (is.null(opt$commit)) opt$commit <- FALSE
 
 ## helper function
 installArg <- function(p, repo, commit) {
-    if (!file.exists(p)) stop("No file '", p, "' found. Aborting.", .Call=FALSE)
+    if (!file.exists(p)) stop("No file '", p, "' found. Aborting.", call.=FALSE)
     insertPackage(p, repo, commit)
 }
 

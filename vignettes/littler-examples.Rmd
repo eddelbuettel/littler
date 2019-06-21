@@ -409,7 +409,7 @@ library(rmarkdown)
 
 ## helper function 
 renderArg <- function(p) {
-    if (!file.exists(p)) stop("No file '", p, "' found. Aborting.", .Call=FALSE)
+    if (!file.exists(p)) stop("No file '", p, "' found. Aborting.", call.=FALSE)
     render(p)
 }
 
