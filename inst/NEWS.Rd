@@ -3,6 +3,17 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+
+\section{Changes in littler version 0.3.9 (2019-xx-yy)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item The use of \code{call.} in \code{stop()} was corrected
+      (Stefan Widgren in \ghpr{72}).
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.8 (2019-06-09)}{
   \itemize{
     \item Changes in examples

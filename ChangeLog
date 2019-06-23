@@ -1,3 +1,13 @@
+2019-06-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+2019-06-21  Stefan Widgren  <stefan.widgren@gmail.com>
+
+	* inst/examples/dratInsert.r: Correct use of call. in stop()
+	* inst/examples/render.r: Idem
+	* vignettes/littler-examples.Rmd: Idem
+
 2019-06-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.8
