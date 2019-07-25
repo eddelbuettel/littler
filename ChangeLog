@@ -1,3 +1,7 @@
+2019-07-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/cos.r: New 'rhub: check on Solaris' helper
+
 2019-06-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
