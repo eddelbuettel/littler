@@ -1,5 +1,7 @@
 2019-08-25  Dirk Eddelbuettel  <edd@debian.org>
 
+	* inst/examples/compactpdf.r: New simple helper script
+
 	* inst/examples/build.r: Add '--compact-vignettes --resave-data'
 
 2019-07-24  Dirk Eddelbuettel  <edd@debian.org>
