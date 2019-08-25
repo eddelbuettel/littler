@@ -1,10 +1,10 @@
 #!/usr/bin/env r
-#
-# A simple example to builds a source tar.gz file
-#
-# Copyright (C) 2017         Dirk Eddelbuettel
-#
-# Released under GPL (>= 2)
+##
+##  A simple example to builds a source tar.gz file
+##
+##  Copyright (C) 2017 - 2019  Dirk Eddelbuettel
+##
+##  Released under GPL (>= 2)
 
 ## load docopt package from CRAN
 library(docopt)
@@ -25,4 +25,6 @@ if (length(opt$PACKAGES) == 0) opt$PACKAGES <- "." 	# default argument current d
 
 argv <- if (opt$fast) c("--no-build-vignettes", "--no-manual", opt$PACKAGES) else opt$PACKAGES
 
-tools:::.build_packages(argv, no.q=interactive())
+extraargs <- c("--compact-vignettes", "--resave-data", argv)
+
+tools:::.build_packages(extraargs, no.q=interactive())
