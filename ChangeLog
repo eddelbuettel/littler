@@ -1,3 +1,7 @@
+2019-08-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tt.r: Support tinytest side effects and npus
+
 2019-08-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/compactpdf.r: New simple helper script

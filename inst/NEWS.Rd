@@ -10,6 +10,10 @@
     \itemize{
       \item The use of \code{call.} in \code{stop()} was corrected
       (Stefan Widgren in \ghpr{72}).
+      \item New script \code{cos.r} to check (at rhub) on Solaris.
+      \item New script \code{compactpdf.r} to compact pdf files.
+      \item The \code{build.r} script now compacts vignettes and resaves
+      data.
     }
   }
 }

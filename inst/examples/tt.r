@@ -19,14 +19,16 @@ suppressMessages({
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-f] [-d] [-p] [-s] [ARG...]
+doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-d] [-f] [-n NCPUS] [-p] [-s] [-z] [ARG...]
 
 -a --all            use test_all mode [default: FALSE]
 -b --build          use build-install-test mode [default: FALSE]
--f --file           use file mode [default: FALSE]
 -d --directory      use directory mode [default: FALSE]
+-f --file           use file mode [default: FALSE]
+-n --ncpus NCPUS    use 'ncpus' in parallel [default: getOption]
 -p --package        use package mode [default: FALSE]
 -s --silent         use silent and do not print result [default: FALSE]
+-z --effects        suppress side effects [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -47,19 +49,30 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
+sideeffects <- if (opt$effects) FALSE else TRUE       # by default, use side effects
+                                        #ncpu <- if (opt$ncpu) as.integer(opt$ncpu) else getOption("Ncpus", 1)
+
+if (opt$ncpus == "getOption") {
+    opt$ncpus <- getOption("Ncpus", 1L)
+} else if (opt$ncpus == "-1") {
+    ## parallel comes with R 2.14+
+    opt$ncpus <- max(1L, parallel::detectCores())
+}
+
+
 res <- NULL
 if (opt$all) {
-    res <- test_all(if (length(opt$ARG) == 0) "." else opt$ARG)
+    res <- test_all(if (length(opt$ARG) == 0) "." else opt$ARG, side_effects=sideeffects)
 } else if (opt$build) {
-    res <- build_install_test(if (length(opt$ARG) == 0) "." else opt$ARG)
+    res <- build_install_test(if (length(opt$ARG) == 0) "." else opt$ARG, side_effects=sideeffects, ncpu=opt$ncpus)
 } else if (opt$file) {
-    res <- run_test_file(opt$ARG)
+    res <- run_test_file(opt$ARG, side_effects=sideeffects)
 } else if (opt$directory) {
-    res <- run_test_dir(opt$ARG)
+    res <- run_test_dir(opt$ARG, side_effects=sideeffects)
 } else if (opt$package) {
-    res <- test_package(opt$ARG)
+    res <- test_package(opt$ARG, side_effects=sideeffects, ncpu=opt$ncpus)
 } else if (file.exists("DESCRIPTION") && dir.exists("inst/tinytest")) {
-    res <- test_all(".")
+    res <- test_all(".", side_effects=sideeffects)
 }
 
 if (!opt$silent && !is.null(res)) print(res)
