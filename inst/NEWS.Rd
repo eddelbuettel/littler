@@ -26,7 +26,7 @@
       parallel installation using \code{options{Ncpu}} on remote packages.
       \item The \code{install.r} script has an expanded help text
       mentioning the environment variables it considers.
-      \item A new script \code{tt.t} was added to support \code{tinytest}.
+      \item A new script \code{tt.r} was added to support \code{tinytest}.
       \item The rhub checking scripts now all suppress builds of manual
       and vignettes as asking for working latex appears to be too much. 
     }

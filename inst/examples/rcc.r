@@ -10,13 +10,14 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--repos REPO] [PATH...]
+doc <- "Usage: rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--repos REPO] [--erroron ERRON] [PATH...]
 
 -c --as-cran          should '--as-cran' be added to ARGS [default: FALSE]
 -a --args ARGS        additional arguments to be passed to 'R CMD CHECK' [default: ]
 -l --libpath LIBP     additional library path to be used by 'R CMD CHECK' [default: ]
 -r --repos REPO       additional repositories to be used by 'R CMD CHECK' [default: ]
 -f --fast             should vignettes and manuals be skipped [default: FALSE]
+-e --erroron ERRON    whether to throw an error on failure [default: never]
 -q --quiet            should 'rcmdcheck' be called qietly [default: FALSE]
 -h --help             show this help text
 -x --usage            show help and short example usage"
@@ -33,6 +34,15 @@ rcc.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
+
+erroron <- switch(opt$erroron,
+                  never   = "never",
+                  error   = "error",
+                  warning = "warning",
+                  note    = "note",
+                  "badarg")
+if (erroron=="badarg")
+    stop("Inadmissable argument for '--erroron' option.", call.=FALSE)
 
 if (is.null(opt$args)) {         # special treatment for --args and -c
     if (opt$`as-cran`) {
@@ -58,14 +68,17 @@ if (requireNamespace("rcmdcheck", quietly=TRUE) == FALSE)
 
 suppressMessages(library(rcmdcheck))
 
-rccwrapper <- function(pa, qu, ar, li, re) {
-    rcmdcheck(path=pa, quiet=qu, args=ar, libpath=li, repos=re)
+rccwrapper <- function(pa, qu, ar, li, re, eo) {
+    rcmdcheck(path=pa, quiet=qu, args=ar, libpath=li, repos=re, error_on=eo)
 }
 
-sapply(opt$PATH,                        # iterate over arguments
-       rccwrapper,                      # calling 'rcmdcheck()' with arguments
-       opt$quiet,                       # quiet argument, default false
-       opt$args,			# args arguments, possibly with --as-cran
-       opt$libpath,			# libpath argument
-       opt$repos)			# repos argument
+rc <- sapply(opt$PATH,                  # iterate over arguments
+             rccwrapper,                # calling 'rcmdcheck()' with arguments
+             opt$quiet,                 # quiet argument, default false
+             opt$args,			# args arguments, possibly with --as-cran
+             opt$libpath,		# libpath argument
+             opt$repos,			# repos argument
+             erroron,                   # error_on argument
+             simplify=FALSE)
 
+q(status=rc[[1]]$status)
