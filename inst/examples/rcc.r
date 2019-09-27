@@ -80,5 +80,5 @@ rc <- sapply(opt$PATH,                  # iterate over arguments
              opt$repos,			# repos argument
              erroron,                   # error_on argument
              simplify=FALSE)
-
-q(status=rc[[1]]$status)
+status <- max(sapply(rc, `[[`, "status"))
+q(status=status)

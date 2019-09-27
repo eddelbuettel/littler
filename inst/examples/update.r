@@ -3,7 +3,7 @@
 # A simple example to update packages in /usr/local/lib/R/site-library
 # Parameters are easily adjustable
 #
-# Copyright (C) 2006 - 2018  Dirk Eddelbuettel
+# Copyright (C) 2006 - 2019  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -14,7 +14,7 @@ library(docopt)
 doc <- "Usage: update.r [-r REPO...] [-l LIBLOC] [-n NCPUS] [-h] [-x]
 
 -r --repos REPO     repository to use, or NULL for file [default: getOption]
--l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
+-l --libloc LIBLOC  path to examine for packages to update [default: NULL]
 -n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
 -h --help           show this help text
 -x --usage          show help and short example usage"
@@ -36,10 +36,10 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 
 ## docopt results are characters, so if we meant NULL we have to set NULL
 if (opt$repos == "NULL")  {
-    opt$repos = NULL
+    opt$repos <- NULL
 } else if (opt$repos == "getOption") {
     ## adjust as necessary, see help('download.packages')
-    opt$repos = getOption("repos")
+    opt$repos <- getOption("repos")
 }
 
 if (opt$ncpus == "getOption") {
@@ -47,6 +47,10 @@ if (opt$ncpus == "getOption") {
 } else if (opt$ncpus == "-1") {
     ## parallel comes with R 2.14+
     opt$ncpus <- max(1L, parallel::detectCores())
+}
+
+if (opt$libloc == "NULL") {
+    opt$libloc <- NULL
 }
 
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
