@@ -7,7 +7,7 @@
 # Released under GPL (>= 2)
 
 if (!requireNamespace("tinytest", quietly=TRUE))
-    stop("Please install 'inytest' from CRAN.", call. = FALSE)
+    stop("Please install 'tinytest' from CRAN.", call. = FALSE)
 
 ## load docopt and tinytest from CRAN
 suppressMessages({
