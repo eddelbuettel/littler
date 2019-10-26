@@ -2,7 +2,7 @@
 #
 # Another example to convert markdown
 #
-# Copyright (C) 2016  Dirk Eddelbuettel
+# Copyright (C) 2016 - 2019  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -10,8 +10,9 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: render.r [-h] [-x] [FILES...]
+doc <- "Usage: render.r [-c] [-h] [-x] [FILES...]
 
+-c --compact         compact pdf file [default: FALSE]
 -h --help            show this help text
 -x --usage           show help and short example usage"
 
@@ -33,6 +34,10 @@ library(rmarkdown)
 renderArg <- function(p) {
     if (!file.exists(p)) stop("No file '", p, "' found. Aborting.", call.=FALSE)
     render(p)
+    if (opt$compact) {
+        s <- gsub(".Rmd$", ".pdf", p)
+        if (file.exists(s)) tools::compactPDF(s, gs_quality="ebook")
+    }
 }
 
 ## render files using helper function

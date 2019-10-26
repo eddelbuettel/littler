@@ -1,5 +1,7 @@
 2019-10-26  Dirk Eddelbuettel  <edd@debian.org>
 
+	* inst/examples/render.r: Add pdf compacting option
+
 	* inst/examples/compactpdf.r: Slightly improved file logic
 
 	* inst/examples/kitten.r: Add tinytest::puppy support via '-p' option
