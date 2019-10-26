@@ -1,5 +1,7 @@
 2019-10-26  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Roll minor version
+
 	* inst/examples/kitten.r: Now with puppy love for tinytest
 
 	* inst/examples/pkg2bibtex.r: New helper for bibtex package records
