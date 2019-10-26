@@ -28,7 +28,11 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 }
 
 if (length(opt$PATH) == 0) {
-    opt$PATH <- "."
+    opt$PATH <- list.files(".", pattern=".pdf$")
 }
 
-sapply(opt$PATH, function(p) tools::compactPDF(p, gs_quality="ebook"))
+compactFunction <- function(f) {
+    tools::compactPDF(f, gs_quality="ebook")
+}
+
+sapply(opt$PATH, compactFunction)
