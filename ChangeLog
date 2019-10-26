@@ -1,5 +1,7 @@
 2019-10-26  Dirk Eddelbuettel  <edd@debian.org>
 
+	* inst/examples/sweave.r: New helper script to sweave (and compact)
+
 	* inst/examples/render.r: Add pdf compacting option
 
 	* inst/examples/compactpdf.r: Slightly improved file logic
