@@ -3,8 +3,9 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: kitten.r [-h] [-x] PACKAGE
+doc <- "Usage: kitten.r [-p] [-h] [-x] PACKAGE
 
+-p --puppy	      invoke tinytest::puppy to set up testing
 -h --help             show this help text
 -x --usage            show help and short example usage"
 
@@ -22,3 +23,7 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 
 ## maybe support path, author, maintainer, email, license, ...
 pkgKitten::kitten(opt$PACKAGE)
+if (opt$puppy) {
+    stopifnot(requireNamespace("tinytest", quietly=TRUE))
+    tinytest::puppy(opt$PACKAGE)
+}
