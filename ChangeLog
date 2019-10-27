@@ -1,3 +1,10 @@
+2019-10-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Release 0.3.9
+
+	* configure.ac: Idem
+	* configure: Idem
+
 2019-10-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
@@ -40,10 +47,6 @@
 	* inst/examples/compactpdf.r: New simple helper script
 
 	* inst/examples/build.r: Add '--compact-vignettes --resave-data'
-
-2019-08-23  Dirk Eddelbuettel  <edd@debian.org>
-	
-	* inst/examples/pkg2bibtex.r: Show a per-package bibtex record
 
 2019-07-24  Dirk Eddelbuettel  <edd@debian.org>
 

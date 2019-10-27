@@ -14,6 +14,15 @@
       \item New script \code{compactpdf.r} to compact pdf files.
       \item The \code{build.r} script now compacts vignettes and resaves
       data.
+      \item The \code{tt.r} script now supports parallel tests and side
+      effects.
+      \item The \code{rcc.r} script can now report error codes.
+      \item The `--libloc` option to \code{update.r} was updated.
+      \item The \code{render.r} script can optionally compact pdfs.
+      \item New script \code{sweave.r} to render (and compact) pdfs.
+      \item New script \code{pkg2bibtex.r} to show bibtex entries.
+      \item The \code{kitten.r} script has a new option \code{--puppy}
+      to add \pkg{tinytest} support in purring packages.
     }
   }
 }
