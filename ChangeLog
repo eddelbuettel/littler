@@ -1,3 +1,7 @@
+2019-10-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/update.r: Now only considers writeable directories 
+
 2019-10-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Release 0.3.9

@@ -3,8 +3,16 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.10 (2020-xx-yy)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item The \code{update.r} script only considers writeable directories.
+    }
+  }
+}
 
-\section{Changes in littler version 0.3.9 (2019-xx-yy)}{
+\section{Changes in littler version 0.3.9 (2019-10-27)}{
   \itemize{
     \item Changes in examples
     \itemize{

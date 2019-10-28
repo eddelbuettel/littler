@@ -50,7 +50,10 @@ if (opt$ncpus == "getOption") {
 }
 
 if (opt$libloc == "NULL") {
-    opt$libloc <- NULL
+    ## NULL corresponds to .libPaths() but some directories may be non-writeable
+    ## so we filter out the ones where we can write and use only those
+    canWrite <- function(d) file.access(d, mode=2) == 0
+    opt$libloc <- Filter(canWrite, .libPaths())
 }
 
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
