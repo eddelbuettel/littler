@@ -1,3 +1,7 @@
+2019-11-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rcc.r: Set _R_CHECK_TESTS_NLINES_=0 for full logs
+
 2019-10-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/update.r: Now only considers writeable directories 

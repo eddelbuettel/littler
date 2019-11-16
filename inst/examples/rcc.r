@@ -68,6 +68,8 @@ if (requireNamespace("rcmdcheck", quietly=TRUE) == FALSE)
 
 suppressMessages(library(rcmdcheck))
 
+Sys.setenv("_R_CHECK_TESTS_NLINES_"="0")		# ensure all errors shown
+
 rccwrapper <- function(pa, qu, ar, li, re, eo) {
     rcmdcheck(path=pa, quiet=qu, args=ar, libpath=li, repos=re, error_on=eo)
 }
