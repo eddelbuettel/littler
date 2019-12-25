@@ -57,6 +57,8 @@ if (opt$ncpus == "getOption") {
 } else if (opt$ncpus == "-1") {
     ## parallel comes with R 2.14+
     opt$ncpus <- max(1L, parallel::detectCores())
+} else {
+    opt$ncpus <- as.integer(opt$ncpus)
 }
 
 
