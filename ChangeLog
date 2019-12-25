@@ -1,3 +1,10 @@
+2019-12-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install.r: Set _R_SHLIB_STRIP_ to 'true'
+	* inst/examples/install2.r: Idem
+	* inst/examples/installGitHub: Idem
+	* inst/examples/installRepo: Idem
+
 2019-12-01  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/tt.r: Correct ncpu fallback setting

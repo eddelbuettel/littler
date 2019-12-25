@@ -56,6 +56,9 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
+## ensure installation is stripped
+Sys.setenv("_R_SHLIB_STRIP_"="true")
+
 if (opt$deps == "TRUE" || opt$deps == "FALSE") {
     opt$deps <- as.logical(opt$deps)
 } else if (opt$deps == "NA") {

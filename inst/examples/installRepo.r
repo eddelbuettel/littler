@@ -46,6 +46,9 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 }
 if (is.null(opt$SRC)) q("no")           # need optional args to support -x
 
+## ensure installation is stripped
+Sys.setenv("_R_SHLIB_STRIP_"="true")
+
 ## installation given selected options and arguments
 switch(tolower(opt$repos),
        github = install_github(opt$SRC, lib=opt$libloc, dependencies=opt$deps),

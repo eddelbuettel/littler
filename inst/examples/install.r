@@ -25,8 +25,11 @@ if (is.null(argv) | length(argv) < 1) {
     }
 }
 
+## ensure installation is stripped
+Sys.setenv("_R_SHLIB_STRIP_"="true")
+
 ## adjust as necessary, see help('download.packages')
-## littler can now read ~/.littler.r and /etc/littler,r to set this
+## littler can now read ~/.littler.r and /etc/littler.r to set this
 repos <- getOption("repos")
 ## NULL means install file, and we supported env var previously
 if (Sys.getenv("REPOS") == "NULL") repos = NULL

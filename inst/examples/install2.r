@@ -68,6 +68,9 @@ if (opt$ncpus == "getOption") {
     opt$ncpus <- max(1L, parallel::detectCores())
 }
 
+## ensure installation is stripped
+Sys.setenv("_R_SHLIB_STRIP_"="true")
+
 install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
     e <- NULL
     capture <- function(e) {
