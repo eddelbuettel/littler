@@ -56,6 +56,9 @@ if (opt$libloc == "NULL") {
     opt$libloc <- Filter(canWrite, .libPaths())
 }
 
+## ensure installation is stripped
+Sys.setenv("_R_SHLIB_STRIP_"="true")
+
 ## simply unrolling of all unlink over all files 'repos*' in $TMP
 clearCache <- function() {
     sapply(list.files(path=tempdir(), pattern="*rds$", full.names=TRUE), unlink)
