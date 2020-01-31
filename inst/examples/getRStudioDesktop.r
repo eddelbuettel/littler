@@ -2,7 +2,7 @@
 #
 # A simple example to install RStudio Desktop
 #
-# Copyright (C) 2014 - 2018  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2020  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 #
@@ -16,7 +16,8 @@ setwd("/tmp")                           # go to /tmp
 
 #url <- "https://dailies.rstudio.com/rstudio/oss/xenial/amd64/"
 #url <- "https://dailies.rstudio.com/rstudio/oss/ubuntu/amd64/"
-url <- "https://dailies.rstudio.com/rstudio/oss/xenial/x86_64"
+#url <- "https://dailies.rstudio.com/rstudio/oss/xenial/x86_64"
+url <- "https://dailies.rstudio.com/rstudio/oss/bionic/x86_64"
 pg <- read_html(url(url))
 tb <- html_table(html_nodes(pg, "table"))[[1]]
 file <- tb[1,1]
