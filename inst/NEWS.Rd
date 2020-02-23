@@ -8,6 +8,11 @@
     \item Changes in examples
     \itemize{
       \item The \code{update.r} script only considers writeable directories.
+      \item The \code{rcc.r} script tries to report full logs by setting
+      \code{_R_CHECK_TESTS_NLINES_=0}. 
+      \item The \code{tt.r} script has an improved \code{ncpu} fallback.
+      \item Several installation and updating scripts set
+      \code{_R_SHLIB_STRIP_} to \code{TRUE}
     }
   }
 }

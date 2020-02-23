@@ -1,3 +1,7 @@
+2020-02-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installBioc.r: New helper script for BioConductor
+
 2019-12-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/update.r: Set _R_SHLIB_STRIP_ to 'true'
@@ -48,7 +52,7 @@
 
 	* inst/examples/sweave.r: New helper to 'Sweave' Rnw files, with
 	automatic call to compactPDF (and option to suppress this)
-	
+
 	* inst/examples/render.r: Add support for compactPDF, and option not to
 
 2019-09-26  Dirk Eddelbuettel  <edd@debian.org>
