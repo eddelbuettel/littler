@@ -20,7 +20,7 @@ there was no scripting tool. We take a small amount of pride into beating
 `Rscript` narrowly to a first release.  Of course, by now, `Rscript` is more
 widely used as it ships with every R installation but we still have some
 aspects we like about `r`: it is simpler and shorter, deals (in our biased)
-view more sanely with command-line arguments via the `argv` vectior, always
+view more sanely with command-line arguments via the `argv` vector, always
 loaded package `methods` (which `Rscript` finally came around to a good
 decade later) and [still starts
 faster](http://dirk.eddelbuettel.com/blog/2014/09/02/#littler-faster-at-doing-nothing).

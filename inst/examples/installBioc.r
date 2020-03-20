@@ -37,4 +37,7 @@ if (!requireNamespace("BiocManager", quietly=TRUE)) {
 ## ensure installation is stripped
 Sys.setenv("_R_SHLIB_STRIP_"="true")
 
+## set .libPaths()
+.libPaths(opt$lib)
+
 BiocManager::install(opt$PACKAGES, update=FALSE, ask=FALSE)
