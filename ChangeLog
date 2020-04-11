@@ -1,3 +1,12 @@
+2020-04-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+2020-04-09  Sergio Oller  <sergioller@gmail.com>
+
+	* inst/examples/install2.r: Generalize --error behaviour by ignoring
+	two more possible sources of error
+
 2020-03-20  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version

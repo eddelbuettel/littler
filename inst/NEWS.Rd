@@ -12,7 +12,10 @@
       \code{_R_CHECK_TESTS_NLINES_=0}. 
       \item The \code{tt.r} script has an improved \code{ncpu} fallback.
       \item Several installation and updating scripts set
-      \code{_R_SHLIB_STRIP_} to \code{TRUE}
+      \code{_R_SHLIB_STRIP_} to \code{TRUE}.
+      \item A new script \code{installBioc.r} was added.
+      \code The \code{--error} option to \code{install2.r} was
+      generalized (Sergio Oller in \ghpr{78}).
     }
   }
 }
