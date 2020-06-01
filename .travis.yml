@@ -19,7 +19,7 @@ before_install:
 
 install:
   - ./run.sh install_aptget r-cran-knitr r-cran-rcmdcheck
-  - ./run.sh install.r docopt
+  - ./run.sh install_r docopt
 
 script:
   - ./run.sh run_tests
