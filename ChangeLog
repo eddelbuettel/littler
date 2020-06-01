@@ -1,3 +1,7 @@
+2020-06-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/roxy.r: Added docopt, support nocache and roclets
+
 2020-04-11  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
