@@ -2,6 +2,8 @@
 
 	* inst/examples/roxy.r: Added docopt, support nocache and roclets
 
+	* .travis.yml: Switch to bionic and R 4.0.0
+
 2020-04-11  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
