@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.10 (2020-xx-yy)}{
+\section{Changes in littler version 0.3.10 (2020-06-02)}{
   \itemize{
     \item Changes in examples
     \itemize{
@@ -16,6 +16,11 @@
       \item A new script \code{installBioc.r} was added.
       \item The \code{--error} option to \code{install2.r} was
       generalized (Sergio Oller in \ghpr{78}).
+      \item The \code{roxy.r} script was extended a little.
+    }
+    \item Changes in package
+    \itemize{
+      \item Travis CI now uses R 4.0.0 and the bionic distro
     }
   }
 }

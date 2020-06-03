@@ -1,3 +1,10 @@
+2020-06-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Release 0.3.10
+
+	* configure.ac: Idem
+	* configure: Idem
+
 2020-06-01  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/roxy.r: Added docopt, support nocache and roclets
