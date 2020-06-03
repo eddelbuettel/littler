@@ -2,7 +2,7 @@
  *
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006 - 2019  Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006 - 2020  Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -413,7 +413,7 @@ void showVersionAndExit() {
                    R_SVN_REVISION);
         }
     }
-    printf("\n\nCopyright (C) 2006 - 2019  Jeffrey Horner and Dirk Eddelbuettel\n"
+    printf("\n\nCopyright (C) 2006 - 2020  Jeffrey Horner and Dirk Eddelbuettel\n"
            "\n"
            "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
            "You are welcome to redistribute it under the terms of the\n"

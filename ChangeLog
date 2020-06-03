@@ -1,3 +1,7 @@
+2020-06-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/littler.c: Update copyright year to 2020 in two places
+
 2020-06-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Release 0.3.10
