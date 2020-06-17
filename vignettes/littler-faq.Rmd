@@ -1,7 +1,7 @@
 ---
 title: "Littler FAQ"
 author: "Dirk Eddelbuettel"
-date: "2019-03-23"
+date: "2019-03-23, updated 2020-06-16"
 output: 
   html_document:
     toc: true
@@ -94,4 +94,4 @@ you via `system.file("bin", "r", package="littler")`.
 
 Also note that _e.g._ the [zsh](http://zsh.sourceforge.net/) has a builtin
 command `r` which may conflict, so using the explicit path of, say,
-`/usr/bin/r` or `/usr/local/bin/r` or ... maybe an alternative.
+`/usr/bin/r` or `/usr/local/bin/r` or ... may provide an alternative.

@@ -1,7 +1,7 @@
 ---
 title: "Littler Examples"
 author: "Dirk Eddelbuettel"
-date: "Originally written 2015-10-28; Updated 2017-12-10, 2018-05-24, 2019-01-06 and 2019-06-09"
+date: "Originally written 2015-10-28; Updated 2017-12-10, 2018-05-24, 2019-01-06, 2019-06-09 and 2020-06-16"
 output: 
   html_document:
     toc: true
@@ -19,6 +19,10 @@ We show and discuss a few of the files included in the `inst/examples/` source d
 [littler](http://dirk.eddelbuettel.com/code/littler.html) (which becomes the `examples/` directory 
 once installed). In a few cases we remove comment lines to keep things more concise on this page.
 We use `$` to denote a shell (_i.e._ terminal) prompt.
+
+Note that some systems (such as macOS) cannot install littler as `r` (as lower-case and upper-case
+are by default the same; not a great idea).  And for example the `zsh` has `r` as a builtin so you
+would have to use `/usr/bin/r`.  See the [littler FAQ](littler-faq.html) for more.
 
 ## Simple Direct Command-line Use
 
@@ -68,6 +72,9 @@ which produces something like
   18 | 
   20 | 333
 ```
+
+(Note that some systems may not have `/boot` in which case you can try `/sbin` or another
+directory.)
 
 As we saw in the preceding example, the program can also be shortened like
 using the new `-d` option which reads from stdin and assigns to a `data.frame` named `X`. 

@@ -1,6 +1,7 @@
 2020-06-16  Dirk Eddelbuettel  <edd@debian.org>
 
 	* vignettes/littler-faq.Rmd (vignette): Mention zsh builtin again
+	* vignettes/littler-examples.Rmd (vignette): Add short note too
 
 2020-06-03  Dirk Eddelbuettel  <edd@debian.org>
 
