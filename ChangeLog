@@ -1,3 +1,7 @@
+2020-06-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/littler-faq.Rmd (vignette): Mention zsh builtin again
+
 2020-06-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* src/littler.c: Update copyright year to 2020 in two places
