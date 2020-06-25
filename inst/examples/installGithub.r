@@ -2,7 +2,7 @@
 #
 # A simple example to install one or more packages from GitHub
 #
-# Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2020  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -37,10 +37,8 @@ Install multiple R packages from GitHub:
 
 Install multiple R packages from GitHub listing the packages on separate lines with some comments:
 
-  installGithub.r \
-    `## dependencies` \
-    RcppCore/Rcpp \
-    `## this is what we actually need` \
+  installGithub.r \\
+    RcppCore/Rcpp \\
     RcppCore/RcppEigen
 
 Installing a specific branch, tag or commit:

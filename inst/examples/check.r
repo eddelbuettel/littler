@@ -2,7 +2,7 @@
 #
 # Another example to check one or more packages, with option parsing
 #
-# Copyright (C) 2015 - 2017  Dirk Eddelbuettel
+# Copyright (C) 2015 - 2020  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -17,7 +17,7 @@ doc <- "Usage: check.r [-h] [-x] [--as-cran] [--repo REPO] [--install-deps] [--i
 -i --install-deps     also install packages along with their dependencies [default: FALSE]
 -k --install-kitchen  even install packages 'kitchen sink'-style up to suggests [default: FALSE]
 -l --library LIB      when installing use this library [default: /usr/local/lib/R/site-library]
--s --setwd DIR        change to this directoru before undertaking the test [default: ]
+-s --setwd DIR        change to this directory before undertaking the test [default: ]
 -d --deb-pkgs PKGS    also install binary .deb packages with their dependencies [default: FALSE]
 -u --use-sudo         use sudo when installing .deb packages [default: TRUE]
 -h --help             show this help text
@@ -38,7 +38,7 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 }
 
 args <- character()
-if (opt$`as-cran`) args <- c(args, "--as-cran")
+if (opt$as_cran) args <- c(args, "--as-cran")
 
 if (!is.null(opt$libdir)) .libPaths(opt$libdir)
 
@@ -67,7 +67,7 @@ installArg <- function(p, lib, rep) {
     install.packages(pkgs=p,
                      lib=lib,
                      repos=rep,
-                     dependencies=if(opt$`install-kitchen`)
+                     dependencies=if(opt$install_kitchen)
                                       c("Depends", "Imports", "LinkingTo", "Suggests")
                                   else
                                       TRUE
@@ -75,14 +75,14 @@ installArg <- function(p, lib, rep) {
 }
 
 ## if binary .deb files are to be installed first:
-if (length(opt$`deb-pkgs`) > 1 || opt$`deb-pkgs` != FALSE) {
-    cmd <- paste0(if (opt$`use-sudo`) "sudo " else "",
-                 "apt-get install -y ", paste(opt$`deb-pkgs`, collapse=" "))
+if (length(opt$deb_pkgs) > 1 || opt$deb_pkgs != FALSE) {
+    cmd <- paste0(if (opt$use_sudo) "sudo " else "",
+                 "apt-get install -y ", paste(opt$deb_pkgs, collapse=" "))
     system(cmd)
 }
 
 ## if dependencies (or even suggests) are to be installed first:
-if (opt$`install-deps` || opt$`install-kitchen`) sapply(opt$TARGZ, installArg, opt$lib, opt$repo)
+if (opt$install_deps || opt$install_kitchen) sapply(opt$TARGZ, installArg, opt$lib, opt$repo)
 
 ## change directory if a target directory was given
 if (!is.null(opt$setwd)) setwd(opt$setwd)

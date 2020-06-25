@@ -2,7 +2,7 @@
 ##
 ##  Call 'rcmdcheck' on a package
 ##
-##  Copyright (C) 2016 - 2018  Dirk Eddelbuettel
+##  Copyright (C) 2016 - 2020  Dirk Eddelbuettel
 ##
 ##  Released under GPL (>= 2)
 
@@ -45,13 +45,13 @@ if (erroron=="badarg")
     stop("Inadmissable argument for '--erroron' option.", call.=FALSE)
 
 if (is.null(opt$args)) {         # special treatment for --args and -c
-    if (opt$`as-cran`) {
+    if (opt$as_cran) {
         opt$args <- "--as-cran"
     } else {
         opt$args <- character()
     }
 } else {
-    if (opt$`as-cran`) {
+    if (opt$as_cran) {
         opt$args <- c(opt$args, "--as-cran")
     }
 }
@@ -82,5 +82,5 @@ rc <- sapply(opt$PATH,                  # iterate over arguments
              opt$repos,			# repos argument
              erroron,                   # error_on argument
              simplify=FALSE)
-status <- max(sapply(rc, `[[`, "status"))
+status <- max(sapply(rc, "[[", "status"))
 q(status=status)

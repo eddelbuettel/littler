@@ -1,3 +1,12 @@
+2020-06-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/check.r: Accomodate recent docopt change for quoted
+	arguments simplifying the use script use
+	* inst/examples/rcc.r: Idem
+	* inst/examples/roxy.r: Idem, add new option -f --full to select
+	--nocache and all roclets
+	* inst/examples/installGithub.r: Minor help text edit
+
 2020-06-17  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
