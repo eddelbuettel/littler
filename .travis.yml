@@ -18,7 +18,7 @@ before_install:
   - ./run.sh bootstrap
 
 install:
-  - ./run.sh install_aptget r-cran-knitr r-cran-rcmdcheck
+  - ./run.sh install_aptget r-cran-knitr r-cran-rmarkdown r-cran-rcmdcheck
   - ./run.sh install_r docopt
 
 script:
