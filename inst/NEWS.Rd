@@ -3,6 +3,18 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.11 (2020-06-26)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item Scripts \code{check.r} and \code{rcc.r} updated to reflect
+      updated \pkg{docopt} 0.7.0 behaviour of quoted arguments
+      \item The \code{roxy.r} script has a new ease-of-use option
+      \code{-f | --full} regrouping two other options.
+    }
+  }
+}
+      
 \section{Changes in littler version 0.3.10 (2020-06-02)}{
   \itemize{
     \item Changes in examples

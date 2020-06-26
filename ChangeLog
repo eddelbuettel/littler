@@ -1,3 +1,9 @@
+2020-06-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Release 0.3.11
+
+	* configure: Idem
+
 2020-06-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/check.r: Accomodate recent docopt change for quoted
