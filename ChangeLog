@@ -1,3 +1,9 @@
+2020-06-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/examples/check.r: Add options --no-manual and --no-vignettes
+
 2020-06-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Release 0.3.11
