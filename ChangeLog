@@ -1,3 +1,7 @@
+2020-07-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/com.r: Add 'check_on_macos' wrapper
+
 2020-06-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
