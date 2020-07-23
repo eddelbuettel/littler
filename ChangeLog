@@ -1,3 +1,7 @@
+2020-07-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/c4c.r: Support pre-built tar.gz as well
+
 2020-07-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/com.r: Add 'check_on_macos' wrapper
