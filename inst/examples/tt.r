@@ -2,7 +2,7 @@
 #
 # tinytest wrapper
 #
-# Copyright (C) 2019         Dirk Eddelbuettel
+# Copyright (C) 2019 - 2020  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -42,6 +42,7 @@ Examples:
   tt.r -f testfile.R                  # test the file 'testfile.R'
   tt.t -d testdir                     # test all files in the directory 'testdir'
   tt.r -p testpkg                     # test the (installed) package 'testpkg'
+  tt.r -n 1 -p testpkg                # test (installed) package 'testpkg' in serial mode
   tt.r                                # run test_all() iff DESCRIPTION && inst/tinytest/
 
 tt.r is part of littler which brings 'r' to the command-line.
@@ -72,7 +73,11 @@ if (opt$all) {
 } else if (opt$directory) {
     res <- run_test_dir(opt$ARG, side_effects=sideeffects)
 } else if (opt$package) {
-    res <- test_package(opt$ARG, side_effects=sideeffects, ncpu=opt$ncpus)
+    if (opt$ncpus == 1L) {
+        res <- test_package(opt$ARG, side_effects=sideeffects)
+    } else {
+        res <- test_package(opt$ARG, side_effects=sideeffects, ncpu=opt$ncpus)
+    }
 } else if (file.exists("DESCRIPTION") && dir.exists("inst/tinytest")) {
     res <- test_all(".", side_effects=sideeffects)
 }

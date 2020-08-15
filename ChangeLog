@@ -1,3 +1,11 @@
+2020-08-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tt.r: For n=1 enforce serial mode
+
+2020-07-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/cos.r: Support pre-built tar.gz as well
+
 2020-07-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/cow.r: Support pre-built tar.gz as well

@@ -8,5 +8,7 @@
 
 ##rhub::check_on_macos(check_args="--no-manual --no-vignettes")
 ## cf https://github.com/r-hub/rhub/issues/368
-rhub::check(path=".", platform="macos-highsierra-release-cran")
-            #check_args=c("--no-manual", "--no-vignettes"))
+macos <- "macos-highsierra-release-cran"
+checkfile <- function(f) if (file.exists(f)) rhub::check(f, platform=macos)
+if (length(argv) == 0) argv <- "."
+sapply(argv, checkfile)
