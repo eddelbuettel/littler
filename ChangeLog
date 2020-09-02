@@ -1,3 +1,7 @@
+2020-09-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installDeps.r: Added initial version
+
 2020-08-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/tt.r: For n=1 enforce serial mode
