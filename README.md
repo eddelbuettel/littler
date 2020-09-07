@@ -1,7 +1,11 @@
-## littler [![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler) [![Dependencies](https://tinyverse.netlify.com/badge/littler)](https://cran.r-project.org/package=littler) [![Downloads](http://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](http://www.r-pkg.org/pkg/littler)
+## littler: A scripting and command-line front-end for GNU R
 
-A scripting and command-line front-end for GNU R permitting use of R in
-command-line contexts.
+[![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler)
+[![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
+[![CRAN](https://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler)
+[![Dependencies](https://tinyverse.netlify.com/badge/littler)](https://cran.r-project.org/package=littler)
+[![Downloads](https://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](https://www.r-pkg.org/pkg/littler) 
+[![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/littler)](https://github.com/eddelbuettel/littler)
 
 ### So What Is It For?
 
@@ -82,8 +86,8 @@ this location, the following builds littler using this R-devel version:
 
 For more information about littler, please see
 
-* [Dirk's littler page](http://dirk.eddelbuettel.com/code/littler.html)
-* [Dirk's page with littler examples](http://dirk.eddelbuettel.com/code/littler.examples.html)
+* [Dirk's littler page](https://dirk.eddelbuettel.com/code/littler.html)
+* [Dirk's page with littler examples](https://dirk.eddelbuettel.com/code/littler.examples.html)
 
 (but note that the latter now overlaps with the
 [example vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)).
