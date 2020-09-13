@@ -10,12 +10,11 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: check.r [-h] [-x] [--as-cran] [--no-manual] [--no-vignettes] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
+doc <- "Usage: check.r [-h] [-x] [--as-cran] [--repo REPO] [--no-manvig] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]
 
 -a --as-cran          customization similar to CRAN's incoming [default: FALSE]
--m --no-manual        pass the '--no-manual' argument to the check [default: FALSE]
--v --no-vignettes     pass the '--no-vignettes' argument to the check [default: FALSE]
--r --repo REPO        repository to use, or NULL for file [default: https://cran.rstudio.com]
+-r --repo REPO        repository to use, or NULL for file [default: https://cloud.r-project.org]
+-n --no-manvig        set the '--no-manual --no-vignettes' options [default: FALSE]
 -i --install-deps     also install packages along with their dependencies [default: FALSE]
 -k --install-kitchen  even install packages 'kitchen sink'-style up to suggests [default: FALSE]
 -l --library LIB      when installing use this library [default: /usr/local/lib/R/site-library]
@@ -35,13 +34,13 @@ if (opt$usage) {
                                               # for package myPkg_1.2-3.tar.gz
 
 check.r is part of littler which brings 'r' to the command-line.
-See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
 args <- character()
 if (opt$as_cran) args <- c(args, "--as-cran")
-if (opt$no_manual) args <- c(args, "--as-cran")
+if (opt$no_manvig) args <- c(args, "--no-manual", "--no-vignettes")
 
 if (!is.null(opt$libdir)) .libPaths(opt$libdir)
 
