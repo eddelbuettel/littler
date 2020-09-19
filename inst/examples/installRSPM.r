@@ -16,16 +16,26 @@ if (Sys.info()[["sysname"]] != "Linux")
                "Please get in touch if you want to / can help on macOS"), call.=FALSE)
 
 code <- "<unknown>"
-if (Sys.which("lsb_release") != "") {
+if (file.exists("/etc/os-release")) {   # next block borrowed from my chshli package on GitHub
+    osrel <- read.table("/etc/os-release", sep="=", row.names=1, col.names=c("key","value"))
+    if ("VERSION_CODENAME" %in% rownames(osrel))
+        code <- osrel["VERSION_CODENAME", "value"]
+}
+if ((code == "<unknown>") && (Sys.which("lsb_release") != "")) {
     code <- system("lsb_release -c | awk '{print $2}'", intern=TRUE)
 }
 
 ## configuration for docopt
 doc <- paste0("Usage: installRSPM.r [-h] [-x] ARGS...
 
--c --code ARG   set code name for distribution [default: ", code, "]
--h --help       show this help text
--x --usage      show help and short example usage
+-c --code ARG    set code name for distribution [default: ", code, "]
+-l --libloc ARG  location in which to install [default: ", .libPaths()[1], "]
+-h --help        show this help text
+-x --usage       show help and short example usage
+
+Note that RSPM support is still somewhat experimental. There may not be binaries
+for every possibly OS and distibution. Please file issue tickets at the Github
+repo for littler if you can contribute additional checks and values.
 ")
 
 opt <- docopt(doc)			# docopt parsing
@@ -42,6 +52,8 @@ installRSPM.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
+
+if (!is.null(opt$libloc)) .libPaths(opt$libloc)
 
 r <- getOption("repos")
 r["CRAN"] <- paste0("https://packagemanager.rstudio.com/all/__linux__/", code, "/latest")
