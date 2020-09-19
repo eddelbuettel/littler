@@ -1,6 +1,12 @@
+2020-09-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installRSPM.r: First rough version of an RSPM
+	installer which 'works for me' on Ubuntu but needs other tests
+
 2020-09-13  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/check.r: New option '-n | --no-manvig'
+	* inst/examples/check.r: New option '-n | --no-manvig' replacing
+	earlier attempt and implementing '--no-manual --no-vignettes'
 
 2020-09-07  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -33,6 +39,8 @@
 2020-06-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/examples/check.r: Add options --no-manual and --no-vignettes
 
 2020-06-26  Dirk Eddelbuettel  <edd@debian.org>
 
