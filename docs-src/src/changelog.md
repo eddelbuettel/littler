@@ -1,5 +1,9 @@
 ###  2020 
 
+2020-09-20  Iñaki Úcar  <iucar@fedoraproject.org> 
+ 
+        * inst/examples/installRSPM.r: Add RH/CentOS/Fedora support 
+ 
 2020-09-20  Dirk Eddelbuettel  <edd@debian.org> 
  
         * .travis.yml (install): Switch to BSPM use for Travis 

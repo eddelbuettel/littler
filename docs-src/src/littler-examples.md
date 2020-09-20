@@ -6,13 +6,13 @@ Written and updated 2015-10-28 to 2020-06-16
 ## Overview
 
 We show and discuss a few of the files included in the `inst/examples/` source directory of
-[littler](http://dirk.eddelbuettel.com/code/littler.html) (which becomes the `examples/` directory 
+[littler](https://dirk.eddelbuettel.com/code/littler.html) (which becomes the `examples/` directory 
 once installed). In a few cases we remove comment lines to keep things more concise on this page.
 We use `$` to denote a shell (_i.e._ terminal) prompt.
 
 Note that some systems (such as macOS) cannot install littler as `r` (as lower-case and upper-case
 are by default the same; not a great idea).  And for example the `zsh` has `r` as a builtin so you
-would have to use `/usr/bin/r`.  See the [littler FAQ](littler-faq.html) for more.
+would have to use `/usr/bin/r`.  See the [littler FAQ](/littler-faq) for more.
 
 ## Simple Direct Command-line Use
 
