@@ -18,8 +18,14 @@ if (Sys.info()[["sysname"]] != "Linux")
 code <- "<unknown>"
 if (file.exists("/etc/os-release")) {   # next block borrowed from my chshli package on GitHub
     osrel <- read.table("/etc/os-release", sep="=", row.names=1, col.names=c("key","value"))
-    if ("VERSION_CODENAME" %in% rownames(osrel))
+    if ("REDHAT_SUPPORT_PRODUCT" %in% rownames(osrel)) {
+        # 'centos7' for CentOS/RHEL 7, 'centos8' for CentOS/RHEL 8 and Fedora
+        ver <- if (osrel["REDHAT_SUPPORT_PRODUCT", "value"] == "Fedora")
+            8 else osrel["REDHAT_SUPPORT_PRODUCT_VERSION", "value"]
+        code <- paste0("centos", ver)
+    } else if ("VERSION_CODENAME" %in% rownames(osrel)) {
         code <- osrel["VERSION_CODENAME", "value"]
+    }
 }
 if ((code == "<unknown>") && (Sys.which("lsb_release") != "")) {
     code <- system("lsb_release -c | awk '{print $2}'", intern=TRUE)
