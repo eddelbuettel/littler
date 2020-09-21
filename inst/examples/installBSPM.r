@@ -20,7 +20,6 @@ if (!requireNamespace("bspm", quietly=TRUE))
 
 ## configuration for docopt
 doc <- paste0("Usage: installBSPM.r [-h] [-x] ARGS...
-
 -h --help        show this help text
 -x --usage       show help and short example usage
 
@@ -31,8 +30,9 @@ issue tickets at the Github repo for littler (or bspm) if you can help with addi
 settings.
 
 Note that to take fullest advantage of BSPM, you also need the system package manager to
-know about the largest number of pre-compiled packages. For Ubuntu, this probably means the
-exanded 'ppa:c2d4u.team/c2d4u4.0+', and for Fedorar the Copr archive.
+know about the largest number of pre-compiled packages. For Ubuntu, this means the
+exanded 'ppa:c2d4u.team/c2d4u4.0+' repo, and for Fedora the say 'iucar/cran' Copr archive.
+This user-level script does not attempt to later your system-level repository information.
 ")
 
 opt <- docopt(doc)			# docopt parsing
