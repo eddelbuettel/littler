@@ -1,3 +1,7 @@
+2020-09-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installBSPM.r: Initial version of BSPM installer
+
 2020-09-20  Iñaki Úcar  <iucar@fedoraproject.org>
 
 	* inst/examples/installRSPM.r: Add RH/CentOS/Fedora support
