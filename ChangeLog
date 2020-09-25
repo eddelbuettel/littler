@@ -1,3 +1,9 @@
+2020-09-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/examples/cranIncoming.r: New script
+
 2020-09-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installBSPM.r: Initial version of BSPM installer
