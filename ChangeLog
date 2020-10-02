@@ -1,3 +1,7 @@
+2020-10-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/urlUpdate.r: New script to update URLs
+
 2020-09-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version

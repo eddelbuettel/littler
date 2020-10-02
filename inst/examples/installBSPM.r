@@ -16,7 +16,7 @@ if (Sys.info()[["sysname"]] != "Linux")
                "Please get in touch if you want to / can help on macOS"), call.=FALSE)
 
 if (!requireNamespace("bspm", quietly=TRUE))
-    stop("The 'bspm' is required. Please install it.", call.=FALSE)
+    stop("The 'bspm' package is required. Please install it.", call.=FALSE)
 
 ## configuration for docopt
 doc <- paste0("Usage: installBSPM.r [-h] [-x] ARGS...
