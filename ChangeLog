@@ -1,3 +1,7 @@
+2020-10-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/urlUpdate.r: Add -c | --check-only option
+
 2020-10-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/urlUpdate.r: New script to update URLs

@@ -10,12 +10,12 @@
 library(docopt)
 
 if (!requireNamespace("urlchecker", quietly=TRUE))
-    stop("The 'urlchecker' package is required. Please install it.", call.=FALSE)
+    stop("The 'urlchecker' package is required. Please install it from GitHub.", call.=FALSE)
 
-doc <- "Usage: urlUpdate.r [-h] [PACKAGES ...]
+doc <- "Usage: urlUpdate.r [-c] [-h] [PACKAGES ...]
 
--f --fast      skip building vignettes and manual
--h --help      show this help text
+-c --check-only   check-only, i.e. do not auto-update URLs
+-h --help         show this help text
 
 Simple wrapper to 'urlchecker::update_url(...)'.
 "
@@ -24,4 +24,5 @@ opt <- docopt(doc)
 
 if (length(opt$PACKAGES) == 0) opt$PACKAGES <- "." 	# default argument current directory
 
-for (p in opt$PACKAGES) urlchecker::url_update(p)
+for (p in opt$PACKAGES)
+    if (opt$check_only) print(urlchecker::url_check(p)) else urlchecker::url_update(p)
