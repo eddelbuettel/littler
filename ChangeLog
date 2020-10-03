@@ -1,5 +1,9 @@
 2020-10-03  Dirk Eddelbuettel  <edd@debian.org>
 
+	* vignettes/littler-faq.Rmd: Switch to minidown::mini_document
+	and 'framework: water' to dramatically reduce vignettes size
+	* vignettes/littler-examples.Rmd: Idem
+
 	* inst/examples/urlUpdate.r: Add -c | --check-only option
 
 2020-10-02  Dirk Eddelbuettel  <edd@debian.org>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Dirk Eddelbuettel" />
+  <title>Littler FAQ</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+  <style type="text/css">@charset "UTF-8";body{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.4;max-width:800px;margin:20px auto;padding:0 10px;color:#363636;background:#fff;text-rendering:optimizeLegibility}button,input,textarea{transition:background-color .1s linear,border-color .1s linear,color .1s linear,box-shadow .1s linear,transform .1s ease}h1{font-size:2.2em;margin-top:0}h1,h2,h3,h4,h5,h6{margin-bottom:12px}h1,h2,h3,h4,h5,h6,strong{color:#000}b,h1,h2,h3,h4,h5,h6,strong,th{font-weight:600}blockquote{border-left:4px solid rgba(0,150,191,.67);margin:1.5em 0;padding:.5em 1em;font-style:italic}blockquote>footer{margin-top:10px;font-style:normal}address,blockquote cite{font-style:normal}a[href^=mailto]:before{content:"📧 "}a[href^=tel]:before{content:"📞 "}a[href^=sms]:before{content:"💬 "}button,input[type=button],input[type=checkbox],input[type=submit]{cursor:pointer}input:not([type=checkbox]):not([type=radio]),select{display:block}button,input,select,textarea{color:#000;background-color:#efefef;font-family:inherit;font-size:inherit;margin-right:6px;margin-bottom:6px;padding:10px;border:none;border-radius:6px;outline:none}button,input:not([type=checkbox]):not([type=radio]),select,textarea{-webkit-appearance:none}textarea{margin-right:0;width:100%;box-sizing:border-box;resize:vertical}button,input[type=button],input[type=submit]{padding-right:30px;padding-left:30px}button:hover,input[type=button]:hover,input[type=submit]:hover{background:#ddd}button:focus,input:focus,select:focus,textarea:focus{box-shadow:0 0 0 2px rgba(0,150,191,.67)}button:active,input[type=button]:active,input[type=checkbox]:active,input[type=radio]:active,input[type=submit]:active{transform:translateY(2px)}button:disabled,input:disabled,select:disabled,textarea:disabled{cursor:not-allowed;opacity:.5}::-webkit-input-placeholder{color:#949494}:-ms-input-placeholder{color:#949494}::-ms-input-placeholder{color:#949494}::placeholder{color:#949494}a{text-decoration:none;color:#0076d1}a:hover{text-decoration:underline}code,kbd{background:#efefef;color:#000;padding:5px;border-radius:6px}pre>code{padding:10px;display:block;overflow-x:auto}img{max-width:100%}hr{border:none;border-top:1px solid #dbdbdb}table{border-collapse:collapse;margin-bottom:10px;width:100%}td,th{padding:6px;text-align:left}th{border-bottom:1px solid #dbdbdb}tbody tr:nth-child(2n){background-color:#efefef}::-webkit-scrollbar{height:10px;width:10px}::-webkit-scrollbar-track{background:#efefef;border-radius:6px}::-webkit-scrollbar-thumb{background:#d5d5d5;border-radius:6px}::-webkit-scrollbar-thumb:hover{background:#c4c4c4}
+
+</style>
+  <style type="text/css">
+code {
+padding: 2px;
+border-radius: unset;
+}
+
+pre {
+background-color: unset;
+border: solid #aaa 1px;
+padding: 8px;
+}
+pre.numberSource {
+margin: 0;
+padding-left: 0;
+}
+div.sourceCode {
+overflow: visible;
+}
+pre, pre.sourceCode {
+overflow-x: auto;
+}
+pre>code {
+white-space: pre;
+overflow: visible;
+background-color: unset;
+padding: 0;
+}
+pre.sourceCode.numberSource {
+overflow-x: visible;
+}
+pre.sourceCode.numberSource>code {
+white-space: pre-wrap
+}
+pre.sourceCode.numberSource>code>span {
+left: 8px;
+text-indent: -4.6em;
+}
+
+.chunk-summary {
+text-align: right;
+}
+.chunk-summary+pre,
+.chunk-summary+div.sourceCode {
+margin-top: 2px;
+}
+
+nav > ul {
+border: .0625rem solid #444;
+border-radius: 4px;
+margin: 5px;
+padding: 5px;
+}
+nav ul {
+list-style-type: none;
+padding-inline-start: 1rem;
+}
+nav ul li {
+padding: 0;
+}
+nav ul ul {
+margin-top: 0;
+margin-bottom: 0;
+padding-top: 0;
+padding-bottom: 0;
+}
+nav code {
+background-color: unset;
+color: unset;
+}
+</style>
+  <style type="text/css">.tooltip {
+position: relative;
+display: inline-block;
+}
+.tooltip:before, .tooltip:after {
+position: absolute;
+opacity: 0;
+clip: rect(0 0 0 0);
+-webkit-clip-path: inset(100%);
+clip-path: inset(100%);
+transition: all 0.3s;
+z-index: 1010;
+left: 50%;
+}
+.tooltip:not(.bottom):before, .tooltip:not(.bottom):after {
+bottom: 75%;
+}
+.tooltip.bottom:before, .tooltip.bottom:after {
+top: 75%;
+}
+.tooltip:hover:before, .tooltip:hover:after, .tooltip:focus:before, .tooltip:focus:after {
+opacity: 1;
+clip: auto;
+-webkit-clip-path: inset(0%);
+clip-path: inset(0%);
+}
+.tooltip:before {
+content: '';
+background: transparent;
+border: 0.5rem solid transparent;
+left: calc(50% - 0.5rem);
+}
+.tooltip:not(.bottom):before {
+border-top-color: #212121;
+}
+.tooltip.bottom:before {
+border-bottom-color: #212121;
+}
+.tooltip:after {
+content: attr(aria-label);
+color: #fafafa;
+background: #212121;
+border-radius: 0.125rem;
+padding: 0.5rem;
+white-space: nowrap;
+transform: translateX(-50%);
+}
+.tooltip:not(.bottom):after {
+margin-bottom: 1rem;
+}
+.tooltip.bottom:after {
+margin-top: 1rem;
+}
+</style>
+  <style type="text/css">
+.collapse {
+width: calc(100% - 1rem);
+opacity: 1;
+display: flex;
+flex-direction: column;
+margin: 0.5rem;
+border-radius: 0.125rem;
+}
+.collapse > [type="radio"], .collapse > [type="checkbox"] {
+height: 1px;
+width: 1px;
+margin: -1px;
+overflow: hidden;
+position: absolute;
+clip: rect(0 0 0 0);
+-webkit-clip-path: inset(100%);
+clip-path: inset(100%);
+}
+.collapse > label {
+flex-grow: 1;
+display: inline-block;
+height: 1.5rem;
+cursor: pointer;
+transition: background 0.3s;
+color: #212121;
+background: #e8e8e8;
+border: 0.0625rem solid #ddd;
+padding: 0.75rem;
+}
+.collapse > label:hover, .collapse > label:focus {
+background: #f0f0f0;
+}
+.collapse > label + div {
+flex-basis: auto;
+height: 1px;
+width: 1px;
+margin: -1px;
+overflow: hidden;
+position: absolute;
+clip: rect(0 0 0 0);
+-webkit-clip-path: inset(100%);
+clip-path: inset(100%);
+transition: max-height 0.3s;
+max-height: 1px;
+}
+.collapse > :checked + label {
+background: #ececec;
+border-bottom-color: #ececec;
+}
+.collapse > :checked + label + div {
+box-sizing: border-box;
+position: relative;
+width: 100%;
+height: auto;
+overflow: auto;
+margin: 0;
+border: 0.0625rem solid #ddd;
+border-top: 0;
+padding: 0.5rem;
+clip: auto;
+-webkit-clip-path: inset(0%);
+clip-path: inset(0%);
+max-height: 400px;
+}
+.collapse > label:not(:first-of-type) {
+border-top: 0;
+}
+.collapse > label:first-of-type {
+border-radius: 0.125rem 0.125rem 0 0;
+}
+.collapse > label:last-of-type:not(:first-of-type) {
+border-radius: 0 0 0.125rem 0.125rem;
+}
+.collapse > label:last-of-type:first-of-type {
+border-radius: 0.125rem;
+}
+.collapse > :checked:last-of-type:not(:first-of-type) + label {
+border-radius: 0;
+}
+.collapse > :checked:last-of-type + label + div {
+border-radius: 0 0 0.125rem 0.125rem;
+}
+</style>
+  <style type="text/css">@media screen and (max-width: 900px) {
+header, nav, article {
+padding: 0 3rem;
+}
+}
+</style>
+  <style type="text/css">@media screen and (min-width: 900px) {
+body {
+min-width: 900px;
+max-width: 62.5%;
+margin: 0 auto;
+}
+main {
+display: grid;
+grid-template-columns: 300px 1fr;
+grid-template-rows: auto auto;
+}
+header, article {
+min-width: calc(600px - 4rem);
+max-width: calc(100% - 4rem);
+padding: 0 0 0 4rem;
+}
+nav {
+grid-row: 1 / -1;
+grid-columns: 1 / 2;
+border: none;
+margin: 0;
+width: 300px;
+}
+nav > ul {
+position: sticky;
+max-height: 85vh;
+overflow-y: auto;
+top: 5px;
+}
+}
+</style>
+  <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" data-external="1">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous" data-external="1"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);" data-external="1"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        displayMode: true
+      });
+    });
+  </script>
+</head>
+<body>
+<main>
+<header id="title-block-header">
+<h1 class="title">Littler FAQ</h1>
+<p class="author">Dirk Eddelbuettel</p>
+<p class="date">2019-03-23, updated 2020-06-16</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#well-why">Well, why?</a></li>
+<li><a href="#no-printing">No Printing</a></li>
+<li><a href="#no-.renviron">No <code>.Renviron</code></a></li>
+<li><a href="#lower-case-upper-case">Lower-case / upper-case</a></li>
+<li><a href="#adding-the-binary-to-your-path">Adding the binary to your path</a></li>
+</ul>
+</nav>
+<article>
+<style type="text/css">
+nav > ul {border: none}
+</style>
+<section id="well-why" class="level3">
+<h3>Well, why?</h3>
+<p>Glad you asked. When the initial work started, <code>Rscript</code> did not exist so there was no scripting tool. We take a small amount of pride into beating <code>Rscript</code> narrowly to a first release. Of course, by now, <code>Rscript</code> is more widely used as it ships with every R installation but we still have some aspects we like about <code>r</code>: it is simpler and shorter, deals (in our biased) view more sanely with command-line arguments via the <code>argv</code> vector, always loaded package <code>methods</code> (which <code>Rscript</code> finally came around to a good decade later) and <a href="http://dirk.eddelbuettel.com/blog/2014/09/02/#littler-faster-at-doing-nothing">still starts faster</a>. And <code>r</code> is just to cool a command (in relation to the trusted <code>R</code>) so someone had to!</p>
+</section>
+<section id="no-printing" class="level3">
+<h3>No Printing</h3>
+<p>In the very beginning of <code>littler</code>, we made an executive decision to <em>not</em> echo each command output when we evaluate commands in the read-evaluate-print loop. So <code>2+2</code> will be evaluated silently: four will be computed, but not shown.</p>
+<p>That made sense for scripts we wanted to be silent. The idea is that user will add a <code>print()</code> or <code>cat()</code> as needed. If you desire each step to printed, add a <code>-p</code> or <code>--verbose</code> argument.</p>
+</section>
+<section id="no-.renviron" class="level3">
+<h3>No <code>.Renviron</code></h3>
+<p>Another early decision was to make <code>r</code> start <em>faster</em> than the alternatives. Our <code>r</code> is “just” a small little binary. Whereas <code>R</code> and <code>Rscript</code> are front-end shell scripts sourcing a number of things and setting them dynamically, we determine values <em>at compilation time</em> and freeze them into the binary. That may seem <em>risqué</em> but worked out just fine. However, while we later added the ability to source <code>Rprofile</code> files (which contain R code we can evaluate) there is no way for us to source the <code>Renviron</code> files <em>and to modify the already running process</em>. So if you want to source <code>Renviron</code> you could add an explicit <code>readEnviron()</code> to <code>~/.littler.r</code> or <code>/etc/littler/r</code>.</p>
+</section>
+<section id="lower-case-upper-case" class="level3">
+<h3>Lower-case / upper-case</h3>
+<p>This is mostly an issue on macOS where the brain surgeons behind the OS decided that <code>r</code> is the same as <code>R</code>. What can we say? On that OS you may need to rename the build to <code>lr</code> instead. Please send your complaints to Cupertino, California.</p>
+</section>
+<section id="adding-the-binary-to-your-path" class="level3">
+<h3>Adding the binary to your path</h3>
+<p>When the package is installed from source, it displays</p>
+<pre><code>*
+* new binary $(TGT) installed in bin/ subdirectory&quot;
+* consider adding a symbolic link from, e.g., /usr/local/bin&quot;
+* on OS X, you may have to name this &#39;lr&#39; instead&quot;
+* see the littler-faq vignette for more details&quot;
+*</code></pre>
+<p>where the variable <code>$(TGT)</code> normally expands to <code>r</code>. As the text suggests you may want to create a <a href="https://en.wikipedia.org/wiki/Symbolic_link">symbolic link</a> from a directory in the to make the newly built binary available to users. On Linux you may do</p>
+<pre><code>cd /usr/local/bin 
+sudo ln -s /usr/local/lib/R/site-library/littler/bin/r .</code></pre>
+<p>to create a link for <code>r</code> in <code>/usr/local/bin</code>. On macOS, as suggested, you may want</p>
+<pre><code>cd /usr/local/bin 
+sudo ln -s /usr/local/lib/R/site-library/littler/bin/r lr</code></pre>
+<p>to create a command <code>lr</code> instead; see the previous question as to why. In either case adjust the source part of the <code>ln</code> command to where your binary is – which R can tell you via <code>system.file(&quot;bin&quot;, &quot;r&quot;, package=&quot;littler&quot;)</code>.</p>
+<p>Also note that <em>e.g.</em> the <a href="http://zsh.sourceforge.net/">zsh</a> has a builtin command <code>r</code> which may conflict, so using the explicit path of, say, <code>/usr/bin/r</code> or <code>/usr/local/bin/r</code> or … may provide an alternative.</p>
+</section>
+</article>
+</main>
+</body>
+</html>
