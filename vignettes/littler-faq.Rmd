@@ -3,15 +3,26 @@ title: "Littler FAQ"
 author: "Dirk Eddelbuettel"
 date: "2019-03-23, updated 2020-06-16"
 output: 
-  html_document:
+  minidown::mini_document:
+    framework: water
     toc: true
-    toc_depth: 3
     toc_float: true
+    code_folding:
+      source: show
+      output: show
+      message: hide
+      warning: hide
+      error: hide
 vignette: >
   %\VignetteIndexEntry{Littler FAQ}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
+
+
+```{css, echo=FALSE}
+nav > ul {border: none}
+```
 
 ### Well, why?
 
