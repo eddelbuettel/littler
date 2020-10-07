@@ -145,7 +145,7 @@ free to do other things.  Also, if used with `options("Ncpu")` set, then
 Thanks to the fabulous [docopt](https://github.com/edwindj/docopt.R)
 package, we also have a variant `install2.r` with optional settings of
 repo and location. It was first installed with
-[littler 0.2.1](http://dirk.eddelbuettel.com/blog/2014/10/19#littler-0.2.1).
+[littler 0.2.1](http://dirk.eddelbuettel.com/blog/2014/10/19/).
 The current (_i.e._, 0.3.3 as of this writing) version is more featureful and longer and included to keep this brief. Some usage examples are
 
 ```sh

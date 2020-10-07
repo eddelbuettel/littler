@@ -38,8 +38,9 @@ nav:
     - man/littler.md
     - man/r.md
   - Articles:
-    - Littler Examples: littler-examples.md
-    - Littler FAQ: littler-faq.md
+    - Vignettes: vignettes/overview.md
+    - Littler Examples: vignettes/littler-examples.md
+    - Littler FAQ: vignettes/littler-faq.md
   - News:
     - news.md
   - Changelog:

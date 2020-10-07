@@ -1,3 +1,31 @@
+### Version 0.3.12 (2020-10-04)
+
+-   Changes in examples
+
+    -   Updates to scripts `tt.r`, `cos.r`, `cow.r`, `c4r.r`, `com.r`
+
+    -   New script `installDeps.r` to install dependencies
+
+    -   Several updates tp script `check.r`
+
+    -   New script `installBSPM.r` and `installRSPM.r` for binary
+        package installation (Dirk and Iñaki in
+        [\#81](https://github.com/eddelbuettel/littler/pull/81))
+
+    -   New script `cranIncoming.r` to check in Incoming
+
+    -   New script `urlUpdate.r` validate URLs as R does
+
+-   Changes in package
+
+    -   Travis CI now uses BSPM
+
+    -   A package documentation website was added
+
+    -   Vignettes now use `minidown` resulting in *much* reduced
+        filesizes: from over 800kb to under 50kb (Dirk in
+        [\#83](https://github.com/eddelbuettel/littler/pull/83))
+
 ### Version 0.3.11 (2020-06-26)
 
 -   Changes in examples

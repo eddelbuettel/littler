@@ -1,5 +1,31 @@
 ###  2020 
 
+2020-10-04  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.12 
+ 
+2020-10-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * vignettes/littler-faq.Rmd: Switch to minidown::mini_document 
+        and 'framework: water' to dramatically reduce vignettes size 
+        * vignettes/littler-examples.Rmd: Idem 
+ 
+        * inst/examples/urlUpdate.r: Add -c | --check-only option 
+ 
+2020-10-02  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/urlUpdate.r: New script to update URLs 
+ 
+2020-09-25  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Roll minor version 
+ 
+        * inst/examples/cranIncoming.r: New script 
+ 
+2020-09-21  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installBSPM.r: Initial version of BSPM installer 
+ 
 2020-09-20  Iñaki Úcar  <iucar@fedoraproject.org> 
  
         * inst/examples/installRSPM.r: Add RH/CentOS/Fedora support 

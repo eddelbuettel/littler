@@ -468,7 +468,7 @@ nav > ul {border: none}
 </section>
 <section id="install2.r-with-cmdline-parsing" class="level2">
 <h2>install2.r: With Cmdline Parsing</h2>
-<p>Thanks to the fabulous <a href="https://github.com/edwindj/docopt.R">docopt</a> package, we also have a variant <code>install2.r</code> with optional settings of repo and location. It was first installed with <a href="http://dirk.eddelbuettel.com/blog/2014/10/19#littler-0.2.1">littler 0.2.1</a>. The current (<em>i.e.</em>, 0.3.3 as of this writing) version is more featureful and longer and included to keep this brief. Some usage examples are</p>
+<p>Thanks to the fabulous <a href="https://github.com/edwindj/docopt.R">docopt</a> package, we also have a variant <code>install2.r</code> with optional settings of repo and location. It was first installed with <a href="http://dirk.eddelbuettel.com/blog/2014/10/19/">littler 0.2.1</a>. The current (<em>i.e.</em>, 0.3.3 as of this writing) version is more featureful and longer and included to keep this brief. Some usage examples are</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a>$ <span class="ex">install2.r</span> -l /tmp/lib Rcpp BH                         <span class="co"># install into given library</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>$ <span class="ex">install2.r</span> -- --with-keep.source drat                  <span class="co"># keep the source</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>$ <span class="ex">install2.r</span> -- --data-compress=bzip2 stringdist         <span class="co"># prefer bz2 compression</span></span></code></pre></div>

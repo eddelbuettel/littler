@@ -3,6 +3,29 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.12 (2020-10-04)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item Updates to scripts \code{tt.r}, \code{cos.r}, \code{cow.r},
+      \code{c4r.r}, \code{com.r}
+      \item New script \code{installDeps.r} to install dependencies
+      \item Several updates tp script \code{check.r}
+      \item New script \code{installBSPM.r} and \code{installRSPM.r}
+      for binary package installation (Dirk and Iñaki in \ghpr{81})
+      \item New script \code{cranIncoming.r} to check in Incoming
+      \item New script \code{urlUpdate.r} validate URLs as R does
+    }
+    \item Changes in package
+    \itemize{
+      \item Travis CI now uses BSPM
+      \item A package documentation website was added
+      \item Vignettes now use \pkg{minidown} resulting in \emph{much}
+      reduced filesizes: from over 800kb to under 50kb (Dirk in \ghpr{83})
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.11 (2020-06-26)}{
   \itemize{
     \item Changes in examples
