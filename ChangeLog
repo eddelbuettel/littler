@@ -34,6 +34,9 @@
 
 	* .travis.yml (install): Switch to BSPM use for Travis
 
+	* docs/: Added package website
+	* docs-src/: Added package website inputs
+
 2020-09-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installRSPM.r: First rough version of an RSPM
