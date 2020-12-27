@@ -2,6 +2,8 @@
 
         * .github/workflows/ci.yaml: Add CI runner using r-ci
 
+	* tests/simpleTests.R: Update for GitHub Actions
+
 2020-10-04  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.12

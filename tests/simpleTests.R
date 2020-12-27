@@ -5,7 +5,9 @@
 ##
 ## Until it doesn't as it appears to (in 2020) fail on Travis CI
 
-if (unname(Sys.info()["sysname"]) == "Linux" && Sys.getenv("TRAVIS", "false") != "true") {
+if (unname(Sys.info()["sysname"]) == "Linux" &&
+    Sys.getenv("TRAVIS", "false") != "true"  &&
+    Sys.getenv("CI", "false") != "true") {
     library(littler)
     stopifnot(identical(littler:::test(), "4"))   # default test is cat(2+2)
     stopifnot(as.numeric(littler:::test('cat(R.version$year)')) >= 2015)  
