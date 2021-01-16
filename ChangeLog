@@ -1,3 +1,8 @@
+2021-01-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/ccompiledDeps.r: New script to show which
+	dependencies of a package are in fact native i.e. compiled
+
 2020-12-27  Dirk Eddelbuettel  <edd@debian.org>
 
         * .github/workflows/ci.yaml: Add CI runner using r-ci

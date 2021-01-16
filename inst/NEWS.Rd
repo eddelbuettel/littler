@@ -3,6 +3,20 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.13 (2021-xx-yy)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item New script \code{compiledDeps.r} to show which dependencies
+      are compiled
+    }
+    \item Changes in package
+    \itemize{
+      \item Added Continuous Integration runner via \code{run.sh}
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.12 (2020-10-04)}{
   \itemize{
     \item Changes in examples
