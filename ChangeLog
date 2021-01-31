@@ -1,3 +1,7 @@
+2021-01-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installRSPM.r: Correct -c | --code argument use
+
 2021-01-29  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/silenceTwitterAccount.r: Wrapper for rtweet
@@ -8,7 +12,7 @@
 
 2021-01-16  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/ccompiledDeps.r: New script to show which
+	* inst/examples/compiledDeps.r: New script to show which
 	dependencies of a package are in fact native i.e. compiled
 
 2020-12-27  Dirk Eddelbuettel  <edd@debian.org>

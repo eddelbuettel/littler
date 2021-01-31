@@ -31,7 +31,7 @@ if ((code == "<unknown>") && (Sys.which("lsb_release") != "")) {
 }
 
 ## configuration for docopt
-doc <- paste0("Usage: installRSPM.r [-h] [-x] ARGS...
+doc <- paste0("Usage: installRSPM.r [-c code] [-l libloc] [-h] [-x] ARGS...
 
 -c --code ARG    set code name for distribution [default: ", code, "]
 -l --libloc ARG  location in which to install [default: ", .libPaths()[1], "]
@@ -61,7 +61,7 @@ See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 if (!is.null(opt$libloc)) .libPaths(opt$libloc)
 
 r <- getOption("repos")
-r["CRAN"] <- paste0("https://packagemanager.rstudio.com/all/__linux__/", code, "/latest")
+r["CRAN"] <- paste0("https://packagemanager.rstudio.com/all/__linux__/", opt$code, "/latest")
 options(repos = r)
 options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(),
                                 paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
