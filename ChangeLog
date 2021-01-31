@@ -1,3 +1,8 @@
+2021-01-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/silenceTwitterAccount.r: Check for updated version
+	of rtweet with post_silence function
+
 2021-01-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installRSPM.r: Correct -c | --code argument use

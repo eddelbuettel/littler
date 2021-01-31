@@ -13,5 +13,8 @@ if (!requireNamespace("rtweet", quietly=TRUE))
 if (Sys.getenv("TWITTER_PAT") == "")
     stop("Please setup a 'TWITTER_PAT' using `rtweet`.", call. = FALSE)
 
-for (arg in argv)
-    rtweet::post_silence(arg)
+library(rtweet)
+if (is.na(match("post_silence", ls("package:rtweet"))))
+    stop("This needs a version of 'rtweet' with the post_silence() function", call. = FALSE)
+
+for (arg in argv) rtweet::post_silence(arg)
