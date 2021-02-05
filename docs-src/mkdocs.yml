@@ -36,7 +36,7 @@ nav:
     - index.md
   - Reference:
     - man/littler.md
-    - man/r.md
+#    - man/r.md
   - Articles:
     - Vignettes: vignettes/overview.md
     - Littler Examples: vignettes/littler-examples.md
