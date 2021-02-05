@@ -1,6 +1,4 @@
 
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -9,11 +7,12 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+      
+      
         <link rel="canonical" href="https://github.com/eddelbuettel/littler/vignettes/littler-examples/">
       
-      
       <link rel="shortcut icon" href="../../assets/Rlogo.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.12">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
     
     
       
@@ -21,14 +20,18 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4dd2dd8d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
       
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
       
     
     
     
       
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
         <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
@@ -44,7 +47,13 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -62,7 +71,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://github.com/eddelbuettel/littler" title="littler" class="md-header-nav__button md-logo" aria-label="littler">
       
@@ -73,18 +84,20 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             littler
           </span>
-          <span class="md-header-nav__topic md-ellipsis">
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             
               Littler Examples
             
           </span>
         </div>
-      
+      </div>
     </div>
     
       <label class="md-header-nav__button md-icon" for="__search">
@@ -95,7 +108,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -123,27 +136,25 @@
     
     <div class="md-container" data-md-component="container">
       
-        
-      
       
         
           
-
-  
-
-<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   
   
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../.." class="md-tabs__link">
-          Home
-        </a>
-      
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
     </li>
   
 
@@ -151,12 +162,15 @@
         
   
   
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../../man/littler/" class="md-tabs__link">
-          Reference
-        </a>
-      
+      <a href="../../man/littler/" class="md-tabs__link">
+        Reference
+      </a>
     </li>
   
 
@@ -164,12 +178,17 @@
         
   
   
+    
+  
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../overview/" class="md-tabs__link md-tabs__link--active">
-          Articles
-        </a>
-      
+      <a href="../overview/" class="md-tabs__link md-tabs__link--active">
+        Articles
+      </a>
     </li>
   
 
@@ -177,12 +196,15 @@
         
   
   
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../../news/" class="md-tabs__link">
-          News
-        </a>
-      
+      <a href="../../news/" class="md-tabs__link">
+        News
+      </a>
     </li>
   
 
@@ -190,12 +212,15 @@
         
   
   
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../../changelog/" class="md-tabs__link">
-          Changelog
-        </a>
-      
+      <a href="../../changelog/" class="md-tabs__link">
+        Changelog
+      </a>
     </li>
   
 
@@ -209,10 +234,18 @@
         <div class="md-main__inner md-grid">
           
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://github.com/eddelbuettel/littler" title="littler" class="md-nav__button md-logo" aria-label="littler">
       
@@ -228,88 +261,98 @@
       
       
 
-
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
+  
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Home
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Home" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" >
+      
+      <label class="md-nav__link" for="nav-1">
         Home
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../.." title="Index" class="md-nav__link">
-      Index
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Reference
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Reference" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
         <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="nav-1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
         Reference
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../man/littler/" class="md-nav__link">
+        Littler
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../man/r/" class="md-nav__link">
+        R
+      </a>
+    </li>
+  
 
-
-  <li class="md-nav__item">
-    <a href="../../man/littler/" title="Littler" class="md-nav__link">
-      Littler
-    </a>
-  </li>
-
-        
           
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../man/r/" title="R" class="md-nav__link">
-      R
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
@@ -317,60 +360,63 @@
       
 
   
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+  
+  
     
-    <label class="md-nav__link" for="nav-3">
-      Articles
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Articles" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
         Articles
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../overview/" title="Vignettes" class="md-nav__link">
-      Vignettes
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Littler Examples
         <span class="md-nav__icon md-icon"></span>
       </label>
+      <nav class="md-nav" aria-label="Articles" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Articles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Vignettes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
-    <a href="./" title="Littler Examples" class="md-nav__link md-nav__link--active">
-      Littler Examples
-    </a>
-    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Littler Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Littler Examples
+      </a>
+      
+        
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -490,101 +536,113 @@
     </ul>
   
 </nav>
-    
-  </li>
+      
+    </li>
+  
 
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../littler-faq/" class="md-nav__link">
+        Littler FAQ
+      </a>
+    </li>
+  
+
           
-          
-
-
-  <li class="md-nav__item">
-    <a href="../littler-faq/" title="Littler FAQ" class="md-nav__link">
-      Littler FAQ
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
 
-
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
+  
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      News
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="News" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
         News
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../news/" title="News" class="md-nav__link">
-      News
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Changelog
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Changelog" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
         <span class="md-nav__icon md-icon"></span>
-        Changelog
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="News" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          News
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../news/" class="md-nav__link">
+        News
+      </a>
+    </li>
+  
+
           
+        </ul>
+      </nav>
+    </li>
+  
 
+    
+      
+      
+      
 
-  <li class="md-nav__item">
-    <a href="../../changelog/" title="Changelog" class="md-nav__link">
-      Changelog
-    </a>
-  </li>
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        Changelog
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Changelog" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Changelog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
 
-        
-      </ul>
-    </nav>
-  </li>
+          
+        </ul>
+      </nav>
+    </li>
+  
 
     
   </ul>
@@ -594,7 +652,8 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -727,9 +786,6 @@
               
                 
                 
-                  
-                
-                
                 <h1 id="littler-examples">Littler Examples</h1>
 <p>Dirk Eddelbuettel<br />
 Written and updated 2015-10-28 to 2020-06-16</p>
@@ -748,20 +804,17 @@ input from a pipe: </p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">echo</span> <span class="s1">&#39;cat(pi^2,&quot;\n&quot;)&#39;</span> <span class="p">|</span> r
 <span class="m">9</span>.869604
 </code></pre></div>
-
 <p>Equivalently, commands that are to be evaluated can be given on
 the command-line</p>
 <div class="highlight"><pre><span></span><code>$ r -e <span class="s1">&#39;cat(pi^2, &quot;\n&quot;)&#39;</span>
 <span class="m">9</span>.869604
 </code></pre></div>
-
 <p>But unlike bc(1), GNU R has a vast number of statistical
 functions. For example, we can quickly compute a <code>summary()</code> and show
 a stem-and-leaf plot for file sizes in a given directory via</p>
 <div class="highlight"><pre><span></span><code>$ ls -l /boot <span class="p">|</span> awk <span class="s1">&#39;BEGIN {print &quot;size&quot;} !/^total/ {print $5}&#39;</span> <span class="p">|</span> <span class="se">\</span>
      r -de <span class="s2">&quot;print(summary(X[,1])); stem(X[,1])&quot;</span>
 </code></pre></div>
-
 <p>which produces something like </p>
 <div class="highlight"><pre><span></span><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
      13     512  110100  486900  768400 4735000
@@ -780,7 +833,6 @@ a stem-and-leaf plot for file sizes in a given directory via</p>
   18 | 
   20 | 333
 </code></pre></div>
-
 <p>(Note that some systems may not have <code>/boot</code> in which case you can try <code>/sbin</code> or another
 directory.)</p>
 <p>As we saw in the preceding example, the program can also be shortened like
@@ -793,7 +845,6 @@ a helper script (where we now switch to using an explicit <code>readLines()</cod
 <span class="nf">print</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">fsizes</span><span class="p">))</span>
 <span class="nf">stem</span><span class="p">(</span><span class="n">fsizes</span><span class="p">)</span>
 </code></pre></div>
-
 <p>(where calling <code>#!/usr/bin/env</code> is a trick from Python which allows one
 to forget whether r is installed in <code>/usr/bin/r</code>, <code>/usr/local/bin/r</code>,
 <code>~/bin/r</code>, ...).</p>
@@ -816,12 +867,10 @@ frequently to install packages off <a href="https://cran.r-project.org">CRAN</a>
 
 <span class="nf">install.packages</span><span class="p">(</span><span class="n">argv</span><span class="p">,</span> <span class="n">lib.loc</span><span class="p">,</span> <span class="n">repos</span><span class="p">)</span>
 </code></pre></div>
-
 <p>I invoke it all the time with one, two or more packages to install (or
 reinstall).</p>
 <div class="highlight"><pre><span></span><code>$ install.r digest RcppCNPy
 </code></pre></div>
-
 <p>It conveniently installs all dependencies, and uses the chosen target
 directory, all while keeping my R prompt (or prompts with multiple sessions)
 free to do other things.  Also, if used with <code>options("Ncpu")</code> set, then
@@ -836,7 +885,6 @@ The current (<em>i.e.</em>, 0.3.3 as of this writing) version is more featureful
 $ install2.r -- --with-keep.source drat                  <span class="c1"># keep the source</span>
 $ install2.r -- --data-compress<span class="o">=</span>bzip2 stringdist         <span class="c1"># prefer bz2 compression</span>
 </code></pre></div>
-
 <p>Another <em>very</em> useful option is <code>-n N</code> or <code>--ncpus N</code> which will parallelize
 the installation across <code>N</code> processes.  This can be set automagically by
 setting <code>options("Ncpus")</code>.</p>
@@ -845,7 +893,6 @@ setting <code>options("Ncpus")</code>.</p>
 installable source files.  So one can also do this: </p>
 <div class="highlight"><pre><span></span><code>$ install.r digest_0.6.8.tar.gz
 </code></pre></div>
-
 <p>and the local source file will the installed via a call to <code>R CMD INSTALL</code>.</p>
 <h2 id="checkr-simple-checker">check.r: Simple Checker</h2>
 <p>A related use case is to check packages via <code>check.r</code>.  This script runs <code>R
@@ -866,7 +913,6 @@ Usage: check.r <span class="o">[</span>-h<span class="o">]</span> <span class="o
 -x --usage            show <span class="nb">help</span> and short example usage
 $
 </code></pre></div>
-
 <h2 id="rccr-r-cmd-check-wrapper">rcc.r: R CMD check wrapper</h2>
 <p>The script <code>rcc.r</code> will also check a source tarball, and offers another set of options:</p>
 <div class="highlight"><pre><span></span><code>$ rcc.r -h
@@ -882,14 +928,12 @@ Usage: rcc.r <span class="o">[</span>-h<span class="o">]</span> <span class="o">
 -x --usage            show <span class="nb">help</span> and short example usage
 $
 </code></pre></div>
-
 <h2 id="buildr-building-packages">build.r: Building Packages</h2>
 <p>A related script is <code>build.r</code> which I often use inside a source repository to quickly build
 a source tarball. Like <code>rcc.r</code>, it has a switch <code>-f</code> or <code>--fast</code> to omit building of vignettes.</p>
 <div class="highlight"><pre><span></span><code>$ build.r            <span class="c1"># without argument works on current directory</span>
 $ build.r digest/    <span class="c1"># with directory argument builds tar.gz from repo in directory</span>
 </code></pre></div>
-
 <h2 id="installgithubr-github-install">installGithub.r: GitHub install</h2>
 <p>Installation directly from <a href="https://github.com">GitHub</a> is also popular. Here is an example: </p>
 <p><div class="highlight"><pre><span></span><code>$ installGithub.r RcppCore/RcppEigen 
@@ -932,7 +976,6 @@ Installing from github is supported via the following helper script:</p>
 
 <span class="nf">invisible</span><span class="p">(</span><span class="nf">sapply</span><span class="p">(</span><span class="n">opt</span><span class="o">$</span><span class="n">REPOS</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="nf">install_github</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="n">opt</span><span class="o">$</span><span class="n">deps</span><span class="p">)))</span>
 </code></pre></div>
-
 <h2 id="updater-cran-package-update">update.r: CRAN package update</h2>
 <p>One of the scripts I use the most (interactively) is <code>update.r</code> which updates installed packages.
 An earlier version looked like the following example, the current version is
@@ -951,7 +994,6 @@ a little longer and has more features:</p>
 <span class="c1">## r use requires non-interactive use</span>
 <span class="nf">update.packages</span><span class="p">(</span><span class="n">repos</span><span class="o">=</span><span class="n">repos</span><span class="p">,</span> <span class="n">ask</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">lib.loc</span><span class="o">=</span><span class="n">lib.loc</span><span class="p">)</span>
 </code></pre></div>
-
 <p>As above, it has my preferred mirror and library location hard-wired.</p>
 <p>Another <em>very</em> useful option is <code>-n N</code> or <code>--ncpus N</code> which will parallelize
 the upgrade across <code>N</code> processes.  This can be set automagically by setting
@@ -982,7 +1024,6 @@ testing the file actually exists.</p>
 <span class="nf">require</span><span class="p">(</span><span class="n">knitr</span><span class="p">)</span>
 <span class="nf">knit2pdf</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 </code></pre></div>
-
 <h2 id="roxyr-running-roxygen">roxy.r: Running roxygen</h2>
 <p>Similar to the previous example, the script <code>roxy.r</code> one uses roxygen to extract
 documentation from R files -- either in the current directory, or in the
@@ -1005,7 +1046,6 @@ given directory or directories.</p>
 <span class="c1">## call compileAttributes() on the given directory</span>
 <span class="nf">sapply</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;.&quot;</span><span class="p">),</span> <span class="n">FUN</span><span class="o">=</span><span class="n">roxygenize</span><span class="p">,</span> <span class="n">roclets</span><span class="o">=</span><span class="s">&quot;rd&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <h2 id="compattrr-compiling-attributes">compAttr.r: Compiling Attributes</h2>
 <p>The next script, <code>compAttr.</code>,  can be used with
 <a href="http://dirk.eddelbuettel.com/code/rcpp.html">Rcpp</a>, and particularly is
@@ -1029,7 +1069,6 @@ similar to the preceding script, but invokes <code>compileAttributes()</code> in
 <span class="c1">## call compileAttributes() on the given directory</span>
 <span class="nf">sapply</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;.&quot;</span><span class="p">),</span> <span class="n">compileAttributes</span><span class="p">)</span>
 </code></pre></div>
-
 <h2 id="renderr-render-markdown">render.r: Render Markdown</h2>
 <p>The <code>render.r</code> script generalizes the earlier <code>knit.r</code> to convert Markdown
 into its designated output.</p>
@@ -1197,15 +1236,15 @@ into its designated output.</p>
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.3636a4ec.min.js"></script>
-      <script src="../../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "../..",
-          features: ["tabs"],
+          features: ['navigation.tabs', 'navigation.instant'],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>

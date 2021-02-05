@@ -1,6 +1,5 @@
 site_name: littler
 site_url: https://github.com/eddelbuettel/littler
-
 ## input directory, usually 'docs' which we use for output
 docs_dir: src
 ## output directory, i.e. docs/ on a GH repo
@@ -11,7 +10,8 @@ theme:
   name: material
   custom_dir: overrides
   features:
-    - tabs
+    - navigation.tabs
+    - navigation.instant
   font:
     text: Lato
   favicon: assets/Rlogo.png
