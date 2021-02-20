@@ -22,7 +22,7 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 }
 
 ## maybe support path, author, maintainer, email, license, ...
-pkgKitten::kitten(opt$PACKAGE)
+pkgKitten::kitten(opt$PACKAGE, puppy=opt$puppy)
 if (opt$puppy) {
     stopifnot(requireNamespace("tinytest", quietly=TRUE))
     tinytest::puppy(opt$PACKAGE)
