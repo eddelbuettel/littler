@@ -1,3 +1,7 @@
+2021-02-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/kitten.r: Add bunny option for kitten()
+
 2021-02-20  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/kitten.r: Pass puppy option on to kitten() call
