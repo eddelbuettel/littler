@@ -1,3 +1,7 @@
+2021-03-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* docs-src/: Updated reflecting current files
+
 2021-02-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/kitten.r: Add bunny option for kitten()

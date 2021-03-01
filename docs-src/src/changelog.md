@@ -1,8 +1,49 @@
+###  2021 
+
+2021-02-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/kitten.r: Add bunny option for kitten() 
+ 
+2021-02-20  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/kitten.r: Pass puppy option on to kitten() call 
+ 
+2021-01-31  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/silenceTwitterAccount.r: Check for updated version 
+        of rtweet with post_silence function 
+ 
+2021-01-30  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRSPM.r: Correct -c | --code argument use 
+ 
+2021-01-29  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/silenceTwitterAccount.r: Wrapper for rtweet 
+ 
+2021-01-17  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/compiledDeps.r: Add -n | --nonrecursive option 
+ 
+2021-01-16  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/compiledDeps.r: New script to show which 
+        dependencies of a package are in fact native i.e. compiled 
+ 
 ###  2020 
 
+2020-12-27  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * .github/workflows/ci.yaml: Add CI runner using r-ci 
+        * README.md: Add new CI badge 
+ 
+        * tests/simpleTests.R: Update for GitHub Actions 
+ 
 2020-10-04  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.12 
+ 
+        * configure: Idem 
  
 2020-10-03  Dirk Eddelbuettel  <edd@debian.org> 
  
@@ -33,6 +74,9 @@
 2020-09-20  Dirk Eddelbuettel  <edd@debian.org> 
  
         * .travis.yml (install): Switch to BSPM use for Travis 
+ 
+        * docs/: Added package website 
+        * docs-src/: Added package website inputs 
  
 2020-09-19  Dirk Eddelbuettel  <edd@debian.org> 
  

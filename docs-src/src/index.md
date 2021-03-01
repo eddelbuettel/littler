@@ -1,11 +1,13 @@
 ## littler: A scripting and command-line front-end for GNU R
 
 [![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler)
+[![CI](https://github.com/eddelbuettel/littler/workflows/ci/badge.svg)](https://github.com/eddelbuettel/littler/actions?query=workflow%3Aci)
 [![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![CRAN](https://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler)
 [![Dependencies](https://tinyverse.netlify.com/badge/littler)](https://cran.r-project.org/package=littler)
 [![Downloads](https://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](https://www.r-pkg.org/pkg/littler) 
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/littler)](https://github.com/eddelbuettel/littler)
+[![Documentation](https://img.shields.io/badge/documentation-is_here-blue)](https://eddelbuettel.github.io/littler/)
 
 ### So What Is It For?
 

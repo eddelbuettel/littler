@@ -11,7 +11,7 @@ Return the path of the install `r` binary.
 ### Arguments
 
 | Argument | Description                                                       |
-| -------- | ----------------------------------------------------------------- |
+|----------|-------------------------------------------------------------------|
 | `usecat` | Optional toggle to request output to stdout (useful in Makefiles) |
 
 ### Details

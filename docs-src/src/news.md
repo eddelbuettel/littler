@@ -1,3 +1,14 @@
+### Version 0.3.13 (2021-xx-yy)
+
+-   Changes in examples
+
+    -   New script `compiledDeps.r` to show which dependencies are
+        compiled
+
+-   Changes in package
+
+    -   Added Continuous Integration runner via `run.sh`
+
 ### Version 0.3.12 (2020-10-04)
 
 -   Changes in examples
