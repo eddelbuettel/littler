@@ -20,7 +20,7 @@ setwd("/tmp")                           # go to /tmp
 url <- "https://dailies.rstudio.com/rstudio/oss/bionic/x86_64"
 pg <- read_html(url(url))
 tb <- html_table(html_nodes(pg, "table"))[[1]]
-file <- tb[1,1]
+file <- tb[[1,1]]
 #s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/"
 #s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/"
 s3url <- "https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/"
@@ -31,5 +31,3 @@ download.file(fileurl, file, method="wget")
 ## ## cf https://support.rstudio.com/hc/en-us/articles/203842428-Getting-the-newest-RStudio-builds
 ## fileurl <- "http://www.rstudio.org/download/latest/daily/desktop/ubuntu64/rstudio-latest-amd64.deb"
 ## download.file(fileurl, "rstudio-latest-amd64.deb", method="wget")
-
-

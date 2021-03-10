@@ -1,3 +1,8 @@
+2021-03-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/getRStudioDesktop.r: Updated to cope with rvest change
+	* inst/examples/getRStudioServer.r: Idem
+
 2021-03-01  Dirk Eddelbuettel  <edd@debian.org>
 
 	* docs-src/: Updated reflecting current files
@@ -204,7 +209,7 @@
 
 2019-10-28  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/update.r: Now only considers writeable directories 
+	* inst/examples/update.r: Now only considers writeable directories
 
 2019-10-27  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -239,7 +244,7 @@
 2019-09-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/update.r: Correct libloc help text and default value
-	* inst/examples/rcc.r: Use max(all rc values) as status return 
+	* inst/examples/rcc.r: Use max(all rc values) as status return
 
 2019-09-25  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -327,7 +332,7 @@
 
 2019-03-14  Dirk Eddelbuettel  <edd@debian.org>
 
-	* DESCRIPTION (Version, Date): Roll minor version 
+	* DESCRIPTION (Version, Date): Roll minor version
 
 	* configure.ac: Correct use of AC_DEFINE
 	* configure: Idem
@@ -363,7 +368,7 @@
 
 2018-12-31  Dirk Eddelbuettel  <edd@debian.org>
 
-	* DESCRIPTION (Version, Date): Roll minor version 
+	* DESCRIPTION (Version, Date): Roll minor version
 
 	* inst/examples/update.r: Add -n | --ncpus support
 
@@ -1376,4 +1381,3 @@
 	* Release 0.0.1:
 
 	* Initial release of Rinterp: hashbang support for R
-
