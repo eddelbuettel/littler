@@ -1,6 +1,7 @@
 2021-03-12  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/kitten.r: Allow calling Rcpp{,Arma,Eigen}.package.skeleton
+	* inst/examples/roxy.r: Expand roclets example and argument test
 
 2021-03-10  Dirk Eddelbuettel  <edd@debian.org>
 

@@ -27,6 +27,7 @@ Examples:
   roxy.r                     # update help pages for package, use cached version
   roxy.r -n                  # use non-cached version
   roxy.r -r NULL             # use full roclets i.e. collate,namespace,rd
+  roxy.r -r 'namespace,rd'   # use full roclets i.e. namespace,rd
   roxy.r -f                  # use non-cached version and 'NULL' roclets
 
 roxy.r is part of littler which brings 'r' to the command-line. See the help for
@@ -57,4 +58,4 @@ argv <- Filter(function(x) file.info(x)$is.dir, argv)
 ## call roxygenize() on the given directory with roclets="rd" set
 sapply(ifelse(length(argv) > 0, argv, "."),
        FUN = roxygenize,
-       roclets = if (tolower(opt$roclets) == "null") NULL else opt$roclets)
+       roclets = if (tolower(opt$roclets) == "null") NULL else strsplit(opt$roclets,",")[[1]])
