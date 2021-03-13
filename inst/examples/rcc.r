@@ -22,7 +22,7 @@ doc <- "Usage: rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--
 -h --help             show this help text
 -x --usage            show help and short example usage"
 
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc)          # docopt parsing
 
 if (opt$usage) {
     cat(doc, "\n\n")
@@ -59,16 +59,16 @@ if (opt$fast) {
     opt$args <- c(opt$args, "--ignore-vignettes", "--no-manual")
 }
 
-if (length(opt$PATH) == 0) opt$PATH <- "." 		# default argument current directory
-if (is.null(opt$libpath)) opt$libpath <- .libPaths()	# default library pathr
-if (is.null(opt$repos)) opt$repos <- getOption("repos")	# default repos
+if (length(opt$PATH) == 0) opt$PATH <- "."      # default argument current directory
+if (is.null(opt$libpath)) opt$libpath <- .libPaths()    # default library pathr
+if (is.null(opt$repos)) opt$repos <- getOption("repos") # default repos
 
 if (requireNamespace("rcmdcheck", quietly=TRUE) == FALSE)
     stop("This command requires the 'rcmdcheck' package.", call.=FALSE)
 
 suppressMessages(library(rcmdcheck))
 
-Sys.setenv("_R_CHECK_TESTS_NLINES_"="0")		# ensure all errors shown
+Sys.setenv("_R_CHECK_TESTS_NLINES_"="0")        # ensure all errors shown
 
 rccwrapper <- function(pa, qu, ar, li, re, eo) {
     rcmdcheck(path=pa, quiet=qu, args=ar, libpath=li, repos=re, error_on=eo)
@@ -77,9 +77,9 @@ rccwrapper <- function(pa, qu, ar, li, re, eo) {
 rc <- sapply(opt$PATH,                  # iterate over arguments
              rccwrapper,                # calling 'rcmdcheck()' with arguments
              opt$quiet,                 # quiet argument, default false
-             opt$args,			# args arguments, possibly with --as-cran
-             opt$libpath,		# libpath argument
-             opt$repos,			# repos argument
+             opt$args,                  # args arguments, possibly with --as-cran
+             opt$libpath,               # libpath argument
+             opt$repos,                 # repos argument
              erroron,                   # error_on argument
              simplify=FALSE)
 status <- max(sapply(rc, "[[", "status"))
