@@ -1,3 +1,7 @@
+2021-03-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/kitten.r: Allow calling Rcpp{,Arma,Eigen}.package.skeleton
+
 2021-03-10  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/getRStudioDesktop.r: Updated to cope with rvest change
