@@ -1,3 +1,8 @@
+2021-03-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/littler-faq.Rmd (vignette): Add %\Vignette{Encoding,Package}
+	* vignettes/littler-examples.Rmd (vignette): Idem
+
 2021-03-12  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/kitten.r: Allow calling Rcpp{,Arma,Eigen}.package.skeleton

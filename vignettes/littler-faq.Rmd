@@ -16,7 +16,8 @@ output:
 vignette: >
   %\VignetteIndexEntry{Littler FAQ}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignettePackage{littler}
+  %\VignetteEncoding{UTF-8}
 ---
 
 

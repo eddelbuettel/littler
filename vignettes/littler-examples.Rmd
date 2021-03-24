@@ -15,8 +15,9 @@ output:
       error: hide
 vignette: >
   %\VignetteIndexEntry{Littler Examples}
+  %\VignettePackage{littler}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{css, echo=FALSE}
