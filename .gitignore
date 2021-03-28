@@ -16,3 +16,4 @@ PACKAGE
 *.tar.gz
 local
 docs-src/docs
+docs/mkdmt-src/docs
