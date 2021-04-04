@@ -1,3 +1,7 @@
+2021-04-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (URL): Add repo URL
+
 2021-03-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* docs/mkdmt-src/: Moved mkdocs-material input
