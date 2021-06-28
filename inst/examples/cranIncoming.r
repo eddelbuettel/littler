@@ -12,7 +12,7 @@ suppressMessages({
 })
 
 if (!requireNamespace("foghorn", quietly=TRUE))
-    stop("The 'bspm' is required. Please install it.", call.=FALSE)
+    stop("The 'foghorn' is required. Please install it.", call.=FALSE)
 
 ## configuration for docopt
 doc <- paste0("Usage: cranIncoming.r [-a] [-h] [-x] [ARGS...]
