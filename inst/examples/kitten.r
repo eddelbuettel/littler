@@ -27,8 +27,8 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 ign <- switch(opt$type,
               plain = pkgKitten::kitten(opt$PACKAGE, puppy=opt$puppy, bunny=opt$bunny),
               rcpp = Rcpp::Rcpp.package.skeleton(opt$PACKAGE),
-              arma = RcppArmadillo::Rcpp.package.skeleton(opt$PACKAGE),
-              eigen = RcppEigen::Rcpp.package.skeleton(opt$PACKAGE))
+              arma = RcppArmadillo::RcppArmadillo.package.skeleton(opt$PACKAGE),
+              eigen = RcppEigen::RcppEigen.package.skeleton(opt$PACKAGE))
 
 if (opt$puppy) {
     stopifnot(requireNamespace("tinytest", quietly=TRUE))
