@@ -1,5 +1,7 @@
 2021-07-09  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Date, Version): Roll minor version and date
+
 	* inst/examples/kitten.r: Correct calls for arma and eigen
 
 2021-06-28  Dirk Eddelbuettel  <edd@debian.org>
