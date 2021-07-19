@@ -1,3 +1,7 @@
+2021-07-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/kitten.r: Note bunny and puppy only work with plain
+
 2021-07-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll minor version and date

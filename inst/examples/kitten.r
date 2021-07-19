@@ -6,8 +6,8 @@ library(docopt)
 doc <- "Usage: kitten.r [-t TYPE] [-b] [-p] [-h] [-x] PACKAGE
 
 -t --type TYPE      type of kitten: plain, rcpp, arma, eigen. [default: plain]
--b --bunny	    install roxygen2 documentation example and roxygenize
--p --puppy	    invoke tinytest::puppy to set up testing
+-b --bunny	    install roxygen2 documentation example and roxygenize (only for plain)
+-p --puppy	    invoke tinytest::puppy to set up testing (only for plain)
 -h --help           show this help text
 -x --usage          show help and short example usage"
 
