@@ -1,3 +1,7 @@
+2021-07-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/NEWS.Rd: Added entries for several changes since last release
+
 2021-07-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/kitten.r: Note bunny and puppy only work with plain

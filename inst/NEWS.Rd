@@ -9,10 +9,25 @@
     \itemize{
       \item New script \code{compiledDeps.r} to show which dependencies
       are compiled
+      \item New script \code{silenceTwitterAccount.r} wrapping
+      \pkg{rtweet}
+      \item The \code{-c} or \code{--code} option for
+      \code{installRSPM.r} was corrected
+      \item The \code{kitten.r} script now passes options \sQuote{bunny}
+      and \sQuote{puppy} on to the \code{pkgKitten::kitten()} call; 
+      new options to call the Arma and Eigen variants were added
+      \item The \code{getRStudioDesktop.r} and \code{getRStudioServer.r}
+      scripts were updated for a change in \pkg{rvest}
+      \item Two typos in the \code{tt.r} help message were correct
+      (Aaron Wolen in \ghpr{86})
+      \item The message in \code{cranIncoming.r} was corrected.
     }
     \item Changes in package
     \itemize{
-      \item Added Continuous Integration runner via \code{run.sh}
+      \item Added Continuous Integration runner via \code{run.sh} from
+      \href{https://eddelbuettel.github.io/r-ci/}{r-ci}.
+      \item Two vignettes git two extra vignette attributes.
+      \item The mkdocs-material documentation input was moved.
     }
   }
 }
