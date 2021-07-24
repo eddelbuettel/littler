@@ -1,6 +1,6 @@
 ## Internal, not exported, function used by unit tests
 test <- function(src = "cat(2 + 2)") {
-    system2(r(), c("-e", shQuote(src)), stdout = TRUE, stderr = TRUE)
+    system2(r(), paste("-e", shQuote(src)), stdout = TRUE)
 }
 
 
