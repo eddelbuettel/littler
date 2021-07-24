@@ -6,9 +6,8 @@ AC_PREREQ(2.61)
 
 # Every other copy of the package version number gets its value from here
 # The m4_esyscmd_s invocation is due to an excellent StackOverflow answer.
-AC_INIT([littler], m4_esyscmd_s([awk -e '/^Version:/ {print $2}' DESCRIPTION]))
-# or hand-editing instead of having the autoconf call pull it in
-# AC_INIT([littler], [0.3.9])
+# Sadly it breaks under Debian package builds (likely due to a missing component)
+AC_INIT([littler], [0.3.13], [edd@debian.org])
 
 #  Look for ancillary configure tools in tools
 dnl AC_CONFIG_AUX_DIR(tools)

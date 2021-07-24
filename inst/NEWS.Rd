@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.13 (2021-xx-yy)}{
+\section{Changes in littler version 0.3.13 (2021-07-24)}{
   \itemize{
     \item Changes in examples
     \itemize{
@@ -26,8 +26,9 @@
     \itemize{
       \item Added Continuous Integration runner via \code{run.sh} from
       \href{https://eddelbuettel.github.io/r-ci/}{r-ci}.
-      \item Two vignettes git two extra vignette attributes.
+      \item Two vignettes got two extra vignette attributes.
       \item The mkdocs-material documentation input was moved.
+      \item The basic unit tests were slightly refactored and updated.
     }
   }
 }

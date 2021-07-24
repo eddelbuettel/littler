@@ -1,5 +1,9 @@
 2021-07-24  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Release 0.3.13
+	* configure.ac: Idem
+	* configure: Idem
+
 	* tests/simpleTests.R: Slightly extended
 	* R/test.R (test): Minor tweak
 
