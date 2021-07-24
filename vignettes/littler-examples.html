@@ -16,6 +16,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -79,283 +80,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-  <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
-// be compatible with the behavior of Pandoc < 2.8).
-document.addEventListener('DOMContentLoaded', function(e) {
-  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
-  var i, h, a;
-  for (i = 0; i < hs.length; i++) {
-    h = hs[i];
-    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
-    a = h.attributes;
-    while (a.length > 0) h.removeAttribute(a[0].name);
-  }
-});
-</script>
-  <style type="text/css">@charset "UTF-8";body{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.4;max-width:800px;margin:20px auto;padding:0 10px;color:#363636;background:#fff;text-rendering:optimizeLegibility}button,input,textarea{transition:background-color .1s linear,border-color .1s linear,color .1s linear,box-shadow .1s linear,transform .1s ease}h1{font-size:2.2em;margin-top:0}h1,h2,h3,h4,h5,h6{margin-bottom:12px}h1,h2,h3,h4,h5,h6,strong{color:#000}b,h1,h2,h3,h4,h5,h6,strong,th{font-weight:600}blockquote{border-left:4px solid rgba(0,150,191,.67);margin:1.5em 0;padding:.5em 1em;font-style:italic}blockquote>footer{margin-top:10px;font-style:normal}address,blockquote cite{font-style:normal}a[href^=mailto]:before{content:"📧 "}a[href^=tel]:before{content:"📞 "}a[href^=sms]:before{content:"💬 "}button,input[type=button],input[type=checkbox],input[type=submit]{cursor:pointer}input:not([type=checkbox]):not([type=radio]),select{display:block}button,input,select,textarea{color:#000;background-color:#efefef;font-family:inherit;font-size:inherit;margin-right:6px;margin-bottom:6px;padding:10px;border:none;border-radius:6px;outline:none}button,input:not([type=checkbox]):not([type=radio]),select,textarea{-webkit-appearance:none}textarea{margin-right:0;width:100%;box-sizing:border-box;resize:vertical}button,input[type=button],input[type=submit]{padding-right:30px;padding-left:30px}button:hover,input[type=button]:hover,input[type=submit]:hover{background:#ddd}button:focus,input:focus,select:focus,textarea:focus{box-shadow:0 0 0 2px rgba(0,150,191,.67)}button:active,input[type=button]:active,input[type=checkbox]:active,input[type=radio]:active,input[type=submit]:active{transform:translateY(2px)}button:disabled,input:disabled,select:disabled,textarea:disabled{cursor:not-allowed;opacity:.5}::-webkit-input-placeholder{color:#949494}:-ms-input-placeholder{color:#949494}::-ms-input-placeholder{color:#949494}::placeholder{color:#949494}a{text-decoration:none;color:#0076d1}a:hover{text-decoration:underline}code,kbd{background:#efefef;color:#000;padding:5px;border-radius:6px}pre>code{padding:10px;display:block;overflow-x:auto}img{max-width:100%}hr{border:none;border-top:1px solid #dbdbdb}table{border-collapse:collapse;margin-bottom:10px;width:100%}td,th{padding:6px;text-align:left}th{border-bottom:1px solid #dbdbdb}tbody tr:nth-child(2n){background-color:#efefef}::-webkit-scrollbar{height:10px;width:10px}::-webkit-scrollbar-track{background:#efefef;border-radius:6px}::-webkit-scrollbar-thumb{background:#d5d5d5;border-radius:6px}::-webkit-scrollbar-thumb:hover{background:#c4c4c4}
-
-</style>
-  <style type="text/css">
-code {
-padding: 2px;
-border-radius: unset;
-}
-
-pre {
-background-color: unset;
-border: solid #aaa 1px;
-padding: 8px;
-}
-pre.numberSource {
-margin: 0;
-padding-left: 0;
-}
-div.sourceCode {
-overflow: visible;
-}
-pre, pre.sourceCode {
-overflow-x: auto;
-}
-pre>code {
-white-space: pre;
-overflow: visible;
-background-color: unset;
-padding: 0;
-}
-pre.sourceCode.numberSource {
-overflow-x: visible;
-}
-pre.sourceCode.numberSource>code {
-white-space: pre-wrap
-}
-pre.sourceCode.numberSource>code>span {
-left: 8px;
-text-indent: -4.6em;
-}
-
-.chunk-summary {
-text-align: right;
-}
-.chunk-summary+pre,
-.chunk-summary+div.sourceCode {
-margin-top: 2px;
-}
-
-nav > ul {
-border: .0625rem solid #444;
-border-radius: 4px;
-margin: 5px;
-padding: 5px;
-}
-nav ul {
-list-style-type: none;
-padding-inline-start: 1rem;
-}
-nav ul li {
-padding: 0;
-}
-nav ul ul {
-margin-top: 0;
-margin-bottom: 0;
-padding-top: 0;
-padding-bottom: 0;
-}
-nav code {
-background-color: unset;
-color: unset;
-}
-</style>
-  <style type="text/css">.tooltip {
-position: relative;
-display: inline-block;
-}
-.tooltip:before, .tooltip:after {
-position: absolute;
-opacity: 0;
-clip: rect(0 0 0 0);
--webkit-clip-path: inset(100%);
-clip-path: inset(100%);
-transition: all 0.3s;
-z-index: 1010;
-left: 50%;
-}
-.tooltip:not(.bottom):before, .tooltip:not(.bottom):after {
-bottom: 75%;
-}
-.tooltip.bottom:before, .tooltip.bottom:after {
-top: 75%;
-}
-.tooltip:hover:before, .tooltip:hover:after, .tooltip:focus:before, .tooltip:focus:after {
-opacity: 1;
-clip: auto;
--webkit-clip-path: inset(0%);
-clip-path: inset(0%);
-}
-.tooltip:before {
-content: '';
-background: transparent;
-border: 0.5rem solid transparent;
-left: calc(50% - 0.5rem);
-}
-.tooltip:not(.bottom):before {
-border-top-color: #212121;
-}
-.tooltip.bottom:before {
-border-bottom-color: #212121;
-}
-.tooltip:after {
-content: attr(aria-label);
-color: #fafafa;
-background: #212121;
-border-radius: 0.125rem;
-padding: 0.5rem;
-white-space: nowrap;
-transform: translateX(-50%);
-}
-.tooltip:not(.bottom):after {
-margin-bottom: 1rem;
-}
-.tooltip.bottom:after {
-margin-top: 1rem;
-}
-</style>
-  <style type="text/css">
-.collapse {
-width: calc(100% - 1rem);
-opacity: 1;
-display: flex;
-flex-direction: column;
-margin: 0.5rem;
-border-radius: 0.125rem;
-}
-.collapse > [type="radio"], .collapse > [type="checkbox"] {
-height: 1px;
-width: 1px;
-margin: -1px;
-overflow: hidden;
-position: absolute;
-clip: rect(0 0 0 0);
--webkit-clip-path: inset(100%);
-clip-path: inset(100%);
-}
-.collapse > label {
-flex-grow: 1;
-display: inline-block;
-height: 1.5rem;
-cursor: pointer;
-transition: background 0.3s;
-color: #212121;
-background: #e8e8e8;
-border: 0.0625rem solid #ddd;
-padding: 0.75rem;
-}
-.collapse > label:hover, .collapse > label:focus {
-background: #f0f0f0;
-}
-.collapse > label + div {
-flex-basis: auto;
-height: 1px;
-width: 1px;
-margin: -1px;
-overflow: hidden;
-position: absolute;
-clip: rect(0 0 0 0);
--webkit-clip-path: inset(100%);
-clip-path: inset(100%);
-transition: max-height 0.3s;
-max-height: 1px;
-}
-.collapse > :checked + label {
-background: #ececec;
-border-bottom-color: #ececec;
-}
-.collapse > :checked + label + div {
-box-sizing: border-box;
-position: relative;
-width: 100%;
-height: auto;
-overflow: auto;
-margin: 0;
-border: 0.0625rem solid #ddd;
-border-top: 0;
-padding: 0.5rem;
-clip: auto;
--webkit-clip-path: inset(0%);
-clip-path: inset(0%);
-max-height: 400px;
-}
-.collapse > label:not(:first-of-type) {
-border-top: 0;
-}
-.collapse > label:first-of-type {
-border-radius: 0.125rem 0.125rem 0 0;
-}
-.collapse > label:last-of-type:not(:first-of-type) {
-border-radius: 0 0 0.125rem 0.125rem;
-}
-.collapse > label:last-of-type:first-of-type {
-border-radius: 0.125rem;
-}
-.collapse > :checked:last-of-type:not(:first-of-type) + label {
-border-radius: 0;
-}
-.collapse > :checked:last-of-type + label + div {
-border-radius: 0 0 0.125rem 0.125rem;
-}
-</style>
-  <style type="text/css">@media screen and (max-width: 900px) {
-header, nav, article {
-padding: 0 3rem;
-}
-}
-</style>
-  <style type="text/css">@media screen and (min-width: 900px) {
-body {
-min-width: 900px;
-max-width: 62.5%;
-margin: 0 auto;
-}
-main {
-display: grid;
-grid-template-columns: 300px 1fr;
-grid-template-rows: auto auto;
-}
-header, article {
-min-width: calc(600px - 4rem);
-max-width: calc(100% - 4rem);
-padding: 0 0 0 4rem;
-}
-nav {
-grid-row: 1 / -1;
-grid-columns: 1 / 2;
-border: none;
-margin: 0;
-width: 300px;
-}
-nav > ul {
-position: sticky;
-max-height: 85vh;
-overflow-y: auto;
-top: 5px;
-}
-}
-</style>
-  <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
+  <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+  <link href="data:text/css,%40charset%20%22UTF%2D8%22%3Bbody%7Bfont%2Dfamily%3Asystem%2Dui%2C%2Dapple%2Dsystem%2CBlinkMacSystemFont%2CSegoe%20UI%2CRoboto%2COxygen%2CUbuntu%2CCantarell%2CFira%20Sans%2CDroid%20Sans%2CHelvetica%20Neue%2Csans%2Dserif%3Bline%2Dheight%3A1%2E4%3Bmax%2Dwidth%3A800px%3Bmargin%3A20px%20auto%3Bpadding%3A0%2010px%3Bcolor%3A%23363636%3Bbackground%3A%23fff%3Btext%2Drendering%3AoptimizeLegibility%7Dbutton%2Cinput%2Ctextarea%7Btransition%3Abackground%2Dcolor%20%2E1s%20linear%2Cborder%2Dcolor%20%2E1s%20linear%2Ccolor%20%2E1s%20linear%2Cbox%2Dshadow%20%2E1s%20linear%2Ctransform%20%2E1s%20ease%7Dh1%7Bfont%2Dsize%3A2%2E2em%3Bmargin%2Dtop%3A0%7Dh1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%7Bmargin%2Dbottom%3A12px%7Dh1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%2Cstrong%7Bcolor%3A%23000%7Db%2Ch1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%2Cstrong%2Cth%7Bfont%2Dweight%3A600%7Dblockquote%7Bborder%2Dleft%3A4px%20solid%20rgba%280%2C150%2C191%2C%2E67%29%3Bmargin%3A1%2E5em%200%3Bpadding%3A%2E5em%201em%3Bfont%2Dstyle%3Aitalic%7Dblockquote%3Efooter%7Bmargin%2Dtop%3A10px%3Bfont%2Dstyle%3Anormal%7Daddress%2Cblockquote%20cite%7Bfont%2Dstyle%3Anormal%7Da%5Bhref%5E%3Dmailto%5D%3Abefore%7Bcontent%3A%22%F0%9F%93%A7%20%22%7Da%5Bhref%5E%3Dtel%5D%3Abefore%7Bcontent%3A%22%F0%9F%93%9E%20%22%7Da%5Bhref%5E%3Dsms%5D%3Abefore%7Bcontent%3A%22%F0%9F%92%AC%20%22%7Dbutton%2Cinput%5Btype%3Dbutton%5D%2Cinput%5Btype%3Dcheckbox%5D%2Cinput%5Btype%3Dsubmit%5D%7Bcursor%3Apointer%7Dinput%3Anot%28%5Btype%3Dcheckbox%5D%29%3Anot%28%5Btype%3Dradio%5D%29%2Cselect%7Bdisplay%3Ablock%7Dbutton%2Cinput%2Cselect%2Ctextarea%7Bcolor%3A%23000%3Bbackground%2Dcolor%3A%23efefef%3Bfont%2Dfamily%3Ainherit%3Bfont%2Dsize%3Ainherit%3Bmargin%2Dright%3A6px%3Bmargin%2Dbottom%3A6px%3Bpadding%3A10px%3Bborder%3Anone%3Bborder%2Dradius%3A6px%3Boutline%3Anone%7Dbutton%2Cinput%3Anot%28%5Btype%3Dcheckbox%5D%29%3Anot%28%5Btype%3Dradio%5D%29%2Cselect%2Ctextarea%7B%2Dwebkit%2Dappearance%3Anone%7Dtextarea%7Bmargin%2Dright%3A0%3Bwidth%3A100%25%3Bbox%2Dsizing%3Aborder%2Dbox%3Bresize%3Avertical%7Dbutton%2Cinput%5Btype%3Dbutton%5D%2Cinput%5Btype%3Dsubmit%5D%7Bpadding%2Dright%3A30px%3Bpadding%2Dleft%3A30px%7Dbutton%3Ahover%2Cinput%5Btype%3Dbutton%5D%3Ahover%2Cinput%5Btype%3Dsubmit%5D%3Ahover%7Bbackground%3A%23ddd%7Dbutton%3Afocus%2Cinput%3Afocus%2Cselect%3Afocus%2Ctextarea%3Afocus%7Bbox%2Dshadow%3A0%200%200%202px%20rgba%280%2C150%2C191%2C%2E67%29%7Dbutton%3Aactive%2Cinput%5Btype%3Dbutton%5D%3Aactive%2Cinput%5Btype%3Dcheckbox%5D%3Aactive%2Cinput%5Btype%3Dradio%5D%3Aactive%2Cinput%5Btype%3Dsubmit%5D%3Aactive%7Btransform%3AtranslateY%282px%29%7Dbutton%3Adisabled%2Cinput%3Adisabled%2Cselect%3Adisabled%2Ctextarea%3Adisabled%7Bcursor%3Anot%2Dallowed%3Bopacity%3A%2E5%7D%3A%3A%2Dwebkit%2Dinput%2Dplaceholder%7Bcolor%3A%23949494%7D%3A%2Dms%2Dinput%2Dplaceholder%7Bcolor%3A%23949494%7D%3A%3A%2Dms%2Dinput%2Dplaceholder%7Bcolor%3A%23949494%7D%3A%3Aplaceholder%7Bcolor%3A%23949494%7Da%7Btext%2Ddecoration%3Anone%3Bcolor%3A%230076d1%7Da%3Ahover%7Btext%2Ddecoration%3Aunderline%7Dcode%2Ckbd%7Bbackground%3A%23efefef%3Bcolor%3A%23000%3Bpadding%3A5px%3Bborder%2Dradius%3A6px%7Dpre%3Ecode%7Bpadding%3A10px%3Bdisplay%3Ablock%3Boverflow%2Dx%3Aauto%7Dimg%7Bmax%2Dwidth%3A100%25%7Dhr%7Bborder%3Anone%3Bborder%2Dtop%3A1px%20solid%20%23dbdbdb%7Dtable%7Bborder%2Dcollapse%3Acollapse%3Bmargin%2Dbottom%3A10px%3Bwidth%3A100%25%7Dtd%2Cth%7Bpadding%3A6px%3Btext%2Dalign%3Aleft%7Dth%7Bborder%2Dbottom%3A1px%20solid%20%23dbdbdb%7Dtbody%20tr%3Anth%2Dchild%282n%29%7Bbackground%2Dcolor%3A%23efefef%7D%3A%3A%2Dwebkit%2Dscrollbar%7Bheight%3A10px%3Bwidth%3A10px%7D%3A%3A%2Dwebkit%2Dscrollbar%2Dtrack%7Bbackground%3A%23efefef%3Bborder%2Dradius%3A6px%7D%3A%3A%2Dwebkit%2Dscrollbar%2Dthumb%7Bbackground%3A%23d5d5d5%3Bborder%2Dradius%3A6px%7D%3A%3A%2Dwebkit%2Dscrollbar%2Dthumb%3Ahover%7Bbackground%3A%23c4c4c4%7D%0A%0A" rel="stylesheet" />
+  <link href="data:text/css,%0Acode%20%7B%0Apadding%3A%202px%3B%0Aborder%2Dradius%3A%20unset%3B%0A%7D%0A%0Apre%20%7B%0Abackground%2Dcolor%3A%20unset%3B%0Aborder%3A%20solid%20%23aaa%201px%3B%0Apadding%3A%208px%3B%0A%7D%0Apre%2EnumberSource%20%7B%0Amargin%3A%200%3B%0Apadding%2Dleft%3A%200%3B%0A%7D%0Adiv%2EsourceCode%20%7B%0Aoverflow%3A%20visible%3B%0A%7D%0Apre%2C%20pre%2EsourceCode%20%7B%0Aoverflow%2Dx%3A%20auto%3B%0A%7D%0Apre%3Ecode%20%7B%0Awhite%2Dspace%3A%20pre%3B%0Aoverflow%3A%20visible%3B%0Abackground%2Dcolor%3A%20unset%3B%0Apadding%3A%200%3B%0A%7D%0Apre%2EsourceCode%2EnumberSource%20%7B%0Aoverflow%2Dx%3A%20visible%3B%0A%7D%0Apre%2EsourceCode%2EnumberSource%3Ecode%20%7B%0Awhite%2Dspace%3A%20pre%2Dwrap%0A%7D%0Apre%2EsourceCode%2EnumberSource%3Ecode%3Espan%20%7B%0Aleft%3A%208px%3B%0Atext%2Dindent%3A%20%2D4%2E6em%3B%0A%7D%0A%0A%2Echunk%2Dsummary%20%7B%0Atext%2Dalign%3A%20right%3B%0A%7D%0A%2Echunk%2Dsummary%2Bpre%2C%0A%2Echunk%2Dsummary%2Bdiv%2EsourceCode%20%7B%0Amargin%2Dtop%3A%202px%3B%0A%7D%0A%0Anav%20%3E%20ul%20%7B%0Aborder%3A%20%2E0625rem%20solid%20%23444%3B%0Aborder%2Dradius%3A%204px%3B%0Amargin%3A%205px%3B%0Apadding%3A%205px%3B%0A%7D%0Anav%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0Apadding%2Dinline%2Dstart%3A%201rem%3B%0A%7D%0Anav%20ul%20li%20%7B%0Apadding%3A%200%3B%0A%7D%0Anav%20ul%20ul%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Apadding%2Dtop%3A%200%3B%0Apadding%2Dbottom%3A%200%3B%0A%7D%0Anav%20code%20%7B%0Abackground%2Dcolor%3A%20unset%3B%0Acolor%3A%20unset%3B%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%40media%20screen%20and%20%28max%2Dwidth%3A%20960px%29%20%7B%0Aheader%2C%20nav%2C%20article%20%7B%0Apadding%3A%200%203rem%3B%0A%7D%0A%7D%0A%23TOC%20%7B%0Afont%2Dsize%3A%200%2E9em%3B%0Aborder%3A%20none%3B%0A%7D%0A%23TOC%20%3E%20ul%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0A%7D%0A%23TOC%20ul%20%7B%0Amargin%3A%200%3B%0A%7D%0A%23TOC%20li%2C%20%23TOC%20a%20%7B%0Amargin%3A%200%3B%0Apadding%3A%200%3B%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%2Etooltip%20%7B%0Aposition%3A%20relative%3B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0A%2Etooltip%3Abefore%2C%20%2Etooltip%3Aafter%20%7B%0Aposition%3A%20absolute%3B%0Aopacity%3A%200%3B%0Aclip%3A%20rect%280%200%200%200%29%3B%0A%2Dwebkit%2Dclip%2Dpath%3A%20inset%28100%25%29%3B%0Aclip%2Dpath%3A%20inset%28100%25%29%3B%0Atransition%3A%20all%200%2E3s%3B%0Az%2Dindex%3A%201010%3B%0Aleft%3A%2050%25%3B%0A%7D%0A%2Etooltip%3Anot%28%2Ebottom%29%3Abefore%2C%20%2Etooltip%3Anot%28%2Ebottom%29%3Aafter%20%7B%0Abottom%3A%2075%25%3B%0A%7D%0A%2Etooltip%2Ebottom%3Abefore%2C%20%2Etooltip%2Ebottom%3Aafter%20%7B%0Atop%3A%2075%25%3B%0A%7D%0A%2Etooltip%3Ahover%3Abefore%2C%20%2Etooltip%3Ahover%3Aafter%2C%20%2Etooltip%3Afocus%3Abefore%2C%20%2Etooltip%3Afocus%3Aafter%20%7B%0Aopacity%3A%201%3B%0Aclip%3A%20auto%3B%0A%2Dwebkit%2Dclip%2Dpath%3A%20inset%280%25%29%3B%0Aclip%2Dpath%3A%20inset%280%25%29%3B%0A%7D%0A%2Etooltip%3Abefore%20%7B%0Acontent%3A%20%27%27%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%2E5rem%20solid%20transparent%3B%0Aleft%3A%20calc%2850%25%20%2D%200%2E5rem%29%3B%0A%7D%0A%2Etooltip%3Anot%28%2Ebottom%29%3Abefore%20%7B%0Aborder%2Dtop%2Dcolor%3A%20%23212121%3B%0A%7D%0A%2Etooltip%2Ebottom%3Abefore%20%7B%0Aborder%2Dbottom%2Dcolor%3A%20%23212121%3B%0A%7D%0A%2Etooltip%3Aafter%20%7B%0Acontent%3A%20attr%28aria%2Dlabel%29%3B%0Acolor%3A%20%23fafafa%3B%0Abackground%3A%20%23212121%3B%0Aborder%2Dradius%3A%200%2E125rem%3B%0Apadding%3A%200%2E5rem%3B%0Awhite%2Dspace%3A%20nowrap%3B%0Atransform%3A%20translateX%28%2D50%25%29%3B%0A%7D%0A%2Etooltip%3Anot%28%2Ebottom%29%3Aafter%20%7B%0Amargin%2Dbottom%3A%201rem%3B%0A%7D%0A%2Etooltip%2Ebottom%3Aafter%20%7B%0Amargin%2Dtop%3A%201rem%3B%0A%7D%0A" rel="stylesheet" />
+  <link href="data:text/css,%3Aroot%20%7B%0A%2D%2Dtoc%2Dwidth%3A%20300px%3B%0A%7D%0A%40media%20screen%20and%20%28min%2Dwidth%3A%20960px%29%20%7B%0Abody%20%7B%0Amax%2Dwidth%3A%20100vw%3B%0Amargin%3A%200%3B%0Apadding%3A%200%3B%0A%7D%0Amain%20%7B%0Adisplay%3A%20grid%3B%0Agrid%2Dtemplate%2Dcolumns%3A%20var%28%2D%2Dtoc%2Dwidth%29%201fr%3B%0Agrid%2Dtemplate%2Drows%3A%20auto%20auto%3B%0A%7D%0A%23TOC%20%7B%0Agrid%2Drow%3A%201%20%2F%20%2D1%3B%0Agrid%2Dcolumn%3A%201%20%2F%202%3B%0Aborder%3A%20none%3B%0Amargin%3A%200%3B%0Awidth%3A%20var%28%2D%2Dtoc%2Dwidth%29%3B%0A%7D%0A%23TOC%20%3E%20ul%20%7B%0Apadding%2Dtop%3A%200%3B%0Apadding%2Dbottom%3A%200%3B%0Aposition%3A%20sticky%3B%0Amax%2Dheight%3A%20100vh%3B%0Aoverflow%2Dy%3A%20auto%3B%0Atop%3A%200%3B%0Aborder%3A%20none%3B%0A%7D%0A%23TOC%20%3E%20ul%20%3E%20li%3Afirst%2Dchild%20%7B%0Apadding%2Dtop%3A%200%2E5rem%3B%0A%7D%0A%7D%0A%40media%20screen%20and%20%28min%2Dwidth%3A%20960px%29%20and%20%28max%2Dwidth%3A%201260px%29%20%7B%0Amain%20%7B%0Awidth%3A%20calc%28100vw%20%2D%202rem%29%3B%0A%7D%0Aheader%2C%20article%20%7B%0Awidth%3A%20calc%28100vw%20%2D%20var%28%2D%2Dtoc%2Dwidth%29%20%2D%206rem%29%3B%0Apadding%3A%200%200%200%204rem%3B%0A%7D%0A%7D%0A%40media%20screen%20and%20%28min%2Dwidth%3A%201260px%29%20%7B%0Amain%20%7B%0Awidth%3A%20calc%281260px%20%2D%202rem%29%3B%0Amargin%3A%200%20calc%2850vw%20%2D%20480px%29%200%20auto%3B%0A%7D%0Aheader%2C%20article%20%7B%0Awidth%3A%20calc%28960px%20%2D%206rem%29%3B%0Apadding%3A%200%200%200%204rem%3B%0A%7D%0A%7D%0A" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" data-external="1">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous" data-external="1"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);" data-external="1"></script>
@@ -410,14 +140,14 @@ nav > ul {border: none}
 <section id="simple-direct-command-line-use" class="level2">
 <h2>Simple Direct Command-line Use</h2>
 <p><a href="http://dirk.eddelbuettel.com/code/littler.html">littler</a> can be used directly on the command-line just like, say, <code>bc</code>, easily consuming standard input from a pipe:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>$ <span class="bu">echo</span> <span class="st">&#39;cat(pi^2,&quot;\n&quot;)&#39;</span> <span class="kw">|</span> <span class="ex">r</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">9.869604</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">&#39;cat(pi^2,&quot;\n&quot;)&#39;</span> <span class="kw">|</span> <span class="ex">r</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">9.869604</span></span></code></pre></div>
 <p>Equivalently, commands that are to be evaluated can be given on the command-line</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a>$ <span class="ex">r</span> -e <span class="st">&#39;cat(pi^2, &quot;\n&quot;)&#39;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">9.869604</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> r <span class="at">-e</span> <span class="st">&#39;cat(pi^2, &quot;\n&quot;)&#39;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">9.869604</span></span></code></pre></div>
 <p>But unlike bc(1), GNU R has a vast number of statistical functions. For example, we can quickly compute a <code>summary()</code> and show a stem-and-leaf plot for file sizes in a given directory via</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a>$ <span class="fu">ls</span> -l /boot <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;BEGIN {print &quot;size&quot;} !/^total/ {print $5}&#39;</span> <span class="kw">|</span> <span class="kw">\</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>     <span class="ex">r</span> -de <span class="st">&quot;print(summary(X[,1])); stem(X[,1])&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> /boot <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;BEGIN {print &quot;size&quot;} !/^total/ {print $5}&#39;</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     r <span class="at">-de</span> <span class="st">&quot;print(summary(X[,1])); stem(X[,1])&quot;</span></span></code></pre></div>
 <p>which produces something like</p>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
      13     512  110100  486900  768400 4735000
@@ -438,258 +168,258 @@ nav > ul {border: none}
 <p>(Note that some systems may not have <code>/boot</code> in which case you can try <code>/sbin</code> or another directory.)</p>
 <p>As we saw in the preceding example, the program can also be shortened like using the new <code>-d</code> option which reads from stdin and assigns to a <code>data.frame</code> named <code>X</code>.</p>
 <p>And, last but not least, this (somewhat unwieldy) expression can be stored in a helper script (where we now switch to using an explicit <code>readLines()</code> on <code>stdin</code>):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#!/usr/bin/env r</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>fsizes &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">readLines</span>(<span class="kw">file</span>(<span class="st">&quot;stdin&quot;</span>)))</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">print</span>(<span class="kw">summary</span>(fsizes))</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">stem</span>(fsizes)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env r</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fsizes <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">readLines</span>(<span class="fu">file</span>(<span class="st">&quot;stdin&quot;</span>)))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(fsizes))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(fsizes)</span></code></pre></div>
 <p>(where calling <code>#!/usr/bin/env</code> is a trick from Python which allows one to forget whether r is installed in <code>/usr/bin/r</code>, <code>/usr/local/bin/r</code>, <code>~/bin/r</code>, …).</p>
 </section>
 <section id="install.r-direct-cran-installation" class="level2">
 <h2>install.r: Direct CRAN Installation</h2>
 <p>This is one of my favourite <a href="http://dirk.eddelbuettel.com/code/littler.html">littler</a> scripts which I use frequently to install packages off <a href="https://cran.r-project.org">CRAN</a>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#!/usr/bin/env r</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="cf">if</span> (<span class="kw">is.null</span>(argv) <span class="op">|</span><span class="st"> </span><span class="kw">length</span>(argv)<span class="op">&lt;</span><span class="dv">1</span>) {</span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;Usage: installr.r pkg1 [pkg2 pkg3 ...]</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="kw">q</span>()</span>
-<span id="cb6-6"><a href="#cb6-6"></a>}</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">## adjust as necessary, see help(&#39;download.packages&#39;)</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>repos &lt;-<span class="st"> &quot;https://cran.rstudio.com&quot;</span> </span>
-<span id="cb6-10"><a href="#cb6-10"></a></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">## this makes sense on Debian where no packages touch /usr/local</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>lib.loc &lt;-<span class="st"> &quot;/usr/local/lib/R/site-library&quot;</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="kw">install.packages</span>(argv, lib.loc, repos)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env r</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(argv) <span class="sc">|</span> <span class="fu">length</span>(argv)<span class="sc">&lt;</span><span class="dv">1</span>) {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Usage: installr.r pkg1 [pkg2 pkg3 ...]</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">q</span>()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="do">## adjust as necessary, see help(&#39;download.packages&#39;)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="st">&quot;https://cran.rstudio.com&quot;</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">## this makes sense on Debian where no packages touch /usr/local</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>lib.loc <span class="ot">&lt;-</span> <span class="st">&quot;/usr/local/lib/R/site-library&quot;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(argv, lib.loc, repos)</span></code></pre></div>
 <p>I invoke it all the time with one, two or more packages to install (or reinstall).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>$ <span class="ex">install.r</span> digest RcppCNPy</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> install.r digest RcppCNPy</span></code></pre></div>
 <p>It conveniently installs all dependencies, and uses the chosen target directory, all while keeping my R prompt (or prompts with multiple sessions) free to do other things. Also, if used with <code>options(&quot;Ncpu&quot;)</code> set, then (remote CRAN) packages will be installed in parallel.</p>
 </section>
 <section id="install2.r-with-cmdline-parsing" class="level2">
 <h2>install2.r: With Cmdline Parsing</h2>
 <p>Thanks to the fabulous <a href="https://github.com/edwindj/docopt.R">docopt</a> package, we also have a variant <code>install2.r</code> with optional settings of repo and location. It was first installed with <a href="http://dirk.eddelbuettel.com/blog/2014/10/19/">littler 0.2.1</a>. The current (<em>i.e.</em>, 0.3.3 as of this writing) version is more featureful and longer and included to keep this brief. Some usage examples are</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a>$ <span class="ex">install2.r</span> -l /tmp/lib Rcpp BH                         <span class="co"># install into given library</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>$ <span class="ex">install2.r</span> -- --with-keep.source drat                  <span class="co"># keep the source</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>$ <span class="ex">install2.r</span> -- --data-compress=bzip2 stringdist         <span class="co"># prefer bz2 compression</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> install2.r <span class="at">-l</span> /tmp/lib Rcpp BH                         <span class="co"># install into given library</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> install2.r <span class="at">--</span> <span class="at">--with-keep.source</span> drat                  <span class="co"># keep the source</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> install2.r <span class="at">--</span> <span class="at">--data-compress</span><span class="op">=</span>bzip2 stringdist         <span class="co"># prefer bz2 compression</span></span></code></pre></div>
 <p>Another <em>very</em> useful option is <code>-n N</code> or <code>--ncpus N</code> which will parallelize the installation across <code>N</code> processes. This can be set automagically by setting <code>options(&quot;Ncpus&quot;)</code>.</p>
 <section id="installing-from-sources" class="level3">
 <h3>Installing From Sources</h3>
 <p>Starting with version 0.2.2, <code>install.r</code> and <code>install2.r</code> now recognise installable source files. So one can also do this:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a>$ <span class="ex">install.r</span> digest_0.6.8.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> install.r digest_0.6.8.tar.gz</span></code></pre></div>
 <p>and the local source file will the installed via a call to <code>R CMD INSTALL</code>.</p>
 </section>
 </section>
 <section id="check.r-simple-checker" class="level2">
 <h2>check.r: Simple Checker</h2>
 <p>A related use case is to check packages via <code>check.r</code>. This script runs <code>R CMD check</code>, but also installs package dependencies first as tests may have dependencies not yet satisfied on the test machine. It offers a number of options:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>$ <span class="ex">check.r</span>  -h</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="ex">Usage</span>: check.r [-h] [-x] [--as-cran] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]</span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">-a</span> --as-cran          customization similar to CRAN<span class="st">&#39;s incoming [default: FALSE]</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="st">-r --repo REPO        repository to use, or NULL for file [default: https://cran.rstudio.com]</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="st">-i --install-deps     also install packages along with their dependencies [default: FALSE]</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="st">-k --install-kitchen  even install packages &#39;</span>kitchen sink<span class="st">&#39;-style up to suggests [default: FALSE]</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="st">-l --library LIB      when installing use this library [default: /usr/local/lib/R/site-library]</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="st">-s --setwd DIR        change to this directoru before undertaking the test [default: ]</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="st">-d --deb-pkgs PKGS    also install binary .deb packages with their dependencies [default: FALSE]</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="st">-u --use-sudo         use sudo when installing .deb packages [default: TRUE]</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="st">-h --help             show this help text</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="st">-x --usage            show help and short example usage</span></span>
-<span id="cb10-14"><a href="#cb10-14"></a><span class="st">$</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> check.r  <span class="at">-h</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> check.r [-h] [-x] [--as-cran] [--repo REPO] [--install-deps] [--install-kitchen] [--deb-pkgs PKGS...] [--use-sudo] [--library LIB] [--setwd DIR] [TARGZ ...]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-a</span> <span class="at">--as-cran</span>          customization similar to CRAN<span class="st">&#39;s incoming [default: FALSE]</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="st">-r --repo REPO        repository to use, or NULL for file [default: https://cran.rstudio.com]</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">-i --install-deps     also install packages along with their dependencies [default: FALSE]</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">-k --install-kitchen  even install packages &#39;</span>kitchen sink<span class="st">&#39;-style up to suggests [default: FALSE]</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">-l --library LIB      when installing use this library [default: /usr/local/lib/R/site-library]</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="st">-s --setwd DIR        change to this directoru before undertaking the test [default: ]</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="st">-d --deb-pkgs PKGS    also install binary .deb packages with their dependencies [default: FALSE]</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="st">-u --use-sudo         use sudo when installing .deb packages [default: TRUE]</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="st">-h --help             show this help text</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="st">-x --usage            show help and short example usage</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="st">$</span></span></code></pre></div>
 </section>
 <section id="rcc.r-r-cmd-check-wrapper" class="level2">
 <h2>rcc.r: R CMD check wrapper</h2>
 <p>The script <code>rcc.r</code> will also check a source tarball, and offers another set of options:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a>$ <span class="ex">rcc.r</span> -h</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="ex">Usage</span>: rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--repos REPO] [PATH...]</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="ex">-c</span> --as-cran          should <span class="st">&#39;--as-cran&#39;</span> be added to ARGS [default: FALSE]</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="ex">-a</span> --args ARGS        additional arguments to be passed to <span class="st">&#39;R CMD CHECK&#39;</span> [default: ]</span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="ex">-l</span> --libpath LIBP     additional library path to be used by <span class="st">&#39;R CMD CHECK&#39;</span> [default: ]</span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="ex">-r</span> --repos REPO       additional repositories to be used by <span class="st">&#39;R CMD CHECK&#39;</span> [default: ]</span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="ex">-f</span> --fast             should vignettes and manuals be skipped [default: FALSE]</span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="ex">-q</span> --quiet            should <span class="st">&#39;rcmdcheck&#39;</span> be called qietly [default: FALSE]</span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="ex">-h</span> --help             show this help text</span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="ex">-x</span> --usage            show help and short example usage</span>
-<span id="cb11-12"><a href="#cb11-12"></a>$</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rcc.r <span class="at">-h</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> rcc.r [-h] [-x] [-c] [-f] [-q] [--args ARGS] [--libpath LIBP] [--repos REPO] [PATH...]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-c</span> <span class="at">--as-cran</span>          should <span class="st">&#39;--as-cran&#39;</span> be added to ARGS [default: FALSE]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-a</span> <span class="at">--args</span> ARGS        additional arguments to be passed to <span class="st">&#39;R CMD CHECK&#39;</span> [default: ]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-l</span> <span class="at">--libpath</span> LIBP     additional library path to be used by <span class="st">&#39;R CMD CHECK&#39;</span> [default: ]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">-r</span> <span class="at">--repos</span> REPO       additional repositories to be used by <span class="st">&#39;R CMD CHECK&#39;</span> [default: ]</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">-f</span> <span class="at">--fast</span>             should vignettes and manuals be skipped [default: FALSE]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">-q</span> <span class="at">--quiet</span>            should <span class="st">&#39;rcmdcheck&#39;</span> be called qietly [default: FALSE]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-h</span> <span class="at">--help</span>             show this help text</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-x</span> <span class="at">--usage</span>            show help and short example usage</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code></pre></div>
 </section>
 <section id="build.r-building-packages" class="level2">
 <h2>build.r: Building Packages</h2>
 <p>A related script is <code>build.r</code> which I often use inside a source repository to quickly build a source tarball. Like <code>rcc.r</code>, it has a switch <code>-f</code> or <code>--fast</code> to omit building of vignettes.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a>$ <span class="ex">build.r</span>            <span class="co"># without argument works on current directory</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>$ <span class="ex">build.r</span> digest/    <span class="co"># with directory argument builds tar.gz from repo in directory</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> build.r            <span class="co"># without argument works on current directory</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> build.r digest/    <span class="co"># with directory argument builds tar.gz from repo in directory</span></span></code></pre></div>
 </section>
 <section id="installgithub.r-github-install" class="level2">
 <h2>installGithub.r: GitHub install</h2>
 <p>Installation directly from <a href="https://github.com">GitHub</a> is also popular. Here is an example:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a>$ <span class="ex">installGithub.r</span> RcppCore/RcppEigen </span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> installGithub.r RcppCore/RcppEigen </span></code></pre></div>
 <p>Installing from github is supported via the following helper script:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#!/usr/bin/env r</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># A simple example to install one or more packages from GitHub</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Copyright (C) 2014 - 2015  Carl Boettiger and Dirk Eddelbuettel</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># Released under GPL (&gt;= 2)</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="co">## load docopt and remotes (or devtools) from CRAN</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="kw">suppressMessages</span>(<span class="kw">library</span>(docopt))       <span class="co"># we need docopt (&gt;= 0.3) as on CRAN</span></span>
-<span id="cb14-11"><a href="#cb14-11"></a><span class="kw">suppressMessages</span>(<span class="kw">library</span>(remotes))      <span class="co"># can use devtools as a fallback</span></span>
-<span id="cb14-12"><a href="#cb14-12"></a></span>
-<span id="cb14-13"><a href="#cb14-13"></a><span class="co">## configuration for docopt</span></span>
-<span id="cb14-14"><a href="#cb14-14"></a>doc &lt;-<span class="st"> &quot;Usage: installGithub.r [-h] [-d DEPS] REPOS...</span></span>
-<span id="cb14-15"><a href="#cb14-15"></a></span>
-<span id="cb14-16"><a href="#cb14-16"></a><span class="st">-d --deps DEPS      Install suggested dependencies as well? [default: NA]</span></span>
-<span id="cb14-17"><a href="#cb14-17"></a><span class="st">-h --help           show this help text</span></span>
-<span id="cb14-18"><a href="#cb14-18"></a></span>
-<span id="cb14-19"><a href="#cb14-19"></a><span class="st">where REPOS... is one or more GitHub repositories.</span></span>
-<span id="cb14-20"><a href="#cb14-20"></a></span>
-<span id="cb14-21"><a href="#cb14-21"></a><span class="st">Examples:</span></span>
-<span id="cb14-22"><a href="#cb14-22"></a><span class="st">  installGithub.r RcppCore/RcppEigen                     </span></span>
-<span id="cb14-23"><a href="#cb14-23"></a></span>
-<span id="cb14-24"><a href="#cb14-24"></a><span class="st">installGithub.r is part of littler which brings &#39;r&#39; to the command-line.</span></span>
-<span id="cb14-25"><a href="#cb14-25"></a><span class="st">See http://dirk.eddelbuettel.com/code/littler.html for more information.</span></span>
-<span id="cb14-26"><a href="#cb14-26"></a><span class="st">&quot;</span></span>
-<span id="cb14-27"><a href="#cb14-27"></a></span>
-<span id="cb14-28"><a href="#cb14-28"></a><span class="co">## docopt parsing</span></span>
-<span id="cb14-29"><a href="#cb14-29"></a>opt &lt;-<span class="st"> </span><span class="kw">docopt</span>(doc)</span>
-<span id="cb14-30"><a href="#cb14-30"></a><span class="cf">if</span> (opt<span class="op">$</span>deps <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span> <span class="op">||</span><span class="st"> </span>opt<span class="op">$</span>deps <span class="op">==</span><span class="st"> &quot;FALSE&quot;</span>) {</span>
-<span id="cb14-31"><a href="#cb14-31"></a>    opt<span class="op">$</span>deps &lt;-<span class="st"> </span><span class="kw">as.logical</span>(opt<span class="op">$</span>deps)</span>
-<span id="cb14-32"><a href="#cb14-32"></a>} <span class="cf">else</span> <span class="cf">if</span> (opt<span class="op">$</span>deps <span class="op">==</span><span class="st"> &quot;NA&quot;</span>) {</span>
-<span id="cb14-33"><a href="#cb14-33"></a>    opt<span class="op">$</span>deps &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb14-34"><a href="#cb14-34"></a>}</span>
-<span id="cb14-35"><a href="#cb14-35"></a></span>
-<span id="cb14-36"><a href="#cb14-36"></a><span class="kw">invisible</span>(<span class="kw">sapply</span>(opt<span class="op">$</span>REPOS, <span class="cf">function</span>(r) <span class="kw">install_github</span>(r, <span class="dt">dependencies =</span> opt<span class="op">$</span>deps)))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env r</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A simple example to install one or more packages from GitHub</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Copyright (C) 2014 - 2015  Carl Boettiger and Dirk Eddelbuettel</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Released under GPL (&gt;= 2)</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">## load docopt and remotes (or devtools) from CRAN</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(docopt))       <span class="co"># we need docopt (&gt;= 0.3) as on CRAN</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(remotes))      <span class="co"># can use devtools as a fallback</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="do">## configuration for docopt</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="st">&quot;Usage: installGithub.r [-h] [-d DEPS] REPOS...</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="st">-d --deps DEPS      Install suggested dependencies as well? [default: NA]</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="st">-h --help           show this help text</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="st">where REPOS... is one or more GitHub repositories.</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="st">Examples:</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="st">  installGithub.r RcppCore/RcppEigen                     </span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="st">installGithub.r is part of littler which brings &#39;r&#39; to the command-line.</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="st">See http://dirk.eddelbuettel.com/code/littler.html for more information.</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="do">## docopt parsing</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>opt <span class="ot">&lt;-</span> <span class="fu">docopt</span>(doc)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (opt<span class="sc">$</span>deps <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span> <span class="sc">||</span> opt<span class="sc">$</span>deps <span class="sc">==</span> <span class="st">&quot;FALSE&quot;</span>) {</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    opt<span class="sc">$</span>deps <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(opt<span class="sc">$</span>deps)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (opt<span class="sc">$</span>deps <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>) {</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    opt<span class="sc">$</span>deps <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">sapply</span>(opt<span class="sc">$</span>REPOS, <span class="cf">function</span>(r) <span class="fu">install_github</span>(r, <span class="at">dependencies =</span> opt<span class="sc">$</span>deps)))</span></code></pre></div>
 </section>
 <section id="update.r-cran-package-update" class="level2">
 <h2>update.r: CRAN package update</h2>
 <p>One of the scripts I use the most (interactively) is <code>update.r</code> which updates installed packages. An earlier version looked like the following example, the current version is a little longer and has more features:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#!/usr/bin/env r </span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># a simple example to update packages in /usr/local/lib/R/site-library</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># parameters are easily adjustable</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co">## adjust as necessary, see help(&#39;download.packages&#39;)</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>repos &lt;-<span class="st"> &quot;https://cloud.r-project.org&quot;</span> </span>
-<span id="cb15-8"><a href="#cb15-8"></a></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="co">## this makes sense on Debian where no package touch /usr/local</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>lib.loc &lt;-<span class="st"> &quot;/usr/local/lib/R/site-library&quot;</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a></span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="co">## r use requires non-interactive use</span></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="kw">update.packages</span>(<span class="dt">repos=</span>repos, <span class="dt">ask=</span><span class="ot">FALSE</span>, <span class="dt">lib.loc=</span>lib.loc)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env r </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># a simple example to update packages in /usr/local/lib/R/site-library</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters are easily adjustable</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="do">## adjust as necessary, see help(&#39;download.packages&#39;)</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="st">&quot;https://cloud.r-project.org&quot;</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="do">## this makes sense on Debian where no package touch /usr/local</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>lib.loc <span class="ot">&lt;-</span> <span class="st">&quot;/usr/local/lib/R/site-library&quot;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="do">## r use requires non-interactive use</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>(<span class="at">repos=</span>repos, <span class="at">ask=</span><span class="cn">FALSE</span>, <span class="at">lib.loc=</span>lib.loc)</span></code></pre></div>
 <p>As above, it has my preferred mirror and library location hard-wired.</p>
 <p>Another <em>very</em> useful option is <code>-n N</code> or <code>--ncpus N</code> which will parallelize the upgrade across <code>N</code> processes. This can be set automagically by setting <code>options(Ncpus)</code>.</p>
 </section>
 <section id="knit.r-calling-knitr" class="level2">
 <h2>knit.r: Calling knitr</h2>
 <p>Here is another convenience script, <code>knit.r</code>, which <em>knits</em> a given file after testing the file actually exists.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#!/usr/bin/r</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># Simple helper script for knitr</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="co">#</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># Dirk Eddelbuettel, May 2013</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="co">#</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="co"># GPL-2 or later</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a></span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="cf">if</span> (<span class="kw">is.null</span>(argv)) {</span>
-<span id="cb16-10"><a href="#cb16-10"></a>    <span class="kw">cat</span>(<span class="st">&quot;Need an argument FILE.Rnw</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb16-11"><a href="#cb16-11"></a>    <span class="kw">q</span>(<span class="dt">status=</span><span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb16-12"><a href="#cb16-12"></a>}</span>
-<span id="cb16-13"><a href="#cb16-13"></a></span>
-<span id="cb16-14"><a href="#cb16-14"></a></span>
-<span id="cb16-15"><a href="#cb16-15"></a>file &lt;-<span class="st"> </span>argv[<span class="dv">1</span>]</span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(file)) {</span>
-<span id="cb16-17"><a href="#cb16-17"></a>    <span class="kw">cat</span>(<span class="st">&quot;File not found: &quot;</span>, file, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb16-18"><a href="#cb16-18"></a>    <span class="kw">q</span>(<span class="dt">status=</span><span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb16-19"><a href="#cb16-19"></a>}</span>
-<span id="cb16-20"><a href="#cb16-20"></a></span>
-<span id="cb16-21"><a href="#cb16-21"></a><span class="kw">require</span>(knitr)</span>
-<span id="cb16-22"><a href="#cb16-22"></a><span class="kw">knit2pdf</span>(file)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/r</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple helper script for knitr</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dirk Eddelbuettel, May 2013</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># GPL-2 or later</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(argv)) {</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Need an argument FILE.Rnw</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">q</span>(<span class="at">status=</span><span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> argv[<span class="dv">1</span>]</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(file)) {</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;File not found: &quot;</span>, file, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">q</span>(<span class="at">status=</span><span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(knitr)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">knit2pdf</span>(file)</span></code></pre></div>
 </section>
 <section id="roxy.r-running-roxygen" class="level2">
 <h2>roxy.r: Running roxygen</h2>
 <p>Similar to the previous example, the script <code>roxy.r</code> one uses roxygen to extract documentation from R files – either in the current directory, or in the given directory or directories.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#!/usr/bin/r</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="co">#</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># Simple helper script for roxygen2::roxygenize() </span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="co">#</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="co"># Dirk Eddelbuettel, August 2013</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="co">#</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="co"># GPL-2 or later</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a></span>
-<span id="cb17-9"><a href="#cb17-9"></a><span class="co">## load roxygen</span></span>
-<span id="cb17-10"><a href="#cb17-10"></a><span class="kw">library</span>(roxygen2)</span>
-<span id="cb17-11"><a href="#cb17-11"></a></span>
-<span id="cb17-12"><a href="#cb17-12"></a><span class="co">## check all command-line arguments (if any are given) for directory status</span></span>
-<span id="cb17-13"><a href="#cb17-13"></a>argv &lt;-<span class="st"> </span><span class="kw">Filter</span>(<span class="cf">function</span>(x) <span class="kw">file.info</span>(x)<span class="op">$</span>is.dir, argv)</span>
-<span id="cb17-14"><a href="#cb17-14"></a></span>
-<span id="cb17-15"><a href="#cb17-15"></a><span class="co">## loop over all argument, with fallback of the current directory, and</span></span>
-<span id="cb17-16"><a href="#cb17-16"></a><span class="co">## call compileAttributes() on the given directory</span></span>
-<span id="cb17-17"><a href="#cb17-17"></a><span class="kw">sapply</span>(<span class="kw">ifelse</span>(<span class="kw">length</span>(argv) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, argv, <span class="st">&quot;.&quot;</span>), <span class="dt">FUN=</span>roxygenize, <span class="dt">roclets=</span><span class="st">&quot;rd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/r</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple helper script for roxygen2::roxygenize() </span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dirk Eddelbuettel, August 2013</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># GPL-2 or later</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="do">## load roxygen</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(roxygen2)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="do">## check all command-line arguments (if any are given) for directory status</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>argv <span class="ot">&lt;-</span> <span class="fu">Filter</span>(<span class="cf">function</span>(x) <span class="fu">file.info</span>(x)<span class="sc">$</span>is.dir, argv)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="do">## loop over all argument, with fallback of the current directory, and</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="do">## call compileAttributes() on the given directory</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">ifelse</span>(<span class="fu">length</span>(argv) <span class="sc">&gt;</span> <span class="dv">0</span>, argv, <span class="st">&quot;.&quot;</span>), <span class="at">FUN=</span>roxygenize, <span class="at">roclets=</span><span class="st">&quot;rd&quot;</span>)</span></code></pre></div>
 </section>
 <section id="compattr.r-compiling-attributes" class="level2">
 <h2>compAttr.r: Compiling Attributes</h2>
 <p>The next script, <code>compAttr.</code>, can be used with <a href="http://dirk.eddelbuettel.com/code/rcpp.html">Rcpp</a>, and particularly is powerful <em>Attributes</em> feature, in order to auto-generate helper code. It is similar to the preceding script, but invokes <code>compileAttributes()</code> instead.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#!/usr/bin/r</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="co"># Simple helper script for compileAttributes() </span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="co">#</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="co"># Dirk Eddelbuettel, July 2014</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="co">#</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># GPL-2 or later</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a></span>
-<span id="cb18-9"><a href="#cb18-9"></a><span class="co">## load Rcpp</span></span>
-<span id="cb18-10"><a href="#cb18-10"></a><span class="kw">suppressMessages</span>(<span class="kw">library</span>(Rcpp))</span>
-<span id="cb18-11"><a href="#cb18-11"></a></span>
-<span id="cb18-12"><a href="#cb18-12"></a><span class="co">## check all command-line arguments (if any are given) for directory status</span></span>
-<span id="cb18-13"><a href="#cb18-13"></a>argv &lt;-<span class="st"> </span><span class="kw">Filter</span>(<span class="cf">function</span>(x) <span class="kw">file.info</span>(x)<span class="op">$</span>is.dir, argv)</span>
-<span id="cb18-14"><a href="#cb18-14"></a></span>
-<span id="cb18-15"><a href="#cb18-15"></a><span class="co">## loop over all argument, with fallback of the current directory, and</span></span>
-<span id="cb18-16"><a href="#cb18-16"></a><span class="co">## call compileAttributes() on the given directory</span></span>
-<span id="cb18-17"><a href="#cb18-17"></a><span class="kw">sapply</span>(<span class="kw">ifelse</span>(<span class="kw">length</span>(argv) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, argv, <span class="st">&quot;.&quot;</span>), compileAttributes)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/r</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple helper script for compileAttributes() </span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dirk Eddelbuettel, July 2014</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># GPL-2 or later</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="do">## load Rcpp</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(Rcpp))</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="do">## check all command-line arguments (if any are given) for directory status</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>argv <span class="ot">&lt;-</span> <span class="fu">Filter</span>(<span class="cf">function</span>(x) <span class="fu">file.info</span>(x)<span class="sc">$</span>is.dir, argv)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="do">## loop over all argument, with fallback of the current directory, and</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">## call compileAttributes() on the given directory</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">ifelse</span>(<span class="fu">length</span>(argv) <span class="sc">&gt;</span> <span class="dv">0</span>, argv, <span class="st">&quot;.&quot;</span>), compileAttributes)</span></code></pre></div>
 </section>
 <section id="render.r-render-markdown" class="level2">
 <h2>render.r: Render Markdown</h2>
 <p>The <code>render.r</code> script generalizes the earlier <code>knit.r</code> to convert Markdown into its designated output.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#!/usr/bin/env r</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="co">#</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="co"># Another example to run a shiny app</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="co">#</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># Copyright (C) 2016  Dirk Eddelbuettel</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="co">#</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a><span class="co"># Released under GPL (&gt;= 2)</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a></span>
-<span id="cb19-9"><a href="#cb19-9"></a><span class="kw">suppressMessages</span>(<span class="kw">library</span>(docopt))       <span class="co"># we need docopt (&gt;= 0.3) as on CRAN</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a></span>
-<span id="cb19-11"><a href="#cb19-11"></a><span class="co">## configuration for docopt</span></span>
-<span id="cb19-12"><a href="#cb19-12"></a>doc &lt;-<span class="st"> &quot;Usage: render.r [-h] [-x] [FILES...]</span></span>
-<span id="cb19-13"><a href="#cb19-13"></a></span>
-<span id="cb19-14"><a href="#cb19-14"></a><span class="st">-h --help            show this help text</span></span>
-<span id="cb19-15"><a href="#cb19-15"></a><span class="st">-x --usage           show help and short example usage&quot;</span></span>
-<span id="cb19-16"><a href="#cb19-16"></a></span>
-<span id="cb19-17"><a href="#cb19-17"></a>opt &lt;-<span class="st"> </span><span class="kw">docopt</span>(doc)          <span class="co"># docopt parsing</span></span>
-<span id="cb19-18"><a href="#cb19-18"></a></span>
-<span id="cb19-19"><a href="#cb19-19"></a><span class="cf">if</span> (opt<span class="op">$</span>usage) {</span>
-<span id="cb19-20"><a href="#cb19-20"></a>    <span class="kw">cat</span>(doc, <span class="st">&quot;</span><span class="ch">\n\n</span><span class="st">&quot;</span>)</span>
-<span id="cb19-21"><a href="#cb19-21"></a>    <span class="kw">cat</span>(<span class="st">&quot;Examples:</span></span>
-<span id="cb19-22"><a href="#cb19-22"></a><span class="st">  render.r foo.Rmd bar.Rmd        # convert two given files</span></span>
-<span id="cb19-23"><a href="#cb19-23"></a></span>
-<span id="cb19-24"><a href="#cb19-24"></a><span class="st">render.r is part of littler which brings &#39;r&#39; to the command-line.</span></span>
-<span id="cb19-25"><a href="#cb19-25"></a><span class="st">See http://dirk.eddelbuettel.com/code/littler.html for more information.</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb19-26"><a href="#cb19-26"></a>    <span class="kw">q</span>(<span class="st">&quot;no&quot;</span>)</span>
-<span id="cb19-27"><a href="#cb19-27"></a>}</span>
-<span id="cb19-28"><a href="#cb19-28"></a></span>
-<span id="cb19-29"><a href="#cb19-29"></a><span class="kw">library</span>(rmarkdown)</span>
-<span id="cb19-30"><a href="#cb19-30"></a></span>
-<span id="cb19-31"><a href="#cb19-31"></a><span class="co">## helper function </span></span>
-<span id="cb19-32"><a href="#cb19-32"></a>renderArg &lt;-<span class="st"> </span><span class="cf">function</span>(p) {</span>
-<span id="cb19-33"><a href="#cb19-33"></a>    <span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(p)) <span class="kw">stop</span>(<span class="st">&quot;No file &#39;&quot;</span>, p, <span class="st">&quot;&#39; found. Aborting.&quot;</span>, <span class="dt">call.=</span><span class="ot">FALSE</span>)</span>
-<span id="cb19-34"><a href="#cb19-34"></a>    <span class="kw">render</span>(p)</span>
-<span id="cb19-35"><a href="#cb19-35"></a>}</span>
-<span id="cb19-36"><a href="#cb19-36"></a></span>
-<span id="cb19-37"><a href="#cb19-37"></a><span class="co">## render files using helper function </span></span>
-<span id="cb19-38"><a href="#cb19-38"></a><span class="kw">sapply</span>(opt<span class="op">$</span>FILES, renderArg)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env r</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Another example to run a shiny app</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Copyright (C) 2016  Dirk Eddelbuettel</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Released under GPL (&gt;= 2)</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(docopt))       <span class="co"># we need docopt (&gt;= 0.3) as on CRAN</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="do">## configuration for docopt</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="st">&quot;Usage: render.r [-h] [-x] [FILES...]</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="st">-h --help            show this help text</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="st">-x --usage           show help and short example usage&quot;</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>opt <span class="ot">&lt;-</span> <span class="fu">docopt</span>(doc)          <span class="co"># docopt parsing</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (opt<span class="sc">$</span>usage) {</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(doc, <span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Examples:</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="st">  render.r foo.Rmd bar.Rmd        # convert two given files</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="st">render.r is part of littler which brings &#39;r&#39; to the command-line.</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="st">See http://dirk.eddelbuettel.com/code/littler.html for more information.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">q</span>(<span class="st">&quot;no&quot;</span>)</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="do">## helper function </span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>renderArg <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(p)) <span class="fu">stop</span>(<span class="st">&quot;No file &#39;&quot;</span>, p, <span class="st">&quot;&#39; found. Aborting.&quot;</span>, <span class="at">call.=</span><span class="cn">FALSE</span>)</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">render</span>(p)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a><span class="do">## render files using helper function </span></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(opt<span class="sc">$</span>FILES, renderArg)</span></code></pre></div>
 </section>
 </article>
 </main>

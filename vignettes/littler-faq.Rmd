@@ -104,6 +104,6 @@ to create a command `lr` instead; see the previous question as to why.  In eithe
 adjust the source part of the `ln` command to where your binary is -- which R can tell 
 you via `system.file("bin", "r", package="littler")`.
 
-Also note that _e.g._ the [zsh](http://zsh.sourceforge.net/) has a builtin
+Also note that _e.g._ the [zsh](https://zsh.sourceforge.io/) has a builtin
 command `r` which may conflict, so using the explicit path of, say,
 `/usr/bin/r` or `/usr/local/bin/r` or ... may provide an alternative.
