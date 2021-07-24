@@ -1,8 +1,14 @@
 2021-07-24  Dirk Eddelbuettel  <edd@debian.org>
 
+	* tests/simpleTests.R: Slightly extended
+	* R/test.R (test): Minor tweak
+
 	* vignettes/littler-faq.Rmd (vignette): Update one URL
 	* vignettes/littler-faq.html: Re-rendered
 	* vignettes/littler-examples.html: Idem
+
+	* .editorconfig: Added
+	* .Rbuildignore: Added .editorconfig
 
 2021-07-21  Dirk Eddelbuettel  <edd@debian.org>
 
