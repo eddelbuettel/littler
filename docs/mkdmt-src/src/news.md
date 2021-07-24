@@ -1,13 +1,36 @@
-### Version 0.3.13 (2021-xx-yy)
+### Version 0.3.13 (2021-07-24)
 
 -   Changes in examples
 
     -   New script `compiledDeps.r` to show which dependencies are
         compiled
 
+    -   New script `silenceTwitterAccount.r` wrapping `rtweet`
+
+    -   The `-c` or `--code` option for `installRSPM.r` was corrected
+
+    -   The `kitten.r` script now passes options 'bunny' and 'puppy' on
+        to the `pkgKitten::kitten()` call; new options to call the Arma
+        and Eigen variants were added
+
+    -   The `getRStudioDesktop.r` and `getRStudioServer.r` scripts were
+        updated for a change in `rvest`
+
+    -   Two typos in the `tt.r` help message were correct (Aaron Wolen
+        in [\#86](https://github.com/eddelbuettel/littler/pull/86))
+
+    -   The message in `cranIncoming.r` was corrected.
+
 -   Changes in package
 
-    -   Added Continuous Integration runner via `run.sh`
+    -   Added Continuous Integration runner via `run.sh` from
+        [r-ci](https://eddelbuettel.github.io/r-ci/).
+
+    -   Two vignettes got two extra vignette attributes.
+
+    -   The mkdocs-material documentation input was moved.
+
+    -   The basic unit tests were slightly refactored and updated.
 
 ### Version 0.3.12 (2020-10-04)
 

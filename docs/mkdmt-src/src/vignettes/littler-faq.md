@@ -1,6 +1,6 @@
 # Littler FAQ
 
-Dirk Eddelbuettel  
+Dirk Eddelbuettel
 Originally written 2019-03-23, updated 2020-06-16
 
 ### Well, why?
@@ -39,18 +39,18 @@ we later added the ability to source `Rprofile` files (which contain R code
 we can evaluate) there is no way for us to source the `Renviron` files _and
 to modify the already running process_.  So if you want to source `Renviron`
 you could add an explicit `readEnviron()` to `~/.littler.r` or
-`/etc/littler/r`. 
+`/etc/littler/r`.
 
 ### Lower-case / upper-case
 
 This is mostly an issue on macOS where the brain surgeons behind the OS
 decided that `r` is the same as `R`. What can we say?  On that OS you may
 need to rename the build to `lr` instead.  Please send your complaints to
-Cupertino, California. 
+Cupertino, California.
 
 ### Adding the binary to your path
 
-When the package is installed from source, it displays 
+When the package is installed from source, it displays
 
 ```
 *
@@ -61,27 +61,27 @@ When the package is installed from source, it displays
 *
 ```
 
-where the variable `$(TGT)` normally expands to `r`. As the text suggests you may 
+where the variable `$(TGT)` normally expands to `r`. As the text suggests you may
 want to create a [symbolic link](https://en.wikipedia.org/wiki/Symbolic_link) from a
-directory in the to make the newly built binary available to users.  On Linux you 
+directory in the to make the newly built binary available to users.  On Linux you
 may do
 
 ```
-cd /usr/local/bin 
+cd /usr/local/bin
 sudo ln -s /usr/local/lib/R/site-library/littler/bin/r .
 ```
 
 to create a link for `r` in `/usr/local/bin`.  On macOS, as suggested, you may want
 
 ```
-cd /usr/local/bin 
+cd /usr/local/bin
 sudo ln -s /usr/local/lib/R/site-library/littler/bin/r lr
 ```
 
 to create a command `lr` instead; see the previous question as to why.  In either case
-adjust the source part of the `ln` command to where your binary is -- which R can tell 
+adjust the source part of the `ln` command to where your binary is -- which R can tell
 you via `system.file("bin", "r", package="littler")`.
 
-Also note that _e.g._ the [zsh](http://zsh.sourceforge.net/) has a builtin
+Also note that _e.g._ the [zsh](https://zsh.sourceforge.io/) has a builtin
 command `r` which may conflict, so using the explicit path of, say,
 `/usr/bin/r` or `/usr/local/bin/r` or ... may provide an alternative.
