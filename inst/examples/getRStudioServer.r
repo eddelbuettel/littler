@@ -2,7 +2,7 @@
 #
 # A simple example to install RStudio Desktop
 #
-# Copyright (C) 2014 - 2020  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2021  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 #
@@ -20,9 +20,12 @@ url <- "https://dailies.rstudio.com/rstudioserver/oss/bionic/x86_64/"
 pg <- read_html(url(url))
 tb <- html_table(html_nodes(pg, "table"))[[1]]
 file <- tb[[1,1]]
-s3url <- "https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/"
-fileurl <- paste0(s3url, file)
-download.file(fileurl, file, method="wget")
+#s3url <- "https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/"
+s3url <- "https://s3.amazonaws.com/rstudio-ide-build/server%2Fbionic%2Famd64%2F"
+#fileurl <- paste0(s3url, file)
+fileurl <- paste0(s3url, gsub("\\+","%2B", file))
+cat("'", fileurl, "' -> '", file, "'\n", sep="")
+download.file(fileurl, file) #, method="wget")
 
 ## possibly simpler
 ## cf https://support.rstudio.com/hc/en-us/articles/203842428-Getting-the-newest-RStudio-builds

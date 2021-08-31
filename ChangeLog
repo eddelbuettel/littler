@@ -1,3 +1,8 @@
+2021-08-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/getRStudioDesktop.r: Updated to changed names
+	* inst/examples/getRStudioServer.r: Idem
+
 2021-07-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.13
