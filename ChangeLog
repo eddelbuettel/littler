@@ -1,3 +1,8 @@
+2021-09-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/roxy.r: Add -m | --minimal variant for namespace and
+	rd roclets using the cached older version
+
 2021-08-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll minor version and date
