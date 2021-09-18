@@ -1,3 +1,8 @@
+2021-09-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/getQuartoCli.r: Add simple convenience downloader for
+	Quarto command-line .deb package parsing GitHub release result
+
 2021-09-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/roxy.r: Add -m | --minimal variant for namespace and
