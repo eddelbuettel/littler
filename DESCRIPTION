@@ -13,7 +13,7 @@ Description: A scripting and command-line front-end
  expression as the first line in scripts) as well as command-line use in
  standard Unix pipelines. In other words, r provides the R language without
  the environment.
-URL: https://github.com/eddelbuettel/littler, https://dirk.eddelbuettel.com/code/littler.html
+URL: https://github.com/eddelbuettel/littler, https://dirk.eddelbuettel.com/code/littler.html, https://eddelbuettel.github.io/littler/
 BugReports: https://github.com/eddelbuettel/littler/issues
 License: GPL (>= 2)
 OS_type: unix

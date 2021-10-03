@@ -1,3 +1,7 @@
+2021-10-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (URL): Add documentation site to URL entry
+
 2021-09-18  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/getQuartoCli.r: Add simple convenience downloader for
