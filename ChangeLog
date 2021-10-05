@@ -1,3 +1,9 @@
+2021-10-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Updated via 'autoupdate' and 'autoreconf
+	--warnings=obsolete' followed by light edit
+	* src/config.h.in: Idem
+
 2021-10-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (URL): Add documentation site to URL entry
