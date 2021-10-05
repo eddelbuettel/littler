@@ -1,3 +1,19 @@
+
+### Version 0.3.14 (2021-10-05)
+
+-   Changes in examples
+
+    -   Updated RStudio download helper to changed file names
+
+    -   Added a new option to `roxy.r` wrapper
+
+    -   Added a downloader for Quarto command-line tool
+
+-   Changes in package
+
+    -   The `configure` files were updated to the standard of version
+        2.69 following a CRAN request
+
 ### Version 0.3.13 (2021-07-24)
 
 -   Changes in examples
@@ -17,7 +33,7 @@
         updated for a change in `rvest`
 
     -   Two typos in the `tt.r` help message were correct (Aaron Wolen
-        in [\#86](https://github.com/eddelbuettel/littler/pull/86))
+        in [#86](https://github.com/eddelbuettel/littler/pull/86))
 
     -   The message in `cranIncoming.r` was corrected.
 
@@ -44,7 +60,7 @@
 
     -   New script `installBSPM.r` and `installRSPM.r` for binary
         package installation (Dirk and Iñaki in
-        [\#81](https://github.com/eddelbuettel/littler/pull/81))
+        [#81](https://github.com/eddelbuettel/littler/pull/81))
 
     -   New script `cranIncoming.r` to check in Incoming
 
@@ -58,7 +74,7 @@
 
     -   Vignettes now use `minidown` resulting in *much* reduced
         filesizes: from over 800kb to under 50kb (Dirk in
-        [\#83](https://github.com/eddelbuettel/littler/pull/83))
+        [#83](https://github.com/eddelbuettel/littler/pull/83))
 
 ### Version 0.3.11 (2020-06-26)
 
@@ -88,7 +104,7 @@
 
     -   The `--error` option to `install2.r` was generalized (Sergio
         Oller in
-        [\#78](https://github.com/eddelbuettel/littler/pull/78)).
+        [#78](https://github.com/eddelbuettel/littler/pull/78)).
 
     -   The `roxy.r` script was extended a little.
 
@@ -101,7 +117,7 @@
 -   Changes in examples
 
     -   The use of `call.` in `stop()` was corrected (Stefan Widgren in
-        [\#72](https://github.com/eddelbuettel/littler/pull/72)).
+        [#72](https://github.com/eddelbuettel/littler/pull/72)).
 
     -   New script `cos.r` to check (at rhub) on Solaris.
 
@@ -154,7 +170,7 @@
 
     -   The scripts `installGithub.r` and `install2.r` get a new option
         `-r | --repos` (Gergely Daroczi in
-        [\#67](https://github.com/eddelbuettel/littler/pull/67))
+        [#67](https://github.com/eddelbuettel/littler/pull/67))
 
 -   Changes in build system
 
@@ -169,8 +185,8 @@
 
     -   The script `install2.r` can set `Ncpus` for `install.packages()`
         (Colin Gillespie in
-        [\#63](https://github.com/eddelbuettel/littler/pull/63) fixing
-        [\#62](https://github.com/eddelbuettel/littler/pull/62))
+        [#63](https://github.com/eddelbuettel/littler/pull/63) fixing
+        [#62](https://github.com/eddelbuettel/littler/pull/62))
 
     -   The script `update.r` can also set `Ncpus` for
         `install.packages()`.
@@ -204,7 +220,7 @@
 
     -   New example script to only install packages not yet installed
         (Brandon Bertelsen in
-        [\#59](https://github.com/eddelbuettel/littler/pull/59)); later
+        [#59](https://github.com/eddelbuettel/littler/pull/59)); later
         added into `install2.r`.
 
     -   Functions `getRStudioDesktop.r` and `getRStudioServer.r` updated
@@ -218,14 +234,14 @@
 
     -   The script `installGithub.r` now correctly uses the `upgrade`
         argument (Carl Boettiger in
-        [\#49](https://github.com/eddelbuettel/littler/pull/49)).
+        [#49](https://github.com/eddelbuettel/littler/pull/49)).
 
     -   New script `pnrrs.r` to call the package-native registration
         helper function added in R 3.4.0
 
     -   The script `install2.r` now has more robust error handling (Carl
         Boettiger in
-        [\#50](https://github.com/eddelbuettel/littler/pull/50)).
+        [#50](https://github.com/eddelbuettel/littler/pull/50)).
 
     -   New script `cow.r` to use R Hub\'s `check_on_windows`
 
@@ -259,8 +275,8 @@
 
     -   The `installGitHub.r` script now use package
         [[remotes]{.pkg}](https://CRAN.R-project.org/package=remotes)
-        (PR [\#44](https://github.com/eddelbuettel/littler/pull/44),
-        [\#46](https://github.com/eddelbuettel/littler/pull/46))
+        (PR [#44](https://github.com/eddelbuettel/littler/pull/44),
+        [#46](https://github.com/eddelbuettel/littler/pull/46))
 
 ### Version 0.3.1 (2016-08-06)
 
@@ -268,8 +284,8 @@
 
     -   `install2.r` now passes on extra options past `--` to
         `R CMD INSTALL` (PR
-        [\#37](https://github.com/eddelbuettel/littler/pull/37) by
-        Steven Pav)
+        [#37](https://github.com/eddelbuettel/littler/pull/37) by Steven
+        Pav)
 
     -   Added `rcc.r` to run `rcmdcheck::rcmdcheck()`
 
@@ -281,12 +297,12 @@
 -   Changes in build system
 
     -   The `AM_LDFLAGS` variable is now set and used too (PR
-        [\#38](https://github.com/eddelbuettel/littler/pull/38) by
+        [#38](https://github.com/eddelbuettel/littler/pull/38) by
         Mattias Ellert)
 
     -   Three more directories, used when an explicit installation
         directory is set, are excluded (also
-        [\#38](https://github.com/eddelbuettel/littler/pull/38) by
+        [#38](https://github.com/eddelbuettel/littler/pull/38) by
         Mattias)
 
     -   Travis CI is now driven via `run.sh` from our fork, and deploys
@@ -305,14 +321,14 @@
 
     -   A new helper function `r()` is now provided and exported so that
         the package can be imported (closes
-        [\#40](https://github.com/eddelbuettel/littler/issues/40)).
+        [#40](https://github.com/eddelbuettel/littler/issues/40)).
 
     -   URL and BugReports links were added to DESCRIPTION.
 
 -   Changes in documentation
 
     -   The help output for `installGithub.r` was corrected (PR
-        [\#39](https://github.com/eddelbuettel/littler/pull/39) by
+        [#39](https://github.com/eddelbuettel/littler/pull/39) by
         Brandon Bertelsen)
 
 ### Version 0.3.0 (2015-10-29)

@@ -1,5 +1,38 @@
 ###  2021 
 
+2021-10-05  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.14 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+        * configure.ac: Updated via 'autoupdate' and 'autoreconf 
+        --warnings=obsolete' followed by light edit 
+        * src/config.h.in: Idem 
+ 
+2021-10-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (URL): Add documentation site to URL entry 
+ 
+2021-09-18  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/getQuartoCli.r: Add simple convenience downloader for 
+        Quarto command-line .deb package parsing GitHub release result 
+ 
+2021-09-14  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/roxy.r: Add -m | --minimal variant for namespace and 
+        rd roclets using the cached older version 
+ 
+2021-08-31  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll minor version and date 
+ 
+2021-08-30  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/getRStudioDesktop.r: Updated to changed names 
+        * inst/examples/getRStudioServer.r: Idem 
+ 
 2021-07-24  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.13 

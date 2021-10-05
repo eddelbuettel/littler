@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://github.com/eddelbuettel/littler/</loc>
-     <lastmod>2021-07-24</lastmod>
+     <lastmod>2021-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eddelbuettel/littler/man/littler/</loc>
-     <lastmod>2021-07-24</lastmod>
+     <lastmod>2021-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eddelbuettel/littler/man/r/</loc>
-     <lastmod>2021-07-24</lastmod>
+     <lastmod>2021-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eddelbuettel/littler/vignettes/littler-examples/</loc>
-     <lastmod>2021-07-24</lastmod>
+     <lastmod>2021-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eddelbuettel/littler/vignettes/littler-faq/</loc>
-     <lastmod>2021-07-24</lastmod>
+     <lastmod>2021-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eddelbuettel/littler/news/</loc>
-     <lastmod>2021-07-24</lastmod>
+     <lastmod>2021-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eddelbuettel/littler/changelog/</loc>
-     <lastmod>2021-07-24</lastmod>
+     <lastmod>2021-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
