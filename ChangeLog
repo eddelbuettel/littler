@@ -1,5 +1,9 @@
 2021-10-05  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Release 0.3.14
+	* configure.ac: Idem
+	* configure: Idem
+
 	* configure.ac: Updated via 'autoupdate' and 'autoreconf
 	--warnings=obsolete' followed by light edit
 	* src/config.h.in: Idem
