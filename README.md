@@ -32,7 +32,7 @@ example scripts, as well as maybe the
 [older tests directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests)
 both of which are installed with the package.
 
-Some scripts I uses daily or near daily (in alphabetical order):
+Some scripts I use daily or near daily (in alphabetical order):
 
 ```
 build.r                                ## builds from the current directory
@@ -44,7 +44,7 @@ install.r abc_1.2-3.tar.gz             ## installs given tarball
 install2.r -l /tmp/lib abc def         ## installs abc and def into /tmp/lib
 rcc.r abc_1.2-3.tar.gz                 ## run's R CMD check via Gabor's rcmdcheck
 render.r foo.Rmd                       ## calls rmarkdown::render()
-roxy.r                                 ## run roxyenize() for a package (only Rd creation)
+roxy.r                                 ## run roxygenize() for a package (only Rd creation)
 update.r                               ## updates any currently installed packages 
 ```
 
@@ -71,7 +71,7 @@ install automake autoconf` to get all the tools.
 #### Alternate Naming
 
 On some operating systems such as OS X, `r` is not different from `R`.  As
-this risk confusing the main binary `R` for the R system with our smaller
+this risks confusing the main binary `R` for the R system with our smaller
 scripting frontend `r`, we suggest to consider running `configure
 --program-prefix="l"` which this leads to installation of a binary `lr`
 instead of `r`.
