@@ -761,7 +761,7 @@ see the <a href="https://github.com/eddelbuettel/littler/tree/master/inst/exampl
 example scripts, as well as maybe the
 <a href="https://github.com/eddelbuettel/littler/tree/master/inst/script-tests">older tests directory</a>
 both of which are installed with the package.</p>
-<p>Some scripts I uses daily or near daily (in alphabetical order):</p>
+<p>Some scripts I use daily or near daily (in alphabetical order):</p>
 <div class="highlight"><pre><span></span><code>build.r                                ## builds from the current directory
 c4c.r                                  ## submits current directory to winbuilder
 compAttr.r                             ## run compileAttributes() for a Rcpp package
@@ -771,7 +771,7 @@ install.r abc_1.2-3.tar.gz             ## installs given tarball
 install2.r -l /tmp/lib abc def         ## installs abc and def into /tmp/lib
 rcc.r abc_1.2-3.tar.gz                 ## run&#39;s R CMD check via Gabor&#39;s rcmdcheck
 render.r foo.Rmd                       ## calls rmarkdown::render()
-roxy.r                                 ## run roxyenize() for a package (only Rd creation)
+roxy.r                                 ## run roxygenize() for a package (only Rd creation)
 update.r                               ## updates any currently installed packages 
 </code></pre></div>
 <h3 id="installation">Installation</h3>
@@ -788,7 +788,7 @@ equivalent on non-Debian/Ubuntu systems).  On OS X, you may need to run <code>br
 install automake autoconf</code> to get all the tools. </p>
 <h4 id="alternate-naming">Alternate Naming</h4>
 <p>On some operating systems such as OS X, <code>r</code> is not different from <code>R</code>.  As
-this risk confusing the main binary <code>R</code> for the R system with our smaller
+this risks confusing the main binary <code>R</code> for the R system with our smaller
 scripting frontend <code>r</code>, we suggest to consider running <code>configure
 --program-prefix="l"</code> which this leads to installation of a binary <code>lr</code>
 instead of <code>r</code>.</p>
