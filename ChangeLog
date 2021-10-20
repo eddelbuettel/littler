@@ -1,3 +1,11 @@
+2021-10-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll minor version and date
+
+2021-10-20  Gergely Daroczi  <daroczig@rapporter.net>
+
+	* inst/examples/install2.r: Support download methods argument
+
 2021-10-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.14
