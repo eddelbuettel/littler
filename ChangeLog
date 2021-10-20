@@ -6,6 +6,10 @@
 
 	* inst/examples/install2.r: Support download methods argument
 
+2021-10-18  John Kerl  <kerl.john.r@gmail.com>
+
+	* README.md: Fix three typos
+
 2021-10-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.14
