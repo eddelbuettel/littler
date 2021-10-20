@@ -12,7 +12,7 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [--error] [--] [PACKAGES ...]
+doc <- "Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [-m METHOD] [--error] [--] [PACKAGES ...]
 
 -l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
@@ -20,6 +20,7 @@ doc <- "Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r RE
 -r --repos REPOS    repositor(y|ies) to use, or NULL for file [default: getOption]
 -e --error          throw error and halt instead of a warning [default: FALSE]
 -s --skipinstalled  skip installing already installed packages [default: FALSE]
+-m --method METHOD  method to be used for downloading files [default: auto]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -99,13 +100,14 @@ install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
 isMatchingFile <- function(f) (file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
-installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled, ncpus) {
+installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled, ncpus, method) {
     install_packages2(pkgs=f,
                       lib=lib,
                       repos=if (isMatchingFile(f)) NULL else rep,
                       dependencies=dep,
                       INSTALL_opts=iopts,
                       Ncpus = ncpus,
+                      method = method,
                       error = error,
                       skipinstalled = skipinstalled)
 }
@@ -134,7 +136,7 @@ isLocal <- sapply(opt$PACKAGES, isMatchingFile)
 ## possibly in parallel using up to ncpus)
 if (any(isLocal)) {
     sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
-           installOpts, opt$error, opt$skipinstalled, opt$ncpus)
+           installOpts, opt$error, opt$skipinstalled, opt$ncpus, opt$method)
 } else {
     install_packages2(pkgs = opt$PACKAGES,
                       lib = opt$libloc,
@@ -142,9 +144,11 @@ if (any(isLocal)) {
                       dependencies = opt$dep,
                       INSTALL_opts = installOpts,
                       Ncpus = opt$ncpus,
+                      method = opt$method,
                       error = opt$error,
                       skipinstalled = opt$skipinstalled)
 }
 
 ## clean up any temp file containing CRAN directory information
 sapply(list.files(path=tempdir(), pattern="^(repos|libloc).*\\.rds$", full.names=TRUE), unlink)
+
