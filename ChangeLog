@@ -1,10 +1,11 @@
 2021-10-27  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Date, Version): Roll minor version and date,
+	(Suggests): Use simplermarkdown not knitr, rmarkdown, minidown
+
 	* vignettes/littler-faq.md: Converted to simplermarkdown vignette
 	* vignettes/littler-examples.md: Idem
 	* vignettes/water.css: Added
-	* DESCRIPTION: Use simplermarkdown instead of knitr, rmarkdown and
-	minidown
 
 2021-10-26  Dirk Eddelbuettel  <edd@debian.org>
 
