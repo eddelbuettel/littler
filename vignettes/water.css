@@ -1,0 +1,84 @@
+/* our addition */
+body {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: system-ui;
+}
+
+/* Inline codes */
+code {
+  padding: 2px;
+  border-radius: unset;
+}
+
+/* Code blocks */
+
+pre {
+  background-color: unset;
+  border: solid #aaa 1px;
+  padding: 8px;
+}
+
+pre.numberSource {
+  margin: 0;
+  padding-left: 0;
+}
+
+div.sourceCode {
+  overflow: visible;
+}
+pre, pre.sourceCode {
+  overflow-x: auto;
+}
+pre>code {
+  white-space: pre;
+  overflow: visible;
+  background-color: unset;
+  padding: 0;
+}
+
+pre.sourceCode.numberSource {
+  overflow-x: visible;
+}
+pre.sourceCode.numberSource>code {
+  white-space: pre-wrap
+}
+pre.sourceCode.numberSource>code>span {
+  left: 8px;
+  text-indent: -4.6em;
+}
+
+/* code folding */
+.chunk-summary {
+  text-align: right;
+}
+.chunk-summary+pre,
+.chunk-summary+div.sourceCode {
+  margin-top: 2px;
+}
+
+/* TOC */
+nav > ul {
+  border: .0625rem solid #444;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px;
+}
+nav ul {
+  list-style-type: none;
+  padding-inline-start: 1rem;
+}
+nav ul li {
+  padding: 0;
+}
+nav ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+nav code {
+  background-color: unset;
+  color: unset;
+}
