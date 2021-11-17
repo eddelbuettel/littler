@@ -1,11 +1,10 @@
 ## littler: A scripting and command-line front-end for GNU R
 
-[![Build Status](https://travis-ci.org/eddelbuettel/littler.png)](https://travis-ci.org/eddelbuettel/littler)
 [![CI](https://github.com/eddelbuettel/littler/workflows/ci/badge.svg)](https://github.com/eddelbuettel/littler/actions?query=workflow%3Aci)
 [![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![CRAN](https://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler)
 [![Dependencies](https://tinyverse.netlify.com/badge/littler)](https://cran.r-project.org/package=littler)
-[![Downloads](https://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](https://www.r-pkg.org/pkg/littler) 
+[![Downloads](https://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](https://www.r-pkg.org/pkg/littler)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/littler)](https://github.com/eddelbuettel/littler)
 [![Documentation](https://img.shields.io/badge/documentation-is_here-blue)](https://eddelbuettel.github.io/littler/)
 
@@ -23,10 +22,10 @@ r -e 'expr'                   ## for evaluating expressions
 r --help                      ## to show a quick synopsis
 ```
 
-### Examples? 
+### Examples?
 
 Plenty. See the [examples vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)
-for a full set of introductory examples. Also 
+for a full set of introductory examples. Also
 see the [examples/ directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples) for a full 28
 example scripts, as well as maybe the
 [older tests directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests)
@@ -45,7 +44,7 @@ install2.r -l /tmp/lib abc def         ## installs abc and def into /tmp/lib
 rcc.r abc_1.2-3.tar.gz                 ## run's R CMD check via Gabor's rcmdcheck
 render.r foo.Rmd                       ## calls rmarkdown::render()
 roxy.r                                 ## run roxygenize() for a package (only Rd creation)
-update.r                               ## updates any currently installed packages 
+update.r                               ## updates any currently installed packages
 ```
 
 ### Installation
@@ -58,7 +57,7 @@ The package resides on the CRAN network and can be installed via
 install.packages("littler")
 ```
 
-#### Previous Versions up to 0.2.3 
+#### Previous Versions up to 0.2.3
 
 In general, simply running the script `bootstrap` will configure and build the
 executable. Running `make install` (possibly as `sudo make install`) will
@@ -66,7 +65,7 @@ install the resulting binary.
 
 On Linux systems, ensure you have the `autotools-dev` package (or its
 equivalent on non-Debian/Ubuntu systems).  On OS X, you may need to run `brew
-install automake autoconf` to get all the tools. 
+install automake autoconf` to get all the tools.
 
 #### Alternate Naming
 
@@ -82,7 +81,7 @@ As littler uses autoconf its `AC_PATH_PROG()` macro to find `R`, one can
 simply adjust the `PATH` when calling `configure` (or, rather, `bootstrap`)
 to have another version of R used. For example, on a server with R-devel in
 this location, the following builds littler using this R-devel version:
-`PATH="/usr/local/lib/R-devel/bin/:$PATH" ./bootstrap`. 
+`PATH="/usr/local/lib/R-devel/bin/:$PATH" ./bootstrap`.
 
 ### More Information
 
@@ -101,6 +100,3 @@ Jeff Horner (2006 to 2008) and Dirk Eddelbuettel (since 2006)
 ### License
 
 GPL (>= 2)
-
-
-
