@@ -1,3 +1,7 @@
+2021-12-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/mdweave2html.r: Add caller for simplermarkdown
+
 2021-11-17  Dirk Eddelbuettel  <edd@debian.org>
 
         * README.md: Remove Travis badge
