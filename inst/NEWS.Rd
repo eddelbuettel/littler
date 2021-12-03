@@ -3,6 +3,27 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.15 (2021-12-03)}{
+  \itemize{
+    \item Changes in examples
+    \itemize{
+      \item The \code{install2} script can select download methods, and
+      cope with errors from parallel download (thanks to Gergely Daroczi)
+      \item The \code{build.r} now uses \code{both} as argument to
+      \code{--compact-vignettes}
+      \item The RStudio download helper were once again updated for
+      changed URLs
+      \item New caller for simplermarkdown::mdweave_to_html
+    }
+    \item Changes in package
+    \itemize{
+      \item Several typos were correct (thanks to John Kerl)
+      \item Travis artifacts and badges have been pruned
+      \item Vignettes now use \pkg{simplermarkdown}
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.14 (2021-10-05)}{
   \itemize{
     \item Changes in examples
