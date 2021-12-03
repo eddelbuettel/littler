@@ -1,3 +1,4 @@
+
 ## Command-line and scripting front-end for R
 
 ### Description
@@ -48,16 +49,19 @@ Dirk Eddelbuettel <edd@debian.org> is the maintainer.
 
 ### Examples
 
-      ## Not run: 
-      #!/usr/bin/env r              ## for use in scripts
+``` 
+  ## Not run: 
+  #!/usr/bin/env r              ## for use in scripts
 
-      other input | r               ## for use in pipes
+  other input | r               ## for use in pipes
 
-      r somefile.R                  ## for running files
+  r somefile.R                  ## for running files
 
-      r -e 'expr'                   ## for evaluating expressions
+  r -e 'expr'                   ## for evaluating expressions
 
-      r --help                      ## to show a quick synopsis
-            
-      
-    ## End(Not run)
+  r --help                      ## to show a quick synopsis
+        
+  
+## End(Not run)
+```
+

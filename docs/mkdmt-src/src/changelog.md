@@ -1,5 +1,56 @@
 ###  2021 
 
+2021-12-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.15 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+2021-12-02  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/mdweave2html.r: Add caller for simplermarkdown 
+ 
+2021-11-17  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * README.md: Remove Travis badge 
+        * .travis.yml: Remove Travis YAML config 
+ 
+2021-10-27  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll minor version and date, 
+        (Suggests): Use simplermarkdown not knitr, rmarkdown, minidown 
+ 
+        * vignettes/littler-faq.md: Converted to simplermarkdown vignette 
+        * vignettes/littler-examples.md: Idem 
+        * vignettes/water.css: Added 
+ 
+2021-10-26  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/build.r: Set --compact-vignettes to both 
+ 
+         * inst/examples/getRStudioDesktop.r: Updated to changed urls 
+        * inst/examples/getRStudioServer.r: Idem 
+ 
+2021-10-23  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll minor version and date 
+ 
+2021-10-22  Gergely Daroczi  <daroczig@rapporter.net> 
+ 
+        * inst/examples/install2.r: Check failure from parallel installs 
+ 
+2021-10-20  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll minor version and date 
+ 
+2021-10-20  Gergely Daroczi  <daroczig@rapporter.net> 
+ 
+        * inst/examples/install2.r: Support download methods argument 
+ 
+2021-10-18  John Kerl  <kerl.john.r@gmail.com> 
+ 
+        * README.md: Fix three typos 
+ 
 2021-10-05  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.14 
@@ -30,7 +81,7 @@
  
 2021-08-30  Dirk Eddelbuettel  <edd@debian.org> 
  
-        * inst/examples/getRStudioDesktop.r: Updated to changed names 
+         * inst/examples/getRStudioDesktop.r: Updated to changed names 
         * inst/examples/getRStudioServer.r: Idem 
  
 2021-07-24  Dirk Eddelbuettel  <edd@debian.org> 
