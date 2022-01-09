@@ -615,7 +615,7 @@ int main(int argc, char **argv){
 
     if (!interactive) {			/* new in littler 0.1.3 */
         R_DefParams(&Rst);
-        Rst.R_Interactive = 0;		/* sets interactive() to eval to false */
+        Rst.R_Interactive = 0;	/* sets interactive() to eval to false */
         R_SetParams(&Rst);
     }
 
