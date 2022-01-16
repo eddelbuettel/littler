@@ -1,3 +1,11 @@
+2022-01-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll minor version and date
+
+2022-01-16  SHIMA Tatsuya  <ts1s1andn@gmail.com>
+
+	* inst/examples/install2.r: Generalize -r option use
+
 2021-12-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/getPandoc.r: Add Pandoc .deb downloader
