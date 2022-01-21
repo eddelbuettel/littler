@@ -1,3 +1,7 @@
+2022-01-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install2.r: Correct typo (thanks, @jds485)
+
 2022-01-16  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll minor version and date

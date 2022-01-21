@@ -140,7 +140,7 @@ if (any(isLocal)) {
     install_packages2(pkgs = opt$PACKAGES,
                       lib = opt$libloc,
                       repos = opt$repos,
-                      dependencies = opt$dep,
+                      dependencies = opt$deps,
                       INSTALL_opts = installOpts,
                       Ncpus = opt$ncpus,
                       method = opt$method,
@@ -150,4 +150,3 @@ if (any(isLocal)) {
 
 ## clean up any temp file containing CRAN directory information
 sapply(list.files(path=tempdir(), pattern="^(repos|libloc).*\\.rds$", full.names=TRUE), unlink)
-
