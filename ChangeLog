@@ -1,3 +1,8 @@
+2022-01-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tt.r: Switch shebang to '/usr/bin/r -t' as tests run
+	better with a per-session temporary directory as R does
+
 2022-01-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install2.r: Correct typo (thanks, @jds485)
