@@ -1,7 +1,6 @@
-2022-01-31  Dirk Eddelbuettel  <edd@debian.org>
+2022-02-22  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/tt.r: Switch shebang to '/usr/bin/r -t' as tests run
-	better with a per-session temporary directory as R does
+	* inst/examples/rcc.r: Add -v | --valgrind option
 
 2022-01-21  Dirk Eddelbuettel  <edd@debian.org>
 
