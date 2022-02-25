@@ -1,3 +1,8 @@
+2022-02-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install2.r: Default installation directory is now the
+	first element in .libPaths() which can reflect R_LIBS_USER etc
+
 2022-02-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rcc.r: Add -v | --valgrind option

@@ -4,17 +4,20 @@
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
-# Copyright (C) 2018         Carl Boettiger, Dirk Eddelbuettel, and Brandon Bertelsen
+# Copyright (C) 2018 - 2022  Carl Boettiger, Dirk Eddelbuettel, and Brandon Bertelsen
 #
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
 library(docopt)
 
-## configuration for docopt
-doc <- "Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [-m METHOD] [--error] [--] [PACKAGES ...]
+## default to first library location in .libPaths()
+libloc <- .libPaths()[1]
 
--l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
+## configuration for docopt
+doc <- paste0("Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [-m METHOD] [--error] [--] [PACKAGES ...]
+
+-l --libloc LIBLOC  location in which to install [default: ", libloc, "]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
 -r --repos REPOS    repositor(y|ies) to use, or NULL for file [default: getOption]
@@ -22,7 +25,7 @@ doc <- "Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r RE
 -s --skipinstalled  skip installing already installed packages [default: FALSE]
 -m --method METHOD  method to be used for downloading files [default: auto]
 -h --help           show this help text
--x --usage          show help and short example usage"
+-x --usage          show help and short example usage")
 opt <- docopt(doc)			# docopt parsing
 
 if (opt$usage) {
