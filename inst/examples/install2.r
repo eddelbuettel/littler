@@ -14,7 +14,7 @@ library(docopt)
 ## configuration for docopt
 doc <- "Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [-m METHOD] [--error] [--] [PACKAGES ...]
 
--l --libloc LIBLOC  location in which to install [default: /usr/local/lib/R/site-library]
+-l --libloc LIBLOC  location in which to install [default: NULL]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
 -n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
 -r --repos REPOS    repositor(y|ies) to use, or NULL for file [default: getOption]
@@ -65,6 +65,13 @@ if (opt$ncpus == "getOption") {
 } else if (opt$ncpus == "-1") {
     ## parallel comes with R 2.14+
     opt$ncpus <- max(1L, parallel::detectCores())
+}
+
+if (opt$libloc == "NULL") {
+    ## NULL corresponds to .libPaths() but some directories may be non-writeable
+    ## so we filter out the ones where we can write and use only those
+    canWrite <- function(d) file.access(d, mode=2) == 0
+    opt$libloc <- Filter(canWrite, .libPaths())
 }
 
 ## ensure installation is stripped
