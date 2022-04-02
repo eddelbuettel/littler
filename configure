@@ -3386,11 +3386,24 @@ fi
 
 
 # Checks for library functions.
-
 ac_fn_c_check_func "$LINENO" "setenv" "ac_cv_func_setenv"
 if test "x$ac_cv_func_setenv" = xyes; then :
 
 $as_echo "#define HAVE_SETENV 1" >>confdefs.h
+
+fi
+
+ac_fn_c_check_func "$LINENO" "clock_gettime" "ac_cv_func_clock_gettime"
+if test "x$ac_cv_func_clock_gettime" = xyes; then :
+
+$as_echo "#define HAVE_CLOCK_GETTIME 1" >>confdefs.h
+
+fi
+
+ac_fn_c_check_func "$LINENO" "realtime" "ac_cv_func_realtime"
+if test "x$ac_cv_func_realtime" = xyes; then :
+
+$as_echo "#define HAVE_REALTIME 1" >>confdefs.h
 
 fi
 
@@ -3407,6 +3420,7 @@ if test "x$ac_cv_func_time" = xyes; then :
 $as_echo "#define HAVE_TIME 1" >>confdefs.h
 
 fi
+
 
 
 # Checks for typedefs, structures, and compiler characteristics.

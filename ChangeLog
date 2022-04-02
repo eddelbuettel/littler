@@ -1,3 +1,9 @@
+2022-04-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* configure.ac: Add two more header function checks
+	* configure: Regenerated
+	* src/config.h.in: Regenerated from expanded configure.ac
+
 2022-02-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install2.r: Default installation directory is now the
