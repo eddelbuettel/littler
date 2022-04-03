@@ -1,3 +1,8 @@
+2022-04-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/littler.c (init_rand): Update to current seeding version in R,
+	add stdint.h header for uint_least64_t
+
 2022-04-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* configure.ac: Add two more header function checks
