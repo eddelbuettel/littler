@@ -1,3 +1,7 @@
+2022-07-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Add simple r2u.r frontend
+
 2022-04-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll minor version and date
