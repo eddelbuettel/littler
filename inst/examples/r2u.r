@@ -32,7 +32,7 @@ opt <- docopt(doc)
 if (!is.finite(match(opt$release, c("focal", "jammy"))))
     stop("Unknown distro '", opt$release, "'.", call. = FALSE)
 
-if (!is.finite(match(opt$CMD, c("build", "last"))))
+if (!is.finite(match(opt$CMD, c("build", "last", "count", "table"))))
     stop("Unknown command '", opt$CMD, "'.", call. = FALSE)
 
 if (is.finite(match(opt$CMD, "build"))) {
@@ -55,4 +55,13 @@ if (is.finite(match(opt$CMD, "build"))) {
     un <- "days"
     if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
     cat("RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
+} else if (is.finite(match(opt$CMD, "count"))) {
+    ll <- readLines(pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'"))
+    cat(length(ll), ".deb files downloaded\n")
+} else if (is.finite(match(opt$CMD, "table"))) {
+    con <- pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'")
+    ll <- readLines(con)
+    close(con)
+    tt <- table(gsub(".*r-(cran|bioc)-(.*)_\\d+.*", "\\2", ll, perl=TRUE))
+    print(head(tt[order(-tt)], 10))
 }
