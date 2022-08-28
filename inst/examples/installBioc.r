@@ -2,7 +2,8 @@
 #
 # Install a package from BioConductor
 #
-# Copyright (C) 2020 -       Dirk Eddelbuettel
+# Copyright (C) 2020 - 2022  Dirk Eddelbuettel
+# Copyright (C) 2022 - 2022  Dirk Eddelbuettel and Pieter Moris
 #
 # Released under GPL (>= 2)
 
@@ -35,7 +36,9 @@ package 'BiocManger' which has be installed.
 Examples:
   installBioc.r -l /tmp/lib S4Vectors               # install into given library
   installBioc.r --update Biobase                    # install package and update older packages
-  installBioc.r --deps NA --error --skipinstalled   # install package without suggested dependencies, throw an error on installation failure and skip packages that are already present
+  installBioc.r --deps NA --error --skipinstalled   # install package without suggested dependencies,
+                                                    # throw an error on installation failure and skip
+                                                    # packages that are already present
 
 installBioC.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
@@ -43,7 +46,7 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 }
 
 if (!requireNamespace("BiocManager", quietly=TRUE)) {
-    stop("Please install 'BiocManager' first, for example via 'install2.r BiocManager'.", call.=FALSE)
+    stop("Please install 'BiocManager' first, for example via 'install.r BiocManager'.", call.=FALSE)
 }
 
 ## set repository to empty character vector if not supplied, since
