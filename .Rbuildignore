@@ -16,3 +16,4 @@ local
 ^docs-src
 ^\.github
 ^\.editorconfig
+inst/examples/TODO

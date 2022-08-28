@@ -1,6 +1,10 @@
 2022-08-28  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/installBioc.r:
+	* DESCRIPTION (Version, Date): Release 0.3.16
+	* configure.ac: Idem
+	* configure: Idem
+
+	* inst/examples/installBioc.r: Small polish
 
 2022-08-24  Pieter Moris  <pieter.moris@glpg.com>
 
