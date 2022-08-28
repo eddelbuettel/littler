@@ -1,3 +1,12 @@
+2022-08-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installBioc.r:
+
+2022-08-24  Pieter Moris  <pieter.moris@glpg.com>
+
+	* inst/examples/installBioc.r: Generalization, extension and extra
+	features similar to how install2.r generalizes install2.r
+
 2022-07-16  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/r2u.r: Add simple r2u.r frontend
