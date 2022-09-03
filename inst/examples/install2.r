@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
-# Copyright (C) 2018 - 2022  Carl Boettiger, Dirk Eddelbuettel, and Brandon Bertelsen
+# Copyright (C) 2018 - 2022  Carl Boettiger, Dirk Eddelbuettel, Brandon Bertelsen, and SHIMA Tatsuya
 #
 # Released under GPL (>= 2)
 
@@ -81,7 +81,7 @@ install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
                 grepl("download of package .* failed", e$message) ||
                 grepl("(dependenc|package).*(is|are) not available", e$message) ||
                 grepl("installation of package.*had non-zero exit status", e$message) ||
-                grepl("installation of one or more packages failed", e$message)
+                grepl("installation of .+ packages failed", e$message)
             if (catch) {
                 e <<- e
             }

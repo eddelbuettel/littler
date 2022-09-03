@@ -86,7 +86,7 @@ install_bioc <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
     capture <- function(e) {
         if (error) {
             catch <-
-                grepl("installation of one or more packages failed", e$message) ||
+                grepl("installation of .* packages failed", e$message) ||
                 grepl("is not available", e$message) ||
                 grepl("had non-zero exit status", e$message) ||
                 grepl("compilation failed for package.*", e$message) ||
