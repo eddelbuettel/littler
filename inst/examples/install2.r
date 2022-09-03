@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
-# Copyright (C) 2018 - 2022  Carl Boettiger, Dirk Eddelbuettel, and Brandon Bertelsen
+# Copyright (C) 2018 - 2022  Carl Boettiger, Dirk Eddelbuettel, Brandon Bertelsen, and SHIMA Tatsuya
 #
 # Released under GPL (>= 2)
 
