@@ -1,5 +1,76 @@
+###  2022 
+
+2022-09-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installBioc.r (capture): Update error message pattern 
+        used to detect failure to change in R 4.3.* 
+ 
+2022-09-03  SHIMA Tatsuya  <ts1s1andn@gmail.com> 
+ 
+        * inst/examples/install2.r (capture): Update error message pattern 
+        used to detect failure to change in R 4.3.* 
+ 
+2022-08-28  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.16 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+        * inst/examples/installBioc.r: Small polish 
+ 
+2022-08-24  Pieter Moris  <pieter.moris@glpg.com> 
+ 
+        * inst/examples/installBioc.r: Generalization, extension and extra 
+        features similar to how install2.r generalizes install2.r 
+ 
+2022-07-16  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Add simple r2u.r frontend 
+ 
+2022-04-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll minor version and date 
+ 
+        * src/littler.c (init_rand): Update to current seeding version in R, 
+        add stdint.h header for uint_least64_t 
+ 
+2022-04-02  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * configure.ac: Add two more header function checks 
+        * configure: Regenerated 
+        * src/config.h.in: Regenerated from expanded configure.ac 
+ 
+2022-02-25  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/install2.r: Default installation directory is now the 
+        first element in .libPaths() which can reflect R_LIBS_USER etc 
+ 
+2022-02-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/rcc.r: Add -v | --valgrind option 
+ 
+2022-01-21  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/install2.r: Correct typo (thanks, @jds485) 
+ 
+2022-01-16  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll minor version and date 
+ 
+2022-01-16  SHIMA Tatsuya  <ts1s1andn@gmail.com> 
+ 
+        * inst/examples/install2.r: Generalize -r option use 
+ 
 ###  2021 
 
+2021-12-21  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/getPandoc.r: Add Pandoc .deb downloader 
+ 
+2021-12-15  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/cowu.r: Add Windows UCRT checker 
+ 
 2021-12-03  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.15 

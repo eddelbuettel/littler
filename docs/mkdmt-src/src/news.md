@@ -1,4 +1,22 @@
 <div class="container">
+<h3 id="version-0.3.16-2022-08-28">Version 0.3.16 (2022-08-28)</h3>
+<ul>
+<li><p>Changes in package</p>
+<ul>
+<li><p>The <code>configure</code> code checks for two more headers</p></li>
+<li><p>The RNG seeding matches the current version in R (Dirk)</p></li>
+</ul></li>
+<li><p>Changes in examples</p>
+<ul>
+<li><p>A <code>cowu.r</code> 'check Window UCRT' helper was added (Dirk)</p></li>
+<li><p>A <code>getPandoc.r</code> downloader has been added (Dirk)</p></li>
+<li><p>The <code>-r</code> option tp <code>install2.r</code> has been generalzed (Tatsuya Shima in <a href="https://github.com/eddelbuettel/littler/pull/95">#95</a>)</p></li>
+<li><p>The <code>rcc.r</code> code / package checker now has <code>valgrind</code> option (Dirk)</p></li>
+<li><p><code>install2.r</code> now installs to first element in <code>.libPaths()</code> by default (Dirk)</p></li>
+<li><p>A very simple <code>r2u.r</code> help has been added (Dirk)</p></li>
+<li><p>The <code>installBioc.r</code> has been generalized and extended similar to <code>install2.r</code> (Pieter Moris in <a href="https://github.com/eddelbuettel/littler/pull/103">#103</a>)</p></li>
+</ul></li>
+</ul>
 <h3 id="version-0.3.15-2021-12-03">Version 0.3.15 (2021-12-03)</h3>
 <ul>
 <li><p>Changes in examples</p>
