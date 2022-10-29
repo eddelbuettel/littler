@@ -1,3 +1,8 @@
+2022-10-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/littler.c: Turn several functions into proper prototypes to
+	make clang-15 happier
+
 2022-09-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installBioc.r (capture): Update error message pattern

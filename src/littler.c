@@ -331,8 +331,7 @@ int parse_eval(membuf_t *pmb, char *line, int lineno, int localverbose){
 extern char *R_TempDir;
 int perSessionTempDir = FALSE;	/* by default, r differs from R and defaults to /tmp unless env.vars set, or flag chosen */
 
-void littler_InitTempDir()
-{
+void littler_InitTempDir(void) {
     char *tmp;
 
     if (perSessionTempDir) return; 	/* use a per-session temporary directory by following R */
@@ -365,7 +364,7 @@ void littler_CleanUp(SA_TYPE saveact, int status, int runLast){
     exit(status);
 }
 
-void showHelpAndExit() {
+void showHelpAndExit(void) {
     printf("\n"
            "Usage: %s [options] [-|file]"
            "\n\n"
@@ -390,7 +389,7 @@ void showHelpAndExit() {
     exit(-1);
 }
 
-void showVersionAndExit() {
+void showVersionAndExit(void) {
     char txt[64];
     printf("%s ('%s') version %s\n", binaryName, programName, PACKAGE_VERSION);
 #if defined(VERBOSE_BUILD)
@@ -423,7 +422,7 @@ void showVersionAndExit() {
     exit(0);
 }
 
-void showUsageAndExit() {
+void showUsageAndExit(void) {
     printf("\n"
            "%s (aka '%s') can be used in four main modes.\n\n"
            "The first is via the so-called 'shebang' support it provides for GNU R.\n"
@@ -453,7 +452,7 @@ void showUsageAndExit() {
 
 /* set seed for tempfile()
    updated to R 4.1.0 src/main/times.c and its helper function TimeToSeed() */
-void init_rand() {
+void init_rand(void) {
     unsigned int seed, pid = getpid();
 #if defined(HAVE_CLOCK_GETTIME) && defined(CLOCK_REALTIME)
     {
