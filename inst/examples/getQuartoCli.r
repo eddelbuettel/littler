@@ -15,5 +15,5 @@ res <- RcppSimdJson::fload(url)
 files <- res$assets[, "browser_download_url"]
 deb <- files[grepl("\\.deb$", files)]
 tgt <- file.path("/tmp", basename(deb))
-download.file(deb, tgt, quiet=TRUE)
-cat("Downloaded '", deb, "' as '", tgt, "'\n", sep="")
+download.file(deb, tgt, quiet = TRUE)
+cat("Downloaded '", deb, "' as '", tgt, "'\n", sep = "")

@@ -7,6 +7,6 @@
 # Released under GPL (>= 2)
 
 checkargs <- "--no-manual --no-vignettes"
-checkfile <- function(f) if (file.exists(f)) rhub::check_for_cran(f, check_args=checkargs)
+checkfile <- function(f) if (file.exists(f)) rhub::check_for_cran(f, check_args = checkargs)
 if (length(argv) == 0) argv <- "."
 sapply(argv, checkfile)

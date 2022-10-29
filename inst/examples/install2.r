@@ -26,11 +26,11 @@ doc <- paste0("Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS]
 -m --method METHOD  method to be used for downloading files [default: auto]
 -h --help           show this help text
 -x --usage          show help and short example usage")
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc) # docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("where PACKAGES... can be one or more CRAN package names, or local (binary or source)
+  cat(doc, "\n\n")
+  cat("where PACKAGES... can be one or more CRAN package names, or local (binary or source)
 package files (where extensions .tar.gz, .tgz and .zip are recognised). Optional
 arguments understood by R CMD INSTALL can be passed interspersed in the PACKAGES, though
 this requires use of '--'.
@@ -44,58 +44,58 @@ Examples:
 
 install2.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
-    q("no")
+  q("no")
 }
 
 if (opt$deps == "TRUE" || opt$deps == "FALSE") {
-    opt$deps <- as.logical(opt$deps)
+  opt$deps <- as.logical(opt$deps)
 } else if (opt$deps == "NA") {
-    opt$deps <- NA
+  opt$deps <- NA
 }
 
 ## docopt results are characters, so if we meant NULL we have to set NULL
 if (length(opt$repos) == 1 && "NULL" %in% opt$repos) {
-    opt$repos <- NULL
+  opt$repos <- NULL
 }
 
 if ("getOption" %in% opt$repos) {
-    ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
-    opt$repos <- c(opt$repos[which(opt$repos != "getOption")], getOption("repos"))
+  ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+  opt$repos <- c(opt$repos[which(opt$repos != "getOption")], getOption("repos"))
 }
 
 if (opt$ncpus == "getOption") {
-    opt$ncpus <- getOption("Ncpus", 1L)
+  opt$ncpus <- getOption("Ncpus", 1L)
 } else if (opt$ncpus == "-1") {
-    ## parallel comes with R 2.14+
-    opt$ncpus <- max(1L, parallel::detectCores())
+  ## parallel comes with R 2.14+
+  opt$ncpus <- max(1L, parallel::detectCores())
 }
 
 ## ensure installation is stripped
-Sys.setenv("_R_SHLIB_STRIP_"="true")
+Sys.setenv("_R_SHLIB_STRIP_" = "true")
 
 install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
-    e <- NULL
-    capture <- function(e) {
-        if (error) {
-            catch <-
-                grepl("download of package .* failed", e$message) ||
-                grepl("(dependenc|package).*(is|are) not available", e$message) ||
-                grepl("installation of package.*had non-zero exit status", e$message) ||
-                grepl("installation of .+ packages failed", e$message)
-            if (catch) {
-                e <<- e
-            }
-        }
+  e <- NULL
+  capture <- function(e) {
+    if (error) {
+      catch <-
+        grepl("download of package .* failed", e$message) ||
+          grepl("(dependenc|package).*(is|are) not available", e$message) ||
+          grepl("installation of package.*had non-zero exit status", e$message) ||
+          grepl("installation of .+ packages failed", e$message)
+      if (catch) {
+        e <<- e
+      }
     }
-    if (skipinstalled) {
-        pkgs <- setdiff(pkgs, installed.packages()[,1])
+  }
+  if (skipinstalled) {
+    pkgs <- setdiff(pkgs, installed.packages()[, 1])
+  }
+  if (length(pkgs) > 0) {
+    withCallingHandlers(install.packages(pkgs, ...), warning = capture)
+    if (!is.null(e)) {
+      stop(e$message, call. = FALSE)
     }
-    if (length(pkgs) > 0) {
-        withCallingHandlers(install.packages(pkgs, ...), warning = capture)
-        if (!is.null(e)) {
-            stop(e$message, call. = FALSE)
-        }
-    }
+  }
 }
 
 ## helper function to for existing files with matching extension
@@ -103,32 +103,36 @@ isMatchingFile <- function(f) (file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.z
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
 installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled, ncpus, method) {
-    install_packages2(pkgs=f,
-                      lib=lib,
-                      repos=if (isMatchingFile(f)) NULL else rep,
-                      dependencies=dep,
-                      INSTALL_opts=iopts,
-                      Ncpus = ncpus,
-                      method = method,
-                      error = error,
-                      skipinstalled = skipinstalled)
+  install_packages2(
+    pkgs = f,
+    lib = lib,
+    repos = if (isMatchingFile(f)) NULL else rep,
+    dependencies = dep,
+    INSTALL_opts = iopts,
+    Ncpus = ncpus,
+    method = method,
+    error = error,
+    skipinstalled = skipinstalled
+  )
 }
 
 ## strip out arguments to be passed to R CMD INSTALL
-isArg <- grepl('^--',opt$PACKAGES)
+isArg <- grepl("^--", opt$PACKAGES)
 installOpts <- opt$PACKAGES[isArg]
 opt$PACKAGES <- opt$PACKAGES[!isArg]
 
-if (length(opt$PACKAGES)==0 && file.exists("DESCRIPTION") && file.exists("NAMESPACE")) {
-    ## we are in a source directory, so build it
-    message("* installing *source* package found in current working directory ...")
-    opt$PACKAGES <- "."
+if (length(opt$PACKAGES) == 0 && file.exists("DESCRIPTION") && file.exists("NAMESPACE")) {
+  ## we are in a source directory, so build it
+  message("* installing *source* package found in current working directory ...")
+  opt$PACKAGES <- "."
 }
 
 ## helper function to for existing files with matching extension
 isMatchingFile <-
-    function(f) (file.exists(f) &&
-                 grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
+  function(f) {
+    (file.exists(f) &&
+      grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
+  }
 
 ## check arguments for local files -- if none, then we can pass vector on
 isLocal <- sapply(opt$PACKAGES, isMatchingFile)
@@ -137,19 +141,23 @@ isLocal <- sapply(opt$PACKAGES, isMatchingFile)
 ## packages pass vector to install_packages2 which does the rest (and
 ## possibly in parallel using up to ncpus)
 if (any(isLocal)) {
-    sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
-           installOpts, opt$error, opt$skipinstalled, opt$ncpus, opt$method)
+  sapply(
+    opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
+    installOpts, opt$error, opt$skipinstalled, opt$ncpus, opt$method
+  )
 } else {
-    install_packages2(pkgs = opt$PACKAGES,
-                      lib = opt$libloc,
-                      repos = opt$repos,
-                      dependencies = opt$deps,
-                      INSTALL_opts = installOpts,
-                      Ncpus = opt$ncpus,
-                      method = opt$method,
-                      error = opt$error,
-                      skipinstalled = opt$skipinstalled)
+  install_packages2(
+    pkgs = opt$PACKAGES,
+    lib = opt$libloc,
+    repos = opt$repos,
+    dependencies = opt$deps,
+    INSTALL_opts = installOpts,
+    Ncpus = opt$ncpus,
+    method = opt$method,
+    error = opt$error,
+    skipinstalled = opt$skipinstalled
+  )
 }
 
 ## clean up any temp file containing CRAN directory information
-sapply(list.files(path=tempdir(), pattern="^(repos|libloc).*\\.rds$", full.names=TRUE), unlink)
+sapply(list.files(path = tempdir(), pattern = "^(repos|libloc).*\\.rds$", full.names = TRUE), unlink)

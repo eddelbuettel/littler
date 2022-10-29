@@ -9,8 +9,9 @@
 ## load docopt package from CRAN
 library(docopt)
 
-if (!requireNamespace("data.table", quietly=TRUE))
-    stop("The 'data.table' package is required. Please install it.", call.=FALSE)
+if (!requireNamespace("data.table", quietly = TRUE)) {
+  stop("The 'data.table' package is required. Please install it.", call. = FALSE)
+}
 
 doc <- "Usage: urlUpdate.r [-c] [-n] [-h] PACKAGE
 
@@ -27,16 +28,18 @@ suppressMessages(library(data.table))
 
 pkg <- opt$PACKAGE
 rec <- !opt$nonrecursive
-db <- setDT(tools::CRAN_package_db(), key="Package")
-revs <- data.table(Package=tools::package_dependencies(pkg, recursive=rec, db=db)[[1]], key="Package")
+db <- setDT(tools::CRAN_package_db(), key = "Package")
+revs <- data.table(Package = tools::package_dependencies(pkg, recursive = rec, db = db)[[1]], key = "Package")
 
-res <- db[revs, .(Package,Version,Priority,NeedsCompilation)][
-    is.na(Priority)==TRUE & is.na(Version)==FALSE & NeedsCompilation=="yes"][
-   ,.(Package,Version)]
+res <- db[revs, .(Package, Version, Priority, NeedsCompilation)][
+  is.na(Priority) == TRUE & is.na(Version) == FALSE & NeedsCompilation == "yes"
+][
+  , .(Package, Version)
+]
 
 if (opt$compact) {
-    cat(paste(res[[1]], collapse=" "), "\n")
+  cat(paste(res[[1]], collapse = " "), "\n")
 } else {
-    options("datatable.print.nrows"=nrow(res))
-    print(res)
+  options("datatable.print.nrows" = nrow(res))
+  print(res)
 }

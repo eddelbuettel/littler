@@ -64,4 +64,3 @@ Dirk Eddelbuettel <edd@debian.org> is the maintainer.
   
 ## End(Not run)
 ```
-

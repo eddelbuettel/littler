@@ -20,10 +20,10 @@ the 'R CMD build' invocation.
 
 opt <- docopt(doc)
 
-if (length(opt$PACKAGES) == 0) opt$PACKAGES <- "." 	# default argument current directory
+if (length(opt$PACKAGES) == 0) opt$PACKAGES <- "." # default argument current directory
 
 argv <- if (opt$fast) c("--no-build-vignettes", "--no-manual", opt$PACKAGES) else opt$PACKAGES
 
 extraargs <- c("--compact-vignettes=both", "--resave-data", argv)
 
-tools:::.build_packages(extraargs, no.q=interactive())
+tools:::.build_packages(extraargs, no.q = interactive())

@@ -8,15 +8,19 @@
 
 ## load docopt from CRAN
 suppressMessages({
-    library(docopt)               # we need docopt (>= 0.3) as on CRAN
+  library(docopt) # we need docopt (>= 0.3) as on CRAN
 })
 
-if (Sys.info()[["sysname"]] != "Linux")
-    stop(paste("Currently only supported on Linux.",
-               "Please get in touch if you want to / can help on macOS"), call.=FALSE)
+if (Sys.info()[["sysname"]] != "Linux") {
+  stop(paste(
+    "Currently only supported on Linux.",
+    "Please get in touch if you want to / can help on macOS"
+  ), call. = FALSE)
+}
 
-if (!requireNamespace("bspm", quietly=TRUE))
-    stop("The 'bspm' package is required. Please install it.", call.=FALSE)
+if (!requireNamespace("bspm", quietly = TRUE)) {
+  stop("The 'bspm' package is required. Please install it.", call. = FALSE)
+}
 
 ## configuration for docopt
 doc <- paste0("Usage: installBSPM.r [-h] [-x] ARGS...
@@ -35,11 +39,11 @@ exanded 'ppa:c2d4u.team/c2d4u4.0+' repo, and for Fedora the say 'iucar/cran' Cop
 This user-level script does not attempt to later your system-level repository information.
 ")
 
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc) # docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("
+  cat(doc, "\n\n")
+  cat("
 
 Basic usage:
 
@@ -47,11 +51,11 @@ Basic usage:
 
 installBSPM.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
-    q("no")
+  q("no")
 }
 
 library(bspm)
 bspm::enable()
-options(bspm.sudo=TRUE)
+options(bspm.sudo = TRUE)
 
 install.packages(opt$ARGS)

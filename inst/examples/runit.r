@@ -7,8 +7,8 @@
 # Released under GPL (>= 2)
 
 suppressMessages({
-    library(docopt)       # we need the docopt package
-    library(RUnit)        # we need the RUnit package
+  library(docopt) # we need the docopt package
+  library(RUnit) # we need the RUnit package
 })
 
 doc <- "Usage: runit.r [-p PACKAGES] [--help] [FILES ...]
@@ -18,10 +18,12 @@ doc <- "Usage: runit.r [-p PACKAGES] [--help] [FILES ...]
 
 opt <- docopt(doc)
 
-for (p in strsplit(opt$packages, ",")[[1]])
-    suppressMessages(require(p, character.only=TRUE))
+for (p in strsplit(opt$packages, ",")[[1]]) {
+  suppressMessages(require(p, character.only = TRUE))
+}
 
-for (f in opt$FILES)
-    runTestFile(f)
+for (f in opt$FILES) {
+  runTestFile(f)
+}
 
-q(status=0)
+q(status = 0)

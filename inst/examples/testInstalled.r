@@ -20,9 +20,10 @@ doc <- "Usage: test.r [-l LIBLOC] [-o OUTDIR] [-t TYPES] [-s SRCDIR] [-h] [PACKA
 opt <- docopt(doc)
 
 ## installation given selected options and arguments
-testInstalledPackage(pkg = opt$PACKAGES,
-                     lib = opt$libloc,
-                  outDir = opt$outdir,
-                   types = opt$types,
-                  srcdir = opt$srcdir)
-
+testInstalledPackage(
+  pkg = opt$PACKAGES,
+  lib = opt$libloc,
+  outDir = opt$outdir,
+  types = opt$types,
+  srcdir = opt$srcdir
+)

@@ -6,8 +6,8 @@
 #
 # Released under GPL (>= 2)
 
-#checkargs <- "--no-manual --no-vignettes"
+# checkargs <- "--no-manual --no-vignettes"
 solaris <- "solaris-x86-patched"
-checkfile <- function(f) if (file.exists(f)) rhub::check(f, platform=solaris)#, check_args=checkargs)
+checkfile <- function(f) if (file.exists(f)) rhub::check(f, platform = solaris) # , check_args=checkargs)
 if (length(argv) == 0) argv <- "."
 sapply(argv, checkfile)

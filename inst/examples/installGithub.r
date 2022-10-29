@@ -8,8 +8,8 @@
 
 ## load docopt and remotes (or devtools) from CRAN
 suppressMessages({
-    library(docopt)               # we need docopt (>= 0.3) as on CRAN
-    library(remotes)              # or can use devtools as a fallback
+  library(docopt) # we need docopt (>= 0.3) as on CRAN
+  library(remotes) # or can use devtools as a fallback
 })
 
 ## configuration for docopt
@@ -21,11 +21,11 @@ doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-r REPOS...] [GH
 -h --help            show this help text
 -x --usage           show help and short example usage"
 
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc) # docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("where GHREPOS... is one or more GitHub repositories.
+  cat(doc, "\n\n")
+  cat("where GHREPOS... is one or more GitHub repositories.
 
 Basic usage:
 
@@ -51,21 +51,21 @@ Setting multiple R package repositories to install dependencies of the R package
 
 installGithub.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
-    q("no")
+  q("no")
 }
 
 ## ensure installation is stripped
-Sys.setenv("_R_SHLIB_STRIP_"="true")
+Sys.setenv("_R_SHLIB_STRIP_" = "true")
 
 if (opt$deps == "TRUE" || opt$deps == "FALSE") {
-    opt$deps <- as.logical(opt$deps)
+  opt$deps <- as.logical(opt$deps)
 } else if (opt$deps == "NA") {
-    opt$deps <- NA
+  opt$deps <- NA
 }
 
 if (length(opt$repos) == 1 && opt$repos == "getOption") {
-    ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
-    opt$repos <- getOption("repos")
+  ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
+  opt$repos <- getOption("repos")
 }
 
 opt$update <- as.logical(opt$update)

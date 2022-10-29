@@ -8,26 +8,30 @@
 
 ## load docopt from CRAN
 suppressMessages({
-    library(docopt)               # we need docopt (>= 0.3) as on CRAN
+  library(docopt) # we need docopt (>= 0.3) as on CRAN
 })
 
-if (Sys.info()[["sysname"]] != "Linux")
-    stop(paste("Currently only supported on Linux.",
-               "Please get in touch if you want to / can help on macOS"), call.=FALSE)
+if (Sys.info()[["sysname"]] != "Linux") {
+  stop(paste(
+    "Currently only supported on Linux.",
+    "Please get in touch if you want to / can help on macOS"
+  ), call. = FALSE)
+}
 
 code <- "<unknown>"
-if (file.exists("/etc/os-release")) {   # next block borrowed from my chshli package on GitHub
-    osrel <- read.table("/etc/os-release", sep="=", row.names=1, col.names=c("key","value"))
-    if ("REDHAT_SUPPORT_PRODUCT" %in% rownames(osrel)) {
-        # 'centos7' for CentOS/RHEL 7, 'centos8' for CentOS/RHEL 8 and Fedora
-        ver <- osrel["REDHAT_SUPPORT_PRODUCT_VERSION", "value"]
-        code <- paste0("centos", min(as.numeric(ver), 8))
-    } else if ("VERSION_CODENAME" %in% rownames(osrel)) {
-        code <- osrel["VERSION_CODENAME", "value"]
-    }
+if (file.exists("/etc/os-release")) {
+  # next block borrowed from my chshli package on GitHub
+  osrel <- read.table("/etc/os-release", sep = "=", row.names = 1, col.names = c("key", "value"))
+  if ("REDHAT_SUPPORT_PRODUCT" %in% rownames(osrel)) {
+    # 'centos7' for CentOS/RHEL 7, 'centos8' for CentOS/RHEL 8 and Fedora
+    ver <- osrel["REDHAT_SUPPORT_PRODUCT_VERSION", "value"]
+    code <- paste0("centos", min(as.numeric(ver), 8))
+  } else if ("VERSION_CODENAME" %in% rownames(osrel)) {
+    code <- osrel["VERSION_CODENAME", "value"]
+  }
 }
 if ((code == "<unknown>") && (Sys.which("lsb_release") != "")) {
-    code <- system("lsb_release -c | awk '{print $2}'", intern=TRUE)
+  code <- system("lsb_release -c | awk '{print $2}'", intern = TRUE)
 }
 
 ## configuration for docopt
@@ -43,11 +47,11 @@ for every possibly OS and distibution. Please file issue tickets at the Github
 repo for littler if you can contribute additional checks and values.
 ")
 
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc) # docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("
+  cat(doc, "\n\n")
+  cat("
 
 Basic usage:
 
@@ -55,7 +59,7 @@ Basic usage:
 
 installRSPM.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
-    q("no")
+  q("no")
 }
 
 if (!is.null(opt$libloc)) .libPaths(opt$libloc)
@@ -63,7 +67,9 @@ if (!is.null(opt$libloc)) .libPaths(opt$libloc)
 r <- getOption("repos")
 r["CRAN"] <- paste0("https://packagemanager.rstudio.com/all/__linux__/", opt$code, "/latest")
 options(repos = r)
-options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(),
-                                paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
+options(HTTPUserAgent = sprintf(
+  "R/%s R (%s)", getRversion(),
+  paste(getRversion(), R.version$platform, R.version$arch, R.version$os)
+))
 
 invisible(sapply(opt$ARGS, function(r) install.packages(r)))

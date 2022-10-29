@@ -28,4 +28,3 @@ set the character variable is displayed via `cat` instead.
 ### Author(s)
 
 Dirk Eddelbuettel
-

@@ -6,4 +6,4 @@
 #
 # Released under GPL (>= 2)
 
-rhub::check(".", "ubuntu-rchk", check_args="--no-manual --no-vignettes")
+rhub::check(".", "ubuntu-rchk", check_args = "--no-manual --no-vignettes")

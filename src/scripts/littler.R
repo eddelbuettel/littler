@@ -18,13 +18,15 @@
 ##  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ##
 
-ExcludeVars <- c("R_SESSION_TMPDIR", "R_HISTFILE", "R_LIBS_USER",
-                 "R_LIBRARY_DIR", "R_LIBS", "R_PACKAGE_DIR", "R_USER")
+ExcludeVars <- c(
+  "R_SESSION_TMPDIR", "R_HISTFILE", "R_LIBS_USER",
+  "R_LIBRARY_DIR", "R_LIBS", "R_PACKAGE_DIR", "R_USER"
+)
 IncludeVars <- Sys.getenv()
-IncludeVars <- IncludeVars[grep("^R_", names(IncludeVars), perl=TRUE)]
+IncludeVars <- IncludeVars[grep("^R_", names(IncludeVars), perl = TRUE)]
 cat("const char *R_VARS[] = {\n")
-for (i in 1:length(IncludeVars)){
-    if (names(IncludeVars)[i] %in% ExcludeVars) next
-    cat('"',names(IncludeVars)[i], '","', IncludeVars[i], '",\n', sep='')
+for (i in 1:length(IncludeVars)) {
+  if (names(IncludeVars)[i] %in% ExcludeVars) next
+  cat('"', names(IncludeVars)[i], '","', IncludeVars[i], '",\n', sep = "")
 }
 cat("NULL };\n")

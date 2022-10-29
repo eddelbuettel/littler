@@ -24,4 +24,4 @@ doc <- paste0("Usage: shiny.r [-h] [--port PORT] [--host HOST] [--dir DIR]
 opt <- docopt(doc)
 
 suppressMessages(library(shiny))
-runApp(opt$dir, port=as.integer(opt$port), host=opt$host)
+runApp(opt$dir, port = as.integer(opt$port), host = opt$host)

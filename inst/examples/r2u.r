@@ -29,39 +29,44 @@ be 'build (for buildUpdatedPackages)'.
 
 opt <- docopt(doc)
 
-if (!is.finite(match(opt$release, c("focal", "jammy"))))
-    stop("Unknown distro '", opt$release, "'.", call. = FALSE)
+if (!is.finite(match(opt$release, c("focal", "jammy")))) {
+  stop("Unknown distro '", opt$release, "'.", call. = FALSE)
+}
 
-if (!is.finite(match(opt$CMD, c("build", "last", "count", "table"))))
-    stop("Unknown command '", opt$CMD, "'.", call. = FALSE)
+if (!is.finite(match(opt$CMD, c("build", "last", "count", "table")))) {
+  stop("Unknown command '", opt$CMD, "'.", call. = FALSE)
+}
 
 if (is.finite(match(opt$CMD, "build"))) {
-    library(r2u)
-    if (opt$uncache) {
-        for (db in c(r2u:::.defaultCRANDBFile(), r2u:::.defaultAPFile()))
-            if (file.exists(db)) unlink(db)
-        r2u:::.loadDB()
-        r2u:::.loadAP()
+  library(r2u)
+  if (opt$uncache) {
+    for (db in c(r2u:::.defaultCRANDBFile(), r2u:::.defaultAPFile())) {
+      if (file.exists(db)) unlink(db)
     }
-    buildUpdatedPackages(opt$release,
-                         opt$debug,
-                         opt$verbose,
-                         opt$force,
-                         opt$xvfb)
+    r2u:::.loadDB()
+    r2u:::.loadAP()
+  }
+  buildUpdatedPackages(
+    opt$release,
+    opt$debug,
+    opt$verbose,
+    opt$force,
+    opt$xvfb
+  )
 } else if (is.finite(match(opt$CMD, "last"))) {
-    D <- RcppSimdJson::fload("https://packagemanager.rstudio.com/__api__/sources/1/transactions")
-    ts <- anytime::utctime(D[1,"completed"])
-    dh <- as.numeric(difftime(Sys.time(), ts, units="hours"))
-    un <- "days"
-    if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
-    cat("RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
+  D <- RcppSimdJson::fload("https://packagemanager.rstudio.com/__api__/sources/1/transactions")
+  ts <- anytime::utctime(D[1, "completed"])
+  dh <- as.numeric(difftime(Sys.time(), ts, units = "hours"))
+  un <- "days"
+  if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
+  cat("RSPM last updated", format(round(difftime(Sys.time(), ts, units = un), 1)), "ago\n")
 } else if (is.finite(match(opt$CMD, "count"))) {
-    ll <- readLines(pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'"))
-    cat(length(ll), ".deb files downloaded\n")
+  ll <- readLines(pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'"))
+  cat(length(ll), ".deb files downloaded\n")
 } else if (is.finite(match(opt$CMD, "table"))) {
-    con <- pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'")
-    ll <- readLines(con)
-    close(con)
-    tt <- table(gsub(".*r-(cran|bioc)-(.*)_\\d+.*", "\\2", ll, perl=TRUE))
-    print(head(tt[order(-tt)], 10))
+  con <- pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'")
+  ll <- readLines(con)
+  close(con)
+  tt <- table(gsub(".*r-(cran|bioc)-(.*)_\\d+.*", "\\2", ll, perl = TRUE))
+  print(head(tt[order(-tt)], 10))
 }

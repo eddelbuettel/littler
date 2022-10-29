@@ -414,6 +414,3 @@ renderArg <- function(p) {
 sapply(opt$FILES, renderArg)
 
 ```
-
-
-

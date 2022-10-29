@@ -18,40 +18,39 @@ doc <- "Usage: rd2md.r [-h] [-x] [--src REPODIR] [--out OUTDIR] [FILES...]
 -h --help             show this help text
 -x --usage            show help and short example usage"
 
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc) # docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("Examples:
+  cat(doc, "\n\n")
+  cat("Examples:
   rd2md.r foo                                  # implies conversion of ~/git/foo/inst/NEWS.Rd
   rd2md.r ~/git/foo/inst/NEWS.Rd               # converts given file to markdown
 
 rd2md.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
-    q("no")
+  q("no")
 }
 
 ## helper function
 convertArg <- function(p, src, out) {
-    filename <- mdfile <- NULL
-    if (file.exists(p)) {
-        filename <- p
-        mdfile <- paste0(filename, ".md")
-    } else {
-        filename <- file.path(src, p, "inst", "NEWS.Rd")
-        if (!file.exists(filename)) {
-            stop("No matching file found for", p, call.=FALSE)
-        }
-        mdfile <- file.path(out, paste0(p, ".news.md"))
+  filename <- mdfile <- NULL
+  if (file.exists(p)) {
+    filename <- p
+    mdfile <- paste0(filename, ".md")
+  } else {
+    filename <- file.path(src, p, "inst", "NEWS.Rd")
+    if (!file.exists(filename)) {
+      stop("No matching file found for", p, call. = FALSE)
     }
-    htmlfile <- paste0(filename, ".html")
-    Rd2HTML(filename, htmlfile)
-    cmd <- paste("pandoc", htmlfile, "-o", mdfile)
-    system(cmd)
-    unlink(htmlfile)
-    cat("Converted", filename, "into", mdfile, "\n")
+    mdfile <- file.path(out, paste0(p, ".news.md"))
+  }
+  htmlfile <- paste0(filename, ".html")
+  Rd2HTML(filename, htmlfile)
+  cmd <- paste("pandoc", htmlfile, "-o", mdfile)
+  system(cmd)
+  unlink(htmlfile)
+  cat("Converted", filename, "into", mdfile, "\n")
 }
 
 ## insert packages using helper function
 sapply(opt$FILES, convertArg, opt$src, opt$out)
-

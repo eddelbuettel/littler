@@ -9,8 +9,9 @@
 ## load docopt package from CRAN
 library(docopt)
 
-if (!requireNamespace("urlchecker", quietly=TRUE))
-    stop("The 'urlchecker' package is required. Please install it from GitHub.", call.=FALSE)
+if (!requireNamespace("urlchecker", quietly = TRUE)) {
+  stop("The 'urlchecker' package is required. Please install it from GitHub.", call. = FALSE)
+}
 
 doc <- "Usage: urlUpdate.r [-c] [-h] [PACKAGES ...]
 
@@ -22,7 +23,8 @@ Simple wrapper to 'urlchecker::update_url(...)'.
 
 opt <- docopt(doc)
 
-if (length(opt$PACKAGES) == 0) opt$PACKAGES <- "." 	# default argument current directory
+if (length(opt$PACKAGES) == 0) opt$PACKAGES <- "." # default argument current directory
 
-for (p in opt$PACKAGES)
-    if (opt$check_only) print(urlchecker::url_check(p)) else urlchecker::url_update(p)
+for (p in opt$PACKAGES) {
+  if (opt$check_only) print(urlchecker::url_check(p)) else urlchecker::url_update(p)
+}

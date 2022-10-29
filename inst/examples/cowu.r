@@ -7,6 +7,6 @@
 # Released under GPL (>= 2)
 
 checkargs <- "--no-manual --no-vignettes"
-checkfile <- function(f) if (file.exists(f)) rhub::check(f, platform="windows-x86_64-devel-ucrt", check_args=checkargs)
+checkfile <- function(f) if (file.exists(f)) rhub::check(f, platform = "windows-x86_64-devel-ucrt", check_args = checkargs)
 if (length(argv) == 0) argv <- "."
 sapply(argv, checkfile)

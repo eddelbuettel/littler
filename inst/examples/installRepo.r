@@ -8,8 +8,8 @@
 
 ## load docopt and remotes (or devtools) from CRAN
 suppressMessages({
-    library(docopt)               # we need docopt (>= 0.3) as on CRAN
-    library(remotes)    	  # can use devtools as a fallback
+  library(docopt) # we need docopt (>= 0.3) as on CRAN
+  library(remotes) # can use devtools as a fallback
 })
 
 ## configuration for docopt
@@ -22,11 +22,11 @@ doc <- "Usage: installRepo.r [-l LIBLOC] [-h] [-x] [-d DEPS] [-r REPOS] [-s subd
 -h --help           show this help text
 -x --usage          show help and short example usage"
 
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc) # docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("where SRC is either a git-style repo (author/repo) or a URL for svn.
+  cat(doc, "\n\n")
+  cat("where SRC is either a git-style repo (author/repo) or a URL for svn.
 
 Examples:
   installRepo.r RcppCore/RcppEigen                       # standard GitHub
@@ -36,22 +36,23 @@ Examples:
 
 installRepo.r is part of littler which brings 'r' to the command-line.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
-    q("no")
+  q("no")
 }
 
 if (opt$deps == "TRUE" || opt$deps == "FALSE") {
-    opt$deps <- as.logical(opt$deps)
+  opt$deps <- as.logical(opt$deps)
 } else if (opt$deps == "NA") {
-    opt$deps <- NA
+  opt$deps <- NA
 }
-if (is.null(opt$SRC)) q("no")           # need optional args to support -x
+if (is.null(opt$SRC)) q("no") # need optional args to support -x
 
 ## ensure installation is stripped
-Sys.setenv("_R_SHLIB_STRIP_"="true")
+Sys.setenv("_R_SHLIB_STRIP_" = "true")
 
 ## installation given selected options and arguments
 switch(tolower(opt$repos),
-       github = install_github(opt$SRC, lib=opt$libloc, dependencies=opt$deps),
-       bitbucket = install_bitbucket(opt$SRC, lib=opt$libloc, dependencies=opt$deps),
-       svn = install_svn(opt$SRC, subdir=opt$subdir, lib=opt$libloc, dependencies=opt$deps),
-       url = install_url(opt$SRC, subdir=opt$subdir, lib=opt$libloc, dependencies=opt$deps))
+  github = install_github(opt$SRC, lib = opt$libloc, dependencies = opt$deps),
+  bitbucket = install_bitbucket(opt$SRC, lib = opt$libloc, dependencies = opt$deps),
+  svn = install_svn(opt$SRC, subdir = opt$subdir, lib = opt$libloc, dependencies = opt$deps),
+  url = install_url(opt$SRC, subdir = opt$subdir, lib = opt$libloc, dependencies = opt$deps)
+)

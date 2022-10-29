@@ -59,4 +59,3 @@ EXTRA_DIST = gitversion.h
 
 #  install the man page
 man_MANS = r.1
-

@@ -18,11 +18,11 @@ doc <- "Usage: roxy.r [-n] [-f] [-m] [-h] [-x] [-r ROCLETS] [PACKAGES ...]
 -m --minimal          implies 'namespace,rd' roclets
 -h --help             show this help text
 -x --usage            show help and short example usage"
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc) # docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("where PACKAGES... can be one or more packages.
+  cat(doc, "\n\n")
+  cat("where PACKAGES... can be one or more packages.
 
 Examples:
   roxy.r                     # update help pages for package, use cached version
@@ -36,22 +36,22 @@ roxy.r is part of littler which brings 'r' to the command-line. See the help for
 roxygenize for the different 'roclets' arguments; default value 'rd' means to only
 update Rd files.
 See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
-    q("no")
+  q("no")
 }
 
 if (opt$full) {
-    opt$nocache <- TRUE
-    opt$roclets <- "NULL"
+  opt$nocache <- TRUE
+  opt$roclets <- "NULL"
 }
 if (opt$minimal) {
-    opt$nocache <- FALSE
-    opt$roclets <- "namespace,rd"
+  opt$nocache <- FALSE
+  opt$roclets <- "namespace,rd"
 }
 
 ## Works around the marvel that is version 6.1.0 or later
 if (!opt$nocache && dir.exists("~/.R/cache/roxygen2")) {
-    cat("** Using cached version 6.0.1 of roxygen2.\n")
-    .libPaths("~/.R/cache")
+  cat("** Using cached version 6.0.1 of roxygen2.\n")
+  .libPaths("~/.R/cache")
 }
 
 ## load roxygen
@@ -63,5 +63,6 @@ argv <- Filter(function(x) file.info(x)$is.dir, argv)
 ## loop over all argument, with fallback of the current directory, and
 ## call roxygenize() on the given directory with roclets="rd" set
 sapply(ifelse(length(argv) > 0, argv, "."),
-       FUN = roxygenize,
-       roclets = if (tolower(opt$roclets) == "null") NULL else strsplit(opt$roclets,",")[[1]])
+  FUN = roxygenize,
+  roclets = if (tolower(opt$roclets) == "null") NULL else strsplit(opt$roclets, ",")[[1]]
+)
