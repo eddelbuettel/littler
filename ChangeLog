@@ -1,7 +1,9 @@
 2022-10-28  Dirk Eddelbuettel  <edd@debian.org>
 
-	* src/littler.c: Turn several functions into proper prototypes to
+ 	* src/littler.c: Turn several functions into proper prototypes to
 	make clang-15 happier
+
+	* .github/workflows/ci.yaml (jobs): Update to actions/checkout@v3
 
 2022-09-03  Dirk Eddelbuettel  <edd@debian.org>
 
