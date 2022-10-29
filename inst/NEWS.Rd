@@ -3,6 +3,20 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.17 (2022-10-29)}{
+  \itemize{
+    \item Changes in package
+    \itemize{
+      \item An internal function prototype was updated for \code{clang-15}.
+    }
+    \item Changes in examples
+    \itemize{
+      \item The \code{install2.r} and \code{installBioc.} were updated
+      for an update in R-devel (Tatsuya Shima and Dirk in \ghpr{104}).
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.16 (2022-08-28)}{
   \itemize{
     \item Changes in package
