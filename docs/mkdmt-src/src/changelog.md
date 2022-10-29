@@ -1,5 +1,18 @@
 ###  2022 
 
+2022-10-29  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.17 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+2022-10-28  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+         * src/littler.c: Turn several functions into proper prototypes to 
+        make clang-15 happier 
+ 
+        * .github/workflows/ci.yaml (jobs): Update to actions/checkout@v3 
+ 
 2022-09-03  Dirk Eddelbuettel  <edd@debian.org> 
  
         * inst/examples/installBioc.r (capture): Update error message pattern 
