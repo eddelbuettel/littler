@@ -2,7 +2,7 @@
 #
 # A simple example to install one or more packages from GitHub
 #
-# Copyright (C) 2014 - 2020  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2023  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -13,11 +13,12 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-r REPOS...] [GHREPOS...]
+doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-r REPOS...] [-t TYPE] [GHREPOS...]
 
 -d --deps DEPS       install suggested dependencies as well? [default: NA]
 -u --update UPDATE   update dependencies? [default: TRUE]
 -r --repos REPOS     repositor(y|ies) to use if deps required [default: getOption]
+-t --type TYPE       installation type as used by `install.packages` [default: source]
 -h --help            show this help text
 -x --usage           show help and short example usage"
 
@@ -70,4 +71,4 @@ if (length(opt$repos) == 1 && opt$repos == "getOption") {
 
 opt$update <- as.logical(opt$update)
 
-invisible(sapply(opt$GHREPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update, repos = opt$repos)))
+invisible(sapply(opt$GHREPOS, function(r) install_github(r, dependencies = opt$deps, upgrade = opt$update, repos = opt$repos, type = opt$type)))

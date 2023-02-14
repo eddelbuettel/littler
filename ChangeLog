@@ -1,3 +1,7 @@
+2023-02-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installGithub.r: Offer a type option and set it
+
 2023-02-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/getRStudioDesktop.r: Updated default file
