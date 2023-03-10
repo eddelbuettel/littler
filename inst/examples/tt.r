@@ -15,9 +15,6 @@ suppressMessages({
     library(tinytest)             # or can use devtools as a fallback
 })
 
-## load docopt package from CRAN
-library(docopt)
-
 ## configuration for docopt
 doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-d] [-f] [-n NCPUS] [-p] [-s] [-z] [ARG...]
 
@@ -46,12 +43,11 @@ Examples:
   tt.r                                # run test_all() if DESCRIPTION && inst/tinytest/
 
 tt.r is part of littler which brings 'r' to the command-line.
-See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
 sideeffects <- if (opt$effects) FALSE else TRUE       # by default, use side effects
-                                        #ncpu <- if (opt$ncpu) as.integer(opt$ncpu) else getOption("Ncpus", 1)
 
 if (opt$ncpus == "getOption") {
     opt$ncpus <- getOption("Ncpus", 1L)
