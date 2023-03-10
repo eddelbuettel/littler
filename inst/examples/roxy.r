@@ -16,6 +16,7 @@ doc <- "Usage: roxy.r [-n] [-f] [-m] [-h] [-x] [-r ROCLETS] [PACKAGES ...]
 -r --roclets ROCLETS  use roclets arguments for roxygenize [default: rd]
 -f --full             implies both '-n' and '-r NULL'
 -m --minimal          implies 'namespace,rd' roclets
+-l --libpath LIBP     additional library path to be added [default: ]
 -h --help             show this help text
 -x --usage            show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -56,6 +57,8 @@ if (!opt$nocache && dir.exists("~/.R/cache/roxygen2")) {
 
 ## load roxygen
 library(roxygen2)
+
+if (!is.null(opt$libpath)) .libPaths(opt$libpath)
 
 ## check all command-line arguments (if any are given) for directory status
 argv <- Filter(function(x) file.info(x)$is.dir, argv)
