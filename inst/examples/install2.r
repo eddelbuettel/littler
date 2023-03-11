@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2011 - 2014  Dirk Eddelbuettel
 # Copyright (C) 2014 - 2017  Carl Boettiger and Dirk Eddelbuettel
-# Copyright (C) 2018 - 2022  Carl Boettiger, Dirk Eddelbuettel, Brandon Bertelsen, and SHIMA Tatsuya
+# Copyright (C) 2018 - 2023  Carl Boettiger, Dirk Eddelbuettel, Brandon Bertelsen, and SHIMA Tatsuya
 #
 # Released under GPL (>= 2)
 
@@ -15,15 +15,16 @@ library(docopt)
 libloc <- .libPaths()[1]
 
 ## configuration for docopt
-doc <- paste0("Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [-m METHOD] [--error] [--] [PACKAGES ...]
+doc <- paste0("Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [-m METHOD] [-t TYPE] [--error] [--] [PACKAGES ...]
 
 -l --libloc LIBLOC  location in which to install [default: ", libloc, "]
 -d --deps DEPS      install suggested dependencies as well [default: NA]
--n --ncpus NCPUS    number of processes to use for parallel install [default: getOption]
+-n --ncpus NCPUS    number of processes to use for parallel install, -1 selects all cores [default: getOption]
 -r --repos REPOS    repositor(y|ies) to use, or NULL for file [default: getOption]
 -e --error          throw error and halt instead of a warning [default: FALSE]
 -s --skipinstalled  skip installing already installed packages [default: FALSE]
 -m --method METHOD  method to be used for downloading files [default: auto]
+-t --type TYPE      installation type as used by `install.packages` [default: getOption]
 -h --help           show this help text
 -x --usage          show help and short example usage")
 opt <- docopt(doc)			# docopt parsing
@@ -70,6 +71,13 @@ if (opt$ncpus == "getOption") {
     opt$ncpus <- max(1L, parallel::detectCores())
 }
 
+## type should reflects bspm where available
+if (opt$type == "getOption") {
+    opt$type <- getOption("pkgType")
+    #if (requireNamespace("bspm", quietly=TRUE) && Sys.info()[["sysname"]] == "Linux") opt$type <- "binary-source"
+
+}
+
 ## ensure installation is stripped
 Sys.setenv("_R_SHLIB_STRIP_"="true")
 
@@ -102,7 +110,7 @@ install_packages2 <- function(pkgs, ..., error = FALSE, skipinstalled = FALSE) {
 isMatchingFile <- function(f) (file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.zip)$", f)) || (f == ".")
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
-installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled, ncpus, method) {
+installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled, ncpus, method, type) {
     install_packages2(pkgs=f,
                       lib=lib,
                       repos=if (isMatchingFile(f)) NULL else rep,
@@ -110,6 +118,7 @@ installArg <- function(f, lib, rep, dep, iopts, error, skipinstalled, ncpus, met
                       INSTALL_opts=iopts,
                       Ncpus = ncpus,
                       method = method,
+                      type = type,
                       error = error,
                       skipinstalled = skipinstalled)
 }
@@ -138,7 +147,7 @@ isLocal <- sapply(opt$PACKAGES, isMatchingFile)
 ## possibly in parallel using up to ncpus)
 if (any(isLocal)) {
     sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
-           installOpts, opt$error, opt$skipinstalled, opt$ncpus, opt$method)
+           installOpts, opt$error, opt$skipinstalled, opt$ncpus, opt$method, opt$type)
 } else {
     install_packages2(pkgs = opt$PACKAGES,
                       lib = opt$libloc,
@@ -147,6 +156,7 @@ if (any(isLocal)) {
                       INSTALL_opts = installOpts,
                       Ncpus = opt$ncpus,
                       method = opt$method,
+                      type = opt$type,
                       error = opt$error,
                       skipinstalled = opt$skipinstalled)
 }
