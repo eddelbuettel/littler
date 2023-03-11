@@ -2,6 +2,10 @@
 
 	* inst/examples/tt.r: Remove extra library(), change to https url
 
+2023-02-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Extend with --suffix option
+
 2023-02-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installGithub.r: Offer a type option and set it

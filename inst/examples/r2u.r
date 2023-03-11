@@ -2,7 +2,7 @@
 #
 # Simple r2u helper frontend
 #
-# Copyright (C) 2022         Dirk Eddelbuettel
+# Copyright (C) 2022 - 2023  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -16,6 +16,7 @@ Options:
 -v --verbose        boolean flag for verbose operation
 -f --force          boolean flag to force build
 -x --xvfb           boolean flag to build under 'xvfb' (x11 virtual framebuffer)
+-s --suffix         build version suffix appended [default: .1]
 -u --uncache        remove the cached meta data archives of available packages
 -h --help           show this help text
 
@@ -24,10 +25,8 @@ build        updates all packages
 last         reports most recent binary package sync
 count        counts packages downloaded (locally) today
 table        tabulates packages downloaded today
-package      updates the package(s) named in ...
+package      updates the package(s) named in ... and builds
 
-Simple wrapper to 'r2u::buildUpdatedPackages(distro)'. The 'CMD' has to (for now)
-be 'build (for buildUpdatedPackages)'.
 "
 
 opt <- docopt(doc)
@@ -85,11 +84,12 @@ if (is.finite(match(opt$CMD, "build"))) {
         r2u:::.loadAP()
     }
     for (p in opt$args) {
-        buildPackage(p,
-                     opt$release,
-                     opt$debug,
-                     opt$verbose,
-                     opt$force,
-                     opt$xvfb)
+        buildPackage(pkg     = p,
+                     tgt     = opt$release,
+                     debug   = opt$debug,
+                     verbose = opt$verbose,
+                     force   = opt$force,
+                     xvfb    = opt$xvfb,
+                     suffix  = opt$suffix)
     }
 }
