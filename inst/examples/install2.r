@@ -44,7 +44,7 @@ Examples:
   install2.r -n 6 ggplot2                           # parallel install: (6 processes)
 
 install2.r is part of littler which brings 'r' to the command-line.
-See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
