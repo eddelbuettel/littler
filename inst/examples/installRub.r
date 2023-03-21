@@ -13,16 +13,16 @@ library(utils) 		# for osVersion
 rver <- gsub("^([\\d].[\\d]).*$", "\\1", as.character(getRversion()), perl=TRUE)
 uburel <- "jammy"
 ## configuration for docopt
-doc <- paste0("Usage: installRub.r [-h] [-x] [-r REL] [-v VER] [-u UNIV] PACKAGES
+doc <- paste0("Usage: installRub.r [-h] [-x] [-k] [-r REL] [-v VER] [-u UNIV] PACKAGES
 
--u --universe UNIV  *required* argument specifying universe [default: '']
+-u --universe UNIV  *required* argument specifying universe [default: ]
 -v --version VER    R 'major.minor' version release pair to install for [default: ", rver, "]
 -r --release REL    Ubuntu LTS release to install to install for [default: ", uburel, "]
+-k --keepoption     so not set option 'bspm.version.check' to 'TRUE' as is default
 -h --help           show this help text
 -x --usage          show help and short example usage")
 opt <- docopt(doc)			# docopt parsing
-
-if (opt$usage) {
+if (opt$usage || is.null(opt$universe)) {
     cat(doc, "\n\n")
     cat("where PACKAGES... can be one or more R package names available in then selected
 r-universe repository; its CRAN (as well as some core BioConductor) dependencies will be
@@ -51,4 +51,5 @@ if (!startsWith(utils::osVersion, "Ubuntu")) stop("Ubuntu is required as host sy
 if (!requireNamespace("bspm", quietly=TRUE)) stop("The 'bspm' package is required.", call. = FALSE)
 
 univ <- paste0("https://", opt$universe, ".r-universe.dev/bin/linux/", opt$release, "/", opt$version)
-install.packages(pkgs = opt$PACKAGES, repos = c(univ, "https://cloud.r-project.org"), type = "both")
+if (!opt$keepoption) options(bspm.version.check=TRUE)
+install.packages(pkgs = opt$PACKAGES, repos = c(univ, "https://cloud.r-project.org"))
