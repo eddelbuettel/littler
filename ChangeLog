@@ -2,6 +2,8 @@
 
 	* inst/examples/installRub.r: Small extensions
 
+	* inst/examples/r2u.r: Correction on suffix use
+
 2023-03-20  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installRub.r: Initial version of r-universe binary installer

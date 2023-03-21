@@ -8,7 +8,7 @@
 
 library(docopt)
 
-doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--uncache] [--help] CMD ...
+doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--suffix SUF] [--uncache] [--help] CMD ...
 
 Options:
 -r --release DIST   release distribution to use, one of 'focal' or 'jammy' [default: jammy]
@@ -16,7 +16,7 @@ Options:
 -v --verbose        boolean flag for verbose operation
 -f --force          boolean flag to force build
 -x --xvfb           boolean flag to build under 'xvfb' (x11 virtual framebuffer)
--s --suffix         build version suffix appended [default: .1]
+-s --suffix SUF     build version suffix appended [default: .1]
 -u --uncache        remove the cached meta data archives of available packages
 -h --help           show this help text
 
@@ -30,7 +30,6 @@ package      updates the package(s) named in ... and builds
 "
 
 opt <- docopt(doc)
-
 if (!is.finite(match(opt$release, c("focal", "jammy"))))
     stop("Unknown distro '", opt$release, "'.", call. = FALSE)
 
