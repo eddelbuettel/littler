@@ -37,6 +37,14 @@ if (!is.null(opt$ARG) && dir.exists(opt$arg)) {
     setwd(opt$ARG)
 }
 
+if (file.exists(file.path(getwd(), "..", "..", "DESCRIPTION"))) {
+    setwd(file.path(getwd(), "..", ".."))
+}
+
+if (file.exists(file.path(getwd(), "..", "DESCRIPTION"))) {
+    setwd("..")
+}
+
 if (file.exists("DESCRIPTION") && dir.exists("tests/testthat")) {
     testthat::test_local("tests/testthat")
 }
