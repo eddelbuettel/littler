@@ -2,7 +2,7 @@
 ##
 ##  Call 'rcmdcheck' on a package
 ##
-##  Copyright (C) 2016 - 2022  Dirk Eddelbuettel
+##  Copyright (C) 2016 - 2023  Dirk Eddelbuettel
 ##
 ##  Released under GPL (>= 2)
 
@@ -19,7 +19,7 @@ doc <- "Usage: rcc.r [-h] [-x] [-c] [-f] [-q] [-v] [--args ARGS] [--libpath LIBP
 -f --fast             should vignettes and manuals be skipped [default: FALSE]
 -v --valgrind         should tests run with 'valgrind' debug tool [default: FALSE]
 -e --erroron ERRON    whether to throw an error on failure [default: never]
--q --quiet            should 'rcmdcheck' be called qietly [default: FALSE]
+-q --quiet            should 'rcmdcheck' be called quietly [default: FALSE]
 -h --help             show this help text
 -x --usage            show help and short example usage"
 
