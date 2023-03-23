@@ -1,3 +1,8 @@
+2023-03-23  SHIMA Tatsuya  <ts1s1andn@gmail.com>
+
+	* inst/examples/install2.r (capture): Update error message pattern
+	used to detect failure to change in R 4.3.*
+
 2023-03-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install2.r (capture): Small generalisation for
