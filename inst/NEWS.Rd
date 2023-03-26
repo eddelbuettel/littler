@@ -3,6 +3,26 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.18 (2023-03-25)}{
+  \itemize{
+    \item Changes in examples scripts
+    \itemize{
+      \item \code{roxy.r} can now set an additional \code{--libpath}
+      \item \code{getRStudioDesktop.r} and \code{getRStudioServer.r} have
+      updated default download file
+      \item \code{install2.r} and \code{installGithub.r} can set
+      \code{--type}
+      \item \code{r2u.r} now has a \code{--suffix} option
+      \item \code{tt.r} removes a redundant \code{library} call
+      \item \code{tttl.r} has been added for \code{testthat::test_local()}
+      \item \code{installRub.r} has been added to install r-universe binaries
+      on Ubuntu
+      \item \code{install2.r} has updated error capture messages (Tatsuya
+      Shima and Dirk in \ghpr{104})
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.17 (2022-10-29)}{
   \itemize{
     \item Changes in package
@@ -11,7 +31,7 @@
     }
     \item Changes in examples
     \itemize{
-      \item The \code{install2.r} and \code{installBioc.} were updated
+      \item Scripts \code{install2.r} and \code{installBioc.r} were updated
       for an update in R-devel (Tatsuya Shima and Dirk in \ghpr{104}).
     }
   }

@@ -7,7 +7,7 @@ AC_PREREQ([2.69])
 # Every other copy of the package version number gets its value from here
 # The m4_esyscmd_s invocation is due to an excellent StackOverflow answer.
 # Sadly it breaks under Debian package builds (likely due to a missing component)
-AC_INIT([littler],[0.3.17],[edd@debian.org])
+AC_INIT([littler],[0.3.18],[edd@debian.org])
 
 #  Look for ancillary configure tools in tools
 dnl AC_CONFIG_AUX_DIR(tools)
