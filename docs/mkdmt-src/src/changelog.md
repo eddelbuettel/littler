@@ -1,5 +1,61 @@
+###  2023 
+
+2023-03-25  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.18 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+2023-03-23  SHIMA Tatsuya  <ts1s1andn@gmail.com> 
+ 
+        * inst/examples/install2.r (capture): Update error message pattern 
+        used to detect failure to change in R 4.3.* 
+ 
+2023-03-23  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/install2.r (capture): Small generalisation for 
+        somewhat fragile error capture 
+ 
+2023-03-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttl.r: Small usability enhancement 
+ 
+2023-03-21  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Small extensions 
+ 
+        * inst/examples/r2u.r: Correction on suffix use 
+ 
+2023-03-20  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Initial version of r-universe binary installer 
+ 
+2023-03-10  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttl.r: Very simple wrapper to testthat::test_local() 
+ 
+        * inst/examples/tt.r: Remove extra library(), change to https url 
+ 
+2023-02-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Extend with --suffix option 
+ 
+2023-02-14  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installGithub.r: Offer a type option and set it 
+        * inst/examples/install2.r: Ditto 
+ 
+2023-02-13  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/getRStudioDesktop.r: Updated default file 
+        * inst/examples/getRStudioServer.r: Idem 
+ 
 ###  2022 
 
+2022-12-31  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/roxy.r: Added --libpath LIB option 
+ 
 2022-10-29  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.17 
