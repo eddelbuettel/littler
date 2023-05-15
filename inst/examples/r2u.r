@@ -61,7 +61,7 @@ if (is.finite(match(opt$CMD, "build"))) {
     dh <- as.numeric(difftime(Sys.time(), ts, units="hours"))
     un <- "days"
     if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
-    cat("RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
+    cat("PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
 
 } else if (is.finite(match(opt$CMD, "count"))) {
     ll <- readLines(pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'"))

@@ -23,10 +23,11 @@ opt <- docopt(doc)			# docopt parsing
 
 if (opt$usage) {
     cat(doc, "\n\n")
-    cat("where ARG... can be a package directory.
+    cat("where ARG can be a package directory.
 
 Examples:
   ttlr.r                              # run test_local() if DESCRIPTION && tests/testthat/
+  ttlr.r                              # run test_local() if in tests/testthat directory
 
 ttlr.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")

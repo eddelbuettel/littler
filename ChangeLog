@@ -1,3 +1,11 @@
+2023-05-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tttl.r: Expanded usage text
+
+2023-05-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Micro-edit to displayed text
+
 2023-03-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.18
