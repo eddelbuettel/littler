@@ -40,7 +40,7 @@ convertArg <- function(p, src, out) {
     } else {
         filename <- file.path(src, p, "inst", "NEWS.Rd")
         if (!file.exists(filename)) {
-            stop("No matching file found for", p, call.=FALSE)
+            stop("No matching file found for ", p, call.=FALSE)
         }
         mdfile <- file.path(out, paste0(p, ".news.md"))
     }
@@ -54,4 +54,3 @@ convertArg <- function(p, src, out) {
 
 ## insert packages using helper function
 sapply(opt$FILES, convertArg, opt$src, opt$out)
-
