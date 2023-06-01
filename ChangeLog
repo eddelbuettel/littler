@@ -1,3 +1,7 @@
+2023-06-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Note more prominently that this does not build on Windows
+
 2023-05-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/tttl.r: Expanded usage text
