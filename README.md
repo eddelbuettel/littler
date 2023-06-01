@@ -59,7 +59,7 @@ install.packages("littler")
 
 Note that the package states `OS_type: unix`. It works great on all Linux
 variants, with a naming caveat on macOS (see below and the [FAQ
-vignettes](https://github.com/eddelbuettel/littler/blob/master/vignettes/littler-faq.md)
+vignettes](https://github.com/eddelbuettel/littler/blob/master/vignettes/littler-faq.md))
 and not at all on Windows (but could be ported just like
 [RInside](https://github.com/eddelbuettel/rinside) has been--the two show
 architectural similarities).
