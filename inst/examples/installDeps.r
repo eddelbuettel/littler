@@ -13,10 +13,13 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: installDeps.r [-h] [-x] [ARGS]
+doc <- "Usage: installDeps.r [-h] [-x] [-s] [-d DEPS] [ARGS]
 
--h --help            show this help text
--x --usage           show help and short example usage"
+-d --deps DEPS    Logical or char, see '?install.packages' [default: NA]
+-s --suggests     Add 'Suggests' to dependencies, shortcut for '--deps TRUE'
+-h --help         show this help text
+-x --usage        show help and short example usage
+"
 
 opt <- docopt(doc)			# docopt parsing
 
@@ -29,6 +32,10 @@ Basic usage:
   installDeps.r .
   installDeps.r somePackage_1.2.3.tar.gz
 
+The argument to '--deps' can be a combinations of 'Depends', 'Imports', 'LinkingTo',
+'Suggests', and 'Enhances'. Default of 'NA' means first three, 'TRUE' means the first
+four.
+
 installDeps.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
@@ -40,7 +47,11 @@ if (length(opt$ARGS)==0 && file.exists("DESCRIPTION") && file.exists("NAMESPACE"
     opt$ARGS <- "."
 }
 
+if (opt$deps == "TRUE") opt$deps <- TRUE
+if (opt$deps == "NA") opt$deps <- NA
+if (opt$suggests) opt$deps <- TRUE
+
 ## ensure installation is stripped
 Sys.setenv("_R_SHLIB_STRIP_"="true")
 
-invisible(sapply(opt$ARGS, function(r) install_deps(r)))
+invisible(sapply(opt$ARGS, function(r) install_deps(r, dependencies=opt$deps)))

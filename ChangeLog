@@ -2,6 +2,8 @@
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
 
+	* inst/examples/installDeps.r: Support dependencies argument
+
 	* inst/examples/check.r: Correct one line in help text
 
 2023-06-01  Dirk Eddelbuettel  <edd@debian.org>
