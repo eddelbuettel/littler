@@ -1,5 +1,7 @@
 2023-07-15  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 	* inst/examples/check.r: Correct one line in help text
 
 2023-06-01  Dirk Eddelbuettel  <edd@debian.org>
