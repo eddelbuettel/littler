@@ -2,7 +2,7 @@
 #
 # Another example to check one or more packages, with option parsing
 #
-# Copyright (C) 2015 - 2020  Dirk Eddelbuettel
+# Copyright (C) 2015 - 2023  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -20,7 +20,7 @@ doc <- "Usage: check.r [-h] [-x] [--as-cran] [--repo REPO] [--no-manvig] [--inst
 -l --library LIB      when installing use this library [default: /usr/local/lib/R/site-library]
 -s --setwd DIR        change to this directory before undertaking the test [default: ]
 -d --deb-pkgs PKGS    also install binary .deb packages with their dependencies [default: FALSE]
--u --use-sudo         use sudo when installing .deb packages [default: TRUE]
+-u --use-sudo         use sudo when installing .deb packages [default: FALSE]
 -h --help             show this help text
 -x --usage            show help and short example usage"
 
