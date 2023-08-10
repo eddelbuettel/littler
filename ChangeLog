@@ -1,5 +1,7 @@
 2023-08-09  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 	* inst/examples/r2u.r: Add two more options for modifying the Debian
 	version of a package being built
 
@@ -7,8 +9,6 @@
 	testthat runner (aka 'testthat::test_file()'
 
 2023-07-15  Dirk Eddelbuettel  <edd@debian.org>
-
-	* DESCRIPTION (Date, Version): Roll micro version and date
 
 	* inst/examples/installDeps.r: Support dependencies argument
 
