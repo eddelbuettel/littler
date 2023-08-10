@@ -26,8 +26,8 @@ if (opt$usage) {
     cat("where ARG can be a package directory.
 
 Examples:
-  ttlr.r                              # run test_local() if DESCRIPTION && tests/testthat/
-  ttlr.r                              # run test_local() if in tests/testthat directory
+  tttl.r                              # run test_local() if DESCRIPTION && tests/testthat/
+  tttl.r                              # run test_local() if in tests/testthat directory
 
 ttlr.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
