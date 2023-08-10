@@ -1,3 +1,8 @@
+2023-08-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Add two more options for modifying the Debian
+	version of a package being built
+
 2023-07-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date

@@ -8,7 +8,7 @@
 
 library(docopt)
 
-doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--suffix SUF] [--uncache] [--help] CMD ...
+doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--suffix SUF] [--debver DBV] [--plusdfsg] [--uncache] [--help] CMD ...
 
 Options:
 -r --release DIST   release distribution to use, one of 'focal' or 'jammy' [default: jammy]
@@ -17,6 +17,8 @@ Options:
 -f --force          boolean flag to force build
 -x --xvfb           boolean flag to build under 'xvfb' (x11 virtual framebuffer)
 -s --suffix SUF     build version suffix appended [default: .1]
+-t --debver DBV     debian version leading digit [default: 1.]
+-p --plusdfsg       boolean flag if upstream version gets '+dfsg'
 -u --uncache        remove the cached meta data archives of available packages
 -h --help           show this help text
 
@@ -89,6 +91,8 @@ if (is.finite(match(opt$CMD, "build"))) {
                      verbose = opt$verbose,
                      force   = opt$force,
                      xvfb    = opt$xvfb,
-                     suffix  = opt$suffix)
+                     suffix  = opt$suffix,
+                     debver  = opt$debver,
+                     plusdfsg= opt$plusdfsg)
     }
 }
