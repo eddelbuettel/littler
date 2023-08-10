@@ -3,6 +3,9 @@
 	* inst/examples/r2u.r: Add two more options for modifying the Debian
 	version of a package being built
 
+	* inst/examples/tttf.r: Very initial version of a single file
+	testthat runner (aka 'testthat::test_file()'
+
 2023-07-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date

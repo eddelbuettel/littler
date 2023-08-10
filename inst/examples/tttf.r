@@ -1,6 +1,6 @@
 #!/usr/bin/env r
 #
-# testthat::test_local wrapper
+# testthat::test_file wrapper
 #
 # Copyright (C) 2019 - 2023  Dirk Eddelbuettel
 #
@@ -15,8 +15,9 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: tttl.r [-h] [-x] [ARG]
+doc <- "Usage: tttf.r [-l LIB] [-h] [-x] ARG
 
+-l --library LIIB   load named library
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -26,26 +27,19 @@ if (opt$usage) {
     cat("where ARG can be a package directory.
 
 Examples:
-  tttl.r                              # run test_local() if DESCRIPTION && tests/testthat/
-  tttl.r                              # run test_local() if in tests/testthat directory
+  tttf.r test-testfile.r              # run test_file() on the given file
 
-tttl.r is part of littler which brings 'r' to the command-line.
+tttf.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
-if (!is.null(opt$ARG) && dir.exists(opt$arg)) {
-    setwd(opt$ARG)
+if (!file.exists(opt$ARG)) {
+    stop("No such file.", call. = FALSE)
 }
 
-if (file.exists(file.path(getwd(), "..", "..", "DESCRIPTION"))) {
-    setwd(file.path(getwd(), "..", ".."))
+if (!is.null(opt$LIB)) {
+    library(opt$LIB)
 }
 
-if (file.exists(file.path(getwd(), "..", "DESCRIPTION"))) {
-    setwd("..")
-}
-
-if (file.exists("DESCRIPTION") && dir.exists("tests/testthat")) {
-    testthat::test_local("tests/testthat")
-}
+testthat::test_file(path=opt$ARG)
