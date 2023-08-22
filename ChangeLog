@@ -2,6 +2,8 @@
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
 
+	* README.md: Add r-universe badge
+
 2023-08-20  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installRSPM.r: Minor edits for coexistence, update
