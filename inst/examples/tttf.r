@@ -15,9 +15,10 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: tttf.r [-l LIB] [-h] [-x] ARG
+doc <- "Usage: tttf.r [-l LIB] [-s FILE] [-h] [-x] ARG
 
 -l --library LIIB   load named library
+-s --source FILE    source a named file
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -38,8 +39,12 @@ if (!file.exists(opt$ARG)) {
     stop("No such file.", call. = FALSE)
 }
 
-if (!is.null(opt$LIB)) {
-    library(opt$LIB)
+if (!is.null(opt$library)) {
+    library(opt$library)
+}
+
+if (!is.null(opt$source) && file.exists(opt$source)) {
+    source(opt$source)
 }
 
 testthat::test_file(path=opt$ARG)

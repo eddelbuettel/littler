@@ -1,3 +1,7 @@
+2023-09-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tttf.r: Add --source argument
+
 2023-08-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
