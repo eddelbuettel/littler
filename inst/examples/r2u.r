@@ -8,7 +8,7 @@
 
 library(docopt)
 
-doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--suffix SUF] [--debver DBV] [--plusdfsg] [--uncache] [--help] CMD ...
+doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--bioc] [--suffix SUF] [--debver DBV] [--plusdfsg] [--uncache] [--help] CMD ...
 
 Options:
 -r --release DIST   release distribution to use, one of 'focal' or 'jammy' [default: jammy]
@@ -16,6 +16,7 @@ Options:
 -v --verbose        boolean flag for verbose operation
 -f --force          boolean flag to force build
 -x --xvfb           boolean flag to build under 'xvfb' (x11 virtual framebuffer)
+-b --bioc           boolean flag to update BioConductor (subset) not CRAN
 -s --suffix SUF     build version suffix appended [default: .1]
 -t --debver DBV     debian version leading digit [default: 1.]
 -p --plusdfsg       boolean flag if upstream version gets '+dfsg'
@@ -55,7 +56,8 @@ if (is.finite(match(opt$CMD, "build"))) {
                          opt$debug,
                          opt$verbose,
                          opt$force,
-                         opt$xvfb)
+                         opt$xvfb,
+                         opt$bioc)
 
 } else if (is.finite(match(opt$CMD, "last"))) {
     D <- RcppSimdJson::fload("https://packagemanager.rstudio.com/__api__/sources/1/transactions")
