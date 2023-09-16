@@ -38,9 +38,9 @@ doc <- paste0("Usage: install(RSPM|PPM).r [-c code] [-l libloc] [-h] [-x] ARGS..
 -h --help        show this help text
 -x --usage       show help and short example usage
 
-Note that RSPM support is still somewhat experimental. There may not be binaries
-for every possibly OS and distibution. Please file issue tickets at the Github
-repo for littler if you can contribute additional checks and values.
+Note that RSPM/PPM support may be somewhat experimental. There may not be binaries
+for every possibly OS, distibution, and R version. Please file issue tickets at the
+Github repo for littler if you can contribute additional checks and values.
 
 As RSPM has been renamed to PPM, we now install the script twice via a hardlink.
 ")
@@ -48,16 +48,14 @@ As RSPM has been renamed to PPM, we now install the script twice via a hardlink.
 opt <- docopt(doc)			# docopt parsing
 
 if (opt$usage) {
-    cat(doc, "\n\n")
-    cat("
+    cat(doc, "\n")
+    cat("Basic usage:
 
-Basic usage:
-
-  installRSPM.r digest
-  installPPM.r digest
+  installRSPM.r digest	         # install digest for default release '", code, "'
+  installPPM.r -c jammy digest   # install digest for Ubuntu 'jammy'
 
 install(RSPM|PPM).r is part of littler which brings 'r' to the command-line.
-See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
+See https://dirk.eddelbuettel.com/code/littler.html for more information.\n", sep="")
     q("no")
 }
 
