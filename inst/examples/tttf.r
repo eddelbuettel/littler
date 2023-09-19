@@ -17,7 +17,7 @@ suppressMessages({
 ## configuration for docopt
 doc <- "Usage: tttf.r [-l LIB] [-s FILE] [-h] [-x] ARG
 
--l --library LIIB   load named library
+-l --library LIB    load named library, LIB can be comma-separated
 -s --source FILE    source a named file
 -h --help           show this help text
 -x --usage          show help and short example usage"
@@ -35,12 +35,14 @@ See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
-if (!file.exists(opt$ARG)) {
-    stop("No such file.", call. = FALSE)
+if (!is.null(opt$library)) {
+    for (s in strsplit(opt$library, ",")[[1]]) {
+        library(s, character.only=TRUE, verbose=TRUE)
+    }
 }
 
-if (!is.null(opt$library)) {
-    library(opt$library)
+if (!file.exists(opt$ARG)) {
+    stop("No such file.", call. = FALSE)
 }
 
 if (!is.null(opt$source) && file.exists(opt$source)) {
