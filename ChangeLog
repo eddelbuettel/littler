@@ -1,3 +1,7 @@
+2023-09-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Another posit.co URL update
+
 2023-09-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/tttf.r: Extend --library to several arguments

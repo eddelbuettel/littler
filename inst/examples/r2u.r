@@ -60,7 +60,7 @@ if (is.finite(match(opt$CMD, "build"))) {
                          opt$bioc)
 
 } else if (is.finite(match(opt$CMD, "last"))) {
-    D <- RcppSimdJson::fload("https://packagemanager.rstudio.com/__api__/sources/1/transactions")
+    D <- RcppSimdJson::fload("https://packagemanager.posit.co/__api__/sources/1/transactions")
     ts <- anytime::utctime(D[1,"completed"])
     dh <- as.numeric(difftime(Sys.time(), ts, units="hours"))
     un <- "days"
