@@ -15,18 +15,20 @@ uburel <- "jammy"
 ## configuration for docopt
 doc <- paste0("Usage: installRub.r [-h] [-x] [-k] [-r REL] [-v VER] [-u UNIV] PACKAGES
 
--u --universe UNIV  *required* argument specifying universe [default: ]
+-u --universe UNIV  required argument specifying universe [default: ]
 -v --version VER    R 'major.minor' version release pair to install for [default: ", rver, "]
 -r --release REL    Ubuntu LTS release to install to install for [default: ", uburel, "]
 -k --keepoption     so not set option 'bspm.version.check' to 'TRUE' as is default
 -h --help           show this help text
--x --usage          show help and short example usage")
+-x --usage          show help and short example usage.
+
+PACKAGES can also be a shorthand 'package@universe'. See '-x | --usage' for more.")
 opt <- docopt(doc)			# docopt parsing
-if (opt$usage || is.null(opt$universe)) {
+if (opt$usage) {
     cat(doc, "\n\n")
-    cat("where PACKAGES... can be one or more R package names available in then selected
+    cat("In general, PACKAGES... can be one or more R package names available in then selected
 r-universe repository; its CRAN (as well as some core BioConductor) dependencies will be
-provided automatically by r2u.
+provided automatically by r2u. It can also be a shorthand 'package@universe'.
 
 Note that while CRAN works extremely hard to always provide an installable set of working
 packages, r-universe works under a different model and its packages cannot offer any such
@@ -34,11 +36,13 @@ guarantees. Also note that while we use 'r2u' for the CRAN (and, to some extend,
 parts full-filling *all* dependencies completely, the binaries from r-universe do not carry
 any (system-)dependency info so you may end up with missing libries you may need to add. Where
 an r-universe package exists on CRAN you can cover your ground by first installing the CRAN
-version and the r-universe version.
+version and then the r-universe version.
 
 Examples:
-  installRub.r -u rcppcore Rcpp                   # installs (never than CRAN / r2u) Rcpp
+  installRub.r -u rcppcore Rcpp RcppArmadillo     # installs (never than CRAN / r2u) Rcpp(Armadillo)
   installRub.r -u eddelbuettel RcppKalman         # installs non-CRAN package RcppKalman
+  installRub.r rcpp@rcppcore 					  # alternate to install Rcpp from RcppCore universe
+  installRub.r polars@rpolars 					  # alternate to install polars from rpolars universe
 
 installRub.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
@@ -49,6 +53,12 @@ if (getRversion() < "4.2.0") stop("R version 4.2.0 or later is required.", call.
 if (!exists("osVersion")) stop("Cannot find 'osVersion'. Weird.", call. = FALSE)
 if (!startsWith(utils::osVersion, "Ubuntu")) stop("Ubuntu is required as host system.", call. = FALSE)
 if (!requireNamespace("bspm", quietly=TRUE)) stop("The 'bspm' package is required.", call. = FALSE)
+
+if (is.null(opt$universe) && length(opt$PACKAGES) == 1) {
+    tokens <- strsplit(opt$PACKAGES, "@")[[1]]
+    opt$PACKAGES <- tokens[1]
+    opt$universe <- tokens[2]
+}
 
 univ <- paste0("https://", opt$universe, ".r-universe.dev/bin/linux/", opt$release, "/", opt$version)
 if (!opt$keepoption) options(bspm.version.check=TRUE)
