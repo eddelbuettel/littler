@@ -2,7 +2,7 @@
 #
 # tinytest wrapper
 #
-# Copyright (C) 2019 - 2022  Dirk Eddelbuettel
+# Copyright (C) 2019 - 2023  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -25,7 +25,7 @@ doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-d] [-f] [-n NCPUS] [-p] [-s] [-z] [ARG
 -n --ncpus NCPUS    use 'ncpus' in parallel [default: getOption]
 -p --package        use package mode [default: FALSE]
 -s --silent         use silent and do not print result [default: FALSE]
--z --effects        suppress side effects [default: FALSE]
+-z --effects        show side effects [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -47,7 +47,7 @@ See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
-sideeffects <- if (opt$effects) FALSE else TRUE       # by default, use side effects
+sideeffects <- if (opt$effects) TRUE else FALSE		# by default, do not show side effects
 
 if (opt$ncpus == "getOption") {
     opt$ncpus <- getOption("Ncpus", 1L)

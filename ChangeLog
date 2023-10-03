@@ -1,6 +1,11 @@
+2023-10-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tt.r: Switch the default value for 'effects' from
+	FALSE to TRUE which, while a breaking change, is the better default.
+
 2023-09-25  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/installRub.r: Also allow 'package@universe'
+	* inst/examples/installRub.r: Also allow 'package@universe' format
 
 2023-09-20  Dirk Eddelbuettel  <edd@debian.org>
 
