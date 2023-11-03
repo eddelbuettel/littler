@@ -46,6 +46,10 @@ Installing a specific branch, tag or commit:
 
   installGithub.r RcppCore/Rcpp@1.0.0
 
+Installing from a repo subdirectory:
+
+  installGithub.r chanzuckerberg/cellxgene-census/api/r/cellxgene.census
+
 Setting multiple R package repositories to install dependencies of the R package:
 
   installGithub.r -r https://cloud.r-project.org -r https://eddelbuettel.github.io/drat RcppCore/RcppEigen
