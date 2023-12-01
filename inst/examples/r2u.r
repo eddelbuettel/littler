@@ -8,13 +8,13 @@
 
 library(docopt)
 
-doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--bioc] [--suffix SUF] [--debver DBV] [--plusdfsg] [--uncache] [--dryrun] [--help] CMD ...
+doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--bioc] [--suffix SUF] [--debver DBV] [--plusdfsg] [--uncache] [--dryrun] [--compile] [--help] CMD ...
 
 Options:
 -r --release DIST   release distribution to use, one of 'focal' or 'jammy' [default: jammy]
 -d --debug          boolean flag for extra debugging
 -v --verbose        boolean flag for verbose operation
--f --force          boolean flag to force build
+-f --force          boolean flag to force a build
 -x --xvfb           boolean flag to build under 'xvfb' (x11 virtual framebuffer)
 -b --bioc           boolean flag to update BioConductor (subset) not CRAN
 -s --suffix SUF     build version suffix appended [default: .1]
@@ -22,6 +22,7 @@ Options:
 -p --plusdfsg       boolean flag if upstream version gets '+dfsg'
 -u --uncache        remove the cached meta data archives of available packages (when using 'package' command)
 -n --dryrun         boolean flag for dry-run of skip build (when using 'package' command)
+-c --compile        boolean flag for ensuring a compilation from source
 -h --help           show this help text
 
 Cmd:
@@ -66,7 +67,7 @@ if (is.finite(match(opt$CMD, "build"))) {
     dh <- as.numeric(difftime(Sys.time(), ts, units="hours"))
     un <- "days"
     if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
-    cat("PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
+    cat("P3M/PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
 
 } else if (is.finite(match(opt$CMD, "count"))) {
     ll <- readLines(pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'"))
@@ -97,6 +98,7 @@ if (is.finite(match(opt$CMD, "build"))) {
                      suffix  = opt$suffix,
                      debver  = opt$debver,
                      plusdfsg= opt$plusdfsg,
-                     dryrun  = opt$dryrun)
+                     dryrun  = opt$dryrun,
+                     compile = opt$compile)
     }
 }
