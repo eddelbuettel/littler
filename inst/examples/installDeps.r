@@ -15,7 +15,7 @@ suppressMessages({
 ## configuration for docopt
 doc <- "Usage: installDeps.r [-h] [-x] [-s] [-d DEPS] [ARGS]
 
--d --deps DEPS    Logical or char, see '?install.packages' [default: NA]
+-d --deps DEPS    Logical or char, see '?install.packages', use 'TRUE' for all, [default: NA]
 -s --suggests     Add 'Suggests' to dependencies, shortcut for '--deps TRUE'
 -h --help         show this help text
 -x --usage        show help and short example usage

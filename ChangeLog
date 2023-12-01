@@ -2,6 +2,8 @@
 
 	* inst/examples/r2u.r: Add new --compile flag, small edits
 
+	* inst/examples/installDeps.r: Small edit for --help text
+
 2023-11-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installGithub.r: Add usage example for installation
