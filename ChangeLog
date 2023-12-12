@@ -1,3 +1,7 @@
+2023-12-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installRSPM.r: Update to p3m, install as installP3M.r
+
 2023-12-01  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/r2u.r: Add new --compile flag, small edits
