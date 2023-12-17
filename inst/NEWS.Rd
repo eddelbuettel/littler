@@ -3,6 +3,25 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.19 (2023-12-17)}{
+  \itemize{
+    \item Changes in examples scripts
+    \itemize{
+      \item The help or usage text display for \code{r2u.r}, \code{ttt.r},
+      \code{check.r} has been improved, expanded or corrected, respectively
+      \item \code{installDeps.r} has a new argument for dependency selection
+      \item An initial 'single test file' runner \code{tttf.r} has been added
+      \item \code{r2u.r} has two new options for setting / varying the Debian
+      build version of package that is built, and one for BioConductor
+      builds, one for a 'dry run' build, and a new \code{--compile} option
+      \item \code{installRSPM.r}, \code{installPPM.r}, \code{installP3M.r}
+      have been updates to reflect the name changes
+      \item \code{installRub.r} now understands 'package@universe' too
+      \item \code{tt.r} flips the default of the \code{--effects} switch
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.18 (2023-03-25)}{
   \itemize{
     \item Changes in examples scripts
