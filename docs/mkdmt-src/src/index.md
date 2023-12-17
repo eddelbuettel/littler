@@ -8,6 +8,7 @@ description: A scripting and command-line front-end for GNU R
 [![CI](https://github.com/eddelbuettel/littler/workflows/ci/badge.svg)](https://github.com/eddelbuettel/littler/actions?query=workflow%3Aci)
 [![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![CRAN](https://www.r-pkg.org/badges/version/littler)](https://cran.r-project.org/package=littler)
+[![r-universe](https://eddelbuettel.r-universe.dev/badges/littler)](https://eddelbuettel.r-universe.dev/littler)
 [![Dependencies](https://tinyverse.netlify.com/badge/littler)](https://cran.r-project.org/package=littler)
 [![Downloads](https://cranlogs.r-pkg.org/badges/littler?color=brightgreen)](https://www.r-pkg.org/pkg/littler)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/littler)](https://github.com/eddelbuettel/littler)
@@ -61,6 +62,13 @@ The package resides on the CRAN network and can be installed via
 ```
 install.packages("littler")
 ```
+
+Note that the package states `OS_type: unix`. It works great on all Linux
+variants, with a naming caveat on macOS (see below and the [FAQ
+vignettes](https://github.com/eddelbuettel/littler/blob/master/vignettes/littler-faq.md))
+and not at all on Windows (but could be ported just like
+[RInside](https://github.com/eddelbuettel/rinside) has been--the two show
+architectural similarities).
 
 #### Previous Versions up to 0.2.3
 

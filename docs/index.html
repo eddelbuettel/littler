@@ -795,6 +795,7 @@
 <p><a href="https://github.com/eddelbuettel/littler/actions?query=workflow%3Aci"><img alt="CI" src="https://github.com/eddelbuettel/littler/workflows/ci/badge.svg" /></a>
 <a href="https://www.gnu.org/licenses/gpl-2.0.html"><img alt="License" src="https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat" /></a>
 <a href="https://cran.r-project.org/package=littler"><img alt="CRAN" src="https://www.r-pkg.org/badges/version/littler" /></a>
+<a href="https://eddelbuettel.r-universe.dev/littler"><img alt="r-universe" src="https://eddelbuettel.r-universe.dev/badges/littler" /></a>
 <a href="https://cran.r-project.org/package=littler"><img alt="Dependencies" src="https://tinyverse.netlify.com/badge/littler" /></a>
 <a href="https://www.r-pkg.org/pkg/littler"><img alt="Downloads" src="https://cranlogs.r-pkg.org/badges/littler?color=brightgreen" /></a>
 <a href="https://github.com/eddelbuettel/littler"><img alt="Last Commit" src="https://img.shields.io/github/last-commit/eddelbuettel/littler" /></a>
@@ -835,6 +836,12 @@ update.r                               ## updates any currently installed packag
 <p>The package resides on the CRAN network and can be installed via</p>
 <div class="highlight"><pre><span></span><code>install.packages(&quot;littler&quot;)
 </code></pre></div>
+<p>Note that the package states <code>OS_type: unix</code>. It works great on all Linux
+variants, with a naming caveat on macOS (see below and the <a href="https://github.com/eddelbuettel/littler/blob/master/vignettes/littler-faq.md">FAQ
+vignettes</a>)
+and not at all on Windows (but could be ported just like
+<a href="https://github.com/eddelbuettel/rinside">RInside</a> has been--the two show
+architectural similarities).</p>
 <h4 id="previous-versions-up-to-023">Previous Versions up to 0.2.3</h4>
 <p>In general, simply running the script <code>bootstrap</code> will configure and build the
 executable. Running <code>make install</code> (possibly as <code>sudo make install</code>) will

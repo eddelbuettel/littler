@@ -1,5 +1,100 @@
 ###  2023 
 
+2023-12-17  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.19 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+2023-12-12  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRSPM.r: Update to p3m, install as installP3M.r 
+ 
+2023-12-01  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Add new --compile flag, small edits 
+ 
+        * inst/examples/installDeps.r: Small edit for --help text 
+ 
+2023-11-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installGithub.r: Add usage example for installation 
+        from repository sub-directory 
+ 
+2023-10-09  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Add --dryrun argument for (single) package build 
+ 
+2023-10-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tt.r: Switch the default value for 'effects' from 
+        FALSE to TRUE which, while a breaking change, is the better default. 
+ 
+2023-09-25  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Also allow 'package@universe' format 
+ 
+2023-09-20  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Another posit.co URL update 
+ 
+2023-09-19  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttf.r: Extend --library to several arguments 
+ 
+2023-09-16  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRSPM.r: Edits to help text, also show default 
+        distribution 
+ 
+2023-09-02  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Support BioConductor updates 
+ 
+2023-09-01  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttf.r: Add --source argument 
+ 
+2023-08-21  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+        * README.md: Add r-universe badge 
+ 
+2023-08-20  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRSPM.r: Minor edits for coexistence, update 
+        base url to new corporate name and URL 
+        * inst/examples/installPPM.r: Install as hard link to installRSPM.r 
+ 
+2023-08-09  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+        * inst/examples/r2u.r: Add two more options for modifying the Debian 
+        version of a package being built 
+ 
+        * inst/examples/tttf.r: Very initial version of a single file 
+        testthat runner (aka 'testthat::test_file()' 
+ 
+2023-07-15  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installDeps.r: Support dependencies argument 
+ 
+        * inst/examples/check.r: Correct one line in help text 
+ 
+2023-06-01  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * README.md: Note more prominently that this does not build on Windows 
+ 
+2023-05-15  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttl.r: Expanded usage text 
+ 
+2023-05-11  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Micro-edit to displayed text 
+ 
 2023-03-25  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.18 

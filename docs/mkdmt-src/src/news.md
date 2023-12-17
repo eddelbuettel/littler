@@ -1,4 +1,29 @@
-<div class="container">
+<section id="NEWS" class="container">
+<h2>News for Package <code>littler</code></h2>
+<h3 id="version-0.3.19-2023-12-17">Version 0.3.19 (2023-12-17)</h3>
+<ul>
+<li><p>Changes in examples scripts</p>
+<ul>
+<li><p>The help or usage text display for <code>r2u.r</code>,
+<code>ttt.r</code>, <code>check.r</code> has been improved, expanded or
+corrected, respectively</p></li>
+<li><p><code>installDeps.r</code> has a new argument for dependency
+selection</p></li>
+<li><p>An initial 'single test file' runner <code>tttf.r</code> has been
+added</p></li>
+<li><p><code>r2u.r</code> has two new options for setting / varying the
+Debian build version of package that is built, and one for BioConductor
+builds, one for a 'dry run' build, and a new <code>--compile</code>
+option</p></li>
+<li><p><code>installRSPM.r</code>, <code>installPPM.r</code>,
+<code>installP3M.r</code> have been updates to reflect the name
+changes</p></li>
+<li><p><code>installRub.r</code> now understands 'package@universe'
+too</p></li>
+<li><p><code>tt.r</code> flips the default of the <code>--effects</code>
+switch</p></li>
+</ul></li>
+</ul>
 <h3 id="version-0.3.18-2023-03-25">Version 0.3.18 (2023-03-25)</h3>
 <ul>
 <li><p>Changes in examples scripts</p>
@@ -436,4 +461,4 @@ release tarballs</p></li>
 <li><p>Added new vignette with examples</p></li>
 </ul></li>
 </ul>
-</div>
+</section>
