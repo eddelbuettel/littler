@@ -41,8 +41,8 @@ version and then the r-universe version.
 Examples:
   installRub.r -u rcppcore Rcpp RcppArmadillo     # installs (never than CRAN / r2u) Rcpp(Armadillo)
   installRub.r -u eddelbuettel RcppKalman         # installs non-CRAN package RcppKalman
-  installRub.r rcpp@rcppcore 					  # alternate to install Rcpp from RcppCore universe
-  installRub.r polars@rpolars 					  # alternate to install polars from rpolars universe
+  installRub.r rcpp@rcppcore                      # alternate to install Rcpp from RcppCore universe
+  installRub.r polars@rpolars                     # alternate to install polars from rpolars universe
 
 installRub.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
