@@ -1,5 +1,7 @@
 2024-01-03  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 	* inst/examples/installDeps2.r: Add simpler, dependency-free second
 	variant of 'install dependencies found in DESCRIPTION'
 
