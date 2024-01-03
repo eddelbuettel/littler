@@ -1,3 +1,8 @@
+2024-01-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installDeps2.r: Add simpler, dependency-free second
+	variant of 'install dependencies found in DESCRIPTION'
+
 2023-12-17  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.19
