@@ -1,8 +1,8 @@
-#!/usr/bin/env r
+#!/usr/bin/env -S r -t
 ##
 ##  Call 'rcmdcheck' on a package
 ##
-##  Copyright (C) 2016 - 2023  Dirk Eddelbuettel
+##  Copyright (C) 2016 - 2024  Dirk Eddelbuettel
 ##
 ##  Released under GPL (>= 2)
 

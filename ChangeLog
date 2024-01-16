@@ -1,3 +1,8 @@
+2024-01-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rcc.r (rccwrapper): Use env -S r -t to switch to
+	using a per-session temporary directory as R does
+
 2024-01-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
