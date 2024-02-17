@@ -20,10 +20,11 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Get run.sh
-        run: curl -OLs https://eddelbuettel.github.io/r-ci/run.sh && chmod 0755 run.sh
+      - name: Setup
+        uses: eddelbuettel/github-actions/r-ci-setup@master
 
       - name: Bootstrap
         run: ./run.sh bootstrap

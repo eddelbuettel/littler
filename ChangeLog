@@ -1,3 +1,8 @@
+2024-02-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml (jobs): Update to actions/checkout@v4,
+	add r-ci-setup actions
+
 2024-01-16  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rcc.r (rccwrapper): Use env -S r -t to switch to
