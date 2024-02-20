@@ -1,8 +1,8 @@
-#!/usr/bin/env r
+#!/usr/bin/env -S r -t
 #
 # tinytest wrapper
 #
-# Copyright (C) 2019 - 2023  Dirk Eddelbuettel
+# Copyright (C) 2019 - 2024  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -16,10 +16,11 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-d] [-f] [-n NCPUS] [-p] [-s] [-z] [ARG...]
+doc <- "Usage: tt.r [-h] [-x] [-a] [-b] [-c] [-d] [-f] [-n NCPUS] [-p] [-s] [-z] [ARG...]
 
 -a --all            use test_all mode [default: FALSE]
 -b --build          use build-install-test mode [default: FALSE]
+-c --ci             set environment variable CI to TRUE [default: FALSE]
 -d --directory      use directory mode [default: FALSE]
 -f --file           use file mode [default: FALSE]
 -n --ncpus NCPUS    use 'ncpus' in parallel [default: getOption]
@@ -58,6 +59,9 @@ if (opt$ncpus == "getOption") {
     opt$ncpus <- as.integer(opt$ncpus)
 }
 
+if (opt$ci) {
+    Sys.setenv(CI="TRUE")
+}
 
 res <- NULL
 if (opt$all) {

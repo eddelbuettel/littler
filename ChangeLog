@@ -1,3 +1,8 @@
+2024-02-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tt.r: Use env -S r -t for per-session temp dir,
+	support command-line argument -c | --ci to set env.var CI
+
 2024-02-16  Dirk Eddelbuettel  <edd@debian.org>
 
 	* .github/workflows/ci.yaml (jobs): Update to actions/checkout@v4,
