@@ -1,4 +1,4 @@
-#!/usr/bin/env r
+#!/usr/bin/env -S r -t
 #
 # testthat::test_local wrapper
 #
