@@ -71,6 +71,7 @@ if (opt$all) {
 } else if (opt$file) {
     res <- run_test_file(opt$ARG, side_effects=sideeffects)
 } else if (opt$directory) {
+    if (length(opt$ARG) == 0 && dir.exists("inst/tinytest")) opt$ARG <- "inst/tinytest"
     res <- run_test_dir(opt$ARG, side_effects=sideeffects)
 } else if (opt$package) {
     if (opt$ncpus == 1L) {

@@ -1,3 +1,10 @@
+2024-02-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
+	* inst/examples/tt.r: Fill in "inst/tinytest" if `-d | --dir`
+	but the target directory was omitted, and exists
+
 2024-02-20  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
