@@ -2,7 +2,7 @@
 #
 # testthat::test_local wrapper
 #
-# Copyright (C) 2019 - 2023  Dirk Eddelbuettel
+# Copyright (C) 2019 - 2024  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -15,10 +15,12 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: tttl.r [-h] [-x] [ARG]
+doc <- "Usage: tttl.r [-h] [-x] [-c] [ARG]
 
+-c --ci             set environment variable CI to TRUE [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
+
 opt <- docopt(doc)			# docopt parsing
 
 if (opt$usage) {
@@ -36,6 +38,10 @@ See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 
 if (!is.null(opt$ARG) && dir.exists(opt$arg)) {
     setwd(opt$ARG)
+}
+
+if (opt$ci) {
+    Sys.setenv(CI="TRUE")
 }
 
 if (file.exists(file.path(getwd(), "..", "..", "DESCRIPTION"))) {
