@@ -1,3 +1,7 @@
+2024-02-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Suggests): Removed package used in only one example
+
 2024-02-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
