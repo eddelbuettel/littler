@@ -1,8 +1,8 @@
-#!/usr/bin/env r
+#!/usr/bin/env -S r -t
 #
 # testthat::test_file wrapper
 #
-# Copyright (C) 2019 - 2023  Dirk Eddelbuettel
+# Copyright (C) 2019 - 2024  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -15,10 +15,11 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: tttf.r [-l LIB] [-s FILE] [-h] [-x] ARG
+doc <- "Usage: tttf.r [-l LIB] [-s FILE] [-c] [-h] [-x] ARG
 
 -l --library LIB    load named library, LIB can be comma-separated
 -s --source FILE    source a named file
+-c --ci             set environment variable CI to TRUE [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -47,6 +48,10 @@ if (!file.exists(opt$ARG)) {
 
 if (!is.null(opt$source) && file.exists(opt$source)) {
     source(opt$source)
+}
+
+if (opt$ci) {
+    Sys.setenv(CI="TRUE")
 }
 
 testthat::test_file(path=opt$ARG)
