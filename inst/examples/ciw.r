@@ -16,14 +16,18 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: ciw.r [-h] [-x] [-a] [-i] [-t] [-p] [-w] [-r] [-s] [ARG...]
+doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-e] [-n] [-u] [ARG...]
 
--a --auto           use 'auto' mode (see --usage)
+-a --auto           use 'auto' mode of selected folders (see --usage)
+-m --mega           use 'mega' mode of all folders (see --usage)
 -i --inspect        visit 'inspect' folder
 -t --pretest        visit 'pretest' folder
 -p --pending        visit 'pending' folder
 -w --waiting        visit 'waiting' folder
 -r --recheck        visit 'waiting' folder
+-e --archive        visit 'archive' folder
+-n --newbies        visit 'newbies' folder
+-u --publish        visit 'publish' folder
 -s --skipsort       skip sorting of aggregate results by age
 -h --help           show this help text
 -x --usage          show help and short example usage"
@@ -40,7 +44,7 @@ Examples:
 
 Currently, 'inspect', 'waiting', 'pending', 'pretest', 'recheck' are select as default.
 
-Folder selecting arguments are cumulative.
+Folder selecting arguments are cumulative; 'auto' and 'mega' are single selections.
 
 ciw.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
@@ -49,14 +53,15 @@ See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 
 args <- character()
 chk <- TRUE
-#print(opt)
+
+folders <-  c("inspect", "waiting", "pending", "pretest", "recheck", "archive", "newbies", "publish")
+
+for (dir in folders)
+    if (opt[[dir]])
+        args <- c(args, dir)
 
 if (opt$auto) args <- "auto"
-if (opt$inspect) args <- c(args, "inspect")
-if (opt$pretest) args <- c(args, "pretest")
-if (opt$pending) args <- c(args, "pending")
-if (opt$waiting) args <- c(args, "waiting")
-if (opt$recheck) args <- c(args, "recheck")
+if (opt$mega) args <- folders
 
 if (length(args) == 0) {
     args <- c("inspect", "waiting", "pending", "pretest", "recheck")
