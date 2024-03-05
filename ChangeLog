@@ -1,3 +1,7 @@
+2024-03-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/tttf.r: Support devtools::load_all() option
+
 2024-03-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/ciw.r: Several small tweaks

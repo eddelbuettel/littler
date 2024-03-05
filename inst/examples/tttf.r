@@ -15,10 +15,11 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: tttf.r [-l LIB] [-s FILE] [-c] [-h] [-x] ARG
+doc <- "Usage: tttf.r [-l LIB] [-s FILE] [-c] [-d] [-h] [-x] ARG
 
 -l --library LIB    load named library, LIB can be comma-separated
 -s --source FILE    source a named file
+-d --loadall        run `devtools::load_all()`
 -c --ci             set environment variable CI to TRUE [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
@@ -52,6 +53,10 @@ if (!is.null(opt$source) && file.exists(opt$source)) {
 
 if (opt$ci) {
     Sys.setenv(CI="TRUE")
+}
+
+if (opt$loadall) {
+    suppressMessages(devtools::load_all())
 }
 
 testthat::test_file(path=opt$ARG)
