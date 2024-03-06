@@ -1,3 +1,7 @@
+2024-03-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/ciw.r: Add connectivity check, tweak lines display
+
 2024-03-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/tttf.r: Support devtools::load_all() option

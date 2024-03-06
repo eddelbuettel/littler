@@ -16,7 +16,7 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-n] [-u] [-l rows] [ARG...]
+doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-n] [-u] [-l rows] [-z] [ARG...]
 
 -m --mega           use 'mega' mode of all folders (see --usage)
 -i --inspect        visit 'inspect' folder
@@ -28,7 +28,8 @@ doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-n] [-u]
 -n --newbies        visit 'newbies' folder
 -u --publish        visit 'publish' folder
 -s --skipsort       skip sorting of aggregate results by age
--l --lines rows     print 'rows' rows of the data.table object [default: 50]
+-l --lines rows     print top 'rows' of the result object [default: 50]
+-z --ping           run the connectivity check first
 -h --help           show this help text
 -x --usage          show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -67,8 +68,7 @@ if (length(args) == 0)
 
 chk <- length(args) <= 1   		# ask for argument check only on short argument vectoe
 
-res <- incoming(args, chk, !opt$skipsort)
+res <- incoming(args, chk, isFALSE(opt$skipsort), isTRUE(opt$ping))
 
-options(datatable.print.nrows = as.numeric(opt$lines))
-
-print(res[])
+nr <- as.integer(opt$lines)
+print(head(res, nr), nrows=nr)
