@@ -6,7 +6,7 @@
     if (Sys.info()[["sysname"]] == "Linux") {
         if (unname(Sys.which("r")) == "") { # nocov start
             packageStartupMessage("You could link to the 'r' binary installed in\n'",
-                                  system.file("bin", "r", package="littler"), "'\n",
+                                  system.file("bin", .Platform$r_arch, "r", package="littler"), "'\n",
                                   "from '/usr/local/bin' in order to use 'r' for scripting.",
                                   "See the 'vignette(\"littler-faq\")' for more details.")
         } # nocov end
