@@ -1,3 +1,11 @@
+2024-03-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/init.R: Tweaks to generalized message
+
+2024-03-10  Berwin A Turlach <berwin.turlach@gmail.com>
+
+	* R/init.R: Generalize message to reflect ${R_ARCH} (if set)
+
 2024-03-06  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/ciw.r: Add connectivity check, tweak lines display
