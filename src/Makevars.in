@@ -33,7 +33,7 @@ $(TGT): $(SRCS)
 	@mkdir -p ../inst/bin$(R_ARCH)
 	@cp -a $(TGT) ../inst/bin$(R_ARCH)
 	@echo "*"
-	@echo "* new binary $(TGT) installed in bin/ subdirectory"
+	@echo "* new binary $(TGT) installed in bin$(R_ARCH)/ subdirectory"
 	@echo "* consider adding a symbolic link from, e.g., /usr/local/bin"
 	@echo "* on OS X, you may have to name this 'lr' instead"
 	@echo "* see the littler-faq vignette for more details"
