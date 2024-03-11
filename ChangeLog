@@ -2,6 +2,9 @@
 
 	* R/init.R: Tweaks to generalized message
 
+	* src/littler.c: In non-vanilla mode, rerun temp. dir initialization
+	after local configuration files to allow for non-standard temp. file
+
 2024-03-10  Berwin A Turlach <berwin.turlach@gmail.com>
 
 	* R/init.R: Generalize message to reflect ${R_ARCH} (if set)
