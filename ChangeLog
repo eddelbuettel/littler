@@ -1,3 +1,7 @@
+2024-03-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 2024-03-10  Dirk Eddelbuettel  <edd@debian.org>
 
 	* R/init.R: Tweaks to generalized message
