@@ -1,3 +1,7 @@
+2024-03-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/doi2bib.r: New wrapper for DOI request for bibtex entry
+
 2024-03-11  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
