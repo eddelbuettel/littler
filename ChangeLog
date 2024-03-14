@@ -1,3 +1,7 @@
+2024-03-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/doi2bib.r: Allow multiple DOIs, check packages
+
 2024-03-13  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/doi2bib.r: New wrapper for DOI request for bibtex entry
