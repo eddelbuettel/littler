@@ -19,7 +19,7 @@ doc <- "Usage: installDeps2.r [-h] [-x] [-s] [DESC]
 -x --usage        show help and short example usage
 "
 
-opt <- docopt(doc)			# docopt parsing
+opt <- docopt(doc)          # docopt parsing
 
 if (opt$usage) {
     cat(doc, "\n\n")
@@ -50,8 +50,8 @@ if (length(opt$DESC)==0 && file.exists("DESCRIPTION") && file.exists("NAMESPACE"
 flds <- c("Imports", "Depends", "LinkingTo")
 if (opt$suggests) flds <- c(flds, "Suggests")
 
-res <- read.dcf(descfile)[1,]      			# we read only one file so first row only
-res <- res[intersect(names(res), flds)]		# intersect available and desired fields
+res <- read.dcf(descfile)[1,]               # we read only one file so first row only
+res <- res[intersect(names(res), flds)]     # intersect available and desired fields
 pkgs <- tools:::.split_dependencies(res)    # parse and split, then diff off base packages
 instpkgs <- setdiff(names(pkgs), tools:::.get_standard_package_names()$base)
-install.packages(instpkgs) 					# and install remainder
+install.packages(instpkgs)                  # and install remainder

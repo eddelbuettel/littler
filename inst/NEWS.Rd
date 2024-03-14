@@ -3,6 +3,32 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.20 (unrelease)}{
+  \itemize{
+    \item Changes in examples scripts
+    \itemize{
+      \item New (dependency-free) helper \code{installDeps2.r} to install dependencies
+      \item Scripts \code{rcc.r}, \code{tt.r}, \code{tttf.r}, \code{tttlr.r}
+      use \code{env} argument \code{-S} to set \code{-t} to \code{r}
+      \item \code{tt.r} can now fill in \code{inst/tinytest} if it is present
+      \item New script \code{ciw.r} wrapping new package \pkg{ciw}
+      \item \code{tttf.t} can now use \pkg{devtools} and its \code{loadall}
+      \item New script \code{doi2bib.r} to call the DOI converter REST
+      service (following a skeet by Richard McElreath)
+    }
+    \item Changes in package
+    \itemize{
+      \item The CI setup use checkout@v4 and the r-ci-setup action
+      \item The Suggests: is a little tighter as we do not list all packages
+      optionally used in the the examples (as R does not check for it either)
+      \item The package load messag can account for the rare build of R under
+      different architecture (Berwin Turlach in \ghpr{117} closing \ghit{116})
+      \item In non-vanilla mode, the temporary directory initialization in
+      re-run allowing for a non-standard temp dir via config settings
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.19 (2023-12-17)}{
   \itemize{
     \item Changes in examples scripts
