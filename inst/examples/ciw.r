@@ -23,7 +23,7 @@ doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-n] [-u]
 -t --pretest        visit 'pretest' folder
 -p --pending        visit 'pending' folder
 -w --waiting        visit 'waiting' folder
--r --recheck        visit 'waiting' folder
+-r --recheck        visit 'recheck' folder
 -a --archive        visit 'archive' folder
 -n --newbies        visit 'newbies' folder
 -u --publish        visit 'publish' folder
