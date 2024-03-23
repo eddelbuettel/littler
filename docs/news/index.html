@@ -600,6 +600,39 @@
 
 <section id="NEWS" class="container">
 <h2>News for Package <code>littler</code></h2>
+<h3 id="version-0.3.20-2024-03-23">Version 0.3.20 (2024-03-23)</h3>
+<ul>
+<li><p>Changes in examples scripts</p>
+<ul>
+<li><p>New (dependency-free) helper <code>installDeps2.r</code> to
+install dependencies</p></li>
+<li><p>Scripts <code>rcc.r</code>, <code>tt.r</code>,
+<code>tttf.r</code>, <code>tttlr.r</code> use <code>env</code> argument
+<code>-S</code> to set <code>-t</code> to <code>r</code></p></li>
+<li><p><code>tt.r</code> can now fill in <code>inst/tinytest</code> if
+it is present</p></li>
+<li><p>New script <code>ciw.r</code> wrapping new package
+<code>ciw</code></p></li>
+<li><p><code>tttf.t</code> can now use <code>devtools</code> and its
+<code>loadall</code></p></li>
+<li><p>New script <code>doi2bib.r</code> to call the DOI converter REST
+service (following a skeet by Richard McElreath)</p></li>
+</ul></li>
+<li><p>Changes in package</p>
+<ul>
+<li><p>The CI setup use checkout@v4 and the r-ci-setup action</p></li>
+<li><p>The Suggests: is a little tighter as we do not list all packages
+optionally used in the the examples (as R does not check for it
+either)</p></li>
+<li><p>The package load messag can account for the rare build of R under
+different architecture (Berwin Turlach in <a
+href="https://github.com/eddelbuettel/littler/pull/117">#117</a> closing
+<a
+href="https://github.com/eddelbuettel/littler/issues/116">#116</a>)</p></li>
+<li><p>In non-vanilla mode, the temporary directory initialization in
+re-run allowing for a non-standard temp dir via config settings</p></li>
+</ul></li>
+</ul>
 <h3 id="version-0.3.19-2023-12-17">Version 0.3.19 (2023-12-17)</h3>
 <ul>
 <li><p>Changes in examples scripts</p>

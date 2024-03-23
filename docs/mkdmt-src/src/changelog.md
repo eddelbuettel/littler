@@ -1,3 +1,98 @@
+###  2024 
+
+2024-03-23  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.20 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+2024-03-17  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/ciw.r: Correct one documentation label 
+ 
+2024-03-14  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/doi2bib.r: Allow multiple DOIs, check packages 
+ 
+2024-03-13  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/doi2bib.r: New wrapper for DOI request for bibtex entry 
+ 
+2024-03-11  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+2024-03-10  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * R/init.R: Tweaks to generalized message 
+ 
+        * src/littler.c: In non-vanilla mode, rerun temp. dir initialization 
+        after local configuration files to allow for non-standard temp. file 
+ 
+2024-03-10  Berwin A Turlach <berwin.turlach@gmail.com> 
+ 
+        * R/init.R: Generalize message to reflect ${R_ARCH} (if set) 
+ 
+2024-03-06  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/ciw.r: Add connectivity check, tweak lines display 
+ 
+2024-03-05  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttf.r: Support devtools::load_all() option 
+ 
+2024-03-02  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/ciw.r: Several small tweaks 
+ 
+2024-02-29  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/ciw.r: New wrapper around ciw::incoming() 
+ 
+2024-02-28  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttf.r: Use env -S r -t for per-session temp dir, 
+        support command-line argument -c | --ci to set env.var CI 
+ 
+2024-02-25  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Suggests): Removed package used in only one example 
+ 
+2024-02-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+        * inst/examples/tt.r: Fill in "inst/tinytest" if `-d | --dir` 
+        but the target directory was omitted, and exists 
+ 
+2024-02-20  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+        * inst/examples/tt.r: Use env -S r -t for per-session temp dir, 
+        support command-line argument -c | --ci to set env.var CI 
+ 
+2024-02-16  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * .github/workflows/ci.yaml (jobs): Update to actions/checkout@v4, 
+        add r-ci-setup actions 
+ 
+2024-01-18  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttl.r: Use env -S r -t for per-session temp dir 
+ 
+2024-01-16  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/rcc.r (rccwrapper): Use env -S r -t to switch to 
+        using a per-session temporary directory as R does 
+ 
+2024-01-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+        * inst/examples/installDeps2.r: Add simpler, dependency-free second 
+        variant of 'install dependencies found in DESCRIPTION' 
+ 
 ###  2023 
 
 2023-12-17  Dirk Eddelbuettel  <edd@debian.org> 
