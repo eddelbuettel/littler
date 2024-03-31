@@ -44,10 +44,11 @@ Examples:
   ciw.r                                # run with defaults, same as '-itpwr'
 
 When no argument is given, 'auto' is selected which corresponds to 'inspect', 'waiting',
-'pending', 'pretest', and 'recheck'. Selecting '-m' or '--mega' are select as default.
+'pending', 'pretest', and 'recheck'.
 
-Folder selecting arguments are cumulative; but 'mega' is a single selections of all folders
-(i.e. 'inspect', 'waiting', 'pending', 'pretest', 'recheck', 'archive', 'newbies', 'publish').
+Folder selecting arguments are cumulative. Selecting '-m' or '--mega' is a single selections
+of all folders that are not per-user folders (i.e. 'inspect', 'waiting', 'pending', 'pretest',
+'recheck', 'archive', 'newbies', 'publish').
 
 ciw.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
