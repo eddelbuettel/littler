@@ -62,12 +62,15 @@ if (is.finite(match(opt$CMD, "build"))) {
                          opt$bioc)
 
 } else if (is.finite(match(opt$CMD, "last"))) {
-    D <- RcppSimdJson::fload("https://packagemanager.posit.co/__api__/sources/1/transactions")
-    ts <- anytime::utctime(D[1,"completed"])
-    dh <- as.numeric(difftime(Sys.time(), ts, units="hours"))
-    un <- "days"
-    if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
-    cat("P3M/PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
+    D <- RcppSimdJson::fload("https://p3m.dev/__api__/sources/1/transactions")
+    #ts <- anytime::utctime(D[1,"completed"])
+    #dh <- as.numeric(difftime(Sys.time(), ts, units="hours"))
+    #un <- "days"
+    #if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
+    #cat("P3M/PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
+    ## no longer includes hours :-/
+    ld <- anytime::utcdate(D[1,"completed"])
+    cat("P3M/PPM/RSPM last updated on", format(ld), "\n")
 
 } else if (is.finite(match(opt$CMD, "count"))) {
     ll <- readLines(pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'"))
