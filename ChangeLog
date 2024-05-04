@@ -1,3 +1,7 @@
+2024-05-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 2024-03-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/ciw.r: Minor edit to usage text
