@@ -2,7 +2,7 @@
 #
 # Simple r2u helper frontend
 #
-# Copyright (C) 2022 - 2023  Dirk Eddelbuettel
+# Copyright (C) 2022 - 2024  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -35,7 +35,7 @@ package      updates the package(s) named in ... and builds
 "
 
 opt <- docopt(doc)
-if (!is.finite(match(opt$release, c("focal", "jammy"))))
+if (!is.finite(match(opt$release, c("focal", "jammy", "noble"))))
     stop("Unknown distro '", opt$release, "'.", call. = FALSE)
 
 if (length(opt$CMD) > 1) {
@@ -70,7 +70,7 @@ if (is.finite(match(opt$CMD, "build"))) {
     #cat("P3M/PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
     ## no longer includes hours :-/
     ld <- anytime::utcdate(D[1,"completed"])
-    cat("P3M/PPM/RSPM last updated on", format(ld), "\n")
+    cat("P3M/PPM/RSPM last updated", as.integer(Sys.Date()) - as.integer(ld), "days ago on", format(ld), "\n")
 
 } else if (is.finite(match(opt$CMD, "count"))) {
     ll <- readLines(pipe("bash -c ~/bin/web_who_what | grep '.*cranapt\\/pool\\/dists\\/.*\\/r-.*\\.deb$'"))

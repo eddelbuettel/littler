@@ -1,3 +1,7 @@
+2024-05-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Support 24.04 aka 'noble'
+
 2024-05-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
