@@ -15,9 +15,10 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: tttl.r [-h] [-x] [-c] [ARG]
+doc <- "Usage: tttl.r [-h] [-x] [-c] [-s] [ARG]
 
 -c --ci             set environment variable CI to TRUE [default: FALSE]
+-s --source         set load package to 'source' not 'installed' [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 
@@ -53,5 +54,6 @@ if (file.exists(file.path(getwd(), "..", "DESCRIPTION"))) {
 }
 
 if (file.exists("DESCRIPTION") && dir.exists("tests/testthat")) {
-    testthat::test_local("tests/testthat")
+    testthat::test_local("tests/testthat",
+                         load_package = if (opt$source) "source" else "installed")
 }
