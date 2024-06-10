@@ -13,12 +13,14 @@ library(utils) 		# for osVersion
 rver <- gsub("^([\\d].[\\d]).*$", "\\1", as.character(getRversion()), perl=TRUE)
 uburel <- "jammy"
 ## configuration for docopt
-doc <- paste0("Usage: installRub.r [-h] [-x] [-k] [-r REL] [-v VER] [-u UNIV] PACKAGES
+doc <- paste0("Usage: installRub.r [-h] [-x] [-k] [-m] [-d] [-r REL] [-v VER] [-u UNIV] PACKAGES
 
 -u --universe UNIV  required argument specifying universe [default: ]
 -v --version VER    R 'major.minor' version release pair to install for [default: ", rver, "]
 -r --release REL    Ubuntu LTS release to install to install for [default: ", uburel, "]
 -k --keepoption     so not set option 'bspm.version.check' to 'TRUE' as is default
+-m --minimal        use a minimal repos vector i.e. do not add CRAN repo
+-d --disable        disable 'bspm' if set which can help with packages also on CRAN
 -h --help           show this help text
 -x --usage          show help and short example usage.
 
@@ -52,7 +54,8 @@ See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 if (getRversion() < "4.2.0") stop("R version 4.2.0 or later is required.", call. = FALSE)
 if (!exists("osVersion")) stop("Cannot find 'osVersion'. Weird.", call. = FALSE)
 if (!startsWith(utils::osVersion, "Ubuntu")) stop("Ubuntu is required as host system.", call. = FALSE)
-if (!requireNamespace("bspm", quietly=TRUE)) stop("The 'bspm' package is required.", call. = FALSE)
+has_bspm <- requireNamespace("bspm", quietly=TRUE)
+if (!opt$minimal && !has_bspm) stop("The 'bspm' package is required.", call. = FALSE)
 
 if (is.null(opt$universe) && length(opt$PACKAGES) == 1) {
     tokens <- strsplit(opt$PACKAGES, "@")[[1]]
@@ -61,5 +64,12 @@ if (is.null(opt$universe) && length(opt$PACKAGES) == 1) {
 }
 
 univ <- paste0("https://", opt$universe, ".r-universe.dev/bin/linux/", opt$release, "/", opt$version)
+
 if (!opt$keepoption) options(bspm.version.check=TRUE)
-install.packages(pkgs = opt$PACKAGES, repos = c(univ, "https://cloud.r-project.org"))
+
+rep <- c("unic"=univ)
+if (!opt$minimal) rep <- c(rep, cran=getOption("repos"))
+
+if (opt$disable && has_bspm) bspm::disable()
+
+install.packages(pkgs = opt$PACKAGES, repos = rep)

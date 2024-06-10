@@ -1,3 +1,11 @@
+2024-06-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installRub.r: Add --minimal flag to not add CRAN
+
+2024-05-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installRub.r: Add --disable flag to skip bspm
+
 2024-05-16  Dirk Eddelbuettel  <edd@debian.org>
 
 	* README.md: Use tinyverse.netlify.app for dependency badge
