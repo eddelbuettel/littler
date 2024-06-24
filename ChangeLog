@@ -1,3 +1,7 @@
+2024-06-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/deadliners.r: A little formatting and colour
+
 2024-06-12  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/deadliners.r: Minimal 'Deadline' field printer
