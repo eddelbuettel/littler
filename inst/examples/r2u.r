@@ -11,7 +11,7 @@ library(docopt)
 doc <- "Usage: r2u.r [--release DIST] [--debug] [--verbose] [--force] [--xvfb] [--bioc] [--suffix SUF] [--debver DBV] [--plusdfsg] [--uncache] [--dryrun] [--compile] [--help] CMD ...
 
 Options:
--r --release DIST   release distribution to use, one of 'focal' or 'jammy' [default: jammy]
+-r --release DIST   release distribution to use, one of 'focal', 'jammy', 'noble' [default: jammy]
 -d --debug          boolean flag for extra debugging
 -v --verbose        boolean flag for verbose operation
 -f --force          boolean flag to force a build

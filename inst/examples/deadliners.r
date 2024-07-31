@@ -18,7 +18,7 @@ db <- as.data.frame(tools::CRAN_package_db())
 dd <- with(db, db[!is.na(Deadline), c("Package", "Version", "Deadline")])
 dd <- with(dd, dd[order(Deadline, Package), ])
 
-cols <- if (nzchar(Sys.which("tput"))) 1.4*as.integer(system("tput cols", intern=TRUE)) else 80L
+cols <- 1.2*getOption("width")
 dts <- unique(dd[, "Deadline"])
 for (d in seq_along(dts)) {
     cat(.blue(dts[d]), ": ", sep="")
