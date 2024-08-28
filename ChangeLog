@@ -6,6 +6,8 @@
 
 	* inst/examples/deadliners.r: Use getOption("width")
 
+	* inst/examples/ciw.r: Add new --g age | --max age option
+
 2024-06-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/deadliners.r: A little formatting and colour

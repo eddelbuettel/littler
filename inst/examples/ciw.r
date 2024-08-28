@@ -16,7 +16,7 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-n] [-u] [-l rows] [-z] [ARG...]
+doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-n] [-u] [-l rows] [-g age] [-z] [ARG...]
 
 -m --mega           use 'mega' mode of all folders (see --usage)
 -i --inspect        visit 'inspect' folder
@@ -29,6 +29,7 @@ doc <- "Usage: ciw.r [-h] [-x] [-a] [-m] [-i] [-t] [-p] [-w] [-r] [-s] [-n] [-u]
 -u --publish        visit 'publish' folder
 -s --skipsort       skip sorting of aggregate results by age
 -l --lines rows     print top 'rows' of the result object [default: 50]
+-g --max age        print only package less than 'age' hours old [default: 168]
 -z --ping           run the connectivity check first
 -h --help           show this help text
 -x --usage          show help and short example usage"
@@ -66,10 +67,11 @@ for (dir in folders) 			# grow folder set as a select
 if (opt$mega) args <- folders	# or respect the nuclear option
 if (length(args) == 0)
     args <- "auto"
+opt$max <- as.numeric(opt$max)
 
 chk <- length(args) <= 1   		# ask for argument check only on short argument vectoe
 
-res <- incoming(args, chk, isFALSE(opt$skipsort), isTRUE(opt$ping))
+res <- incoming(args, chk, isFALSE(opt$skipsort), isTRUE(opt$ping), opt$max)
 
 nr <- as.integer(opt$lines)
 print(head(res, nr), nrows=nr)
