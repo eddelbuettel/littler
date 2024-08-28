@@ -1,3 +1,10 @@
+2024-08-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/kitten.r: Use package 'whoami' if available for
+	author and email default
+
+	* DESCRIPTION: Add Suggests for 'whomai' package
+
 2024-07-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/r2u.r: Minor documentation update

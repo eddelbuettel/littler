@@ -23,10 +23,15 @@ See http://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
 
+haswhoami <- requireNamespace("whoami", quietly=TRUE)
+author <- if (haswhoami) whoami::fullname("Your Name") else "Your Name"
+email <- if (haswhoami) whoami::email_address("your@email.com") else "your@email.com"
+
 ## maybe support path, author, maintainer, email, license, ...
 ign <- switch(opt$type,
-              plain = pkgKitten::kitten(opt$PACKAGE, puppy=opt$puppy, bunny=opt$bunny),
-              rcpp = Rcpp::Rcpp.package.skeleton(opt$PACKAGE),
+              plain = pkgKitten::kitten(opt$PACKAGE, author=author, email=email,
+                                        puppy=opt$puppy, bunny=opt$bunny),
+              rcpp = Rcpp::Rcpp.package.skeleton(opt$PACKAGE, author=author, email=email),
               arma = RcppArmadillo::RcppArmadillo.package.skeleton(opt$PACKAGE),
               eigen = RcppEigen::RcppEigen.package.skeleton(opt$PACKAGE))
 
