@@ -3,6 +3,10 @@
 	* inst/examples/installRub.r: handle "bizarre" (`?osVersion`)
 	case where `utils::osVersion` is `NULL`.
 
+2024-08-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Authors@R): Added
+
 2024-08-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/kitten.r: Use package 'whoami' if available for
