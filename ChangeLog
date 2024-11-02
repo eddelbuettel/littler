@@ -1,3 +1,7 @@
+2024-11-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 2024-11-01  Michael Chirico  <chiricom@google.com>
 
 	* inst/examples/installRub.r: handle "bizarre" (`?osVersion`)
