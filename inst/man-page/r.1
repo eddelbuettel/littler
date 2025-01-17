@@ -87,6 +87,9 @@ Evaluate 'expr' in R.
 .SH USAGE
 \fBr\fR can be used in command-line 'pipes' as well as in 'shebang'-style
 scripts.
+.SH ENVIRONMENT
+When used with a shebang line in a script file, the path to that file is made
+available to \fBR\fP in the \fBLITTLER_SCRIPT_PATH\fP environment variable.
 .SH EXAMPLES
 Piping \fBR\fP commands:
 
