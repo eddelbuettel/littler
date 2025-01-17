@@ -18,6 +18,9 @@
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
+/* Define if you have the realpath function. */
+#undef HAVE_REALPATH
+
 /* Define if you have the setenv function. */
 #undef HAVE_SETENV
 

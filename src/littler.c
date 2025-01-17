@@ -738,6 +738,17 @@ int main(int argc, char **argv){
         exit_val = parse_eval(&pb, evalstr, 1, verbose);
         destroy_membuf(pb);
     } else if (optind < argc && (strcmp(argv[optind],"-") != 0)) {
+        /* set environment variable giving path to script file */
+#if defined(HAVE_REALPATH) && defined(PATH_MAX)
+        char script_path[PATH_MAX + 1];
+        if (realpath(argv[optind], script_path) != NULL)
+            setenv("LITTLER_SCRIPT_PATH", script_path, 1);
+        else
+            setenv("LITTLER_SCRIPT_PATH", argv[optind], 1);
+#else
+        setenv("LITTLER_SCRIPT_PATH", argv[optind], 1);
+#endif
+
         /* call R function source(filename) */
         exit_val = source(argv[optind]);
     } else {
