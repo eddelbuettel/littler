@@ -59,6 +59,7 @@ AC_CHECK_FUNC(clock_gettime,AC_DEFINE(HAVE_CLOCK_GETTIME,1,[Define if you have c
 AC_CHECK_FUNC(realtime,AC_DEFINE(HAVE_REALTIME,1,[Define if you have realtime.]))
 AC_CHECK_FUNC(gettimeofday,AC_DEFINE(HAVE_GETTIMEOFDAY,1,[Define if you have the gettimeofday function.]))
 AC_CHECK_FUNC(time,AC_DEFINE(HAVE_TIME,1,[Define if you have the time function.]))
+AC_CHECK_FUNC(realpath,AC_DEFINE(HAVE_REALPATH,1,[Define if you have the realpath function.]))
 
 
 # Checks for typedefs, structures, and compiler characteristics.
