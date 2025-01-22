@@ -1,17 +1,17 @@
+2025-01-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/wb.r: New helper for win-builder uploads
+
 2025-01-17  Jon Clayden  <code@clayden.org>
 
-	* src/littler.c: Set the LITTLER_SCRIPT_PATH environment variable to the
-	script's normalized path, when 'r' is used in a shebang line. This makes
-	the run-time path available to the script.
-
-	* configure.ac: Add check for realpath function used by the facility above
-
-	* configure: Idem
-
-	* src/config.h.in: Idem
-
+	* src/littler.c: Make run-time path available via LITTLER_SCRIPT_PATH
+	environment variable when 'r' is used in a shebang line
 	* inst/man-page/r.1: Brief documentation of the LITTLER_SCRIPT_PATH
 	environment variable described above
+
+	* configure.ac: Add check for realpath function used by the facility above
+	* configure: Idem
+	* src/config.h.in: Idem
 
 2024-11-01  Dirk Eddelbuettel  <edd@debian.org>
 
@@ -19,8 +19,8 @@
 
 2024-11-01  Michael Chirico  <chiricom@google.com>
 
-	* inst/examples/installRub.r: handle "bizarre" (`?osVersion`)
-	case where `utils::osVersion` is `NULL`.
+	* inst/examples/installRub.r: Handle "bizarre" (`?osVersion`)
+	case where `utils::osVersion` is `NULL`
 
 2024-08-30  Dirk Eddelbuettel  <edd@debian.org>
 

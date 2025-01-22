@@ -9,7 +9,7 @@
 if (!requireNamespace("testthat", quietly=TRUE))
     stop("Please install 'testthat' from CRAN.", call. = FALSE)
 
-## load docopt and tinytest from CRAN
+## load docopt from CRAN
 suppressMessages({
     library(docopt)               # we need docopt (>= 0.3) as on CRAN
 })
