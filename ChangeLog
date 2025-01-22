@@ -1,3 +1,7 @@
+2025-01-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 2025-01-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/wb.r: New helper for win-builder uploads
