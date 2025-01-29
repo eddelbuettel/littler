@@ -2,6 +2,8 @@
 
 	* inst/examples/crup.r: New helper 'crup.r' to 'CRan UPload' a package
 
+	* inst/examples/wb.r: Add verbose flag with default FALSE
+
 	* configure.ac: Remove an ancient yet commented-out section to not
 	upset 'checkbashism', update one comparison
 	* configure: Regenerated

@@ -14,9 +14,10 @@ suppressMessages({
 })
 
 ## configuration for docopt
-doc <- "Usage: wb.r [-h] [-x] [-d] [ARG]
+doc <- "Usage: wb.r [-h] [-x] [-d] [-v] [ARG]
 
--d --devel          upload to 'devel' instead of 'release' [default: FALSE]
+-v --verbose        use the 'verbose' flag in curl upload [default: FALSE]
+-s --devel          upload to 'devel' instead of 'release' [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 
@@ -45,4 +46,4 @@ if (!file.exists(opt$ARG)) {
 
 url <- file.path("ftp://win-builder.r-project.org", if (opt$devel) "R-devel/" else "R-release/")
 
-curl::curl_upload(opt$ARG, url)
+curl::curl_upload(opt$ARG, url, verbose = opt$verbose)
