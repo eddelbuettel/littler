@@ -1,3 +1,7 @@
+2025-01-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/crup.r: New helper to 'CRan UPload' a package
+
 2025-01-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
