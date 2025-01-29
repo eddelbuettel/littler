@@ -122,30 +122,11 @@ fi
 
 # Java
 AC_ARG_WITH([java-libs],
-	[AS_HELP_STRING([--with-java-libs],[Link littler to R's java libraries])],
-              [if test x$"$withval" != xno; then
+	[AS_HELP_STRING([--with-java-libs],[link littler to the R java libraries])],
+              [if test "${withval}" != no; then
                 	AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config JAVA_LIBS | grep -v ERROR`"
                fi],
 )
-
-dnl # Tcl/TK
-dnl AC_ARG_WITH([tcltk-libs],
-dnl [AS_HELP_STRING([--with-tcltk-libs],[dnl             Link littler to R's tcltk libraries])],
-dnl     [
-dnl             if test x$"$withval" != xno; then
-dnl                             AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config TCLTK_LIBS | grep -v ERROR`"
-dnl             fi
-dnl     ],
-dnl )
-
-dnl # R version check
-dnl # Note that this may fail really old versions of R as the string wasn't always "R version x.y.z ..."
-dnl r_version=`${RPROG} --version | head -1 | cut -f3 -d" " `
-dnl case ${r_version} in
-dnl     1.*.*|2.0.*|2.1.*|2.2.*|2.3.0)
-dnl              AC_MSG_ERROR([R version ${r_version} is too old. Please upgrade to a more recent version.])
-dnl                      ;;
-dnl esac
 
 #AC_MSG_RESULT([AM_LDFLAGS is now: ${AM_LDFLAGS}])
 # get other linker flags for rpath

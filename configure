@@ -1327,7 +1327,7 @@ if test -n "$ac_init_help"; then
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
-  --with-java-libs        Link littler to R's java libraries
+  --with-java-libs        link littler to the R java libraries
 
 Some influential environment variables:
   CC          C compiler command
@@ -3536,12 +3536,10 @@ fi
 # Check whether --with-java-libs was given.
 if test ${with_java_libs+y}
 then :
-  withval=$with_java_libs; if test x$"$withval" != xno; then
+  withval=$with_java_libs; if test "${withval}" != no; then
                 	AM_LDFLAGS="${AM_LDFLAGS} `${RPROG} CMD config JAVA_LIBS | grep -v ERROR`"
                fi
 fi
-
-
 
 
 #AC_MSG_RESULT([AM_LDFLAGS is now: ${AM_LDFLAGS}])
