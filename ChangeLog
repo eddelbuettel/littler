@@ -1,3 +1,7 @@
+2025-02-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml: Switch to r-ci action
+
 2025-01-29  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/crup.r: New helper 'crup.r' to 'CRan UPload' a package
