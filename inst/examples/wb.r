@@ -17,7 +17,7 @@ suppressMessages({
 doc <- "Usage: wb.r [-h] [-x] [-d] [-v] [ARG]
 
 -v --verbose        use the 'verbose' flag in curl upload [default: FALSE]
--s --devel          upload to 'devel' instead of 'release' [default: FALSE]
+-d --devel          upload to 'devel' instead of 'release' [default: FALSE]
 -h --help           show this help text
 -x --usage          show help and short example usage"
 
