@@ -1,3 +1,7 @@
+2025-02-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/kitten.r: Support githubuser argument kitten() call
+
 2025-02-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rcc.r (rccwrapper): Print rcmdcheck result
