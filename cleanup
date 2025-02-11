@@ -7,4 +7,4 @@ rm -f  aclocal.m4 \
        src/autoloads.h src/ldflags.txt src/littler.h \
        src/r src/gitversion.h *~ *.o \
        stamp-h1
-rm -rf autom4te.cache .deps inst/bin/
+rm -rf autom4te.cache .deps inst/bin/ src/r.dSYM/
