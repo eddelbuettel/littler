@@ -1,3 +1,7 @@
+2025-02-11  Jon Clayden  <code@clayden.org>
+
+	* cleanup: Clean up macOS debug symbol directory
+
 2025-01-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
