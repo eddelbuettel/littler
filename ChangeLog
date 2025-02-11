@@ -2,6 +2,30 @@
 
 	* cleanup: Clean up macOS debug symbol directory
 
+2025-02-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
+	* inst/examples/kitten.r: Support githubuser argument kitten() call
+
+2025-02-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rcc.r (rccwrapper): Print rcmdcheck result
+
+2025-02-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml: Switch to r-ci action
+
+2025-01-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/crup.r: New helper 'crup.r' to 'CRan UPload' a package
+
+	* inst/examples/wb.r: Add verbose flag with default FALSE
+
+	* configure.ac: Remove an ancient yet commented-out section to not
+	upset 'checkbashism', update one comparison
+	* configure: Regenerated
+
 2025-01-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date
