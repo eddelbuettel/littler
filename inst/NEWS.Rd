@@ -3,6 +3,40 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.21 (2025-03-24)}{
+  \itemize{
+    \item Changes in examples scripts
+    \itemize{
+      \item Usage text for \code{ciw.r} is improved, new options were added (Dirk)
+      \item The \sQuote{noble} release is supported by \code{r2u.r} (Dirk)
+      \item The \code{installRub.r} script has additional options (Dirk)
+      \item The \code{ttlt.r} script has a new \code{load_package} argument
+      (Dirk)
+      \item A new script \code{deadliners.r} showing CRAN packages 'under
+      deadline' has been added, and then refined (Dirk)
+      \item The \code{kitten.r} script can now use \pkg{whoami} and argument
+      \code{githubuser} on the different \code{*kitten} helpers it calls (Dirk)
+      \item A new script \code{wb.r} can upload to win-builder (Dirk)
+      \item A new script \code{crup.r} can upload a CRAN submission (Dirk)
+      \item In \code{rcc.r}, the return from \pkg{rcmdcheck} is now
+      explicitly printed (Dirk)
+      \item In \code{r2u.r} the \code{dry-run} option is passed to the build
+      command
+    }
+    \item Changes in package
+    \itemize{
+      \item Regular updates to badges, continuous integration, DESCRIPTION
+      and \code{configure.ac} (Dirk)
+      \item Errant \code{osVersion} return value are handled more robustly
+      (Michael Chirico in \ghpr{121})
+      \item The current run-time path is available via variable
+      \code{LITTLER_SCRIPT_PATH} (Jon Clayden in \ghpr{122})
+      \item The cleanup script remove macOS debug symbols (Jon Clayden in
+      \ghpr{123})
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.20 (2024-03-23)}{
   \itemize{
     \item Changes in examples scripts

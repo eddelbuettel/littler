@@ -33,11 +33,13 @@ ign <- switch(opt$type,
               plain = pkgKitten::kitten(opt$PACKAGE,
                                         author=author, email=email, githubuser=githubuser,
                                         puppy=opt$puppy, bunny=opt$bunny),
-              rcpp = Rcpp::Rcpp.package.skeleton(opt$PACKAGE, author=author, email=email),
-              arma = RcppArmadillo::RcppArmadillo.package.skeleton(opt$PACKAGE),
+              rcpp = Rcpp::Rcpp.package.skeleton(opt$PACKAGE,
+                                                 author=author, email=email, githubuser=githubuser),
+              arma = RcppArmadillo::RcppArmadillo.package.skeleton(opt$PACKAGE, author=author,
+                                                                   email=email, githubuser=githubuser),
               eigen = RcppEigen::RcppEigen.package.skeleton(opt$PACKAGE))
 
-if (opt$puppy) {
+if (opt$puppy && opt$type != "plain") {
     stopifnot(requireNamespace("tinytest", quietly=TRUE))
     tinytest::puppy(opt$PACKAGE)
 }

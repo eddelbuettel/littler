@@ -20,18 +20,17 @@ Options:
 -s --suffix SUF     build version suffix appended [default: .1]
 -t --debver DBV     debian version leading digit [default: 1.]
 -p --plusdfsg       boolean flag if upstream version gets '+dfsg'
--u --uncache        remove the cached meta data archives of available packages (when using 'package' command)
--n --dryrun         boolean flag for dry-run of skip build (when using 'package' command)
+-u --uncache        remove the cached meta data archives of available packages (when using 'build' or 'package' commands)
+-n --dryrun         boolean flag for dry-run of skip build  (when using 'build' or 'package' commands)
 -c --compile        boolean flag for ensuring a compilation from source
 -h --help           show this help text
 
-Cmd:
+Commands:
 build        updates all packages
 last         reports most recent binary package sync
 count        counts packages downloaded (locally) today
 table        tabulates packages downloaded today
 package      updates the package(s) named in ... and builds
-
 "
 
 opt <- docopt(doc)
@@ -59,7 +58,8 @@ if (is.finite(match(opt$CMD, "build"))) {
                          opt$verbose,
                          opt$force,
                          opt$xvfb,
-                         opt$bioc)
+                         opt$bioc,
+                         opt$dryrun)
 
 } else if (is.finite(match(opt$CMD, "last"))) {
     D <- RcppSimdJson::fload("https://p3m.dev/__api__/sources/1/transactions")
