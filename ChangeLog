@@ -1,3 +1,7 @@
+2025-03-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Default to the noble release if none specified
+
 2025-03-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/busybees.r: First minimal version of new helper
