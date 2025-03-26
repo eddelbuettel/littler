@@ -21,7 +21,7 @@
       \item In \code{rcc.r}, the return from \pkg{rcmdcheck} is now
       explicitly printed (Dirk)
       \item In \code{r2u.r} the \code{dry-run} option is passed to the build
-      command
+      command (Dirk)
     }
     \item Changes in package
     \itemize{

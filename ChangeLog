@@ -1,3 +1,8 @@
+2025-03-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/busybees.r: First minimal version of new helper
+	aggregating deadlined packages per maintainer
+
 2025-03-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.21

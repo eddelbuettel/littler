@@ -7,7 +7,7 @@
 # Released under GPL (>= 2)
 
 ## borrowed with love from tinytest and marginally extended
-.color_str <- function(x, color){
+.color_str <- function(x, color) {
     cmap <- c(cyan=36, red=31, green=32, blue=34, purple=35)
     sprintf("\033[0;%dm%s\033[0m", cmap[color], x)
 }
