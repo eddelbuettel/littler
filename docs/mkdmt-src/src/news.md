@@ -1,5 +1,45 @@
-<section id="NEWS" class="container">
-<h2>News for Package <code>littler</code></h2>
+<div class="container">
+<div role="main">
+<h3 id="version-0.3.21-2025-03-24">Version 0.3.21 (2025-03-24)</h3>
+<ul>
+<li><p>Changes in examples scripts</p>
+<ul>
+<li><p>Usage text for <code>ciw.r</code> is improved, new options were
+added (Dirk)</p></li>
+<li><p>The ‘noble’ release is supported by <code>r2u.r</code>
+(Dirk)</p></li>
+<li><p>The <code>installRub.r</code> script has additional options
+(Dirk)</p></li>
+<li><p>The <code>ttlt.r</code> script has a new
+<code>load_package</code> argument (Dirk)</p></li>
+<li><p>A new script <code>deadliners.r</code> showing CRAN packages
+'under deadline' has been added, and then refined (Dirk)</p></li>
+<li><p>The <code>kitten.r</code> script can now use <code>whoami</code>
+and argument <code>githubuser</code> on the different
+<code>*kitten</code> helpers it calls (Dirk)</p></li>
+<li><p>A new script <code>wb.r</code> can upload to win-builder
+(Dirk)</p></li>
+<li><p>A new script <code>crup.r</code> can upload a CRAN submission
+(Dirk)</p></li>
+<li><p>In <code>rcc.r</code>, the return from <code>rcmdcheck</code> is
+now explicitly printed (Dirk)</p></li>
+<li><p>In <code>r2u.r</code> the <code>dry-run</code> option is passed
+to the build command (Dirk)</p></li>
+</ul></li>
+<li><p>Changes in package</p>
+<ul>
+<li><p>Regular updates to badges, continuous integration, DESCRIPTION
+and <code>configure.ac</code> (Dirk)</p></li>
+<li><p>Errant <code>osVersion</code> return value are handled more
+robustly (Michael Chirico in <a
+href="https://github.com/eddelbuettel/littler/pull/121">#121</a>)</p></li>
+<li><p>The current run-time path is available via variable
+<code>LITTLER_SCRIPT_PATH</code> (Jon Clayden in <a
+href="https://github.com/eddelbuettel/littler/pull/122">#122</a>)</p></li>
+<li><p>The cleanup script remove macOS debug symbols (Jon Clayden in <a
+href="https://github.com/eddelbuettel/littler/pull/123">#123</a>)</p></li>
+</ul></li>
+</ul>
 <h3 id="version-0.3.20-2024-03-23">Version 0.3.20 (2024-03-23)</h3>
 <ul>
 <li><p>Changes in examples scripts</p>
@@ -494,4 +534,5 @@ release tarballs</p></li>
 <li><p>Added new vignette with examples</p></li>
 </ul></li>
 </ul>
-</section>
+</div>
+</div>

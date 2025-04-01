@@ -1,5 +1,142 @@
+###  2025 
+
+2025-03-26  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Default to the noble release if none specified 
+ 
+2025-03-25  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/busybees.r: First minimal version of new helper 
+        aggregating deadlined packages per maintainer 
+ 
+2025-03-24  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.21 
+ 
+2025-03-23  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Pass 'dryrun' option to build command 
+ 
+2025-02-11  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/kitten.r: Pass 'githubuser' to skeleton functions in 
+        from Rcpp and RcppArmadillo packages 
+ 
+2025-02-11  Jon Clayden  <code@clayden.org> 
+ 
+        * cleanup: Clean up macOS debug symbol directory 
+ 
+2025-02-08  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+        * inst/examples/kitten.r: Support githubuser argument in call 
+ 
+2025-02-05  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/rcc.r (rccwrapper): Print rcmdcheck result 
+ 
+2025-02-01  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * .github/workflows/ci.yaml: Switch to r-ci action 
+ 
+2025-01-29  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/crup.r: New helper 'crup.r' to 'CRan UPload' a package 
+ 
+        * inst/examples/wb.r: Add verbose flag with default FALSE 
+ 
+        * configure.ac: Remove an ancient yet commented-out section to not 
+        upset 'checkbashism', update one comparison 
+        * configure: Regenerated 
+ 
+2025-01-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+2025-01-21  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/wb.r: New helper for win-builder uploads 
+ 
+2025-01-17  Jon Clayden  <code@clayden.org> 
+ 
+        * src/littler.c: Make run-time path available via LITTLER_SCRIPT_PATH 
+        environment variable when 'r' is used in a shebang line 
+        * inst/man-page/r.1: Brief documentation of the LITTLER_SCRIPT_PATH 
+        environment variable described above 
+ 
+        * configure.ac: Add check for realpath function used by the facility above 
+        * configure: Idem 
+        * src/config.h.in: Idem 
+ 
 ###  2024 
 
+2024-11-01  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+2024-11-01  Michael Chirico  <chiricom@google.com> 
+ 
+        * inst/examples/installRub.r: Handle "bizarre" (`?osVersion`) 
+        case where `utils::osVersion` is `NULL` 
+ 
+2024-08-30  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Authors@R): Added 
+ 
+2024-08-28  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/kitten.r: Use package 'whoami' if available for 
+        author and email default 
+ 
+        * DESCRIPTION: Add Suggests for 'whomai' package 
+ 
+2024-07-31  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Minor documentation update 
+ 
+2024-07-07  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/deadliners.r: Use getOption("width") 
+ 
+        * inst/examples/ciw.r: Add new --g age | --max age option 
+ 
+2024-06-24  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/deadliners.r: A little formatting and colour 
+ 
+2024-06-12  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/deadliners.r: Minimal 'Deadline' field printer 
+ 
+2024-06-10  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/tttl.r: Support load_package argument switch 
+ 
+2024-06-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Add --minimal flag to not add CRAN 
+ 
+2024-05-29  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Add --disable flag to skip bspm 
+ 
+2024-05-16  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * README.md: Use tinyverse.netlify.app for dependency badge 
+ 
+2024-05-07  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Support 24.04 aka 'noble' 
+ 
+2024-05-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Date, Version): Roll micro version and date 
+ 
+2024-03-31  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/ciw.r: Minor edit to usage text 
+ 
 2024-03-23  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.20 
