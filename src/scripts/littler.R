@@ -1,7 +1,7 @@
 ##
 ##  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
 ##
-##  Copyright (C) 2006 - 2017  Jeffrey Horner and Dirk Eddelbuettel
+##  Copyright (C) 2006 - 2025  Jeffrey Horner and Dirk Eddelbuettel
 ##
 ##  littler is free software; you can redistribute it and/or modify
 ##  it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@ IncludeVars <- IncludeVars[grep("^R_", names(IncludeVars), perl=TRUE)]
 cat("const char *R_VARS[] = {\n")
 for (i in 1:length(IncludeVars)){
     if (names(IncludeVars)[i] %in% ExcludeVars) next
-    cat('"',names(IncludeVars)[i], '","', IncludeVars[i], '",\n', sep='')
+    cat('"', names(IncludeVars)[i], '","', gsub('"', r"(\\")", IncludeVars[i], perl=TRUE), '",\n',
+        sep='')
 }
 cat("NULL };\n")
