@@ -62,14 +62,15 @@ if (is.finite(match(opt$CMD, "build"))) {
                          opt$dryrun)
 
 } else if (is.finite(match(opt$CMD, "last"))) {
-    D <- RcppSimdJson::fload("https://p3m.dev/__api__/sources/1/transactions")
+    # NB now dead too:  D <- RcppSimdJson::fload("https://p3m.dev/__api__/sources/1/transactions")
     #ts <- anytime::utctime(D[1,"completed"])
     #dh <- as.numeric(difftime(Sys.time(), ts, units="hours"))
     #un <- "days"
     #if (dh <= 3) un <- "mins" else if (dh < 25) un <- "hours"
     #cat("P3M/PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
     ## no longer includes hours :-/
-    ld <- anytime::utcdate(D[1,"completed"])
+    #ld <- anytime::utcdate(D[1,"completed"])
+    ld <- as.Date(max(RcppSimdJson::fload("https://p3m.dev/__api__/repos/cran/transaction-dates")$alias))
     cat("P3M/PPM/RSPM last updated", as.integer(Sys.Date()) - as.integer(ld), "days ago on", format(ld), "\n")
 
 } else if (is.finite(match(opt$CMD, "count"))) {

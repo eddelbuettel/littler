@@ -1,3 +1,7 @@
+2025-04-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/r2u.r: Update source of 'last updated' info for p3m
+
 2025-04-10  Dirk Eddelbuettel  <edd@debian.org>
 
 	* src/scripts/littler.R: Allow double quotes in env.vars
