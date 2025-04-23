@@ -70,6 +70,8 @@ if (is.finite(match(opt$CMD, "build"))) {
     #cat("P3M/PPM/RSPM last updated", format(round(difftime(Sys.time(), ts, units=un),1)), "ago\n")
     ## no longer includes hours :-/
     #ld <- anytime::utcdate(D[1,"completed"])
+    ## also:  hit given yyyy-mm-dd in eg https://packagemanager.posit.co/cran/2025-04-22/src/contrib/PACKAGES
+    ##        and then check success / failure -- might be lighter than downloading the whole blob
     ld <- as.Date(max(RcppSimdJson::fload("https://p3m.dev/__api__/repos/cran/transaction-dates")$alias))
     cat("P3M/PPM/RSPM last updated", as.integer(Sys.Date()) - as.integer(ld), "days ago on", format(ld), "\n")
 

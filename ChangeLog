@@ -1,3 +1,7 @@
+2025-04-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/deadliners.r: Adjust screen width for display
+
 2025-04-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/r2u.r: Update source of 'last updated' info for p3m
