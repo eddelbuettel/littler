@@ -1,3 +1,7 @@
+2025-05-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/deadliners.r: Support column width override
+
 2025-04-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/deadliners.r: Adjust screen width for display

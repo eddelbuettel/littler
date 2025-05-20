@@ -5,6 +5,8 @@
 # Copyright (C) 2024 - 2025  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
+#
+# Uses argv[1], if present, to provide column width else use heuristic
 
 ## borrowed with love from tinytest and marginally extended
 .color_str <- function(x, color) {
@@ -18,7 +20,7 @@ db <- as.data.frame(tools::CRAN_package_db())
 dd <- with(db, db[!is.na(Deadline), c("Package", "Version", "Deadline")])
 dd <- with(dd, dd[order(Deadline, Package), ])
 
-cols <- 1.45*getOption("width")
+cols <- if (length(argv) >= 1) as.integer(argv[1]) else 1.45*getOption("width")
 dts <- unique(dd[, "Deadline"])
 for (d in seq_along(dts)) {
     cat(.blue(dts[d]), ": ", sep="")
