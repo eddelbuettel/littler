@@ -1,3 +1,8 @@
+2025-07-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/install2.r: Support options `--quiet` and `--verbose`
+	as proposed by Zivan Karaman in #124
+
 2025-05-20  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/deadliners.r: Support column width override
