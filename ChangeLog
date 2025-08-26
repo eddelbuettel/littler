@@ -1,3 +1,8 @@
+2025-08-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/rcc.r: Pass build-args to rcmdcheck to compact
+	vignettes and save data (both are helpful when checking a directory)
+
 2025-07-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/install2.r: Support options `--quiet` and `--verbose`

@@ -75,7 +75,9 @@ suppressMessages(library(rcmdcheck))
 Sys.setenv("_R_CHECK_TESTS_NLINES_"="0")        # ensure all errors shown
 
 rccwrapper <- function(pa, qu, ar, li, re, eo) {
-    res <- rcmdcheck(path=pa, quiet=qu, args=ar, libpath=li, repos=re, error_on=eo)
+    res <- rcmdcheck(path=pa, quiet=qu, args=ar,
+                     build_args=c("--compact-vignettes=both", "--resave-data"),
+                     libpath=li, repos=re, error_on=eo)
     print(res)
     res
 }
