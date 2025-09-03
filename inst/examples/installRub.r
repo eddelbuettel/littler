@@ -1,8 +1,8 @@
 #!/usr/bin/env r
 #
-# A installer for r-universe binaries (on Ubuntu 'jammy' only)
+# A installer for r-universe binaries (on Ubuntu 'noble' only)
 #
-# Copyright (C) 2023         Dirk Eddelbuettel
+# Copyright (C) 2023-current  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -11,7 +11,7 @@ library(docopt)
 library(utils) 		# for osVersion
 
 rver <- gsub("^([\\d].[\\d]).*$", "\\1", as.character(getRversion()), perl=TRUE)
-uburel <- "jammy"
+uburel <- "noble"
 ## configuration for docopt
 doc <- paste0("Usage: installRub.r [-h] [-x] [-k] [-m] [-d] [-r REL] [-v VER] [-u UNIV] PACKAGES
 
@@ -63,11 +63,12 @@ if (is.null(opt$universe) && length(opt$PACKAGES) == 1) {
     opt$universe <- tokens[2]
 }
 
-univ <- paste0("https://", opt$universe, ".r-universe.dev/bin/linux/", opt$release, "/", opt$version)
+univ <- paste0("https://", opt$universe, ".r-universe.dev/bin/linux/",
+               opt$release, "-", R.version$arch, "/", opt$version)
 
 if (!opt$keepoption) options(bspm.version.check=TRUE)
 
-rep <- c("unic"=univ)
+rep <- c("univ"=univ)
 if (!opt$minimal) rep <- c(rep, cran=getOption("repos"))
 
 if (opt$disable && has_bspm) bspm::disable()

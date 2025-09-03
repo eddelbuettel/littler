@@ -1,3 +1,7 @@
+2025-09-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installRub.r: Set 'noble' as default Ubuntu distro
+
 2025-08-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/rcc.r: Pass build-args to rcmdcheck to compact
