@@ -13,7 +13,7 @@ library(utils) 		# for osVersion
 rver <- gsub("^([\\d].[\\d]).*$", "\\1", as.character(getRversion()), perl=TRUE)
 uburel <- "noble"
 ## configuration for docopt
-doc <- paste0("Usage: installRub.r [-h] [-x] [-k] [-m] [-d] [-r REL] [-v VER] [-u UNIV] PACKAGES
+doc <- paste0("Usage: installRub.r [-h] [-x] [-k] [-m] [-d] [-r REL] [-v VER] [-u UNIV] [PACKAGES]
 
 -u --universe UNIV  required argument specifying universe [default: ]
 -v --version VER    R 'major.minor' version release pair to install for [default: ", rver, "]
@@ -50,7 +50,7 @@ installRub.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
-
+if (length(opt$PACKAGES) == 0) cat(doc, "\n")
 if (getRversion() < "4.2.0") stop("R version 4.2.0 or later is required.", call. = FALSE)
 if (!exists("osVersion")) stop("Cannot find 'osVersion'. Weird.", call. = FALSE)
 if (!isTRUE(startsWith(utils::osVersion, "Ubuntu"))) stop("Ubuntu is required as host system.", call. = FALSE)

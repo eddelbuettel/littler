@@ -1,3 +1,7 @@
+2025-09-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installRub.r: Be more tolerant of input arguments
+
 2025-09-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installRub.r: Set 'noble' as default Ubuntu distro
