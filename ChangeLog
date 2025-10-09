@@ -1,3 +1,8 @@
+2025-10-09  Michael Chirico  <chiricom@google.com>
+
+	* inst/examples/installRub.r: Handle "bizarre" (`?osVersion`)
+	case where `utils::osVersion` is `NULL` (redux / corrected from 2024-11-01)
+
 2025-09-18  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/installRub.r: Be more tolerant of input arguments
