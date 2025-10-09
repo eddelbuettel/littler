@@ -52,8 +52,8 @@ See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
 }
 if (length(opt$PACKAGES) == 0) cat(doc, "\n")
 if (getRversion() < "4.2.0") stop("R version 4.2.0 or later is required.", call. = FALSE)
-if (!exists("osVersion")) stop("Cannot find 'osVersion'. Weird.", call. = FALSE)
-if (!isTRUE(startsWith(utils::osVersion, "Ubuntu"))) stop("Ubuntu is required as host system.", call. = FALSE)
+if (!exists("osVersion") || is.null(utils::osVersion)) stop("Cannot find 'osVersion'. Weird.", call. = FALSE)
+if (!startsWith(utils::osVersion, "Ubuntu")) stop("Ubuntu is required as host system.", call. = FALSE)
 has_bspm <- requireNamespace("bspm", quietly=TRUE)
 if (!opt$minimal && !has_bspm) stop("The 'bspm' package is required.", call. = FALSE)
 
