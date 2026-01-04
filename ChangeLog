@@ -1,3 +1,7 @@
+2026-01-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml: Switch to actions/checkout@v6
+
 2025-10-09  Michael Chirico  <chiricom@google.com>
 
 	* inst/examples/installRub.r: Handle "bizarre" (`?osVersion`)
