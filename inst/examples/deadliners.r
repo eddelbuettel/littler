@@ -2,7 +2,7 @@
 #
 # Minimal 'Deadline' field printer from CRAN db
 #
-# Copyright (C) 2024 - 2025  Dirk Eddelbuettel
+# Copyright (C) 2024 - 2026  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 #
@@ -20,7 +20,7 @@ db <- as.data.frame(tools::CRAN_package_db())
 dd <- with(db, db[!is.na(Deadline), c("Package", "Version", "Deadline")])
 dd <- with(dd, dd[order(Deadline, Package), ])
 
-cols <- if (length(argv) >= 1) as.integer(argv[1]) else 1.45*getOption("width")
+cols <- if (length(argv) >= 1) as.integer(argv[1]) else 1.44*getOption("width")
 dts <- unique(dd[, "Deadline"])
 for (d in seq_along(dts)) {
     cat(.blue(dts[d]), ": ", sep="")
