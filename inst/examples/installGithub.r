@@ -2,7 +2,7 @@
 #
 # A simple example to install one or more packages from GitHub
 #
-# Copyright (C) 2014 - 2023  Carl Boettiger and Dirk Eddelbuettel
+# Copyright (C) 2014 - 2026  Carl Boettiger and Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
@@ -20,7 +20,10 @@ doc <- "Usage: installGithub.r [-h] [-x] [-d DEPS] [-u UPDATE] [-r REPOS...] [-t
 -r --repos REPOS     repositor(y|ies) to use if deps required [default: getOption]
 -t --type TYPE       installation type as used by `install.packages` [default: source]
 -h --help            show this help text
--x --usage           show help and short example usage"
+-x --usage           show help and short example usage
+
+Note that if `bspm` is seen and option `bspm.version.check` is `FALSE` the `type` option is
+switched to `both` to permit `bspm` to install e.g. build-dependencies as r2u binaries."
 
 opt <- docopt(doc)			# docopt parsing
 
@@ -71,6 +74,11 @@ if (opt$deps == "TRUE" || opt$deps == "FALSE") {
 if (length(opt$repos) == 1 && opt$repos == "getOption") {
     ## as littler can now read ~/.littler.r and/or /etc/littler.r we can preset elsewhere
     opt$repos <- getOption("repos")
+}
+
+if (requireNamespace("bspm", quietly=TRUE) & isFALSE(getOption("bspm.version.check", TRUE))) {
+    ## when bspm is installed and set to prefer binaries, select type both
+    opt$type <- "both"
 }
 
 opt$update <- as.logical(opt$update)

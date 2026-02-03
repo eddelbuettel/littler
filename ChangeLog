@@ -1,3 +1,8 @@
+2026-02-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/installGithub.r: If `bspm` is installed and configure
+	to prefer binaries we set `type` to `both` to allow r2u to ship them
+
 2026-01-08  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/checkPackageURLs.r: New script to check URLs (and DOIs)
