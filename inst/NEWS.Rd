@@ -3,6 +3,37 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.22 (2026-02-03)}{
+  \itemize{
+    \item Changes in examples scripts
+    \itemize{
+      \item A new script \code{busybees.r} aggregates deadlined packages by
+      maintainer
+      \item Several small updated have been made to the (mostly internal)
+      `r2u.r` script
+      \item The \code{deadliners.r} script has refined treatment for screen
+      width
+      \item The \code{install2.r} script has new options \code{--quiet} and
+      \code{--verbose} as proposed by Zivan Karaman
+      \item The \code{rcc.r} script passes build-args to `rcmdcheck` to
+      compact vignettes and save data
+      \item The \code{installRub.r} script now defaults to 'noble' and is more
+      tolerant of inputs
+      \item The \code{installRub.r} script deals correctly with empty
+      \code{utils::osVersion} thanks to Michael Chirico
+      \item New script \code{checkPackageUrls.r} inspired by how CRAN checks
+      (with thanks to Kurt Hornik for the hint)
+      \item The \code{installGitHub.r} script now adjusts to \code{bspm}
+      and takes advantage of r2u binaries for its build dependencies
+    }
+    \item Changes in package
+    \itemize{
+      \item Environment variables (read at build time) can use double quotes
+      \item Continuous intgegration scripts received a minor update
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.21 (2025-03-24)}{
   \itemize{
     \item Changes in examples scripts

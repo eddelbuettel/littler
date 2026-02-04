@@ -1,7 +1,9 @@
 2026-02-03  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/examples/installGithub.r: If `bspm` is installed and configure
-	to prefer binaries we set `type` to `both` to allow r2u to ship them
+	* DESCRIPTION (Version, Date): Release 0.3.22
+
+	* inst/examples/installGithub.r: If `bspm` is installed and configured
+	to prefer binaries set `type` to `both` to so that r2u can ship them
 
 2026-01-08  Dirk Eddelbuettel  <edd@debian.org>
 
