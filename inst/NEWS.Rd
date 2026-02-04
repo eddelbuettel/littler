@@ -23,7 +23,7 @@
       \code{utils::osVersion} thanks to Michael Chirico
       \item New script \code{checkPackageUrls.r} inspired by how CRAN checks
       (with thanks to Kurt Hornik for the hint)
-      \item The \code{installGitHub.r} script now adjusts to \code{bspm}
+      \item The \code{installGithub.r} script now adjusts to \code{bspm}
       and takes advantage of r2u binaries for its build dependencies
     }
     \item Changes in package
@@ -442,7 +442,7 @@
       \item New script \code{c4c.r} calling \code{rhub::check_for_cran()}
       \item New script \code{rd2md.r} to convert Rd to markdown.
       \item New script \code{build.r} to create a source tarball.
-      \item The \code{installGitHub.r} script now use package
+      \item The \code{installGithub.r} script now use package
       \CRANpkg{remotes} (PR \ghpr{44}, \ghpr{46})
     }
   }
