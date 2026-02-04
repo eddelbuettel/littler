@@ -1,4 +1,5 @@
 
+
 ## Command-line and scripting front-end for R
 
 ### Description
@@ -49,7 +50,7 @@ Dirk Eddelbuettel <edd@debian.org> is the maintainer.
 
 ### Examples
 
-``` 
+``` R
   ## Not run: 
   #!/usr/bin/env r              ## for use in scripts
 
@@ -64,4 +65,5 @@ Dirk Eddelbuettel <edd@debian.org> is the maintainer.
   
 ## End(Not run)
 ```
+
 

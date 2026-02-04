@@ -600,6 +600,38 @@
 
 <div class="container">
 <div role="main">
+<h3 id="version-0.3.22-2026-02-03">Version 0.3.22 (2026-02-03)</h3>
+<ul>
+<li><p>Changes in examples scripts</p>
+<ul>
+<li><p>A new script <code>busybees.r</code> aggregates deadlined
+packages by maintainer</p></li>
+<li><p>Several small updated have been made to the (mostly internal)
+'r2u.r' script</p></li>
+<li><p>The <code>deadliners.r</code> script has refined treatment for
+screen width</p></li>
+<li><p>The <code>install2.r</code> script has new options
+<code>--quiet</code> and <code>--verbose</code> as proposed by Zivan
+Karaman</p></li>
+<li><p>The <code>rcc.r</code> script passes build-args to 'rcmdcheck' to
+compact vignettes and save data</p></li>
+<li><p>The <code>installRub.r</code> script now defaults to 'noble' and
+is more tolerant of inputs</p></li>
+<li><p>The <code>installRub.r</code> script deals correctly with empty
+<code>utils::osVersion</code> thanks to Michael Chirico</p></li>
+<li><p>New script <code>checkPackageUrls.r</code> inspired by how CRAN
+checks (with thanks to Kurt Hornik for the hint)</p></li>
+<li><p>The <code>installGitHub.r</code> script now adjusts to
+<code>bspm</code> and takes advantage of r2u binaries for its build
+dependencies</p></li>
+</ul></li>
+<li><p>Changes in package</p>
+<ul>
+<li><p>Environment variables (read at build time) can use double
+quotes</p></li>
+<li><p>Continuous intgegration scripts received a minor update</p></li>
+</ul></li>
+</ul>
 <h3 id="version-0.3.21-2025-03-24">Version 0.3.21 (2025-03-24)</h3>
 <ul>
 <li><p>Changes in examples scripts</p>

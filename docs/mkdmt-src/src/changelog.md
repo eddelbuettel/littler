@@ -1,5 +1,61 @@
+###  2026 
+
+2026-02-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.22 
+ 
+        * inst/examples/installGithub.r: If `bspm` is installed and configured 
+        to prefer binaries set `type` to `both` to so that r2u can ship them 
+ 
+2026-01-08  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/checkPackageURLs.r: New script to check URLs (and DOIs) 
+ 
+2026-01-04  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * .github/workflows/ci.yaml: Switch to actions/checkout@v6 
+ 
 ###  2025 
 
+2025-10-09  Michael Chirico  <chiricom@google.com> 
+ 
+        * inst/examples/installRub.r: Handle "bizarre" (`?osVersion`) 
+        case where `utils::osVersion` is `NULL` (redux / corrected from 2024-11-01) 
+ 
+2025-09-18  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Be more tolerant of input arguments 
+ 
+2025-09-03  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Set 'noble' as default Ubuntu distro 
+ 
+2025-08-26  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/rcc.r: Pass build-args to rcmdcheck to compact 
+        vignettes and save data (both are helpful when checking a directory) 
+ 
+2025-07-09  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/install2.r: Support options `--quiet` and `--verbose` 
+        as proposed by Zivan Karaman in #124 
+ 
+2025-05-20  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/deadliners.r: Support column width override 
+ 
+2025-04-23  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/deadliners.r: Adjust screen width for display 
+ 
+2025-04-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Update source of 'last updated' info for p3m 
+ 
+2025-04-10  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * src/scripts/littler.R: Allow double quotes in env.vars 
+ 
 2025-03-26  Dirk Eddelbuettel  <edd@debian.org> 
  
         * inst/examples/r2u.r: Default to the noble release if none specified 
