@@ -1,3 +1,7 @@
+2026-02-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/trox.r: Add wrapper for tinyrox
+
 2026-02-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.22
