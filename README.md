@@ -25,12 +25,13 @@ r --help                      ## to show a quick synopsis
 
 ### Examples?
 
-Plenty. See the [examples vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)
-for a full set of introductory examples. Also
-see the [examples/ directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples) for a full 28
-example scripts, as well as maybe the
-[older tests directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests)
-both of which are installed with the package.
+Plenty. See the [(older) examples
+vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html) for a full set
+of introductory examples. Also see the [examples/
+directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples) for a full 63 (!!)
+example scripts (as of early 2026), as well as maybe the [older tests
+directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests) both of which are
+installed with the package.
 
 Some scripts I use daily or near daily (in alphabetical order):
 
@@ -46,6 +47,7 @@ rcc.r abc_1.2-3.tar.gz                 ## run's R CMD check via Gabor's rcmdchec
 render.r foo.Rmd                       ## calls rmarkdown::render()
 roxy.r                                 ## run roxygenize() for a package (only Rd creation)
 update.r                               ## updates any currently installed packages
+installGithub.r repo/package           ## install directly from GitHub
 ```
 
 ### Installation

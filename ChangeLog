@@ -1,3 +1,7 @@
+2026-02-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Expand README.md, now have 63 example scripts
+
 2026-02-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/trox.r: Add wrapper for tinyrox
