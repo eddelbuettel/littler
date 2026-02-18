@@ -39,7 +39,7 @@ Some scripts I use daily or near daily (in alphabetical order):
 build.r                                ## builds from the current directory
 c4c.r                                  ## submits current directory to winbuilder
 compAttr.r                             ## run compileAttributes() for a Rcpp package
-dratInstert.r 1.2-3.tar.gz -r /srv     ## inserts package into drat repo
+dratInsert.r 1.2-3.tar.gz -r /srv      ## inserts package into drat repo
 install.r abc def                      ## installs packages abc and def
 install.r abc_1.2-3.tar.gz             ## installs given tarball
 install2.r -l /tmp/lib abc def         ## installs abc and def into /tmp/lib
@@ -48,6 +48,7 @@ render.r foo.Rmd                       ## calls rmarkdown::render()
 roxy.r                                 ## run roxygenize() for a package (only Rd creation)
 update.r                               ## updates any currently installed packages
 installGithub.r repo/package           ## install directly from GitHub
+crup.r abc_1.2-3.tar.gz                ## CRAN upload of package
 ```
 
 ### Installation
