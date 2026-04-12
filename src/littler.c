@@ -418,7 +418,7 @@ void showVersionAndExit(void) {
                    R_SVN_REVISION);
         }
     }
-    printf("\n\nCopyright (C) 2006 - 2021  Jeffrey Horner and Dirk Eddelbuettel\n"
+    printf("\n\nCopyright (C) 2006 - 2026  Jeffrey Horner and Dirk Eddelbuettel\n"
            "\n"
            "%s is free software and comes with ABSOLUTELY NO WARRANTY.\n"
            "You are welcome to redistribute it under the terms of the\n"
