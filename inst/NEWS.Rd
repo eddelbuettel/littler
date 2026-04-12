@@ -16,6 +16,8 @@
     \itemize{
       \item Update script count and examples in README.md
       \item Continuous intgegration scripts minor updates
+      \item The C level access to the R API was updated to reflect most
+      recent standards (Dirk in \ghpr{132})
     }
   }
 }
