@@ -1,5 +1,27 @@
 <div class="container">
 <div role="main">
+<h3 id="version-0.3.23-2026-04-12">Version 0.3.23 (2026-04-12)</h3>
+<ul>
+<li><p>Changes in examples scripts</p>
+<ul>
+<li><p>Correct spelling in <code>installGithub.r</code> to lower-case
+h</p></li>
+<li><p>The <code>r2u.r</code> now recognises ‘resolute’ aka
+26.06</p></li>
+<li><p><code>installRub.r</code> can install (more easily) from
+r-multiverse</p></li>
+<li><p>A file permission was corrected (Mattias Ellert in <a
+href="https://github.com/eddelbuettel/littler/pull/131">#131</a>)</p></li>
+</ul></li>
+<li><p>Changes in package</p>
+<ul>
+<li><p>Update script count and examples in README.md</p></li>
+<li><p>Continuous intgegration scripts received minor updates</p></li>
+<li><p>The C level access to the R API was updated to reflect most
+recent standards (Dirk in <a
+href="https://github.com/eddelbuettel/littler/pull/132">#132</a>)</p></li>
+</ul></li>
+</ul>
 <h3 id="version-0.3.22-2026-02-03">Version 0.3.22 (2026-02-03)</h3>
 <ul>
 <li><p>Changes in examples scripts</p>
@@ -21,7 +43,7 @@ is more tolerant of inputs</p></li>
 <code>utils::osVersion</code> thanks to Michael Chirico</p></li>
 <li><p>New script <code>checkPackageUrls.r</code> inspired by how CRAN
 checks (with thanks to Kurt Hornik for the hint)</p></li>
-<li><p>The <code>installGitHub.r</code> script now adjusts to
+<li><p>The <code>installGithub.r</code> script now adjusts to
 <code>bspm</code> and takes advantage of r2u binaries for its build
 dependencies</p></li>
 </ul></li>
@@ -486,7 +508,7 @@ defaults to Ubuntu amd64</p></li>
 markdown.</p></li>
 <li><p>New script <code>build.r</code> to create a source
 tarball.</p></li>
-<li><p>The <code>installGitHub.r</code> script now use package <a
+<li><p>The <code>installGithub.r</code> script now use package <a
 href="https://CRAN.R-project.org/package=remotes"><span
 class="pkg">remotes</span></a> (PR <a
 href="https://github.com/eddelbuettel/littler/pull/44">#44</a>, <a

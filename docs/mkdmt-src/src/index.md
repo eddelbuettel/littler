@@ -30,27 +30,30 @@ r --help                      ## to show a quick synopsis
 
 ### Examples?
 
-Plenty. See the [examples vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html)
-for a full set of introductory examples. Also
-see the [examples/ directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples) for a full 28
-example scripts, as well as maybe the
-[older tests directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests)
-both of which are installed with the package.
+Plenty. See the [(older) examples
+vignette](https://cran.r-project.org/package=littler/vignettes/littler-examples.html) for a full set
+of introductory examples. Also see the [examples/
+directory](https://github.com/eddelbuettel/littler/tree/master/inst/examples) for a full 63 (!!)
+example scripts (as of early 2026), as well as maybe the [older tests
+directory](https://github.com/eddelbuettel/littler/tree/master/inst/script-tests) both of which are
+installed with the package.
 
 Some scripts I use daily or near daily (in alphabetical order):
 
-```
-build.r                                ## builds from the current directory
-c4c.r                                  ## submits current directory to winbuilder
-compAttr.r                             ## run compileAttributes() for a Rcpp package
-dratInstert.r 1.2-3.tar.gz -r /srv     ## inserts package into drat repo
-install.r abc def                      ## installs packages abc and def
-install.r abc_1.2-3.tar.gz             ## installs given tarball
-install2.r -l /tmp/lib abc def         ## installs abc and def into /tmp/lib
-rcc.r abc_1.2-3.tar.gz                 ## run's R CMD check via Gabor's rcmdcheck
-render.r foo.Rmd                       ## calls rmarkdown::render()
-roxy.r                                 ## run roxygenize() for a package (only Rd creation)
-update.r                               ## updates any currently installed packages
+```sh
+build.r                                # builds from the current directory
+c4c.r                                  # submits current directory to winbuilder
+compAttr.r                             # run compileAttributes() for a Rcpp package
+dratInsert.r 1.2-3.tar.gz -r /srv      # inserts package into drat repo
+install.r abc def                      # installs packages abc and def
+install.r abc_1.2-3.tar.gz             # installs given tarball
+install2.r -l /tmp/lib abc def         # installs abc and def into /tmp/lib
+rcc.r abc_1.2-3.tar.gz                 # run's R CMD check via Gabor's rcmdcheck
+render.r foo.Rmd                       # calls rmarkdown::render()
+roxy.r                                 # run roxygenize() for a package (only Rd creation)
+update.r                               # updates any currently installed packages
+installGithub.r repo/package           # install directly from GitHub
+crup.r abc_1.2-3.tar.gz                # CRAN upload of package
 ```
 
 ### Installation

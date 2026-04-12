@@ -1,5 +1,34 @@
 ###  2026 
 
+2026-04-12  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * DESCRIPTION (Version, Date): Release 0.3.23 
+        * configure.ac: Idem 
+        * configure: Idem 
+ 
+        * src/littler.c: Use R_getVar() instead of Rf_findVar with recent R 
+        versions, switch to SET_STRING_ELT() instead of STRING_PTR() 
+ 
+2026-04-01  Mattias Ellert  <mattias.ellert@physics.uu.se> 
+ 
+        * inst/examples/installDeps2.r: Set execution permissions 
+ 
+2026-03-09  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/installRub.r: Enable install from r-multiverse 
+ 
+2026-02-22  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/r2u.r: Add 'resolute' as a valid distro 
+ 
+2026-02-18  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * README.md: Expand README.md, now have 63 example scripts 
+ 
+2026-02-09  Dirk Eddelbuettel  <edd@debian.org> 
+ 
+        * inst/examples/trox.r: Add wrapper for tinyrox 
+ 
 2026-02-03  Dirk Eddelbuettel  <edd@debian.org> 
  
         * DESCRIPTION (Version, Date): Release 0.3.22 

@@ -812,24 +812,27 @@
 <span class="n">r</span> <span class="o">--</span><span class="n">help</span>                      <span class="c1">## to show a quick synopsis</span>
 </code></pre></div>
 <h3 id="examples">Examples?</h3>
-<p>Plenty. See the <a href="https://cran.r-project.org/package=littler/vignettes/littler-examples.html">examples vignette</a>
-for a full set of introductory examples. Also
-see the <a href="https://github.com/eddelbuettel/littler/tree/master/inst/examples">examples/ directory</a> for a full 28
-example scripts, as well as maybe the
-<a href="https://github.com/eddelbuettel/littler/tree/master/inst/script-tests">older tests directory</a>
-both of which are installed with the package.</p>
+<p>Plenty. See the <a href="https://cran.r-project.org/package=littler/vignettes/littler-examples.html">(older) examples
+vignette</a> for a full set
+of introductory examples. Also see the <a href="https://github.com/eddelbuettel/littler/tree/master/inst/examples">examples/
+directory</a> for a full 63 (!!)
+example scripts (as of early 2026), as well as maybe the <a href="https://github.com/eddelbuettel/littler/tree/master/inst/script-tests">older tests
+directory</a> both of which are
+installed with the package.</p>
 <p>Some scripts I use daily or near daily (in alphabetical order):</p>
-<div class="highlight"><pre><span></span><code>build.r                                ## builds from the current directory
-c4c.r                                  ## submits current directory to winbuilder
-compAttr.r                             ## run compileAttributes() for a Rcpp package
-dratInstert.r 1.2-3.tar.gz -r /srv     ## inserts package into drat repo
-install.r abc def                      ## installs packages abc and def
-install.r abc_1.2-3.tar.gz             ## installs given tarball
-install2.r -l /tmp/lib abc def         ## installs abc and def into /tmp/lib
-rcc.r abc_1.2-3.tar.gz                 ## run&#39;s R CMD check via Gabor&#39;s rcmdcheck
-render.r foo.Rmd                       ## calls rmarkdown::render()
-roxy.r                                 ## run roxygenize() for a package (only Rd creation)
-update.r                               ## updates any currently installed packages
+<div class="highlight"><pre><span></span><code>build.r                                <span class="c1"># builds from the current directory</span>
+c4c.r                                  <span class="c1"># submits current directory to winbuilder</span>
+compAttr.r                             <span class="c1"># run compileAttributes() for a Rcpp package</span>
+dratInsert.r <span class="m">1</span>.2-3.tar.gz -r /srv      <span class="c1"># inserts package into drat repo</span>
+install.r abc def                      <span class="c1"># installs packages abc and def</span>
+install.r abc_1.2-3.tar.gz             <span class="c1"># installs given tarball</span>
+install2.r -l /tmp/lib abc def         <span class="c1"># installs abc and def into /tmp/lib</span>
+rcc.r abc_1.2-3.tar.gz                 <span class="c1"># run&#39;s R CMD check via Gabor&#39;s rcmdcheck</span>
+render.r foo.Rmd                       <span class="c1"># calls rmarkdown::render()</span>
+roxy.r                                 <span class="c1"># run roxygenize() for a package (only Rd creation)</span>
+update.r                               <span class="c1"># updates any currently installed packages</span>
+installGithub.r repo/package           <span class="c1"># install directly from GitHub</span>
+crup.r abc_1.2-3.tar.gz                <span class="c1"># CRAN upload of package</span>
 </code></pre></div>
 <h3 id="installation">Installation</h3>
 <h4 id="version-030-or-later">Version 0.3.0 or later</h4>
