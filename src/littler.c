@@ -1,7 +1,7 @@
 /*
  *  littler - Provides hash-bang (#!) capability for R (www.r-project.org)
  *
- *  Copyright (C) 2006 - 2024  Jeffrey Horner and Dirk Eddelbuettel
+ *  Copyright (C) 2006 - 2026  Jeffrey Horner and Dirk Eddelbuettel
  *
  *  littler is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -125,11 +125,17 @@ void autoloads(void){
 
     /* delayedAssign call*/
     PROTECT(da = Rf_findFun(Rf_install("delayedAssign"), R_GlobalEnv));
+
+#if R_VERSION < R_Version(4,5,0)
     PROTECT(AutoloadEnv = Rf_findVar(Rf_install(".AutoloadEnv"), R_GlobalEnv));
+#else
+    PROTECT(AutoloadEnv = R_getVar(Rf_install(".AutoloadEnv"), R_GlobalEnv, TRUE));
+#endif
     if (AutoloadEnv == R_NilValue){
         fprintf(stderr,"%s: Cannot find .AutoloadEnv!\n", programName);
         exit(1);
     }
+
     PROTECT(dacall = allocVector(LANGSXP,5));
     SETCAR(dacall,da);
     /* SETCAR(CDR(dacall),name); */          /* arg1: assigned in loop */
@@ -569,7 +575,7 @@ int main(int argc, char **argv){
     }
 
 #ifdef DEBUG
-    printf("R_argc %d sizeof(R_argv) \n", R_argc, sizeof(R_argv));
+    printf("R_argc %d sizeof(R_argv) %d \n", R_argc, (int) sizeof(R_argv));
     for (i=0; i<7; i++) {
         printf("R_argv[%d] = %s\n", i, R_argv[i]);
     }
@@ -639,7 +645,7 @@ int main(int argc, char **argv){
         nargv = argc - optind - offset;
         PROTECT(s_argv = allocVector(STRSXP,nargv));
         for (i = 0; i <nargv; i++){
-            STRING_PTR(s_argv)[i] = mkChar(argv[i+offset+optind]);
+            SET_STRING_ELT(s_argv, i, mkChar(argv[i+offset+optind]));
 #ifdef DEBUG
             printf("Passing %s to R\n", argv[i+offset+optind]);
 #endif

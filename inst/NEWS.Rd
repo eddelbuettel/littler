@@ -8,7 +8,6 @@
     \item Changes in examples scripts
     \itemize{
       \item Correct spelling in \code{installGithub.r} to lower-case h
-      \item New example script \code{trox.r}
       \item The \code{r2u.r} now recognises \sQuote{resolute} aka 26.06
       \item \code{installRub.r} can install (more easily) from r-multiverse
       \item A file permission was corrected (Mattias Ellert in \ghpr{131})
