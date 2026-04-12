@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
-\section{Changes in littler version 0.3.23 (unreleased)}{
+\section{Changes in littler version 0.3.23 (2026-04-12)}{
   \itemize{
     \item Changes in examples scripts
     \itemize{
@@ -15,7 +15,7 @@
     \item Changes in package
     \itemize{
       \item Update script count and examples in README.md
-      \item Continuous intgegration scripts minor updates
+      \item Continuous intgegration scripts received minor updates
       \item The C level access to the R API was updated to reflect most
       recent standards (Dirk in \ghpr{132})
     }

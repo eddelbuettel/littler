@@ -1,5 +1,9 @@
 2026-04-12  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Release 0.3.23
+	* configure.ac: Idem
+	* configure: Idem
+
 	* src/littler.c: Use R_getVar() instead of Rf_findVar with recent R
 	versions, switch to SET_STRING_ELT() instead of STRING_PTR()
 
