@@ -3,6 +3,24 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.23 (unreleased)}{
+  \itemize{
+    \item Changes in examples scripts
+    \itemize{
+      \item Correct spelling in \code{installGithub.r} to lower-case h
+      \item New example script \code{trox.r}
+      \item The \code{r2u.r} now recognises \sQuote{resolute} aka 26.06
+      \item \code{installRub.r} can install (more easily) from r-multiverse
+      \item A file permission was corrected (Mattias Ellert in \ghpr{131})
+    }
+    \item Changes in package
+    \itemize{
+      \item Update script count and examples in README.md
+      \item Continuous intgegration scripts minor updates
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.22 (2026-02-03)}{
   \itemize{
     \item Changes in examples scripts
