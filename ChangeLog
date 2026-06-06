@@ -1,5 +1,7 @@
 2026-06-06  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Date, Version): Roll micro version and date
+
 	* inst/examples/trox.r: Support additional arguments
 
 	* inst/examples/tttf.r: Minor documentation tweak
