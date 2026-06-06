@@ -2,14 +2,14 @@
 #
 # testthat::test_file wrapper
 #
-# Copyright (C) 2019 - 2024  Dirk Eddelbuettel
+# Copyright (C) 2019-2026  Dirk Eddelbuettel
 #
 # Released under GPL (>= 2)
 
 if (!requireNamespace("testthat", quietly=TRUE))
     stop("Please install 'testthat' from CRAN.", call. = FALSE)
 
-## load docopt and tinytest from CRAN
+## load docopt from CRAN
 suppressMessages({
     library(docopt)               # we need docopt (>= 0.3) as on CRAN
 })

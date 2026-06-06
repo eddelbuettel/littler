@@ -2,6 +2,8 @@
 
 	* inst/examples/trox.r: Support additional arguments
 
+	* inst/examples/tttf.r: Minor documentation tweak
+
 2026-04-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/trox.r: Officially added as tinyrox is now on CRAN
