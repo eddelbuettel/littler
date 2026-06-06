@@ -10,8 +10,11 @@
 library(docopt)
 
 ## configuration for docopt
-doc <- "Usage: trox.r [-h] [-x] [PACKAGES ...]
+doc <- "Usage: trox.r [-n none] [-c] [-v] [-h] [-x] [PACKAGES ...]
 
+-n --namespace none	  namespace argument, one of 'overwrite', 'append', 'none' [default: none]
+-c --crancheck        should the CRAN compliance check run [default: FALSE]
+-v --verbose          should the operation be verbose rather than silent [default: FALSE]
 -h --help             show this help text
 -x --usage            show help and short example usage"
 opt <- docopt(doc)			# docopt parsing
@@ -29,6 +32,9 @@ information.\n")
     q("no")
 }
 
+if (!opt$namespace %in% c("overwrite", "append", "none"))
+    stop(r"[The 'namespace' argument must be one of "overwrite", "append", "none".]", call. = FALSE)
+
 ## load tinyrox
 library(tinyrox)
 
@@ -37,4 +43,8 @@ argv <- Filter(function(x) file.info(x)$is.dir, argv)
 
 ## loop over all argument, with fallback of the current directory, and
 ## call document() on the given directory
-sapply(ifelse(length(argv) > 0, argv, "."), FUN = document)
+sapply(ifelse(length(argv) > 0, argv, "."),
+       FUN = document,
+       namespace = opt$namespace,
+       cran_check = opt$crancheck,
+       silent = !opt$verbose)
