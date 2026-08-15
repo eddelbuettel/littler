@@ -1,0 +1,65 @@
+### Basic information
+site_name: $ALTDOC_PACKAGE_NAME
+
+### Repo information
+repo_url: $ALTDOC_PACKAGE_URL_GITHUB
+repo_name: $ALTDOC_PACKAGE_NAME
+
+## Activate optional copyright in footer
+copyright: Copyright &copy; 2006-present Dirk Eddelbuettel and Jeff Horner
+
+## Theme (already default) and override
+theme:
+  name: material
+  custom_dir: altdoc/overrides
+  features:
+    - navigation.tabs
+    - navigation.instant
+  font:
+    text: Lato
+  favicon: Rlogo.png
+  logo: Rlogo.svg
+extra_css:
+  - stylesheets/extra.css
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/eddelbuettel/
+      name: GitHub
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/eddelbuettel.com
+      name: Bsky
+
+### Plugins
+plugins:
+  - search
+
+### Navigation tree
+nav:
+  - Articles: $ALTDOC_VIGNETTE_BLOCK
+  - Reference: $ALTDOC_MAN_BLOCK
+  - News: $ALTDOC_NEWS
+  - Changelog: $ALTDOC_CHANGELOG
+  - Code of Conduct: $ALTDOC_CODE_OF_CONDUCT
+#  - License: $ALTDOC_LICENSE
+#  - Licence: $ALTDOC_LICENCE
+  - Citation: $ALTDOC_CITATION
+
+
+### Code highlighting
+### Math
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+# extra_javascript:
+#   - javascripts/mathjax.js
+#   - https://polyfill.io/v3/polyfill.min.js?features=es6
+#   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

@@ -1,9 +1,3 @@
-2026-08-15  Dirk Eddelbuettel  <edd@debian.org>
-
-	* docs/: Redone using 'altdoc' with 'material for mkdocs'
-	* .github/altdoc/*: Added supporting 'altdoc'
-	* .github/scripts/postprocess.sh: Idem
-
 2026-06-06  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date

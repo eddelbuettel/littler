@@ -1,0 +1,2750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../man/r/">
+      
+      
+        <link rel="next" href="../CHANGELOG/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../Rlogo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>News - littler</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Lato";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#news-for-package-littler" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="littler" class="md-header__button md-logo" aria-label="littler" data-md-component="logo">
+      
+  <img src="../Rlogo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            littler
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              News
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/eddelbuettel/littler" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    littler
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../vignettes/littler-examples/" class="md-tabs__link">
+          
+  
+  
+  Articles
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../man/littler/" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  News
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../CHANGELOG/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../CITATION/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Citation
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="littler" class="md-nav__button md-logo" aria-label="littler" data-md-component="logo">
+      
+  <img src="../Rlogo.svg" alt="logo">
+
+    </a>
+    littler
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/eddelbuettel/littler" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    littler
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Articles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Articles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vignettes/littler-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    littler-examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vignettes/littler-faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    littler-faq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../man/littler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    littler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../man/r/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    r
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0323-2026-04-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.23 (2026-04-12)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0322-2026-02-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.22 (2026-02-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0321-2025-03-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.21 (2025-03-24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0320-2024-03-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.20 (2024-03-23)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0319-2023-12-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.19 (2023-12-17)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0318-2023-03-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.18 (2023-03-25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0317-2022-10-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.17 (2022-10-29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0316-2022-08-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.16 (2022-08-28)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0315-2021-12-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.15 (2021-12-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0314-2021-10-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.14 (2021-10-05)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0313-2021-07-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.13 (2021-07-24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0312-2020-10-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.12 (2020-10-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0311-2020-06-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.11 (2020-06-26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0310-2020-06-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.10 (2020-06-02)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-039-2019-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.9 (2019-10-27)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-038-2019-06-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.8 (2019-06-09)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-037-2019-03-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.7 (2019-03-15)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-036-2019-01-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.6 (2019-01-26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-035-2018-10-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.5 (2018-10-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-034-2018-08-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.4 (2018-08-24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-033-2017-12-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.3 (2017-12-17)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-032-2017-02-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.2 (2017-02-14)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-031-2016-08-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.1 (2016-08-06)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-030-2015-10-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.0 (2015-10-29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CITATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Citation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0323-2026-04-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.23 (2026-04-12)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0322-2026-02-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.22 (2026-02-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0321-2025-03-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.21 (2025-03-24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0320-2024-03-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.20 (2024-03-23)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0319-2023-12-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.19 (2023-12-17)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0318-2023-03-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.18 (2023-03-25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0317-2022-10-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.17 (2022-10-29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0316-2022-08-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.16 (2022-08-28)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0315-2021-12-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.15 (2021-12-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0314-2021-10-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.14 (2021-10-05)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0313-2021-07-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.13 (2021-07-24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0312-2020-10-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.12 (2020-10-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0311-2020-06-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.11 (2020-06-26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-0310-2020-06-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.10 (2020-06-02)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-039-2019-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.9 (2019-10-27)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-038-2019-06-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.8 (2019-06-09)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-037-2019-03-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.7 (2019-03-15)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-036-2019-01-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.6 (2019-01-26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-035-2018-10-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.5 (2018-10-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-034-2018-08-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.4 (2018-08-24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-033-2017-12-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.3 (2017-12-17)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-032-2017-02-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.2 (2017-02-14)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-031-2016-08-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.1 (2016-08-06)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-littler-version-030-2015-10-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.3.0 (2015-10-29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="news-for-package-littler">News for Package <span class="pkg">littler</span></h1>
+<h2 id="changes-in-littler-version-0323-2026-04-12">Version 0.3.23 (2026-04-12)</h2>
+<ul>
+<li>
+
+Changes in examples scripts
+
+<ul>
+<li>
+
+Correct spelling in <code>installGithub.r</code> to lower-case h
+
+</li>
+<li>
+
+The <code>r2u.r</code> now recognises ‘resolute’ aka 26.06
+
+</li>
+<li>
+
+<code>installRub.r</code> can install (more easily) from r-multiverse
+
+</li>
+<li>
+
+A file permission was corrected (Mattias Ellert in
+<a href="https://github.com/eddelbuettel/littler/pull/131">#131</a>)
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Update script count and examples in README.md
+
+</li>
+<li>
+
+Continuous intgegration scripts received minor updates
+
+</li>
+<li>
+
+The C level access to the R API was updated to reflect most recent
+standards (Dirk in
+<a href="https://github.com/eddelbuettel/littler/pull/132">#132</a>)
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0322-2026-02-03">Version 0.3.22 (2026-02-03)</h2>
+<ul>
+<li>
+
+Changes in examples scripts
+
+<ul>
+<li>
+
+A new script <code>busybees.r</code> aggregates deadlined packages by
+maintainer
+
+</li>
+<li>
+
+Several small updated have been made to the (mostly internal) ‘r2u.r’
+script
+
+</li>
+<li>
+
+The <code>deadliners.r</code> script has refined treatment for screen
+width
+
+</li>
+<li>
+
+The <code>install2.r</code> script has new options <code>–quiet</code>
+and <code>–verbose</code> as proposed by Zivan Karaman
+
+</li>
+<li>
+
+The <code>rcc.r</code> script passes build-args to ‘rcmdcheck’ to
+compact vignettes and save data
+
+</li>
+<li>
+
+The <code>installRub.r</code> script now defaults to ‘noble’ and is more
+tolerant of inputs
+
+</li>
+<li>
+
+The <code>installRub.r</code> script deals correctly with empty
+<code>utils::osVersion</code> thanks to Michael Chirico
+
+</li>
+<li>
+
+New script <code>checkPackageUrls.r</code> inspired by how CRAN checks
+(with thanks to Kurt Hornik for the hint)
+
+</li>
+<li>
+
+The <code>installGithub.r</code> script now adjusts to <code>bspm</code>
+and takes advantage of r2u binaries for its build dependencies
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Environment variables (read at build time) can use double quotes
+
+</li>
+<li>
+
+Continuous intgegration scripts received a minor update
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0321-2025-03-24">Version 0.3.21 (2025-03-24)</h2>
+<ul>
+<li>
+
+Changes in examples scripts
+
+<ul>
+<li>
+
+Usage text for <code>ciw.r</code> is improved, new options were added
+(Dirk)
+
+</li>
+<li>
+
+The ‘noble’ release is supported by <code>r2u.r</code> (Dirk)
+
+</li>
+<li>
+
+The <code>installRub.r</code> script has additional options (Dirk)
+
+</li>
+<li>
+
+The <code>ttlt.r</code> script has a new <code>load_package</code>
+argument (Dirk)
+
+</li>
+<li>
+
+A new script <code>deadliners.r</code> showing CRAN packages ‘under
+deadline’ has been added, and then refined (Dirk)
+
+</li>
+<li>
+
+The <code>kitten.r</code> script can now use
+<span class="pkg">whoami</span> and argument <code>githubuser</code> on
+the different <code>\*kitten</code> helpers it calls (Dirk)
+
+</li>
+<li>
+
+A new script <code>wb.r</code> can upload to win-builder (Dirk)
+
+</li>
+<li>
+
+A new script <code>crup.r</code> can upload a CRAN submission (Dirk)
+
+</li>
+<li>
+
+In <code>rcc.r</code>, the return from
+<span class="pkg">rcmdcheck</span> is now explicitly printed (Dirk)
+
+</li>
+<li>
+
+In <code>r2u.r</code> the <code>dry-run</code> option is passed to the
+build command (Dirk)
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Regular updates to badges, continuous integration, DESCRIPTION and
+<code>configure.ac</code> (Dirk)
+
+</li>
+<li>
+
+Errant <code>osVersion</code> return value are handled more robustly
+(Michael Chirico in
+<a href="https://github.com/eddelbuettel/littler/pull/121">#121</a>)
+
+</li>
+<li>
+
+The current run-time path is available via variable
+<code>LITTLER_SCRIPT_PATH</code> (Jon Clayden in
+<a href="https://github.com/eddelbuettel/littler/pull/122">#122</a>)
+
+</li>
+<li>
+
+The cleanup script remove macOS debug symbols (Jon Clayden in
+<a href="https://github.com/eddelbuettel/littler/pull/123">#123</a>)
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0320-2024-03-23">Version 0.3.20 (2024-03-23)</h2>
+<ul>
+<li>
+
+Changes in examples scripts
+
+<ul>
+<li>
+
+New (dependency-free) helper <code>installDeps2.r</code> to install
+dependencies
+
+</li>
+<li>
+
+Scripts <code>rcc.r</code>, <code>tt.r</code>, <code>tttf.r</code>,
+<code>tttlr.r</code> use <code>env</code> argument <code>-S</code> to
+set <code>-t</code> to <code>r</code>
+
+</li>
+<li>
+
+<code>tt.r</code> can now fill in <code>inst/tinytest</code> if it is
+present
+
+</li>
+<li>
+
+New script <code>ciw.r</code> wrapping new package
+<span class="pkg">ciw</span>
+
+</li>
+<li>
+
+<code>tttf.t</code> can now use <span class="pkg">devtools</span> and
+its <code>loadall</code>
+
+</li>
+<li>
+
+New script <code>doi2bib.r</code> to call the DOI converter REST service
+(following a skeet by Richard McElreath)
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+The CI setup use checkout@v4 and the r-ci-setup action
+
+</li>
+<li>
+
+The Suggests: is a little tighter as we do not list all packages
+optionally used in the the examples (as R does not check for it either)
+
+</li>
+<li>
+
+The package load messag can account for the rare build of R under
+different architecture (Berwin Turlach in
+<a href="https://github.com/eddelbuettel/littler/pull/117">#117</a>
+closing
+<a href="https://github.com/eddelbuettel/littler/issues/116">#116</a>)
+
+</li>
+<li>
+
+In non-vanilla mode, the temporary directory initialization in re-run
+allowing for a non-standard temp dir via config settings
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0319-2023-12-17">Version 0.3.19 (2023-12-17)</h2>
+<ul>
+<li>
+
+Changes in examples scripts
+
+<ul>
+<li>
+
+The help or usage text display for <code>r2u.r</code>,
+<code>ttt.r</code>, <code>check.r</code> has been improved, expanded or
+corrected, respectively
+
+</li>
+<li>
+
+<code>installDeps.r</code> has a new argument for dependency selection
+
+</li>
+<li>
+
+An initial ‘single test file’ runner <code>tttf.r</code> has been added
+
+</li>
+<li>
+
+<code>r2u.r</code> has two new options for setting / varying the Debian
+build version of package that is built, and one for BioConductor builds,
+one for a ‘dry run’ build, and a new <code>–compile</code> option
+
+</li>
+<li>
+
+<code>installRSPM.r</code>, <code>installPPM.r</code>,
+<code>installP3M.r</code> have been updates to reflect the name changes
+
+</li>
+<li>
+
+<code>installRub.r</code> now understands ‘package@universe’ too
+
+</li>
+<li>
+
+<code>tt.r</code> flips the default of the <code>–effects</code> switch
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0318-2023-03-25">Version 0.3.18 (2023-03-25)</h2>
+<ul>
+<li>
+
+Changes in examples scripts
+
+<ul>
+<li>
+
+<code>roxy.r</code> can now set an additional <code>–libpath</code>
+
+</li>
+<li>
+
+<code>getRStudioDesktop.r</code> and <code>getRStudioServer.r</code>
+have updated default download file
+
+</li>
+<li>
+
+<code>install2.r</code> and <code>installGithub.r</code> can set
+<code>–type</code>
+
+</li>
+<li>
+
+<code>r2u.r</code> now has a <code>–suffix</code> option
+
+</li>
+<li>
+
+<code>tt.r</code> removes a redundant <code>library</code> call
+
+</li>
+<li>
+
+<code>tttl.r</code> has been added for
+<code>testthat::test_local()</code>
+
+</li>
+<li>
+
+<code>installRub.r</code> has been added to install r-universe binaries
+on Ubuntu
+
+</li>
+<li>
+
+<code>install2.r</code> has updated error capture messages (Tatsuya
+Shima and Dirk in
+<a href="https://github.com/eddelbuettel/littler/pull/104">#104</a>)
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0317-2022-10-29">Version 0.3.17 (2022-10-29)</h2>
+<ul>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+An internal function prototype was updated for <code>clang-15</code>.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+Scripts <code>install2.r</code> and <code>installBioc.r</code> were
+updated for an update in R-devel (Tatsuya Shima and Dirk in
+<a href="https://github.com/eddelbuettel/littler/pull/104">#104</a>).
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0316-2022-08-28">Version 0.3.16 (2022-08-28)</h2>
+<ul>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+The <code>configure</code> code checks for two more headers
+
+</li>
+<li>
+
+The RNG seeding matches the current version in R (Dirk)
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+A <code>cowu.r</code> ‘check Window UCRT’ helper was added (Dirk)
+
+</li>
+<li>
+
+A <code>getPandoc.r</code> downloader has been added (Dirk)
+
+</li>
+<li>
+
+The <code>-r</code> option tp <code>install2.r</code> has been
+generalzed (Tatsuya Shima in
+<a href="https://github.com/eddelbuettel/littler/pull/95">#95</a>)
+
+</li>
+<li>
+
+The <code>rcc.r</code> code / package checker now has
+<code>valgrind</code> option (Dirk)
+
+</li>
+<li>
+
+<code>install2.r</code> now installs to first element in
+<code>.libPaths()</code> by default (Dirk)
+
+</li>
+<li>
+
+A very simple <code>r2u.r</code> help has been added (Dirk)
+
+</li>
+<li>
+
+The <code>installBioc.r</code> has been generalized and extended similar
+to <code>install2.r</code> (Pieter Moris in
+<a href="https://github.com/eddelbuettel/littler/pull/103">#103</a>)
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0315-2021-12-03">Version 0.3.15 (2021-12-03)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The <code>install2</code> script can select download methods, and cope
+with errors from parallel download (thanks to Gergely Daroczi)
+
+</li>
+<li>
+
+The <code>build.r</code> now uses <code>both</code> as argument to
+<code>–compact-vignettes</code>
+
+</li>
+<li>
+
+The RStudio download helper were once again updated for changed URLs
+
+</li>
+<li>
+
+New caller for simplermarkdown::mdweave_to_html
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Several typos were correct (thanks to John Kerl)
+
+</li>
+<li>
+
+Travis artifacts and badges have been pruned
+
+</li>
+<li>
+
+Vignettes now use <span class="pkg">simplermarkdown</span>
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0314-2021-10-05">Version 0.3.14 (2021-10-05)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+Updated RStudio download helper to changed file names
+
+</li>
+<li>
+
+Added a new option to <code>roxy.r</code> wrapper
+
+</li>
+<li>
+
+Added a downloader for Quarto command-line tool
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+The <code>configure</code> files were updated to the standard of version
+2.69 following a CRAN request
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0313-2021-07-24">Version 0.3.13 (2021-07-24)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+New script <code>compiledDeps.r</code> to show which dependencies are
+compiled
+
+</li>
+<li>
+
+New script <code>silenceTwitterAccount.r</code> wrapping
+<span class="pkg">rtweet</span>
+
+</li>
+<li>
+
+The <code>-c</code> or <code>–code</code> option for
+<code>installRSPM.r</code> was corrected
+
+</li>
+<li>
+
+The <code>kitten.r</code> script now passes options ‘bunny’ and ‘puppy’
+on to the <code>pkgKitten::kitten()</code> call; new options to call the
+Arma and Eigen variants were added
+
+</li>
+<li>
+
+The <code>getRStudioDesktop.r</code> and <code>getRStudioServer.r</code>
+scripts were updated for a change in <span class="pkg">rvest</span>
+
+</li>
+<li>
+
+Two typos in the <code>tt.r</code> help message were correct (Aaron
+Wolen in
+<a href="https://github.com/eddelbuettel/littler/pull/86">#86</a>)
+
+</li>
+<li>
+
+The message in <code>cranIncoming.r</code> was corrected.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Added Continuous Integration runner via <code>run.sh</code> from
+<a href="https://eddelbuettel.github.io/r-ci/">r-ci</a>.
+
+</li>
+<li>
+
+Two vignettes got two extra vignette attributes.
+
+</li>
+<li>
+
+The mkdocs-material documentation input was moved.
+
+</li>
+<li>
+
+The basic unit tests were slightly refactored and updated.
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0312-2020-10-04">Version 0.3.12 (2020-10-04)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+Updates to scripts <code>tt.r</code>, <code>cos.r</code>,
+<code>cow.r</code>, <code>c4r.r</code>, <code>com.r</code>
+
+</li>
+<li>
+
+New script <code>installDeps.r</code> to install dependencies
+
+</li>
+<li>
+
+Several updates tp script <code>check.r</code>
+
+</li>
+<li>
+
+New script <code>installBSPM.r</code> and <code>installRSPM.r</code> for
+binary package installation (Dirk and Iñaki in
+<a href="https://github.com/eddelbuettel/littler/pull/81">#81</a>)
+
+</li>
+<li>
+
+New script <code>cranIncoming.r</code> to check in Incoming
+
+</li>
+<li>
+
+New script <code>urlUpdate.r</code> validate URLs as R does
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Travis CI now uses BSPM
+
+</li>
+<li>
+
+A package documentation website was added
+
+</li>
+<li>
+
+Vignettes now use <span class="pkg">minidown</span> resulting in
+<em>much</em> reduced filesizes: from over 800kb to under 50kb (Dirk in
+<a href="https://github.com/eddelbuettel/littler/pull/83">#83</a>)
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0311-2020-06-26">Version 0.3.11 (2020-06-26)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+Scripts <code>check.r</code> and <code>rcc.r</code> updated to reflect
+updated <span class="pkg">docopt</span> 0.7.0 behaviour of quoted
+arguments
+
+</li>
+<li>
+
+The <code>roxy.r</code> script has a new ease-of-use option <code>-f |
+–full</code> regrouping two other options.
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-0310-2020-06-02">Version 0.3.10 (2020-06-02)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The <code>update.r</code> script only considers writeable directories.
+
+</li>
+<li>
+
+The <code>rcc.r</code> script tries to report full logs by setting
+<code>*R_CHECK_TESTS_NLINES*=0</code>.
+
+</li>
+<li>
+
+The <code>tt.r</code> script has an improved <code>ncpu</code> fallback.
+
+</li>
+<li>
+
+Several installation and updating scripts set
+<code>*R_SHLIB_STRIP*</code> to <code>TRUE</code>.
+
+</li>
+<li>
+
+A new script <code>installBioc.r</code> was added.
+
+</li>
+<li>
+
+The <code>–error</code> option to <code>install2.r</code> was
+generalized (Sergio Oller in
+<a href="https://github.com/eddelbuettel/littler/pull/78">#78</a>).
+
+</li>
+<li>
+
+The <code>roxy.r</code> script was extended a little.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Travis CI now uses R 4.0.0 and the bionic distro
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-039-2019-10-27">Version 0.3.9 (2019-10-27)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The use of <code>call.</code> in <code>stop()</code> was corrected
+(Stefan Widgren in
+<a href="https://github.com/eddelbuettel/littler/pull/72">#72</a>).
+
+</li>
+<li>
+
+New script <code>cos.r</code> to check (at rhub) on Solaris.
+
+</li>
+<li>
+
+New script <code>compactpdf.r</code> to compact pdf files.
+
+</li>
+<li>
+
+The <code>build.r</code> script now compacts vignettes and resaves data.
+
+</li>
+<li>
+
+The <code>tt.r</code> script now supports parallel tests and side
+effects.
+
+</li>
+<li>
+
+The <code>rcc.r</code> script can now report error codes.
+
+</li>
+<li>
+
+The ‘–libloc’ option to <code>update.r</code> was updated.
+
+</li>
+<li>
+
+The <code>render.r</code> script can optionally compact pdfs.
+
+</li>
+<li>
+
+New script <code>sweave.r</code> to render (and compact) pdfs.
+
+</li>
+<li>
+
+New script <code>pkg2bibtex.r</code> to show bibtex entries.
+
+</li>
+<li>
+
+The <code>kitten.r</code> script has a new option <code>–puppy</code> to
+add <span class="pkg">tinytest</span> support in purring packages.
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-038-2019-06-09">Version 0.3.8 (2019-06-09)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The <code>install.r</code> and <code>install2.r</code> scripts now use
+parallel installation using <code>options{Ncpu}</code> on remote
+packages.
+
+</li>
+<li>
+
+The <code>install.r</code> script has an expanded help text mentioning
+the environment variables it considers.
+
+</li>
+<li>
+
+A new script <code>tt.r</code> was added to support
+<code>tinytest</code>.
+
+</li>
+<li>
+
+The rhub checking scripts now all suppress builds of manual and
+vignettes as asking for working latex appears to be too much.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+On startup checks if <code>r</code> is in <code>PATH</code> and if not
+references new FAQ entry; text from <code>Makevars</code> mentions it
+too.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in documentation
+
+<ul>
+<li>
+
+The FAQ vignette now details setting <code>r</code> to
+<code>PATH</code>.
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-037-2019-03-15">Version 0.3.7 (2019-03-15)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The scripts <code>installGithub.r</code> and <code>install2.r</code> get
+a new option <code>-r | –repos</code> (Gergely Daroczi in
+<a href="https://github.com/eddelbuettel/littler/pull/67">#67</a>)
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in build system
+
+<ul>
+<li>
+
+The <code>AC_DEFINE</code> macro use rewritten to please R CMD check.
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-036-2019-01-26">Version 0.3.6 (2019-01-26)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The scripts <code>install.r</code> and <code>install2.r</code> now
+support argument <code>“.”</code>, and add it if called in a source
+directory.
+
+</li>
+<li>
+
+The script <code>install2.r</code> can set <code>Ncpus</code> for
+<code>install.packages()</code> (Colin Gillespie in
+<a href="https://github.com/eddelbuettel/littler/pull/63">#63</a> fixing
+<a href="https://github.com/eddelbuettel/littler/pull/62">#62</a>)
+
+</li>
+<li>
+
+The script <code>update.r</code> can also set <code>Ncpus</code> for
+<code>install.packages()</code>.
+
+</li>
+<li>
+
+A new vignette "litter-faq" was added.
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-035-2018-10-04">Version 0.3.5 (2018-10-04)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The script <code>roxy.r</code> now uses a cached copy of
+<span class="pkg">roxygen2</span> version 6.0.1 (if available) as the
+current version 6.1.0 changed behaviour.
+
+</li>
+<li>
+
+The script <code>rcc.r</code> was updated as the underlying
+<span class="pkg">rcmdcheck</span> changed parameter order.
+
+</li>
+<li>
+
+A new simpler wrapper <code>rchk.r</code> was added to use RHub with the
+<code>rchk</code> image.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Travis CI now uses the R 3.5 PPA
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-034-2018-08-24">Version 0.3.4 (2018-08-24)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The shebang line is now <code>#!/usr/bin/env r</code> to work with
+either <code>/usr/local/bin/r</code> or <code>/usr/bin/r</code>.
+
+</li>
+<li>
+
+New example script to only install packages not yet installed (Brandon
+Bertelsen in
+<a href="https://github.com/eddelbuettel/littler/pull/59">#59</a>);
+later added into <code>install2.r</code>.
+
+</li>
+<li>
+
+Functions <code>getRStudioDesktop.r</code> and
+<code>getRStudioServer.r</code> updated their internal URLs.
+
+</li>
+<li>
+
+Several minor enhancements were made to example scripts.
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-033-2017-12-17">Version 0.3.3 (2017-12-17)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+The script <code>installGithub.r</code> now correctly uses the
+<code>upgrade</code> argument (Carl Boettiger in
+<a href="https://github.com/eddelbuettel/littler/pull/49">#49</a>).
+
+</li>
+<li>
+
+New script <code>pnrrs.r</code> to call the package-native registration
+helper function added in R 3.4.0
+
+</li>
+<li>
+
+The script <code>install2.r</code> now has more robust error handling
+(Carl Boettiger in
+<a href="https://github.com/eddelbuettel/littler/pull/50">#50</a>).
+
+</li>
+<li>
+
+New script <code>cow.r</code> to use R Hub’s
+<code>check_on_windows</code>
+
+</li>
+<li>
+
+Scripts <code>cow.r</code> and <code>c4c.r</code> use
+<code>#!/usr/bin/env r</code>
+
+</li>
+<li>
+
+New option <code>–fast</code> (or <code>-f</code>) for scripts
+<code>build.r</code> and <code>rcc.r</code> for faster package build and
+check
+
+</li>
+<li>
+
+The <code>build.r</code> script now defaults to using the current
+directory if no argument is provided.
+
+</li>
+<li>
+
+The RStudio getters now use the <code>rvest</code> package to parse the
+webpage with available versions.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+Travis CI now uses https to fetch script, and sets the group
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-032-2017-02-14">Version 0.3.2 (2017-02-14)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+New scripts <code>getRStudioServer.r</code> and
+<code>getRStudioDesktop.r</code> to download daily packages, currently
+defaults to Ubuntu amd64
+
+</li>
+<li>
+
+New script <code>c4c.r</code> calling
+<code>rhub::check_for_cran()</code>
+
+</li>
+<li>
+
+New script <code>rd2md.r</code> to convert Rd to markdown.
+
+</li>
+<li>
+
+New script <code>build.r</code> to create a source tarball.
+
+</li>
+<li>
+
+The <code>installGithub.r</code> script now use package
+<a href="https://CRAN.R-project.org/package=remotes"><span class="pkg">remotes</span></a>
+(PR <a href="https://github.com/eddelbuettel/littler/pull/44">#44</a>,
+<a href="https://github.com/eddelbuettel/littler/pull/46">#46</a>)
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-031-2016-08-06">Version 0.3.1 (2016-08-06)</h2>
+<ul>
+<li>
+
+Changes in examples
+
+<ul>
+<li>
+
+<code>install2.r</code> now passes on extra options past <code>–</code>
+to <code>R CMD INSTALL</code> (PR
+<a href="https://github.com/eddelbuettel/littler/pull/37">#37</a> by
+Steven Pav)
+
+</li>
+<li>
+
+Added <code>rcc.r</code> to run <code>rcmdcheck::rcmdcheck()</code>
+
+</li>
+<li>
+
+Added (still simple) <code>render.r</code> to render (R)markdown
+
+</li>
+<li>
+
+Several examples now support the <code>-x</code> or <code>–usage</code>
+flag to show extended help.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in build system
+
+<ul>
+<li>
+
+The <code>AM_LDFLAGS</code> variable is now set and used too (PR
+<a href="https://github.com/eddelbuettel/littler/pull/38">#38</a> by
+Mattias Ellert)
+
+</li>
+<li>
+
+Three more directories, used when an explicit installation directory is
+set, are excluded (also
+<a href="https://github.com/eddelbuettel/littler/pull/38">#38</a> by
+Mattias)
+
+</li>
+<li>
+
+Travis CI is now driven via <code>run.sh</code> from our fork, and
+deploys all packages as .deb binaries using our PPA where needed
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in package
+
+<ul>
+<li>
+
+SystemRequirements now mentions the need for <code>libR</code>, i.e. an
+R built with a shared library so that we can embed R.
+
+</li>
+<li>
+
+The
+<a href="https://CRAN.R-project.org/package=docopt"><span class="pkg">docopt</span></a>
+and
+<a href="https://CRAN.R-project.org/package=rcmdcheck"><span class="pkg">rcmdcheck</span></a>
+packages are now suggested, and added to the Travis installation.
+
+</li>
+<li>
+
+A new helper function <code>r()</code> is now provided and exported so
+that the package can be imported (closes
+<a href="https://github.com/eddelbuettel/littler/issues/40">#40</a>).
+
+</li>
+<li>
+
+URL and BugReports links were added to DESCRIPTION.
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in documentation
+
+<ul>
+<li>
+
+The help output for <code>installGithub.r</code> was corrected (PR
+<a href="https://github.com/eddelbuettel/littler/pull/39">#39</a> by
+Brandon Bertelsen)
+
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="changes-in-littler-version-030-2015-10-29">Version 0.3.0 (2015-10-29)</h2>
+<ul>
+<li>
+
+Changes in build system
+
+<ul>
+<li>
+
+First CRAN Release as R package following nine years of source releases
+
+</li>
+<li>
+
+Script <code>configure</code>, <code>src/Makevars.in</code> and
+remainder of build system rewritten to take advantage of the R package
+build infrastructure
+
+</li>
+<li>
+
+Reproducible builds are better supported as the (changing) compilation
+timestamps etc are only inserted for ‘verbose builds’ directly off the
+git repo, but not for Debian (or CRAN) builds off the release tarballs
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in littler functionality
+
+<ul>
+<li>
+
+Also source <code>$R_HOME/etc/Rprofile.site</code> and
+<code>~/.Rprofile</code> if present
+
+</li>
+</ul>
+</li>
+<li>
+
+Changes in littler documentation
+
+<ul>
+<li>
+
+Added new vignette with examples
+
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006-present Dirk Eddelbuettel and Jeff Horner
+    </div>
+  
+  
+    Made with
+    <a href="https://altdoc.etiennebacher.com/#/" target="_blank">altdoc</a>
+    and
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener"> Material for MkDocs</a>.
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/eddelbuettel/" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://bsky.app/profile/eddelbuettel.com" target="_blank" rel="noopener" title="Bsky" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3 3.4.4 6.7.9 10 1.3M288 227.1c-26.1-50.7-97.1-145.2-163.1-191.8C61.6-9.4 37.5-1.7 21.6 5.5 3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7 3.3-.5 6.6-.9 10-1.4-3.3.5-6.6 1-10 1.4-93.9 14-177.3 48.2-67.9 169.9C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4 102.4-103.4 28.1-156-65.8-169.9-3.3-.4-6.7-.8-10-1.3 3.4.4 6.7.9 10 1.3 64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.instant"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

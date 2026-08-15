@@ -6,7 +6,7 @@
 #
 # Inspired by devtools::upload_cran() from which it takes parts and remixes
 # them here.  Released under the same license as that file (ie MIT) or under
-# GPL (>= 2) like the rest of this package, at your chooosing.
+# GPL (>= 2) like the rest of this package, at your choosing.
 
 if (!requireNamespace("httr", quietly=TRUE))
     stop("Please install 'httr' from CRAN.", call. = FALSE)
