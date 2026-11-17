@@ -37,6 +37,8 @@ if (length(opt$PATH) == 0) opt$PATH <- "."      # default argument current direc
 if (requireNamespace("checktor", quietly=TRUE) == FALSE)
     stop("This command requires the 'checktor' package.", call. = FALSE)
 
+if (file.exists(".Rprofile")) source(".Rprofile")
+
 suppressMessages(library(checktor))
 
 if (opt$url) options(checktor.url_check = TRUE)

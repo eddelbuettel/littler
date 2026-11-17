@@ -1,3 +1,8 @@
+2026-11-17  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/checktor.r: If .Rprofile exists, source it (needed as
+	'r' does not do so by an early design choice)
+
 2026-10-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/examples/busybees.r: Also show (up to five) affected packages
