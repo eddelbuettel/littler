@@ -3,6 +3,23 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/littler/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/littler/issues/#1}{##1}}
 
+\section{Changes in littler version 0.3.24 (2026-11-17)}{
+  \itemize{
+    \item Changes in examples scripts
+    \itemize{
+      \item New script \code{trox.r} wrapping \pkg{tinyrox}
+      \item New script \code{checktor.r} wrapping \pkg{checktor}
+      \item Small edits and tweaks to two existing scripts
+    }
+    \item Changes in package
+    \itemize{
+      \item Continuous intgegration scripts received minor updates
+      \item Documentation website has been redone using \pkg{altdoc} as the
+      driver of the 'material for mkdocs' framework used
+    }
+  }
+}
+
 \section{Changes in littler version 0.3.23 (2026-04-12)}{
   \itemize{
     \item Changes in examples scripts
