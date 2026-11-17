@@ -1,3 +1,30 @@
+2026-11-17  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.3.24
+	* configure.ac: Idem
+	* configure: Idem
+
+	* inst/examples/checktor.r: If .Rprofile exists, source it (needed as
+	'r' does not do so by an early design choice)
+
+2026-10-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/busybees.r: Also show (up to five) affected packages
+
+2026-10-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/checktor.r: Add wrapper for checktor
+
+2026-08-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml: Switch to actions/checkout@v7
+
+2026-08-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* docs/: Redone using 'altdoc' with 'material for mkdocs'
+	* .github/altdoc/*: Added supporting 'altdoc'
+	* .github/scripts/postprocess.sh: Idem
+
 2026-06-06  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Roll micro version and date

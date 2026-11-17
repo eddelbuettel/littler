@@ -1,6 +1,41 @@
 ## News for Package <span class="pkg">littler</span> {.unnumbered}
 
 
+### Changes in littler version 0.3.24 (2026-11-17)
+
+
+<ul>
+<li> Changes in examples scripts
+
+
+<ul>
+<li> New script <code>trox.r</code> wrapping <span class="pkg">tinyrox</span>
+
+</li>
+<li> New script <code>checktor.r</code> wrapping <span class="pkg">checktor</span>
+
+</li>
+<li> Small edits and tweaks to two existing scripts
+
+</li></ul>
+
+</li>
+<li> Changes in package
+
+
+<ul>
+<li> Continuous intgegration scripts received minor updates
+
+</li>
+<li> Documentation website has been redone using <span class="pkg">altdoc</span> as the
+driver of the 'material for mkdocs' framework used
+
+</li></ul>
+
+</li></ul>
+
+
+
 ### Changes in littler version 0.3.23 (2026-04-12)
 
 
